@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use \App\Models\category;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,7 @@ Route::get('/', function () {
 
     return view('welcome');
 });
+
 /*
 Route::get('genrate-sitemap', function(){
 
