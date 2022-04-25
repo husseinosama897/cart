@@ -18,8 +18,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
  //   $slug = SlugService::createSlug(category::class, 'slug', 'My First Post');
-
-    return view('welcome');
+    return view('front.home');
 });
 
 /*
