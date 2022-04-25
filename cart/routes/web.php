@@ -40,7 +40,5 @@ Route::get('genrate-sitemap', function(){
 
     // generate your sitemap (format, filename)
     $sitemap->store('xml', 'sitemap');
-    // this will generate file mysitemap.xml to your public folder
-
-    return redirect(url('sitemap.xml'));
+ 
 });
