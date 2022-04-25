@@ -15,11 +15,11 @@ use \App\Models\category;
 */
 
 Route::get('/', function () {
-    $slug = SlugService::createSlug(category::class, 'slug', 'My First Post');
+ //   $slug = SlugService::createSlug(category::class, 'slug', 'My First Post');
 
-    return $slug;
+    return view('welcome');
 });
-
+/*
 Route::get('genrate-sitemap', function(){
 
     // create new sitemap object
@@ -40,5 +40,8 @@ Route::get('genrate-sitemap', function(){
 
     // generate your sitemap (format, filename)
     $sitemap->store('xml', 'sitemap');
- 
+    // this will generate file mysitemap.xml to your public folder
+
+    return redirect(url('sitemap.xml'));
 });
+*/
