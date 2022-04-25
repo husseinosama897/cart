@@ -25,7 +25,7 @@ public function cartpage(){
      
     
     
-    return view('cart.index',$data);
+    return view('cart.index', $data);
 
 }
 
