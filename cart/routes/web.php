@@ -45,3 +45,6 @@ Route::get('genrate-sitemap', function(){
     return redirect(url('sitemap.xml'));
 });
 */
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
