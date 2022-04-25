@@ -45,7 +45,35 @@ if(!empty($category)){
     }
 
 
-   public function supplierpage(){
-       return view('supplier.')
+   public function supplierpage(supplier $supplier){
+
+       return view('ui.supplier')->with('supplier',$supplier);
    }
+
+
+   public function jsonsupplier(request $request,supplier $supplier){
+
+ $data =    $supplier->product();
+
+
+ $category = json_decode($request->category,true);
+ if($category){
+    $data = $data->WhereIn('category_id',$category);
+ }
+
+$data = $data->paginate(10);
+
+return response()->json(['data'=>$data]);
+    
+
+   }
+
+   public function item(product $product){
+
+$related =  product::where('id','!=',$product->product)->select(['name','img'])->get()->take(10);
+
+return view('product.item')->with(['product'=>$product,'related'=>$related]);
+
+}
+
 }
