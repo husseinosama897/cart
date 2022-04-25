@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePackingRequestProsTable extends Migration
+class CreateCountriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreatePackingRequestProsTable extends Migration
      */
     public function up()
     {
-        Schema::create('packing_request_pros', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('code')->nullable();
+        
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreatePackingRequestProsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('packing_request_pros');
+        Schema::dropIfExists('countries');
     }
 }

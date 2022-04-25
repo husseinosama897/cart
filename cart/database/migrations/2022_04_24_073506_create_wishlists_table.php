@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePackingRequestsTable extends Migration
+class CreateWishlistsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreatePackingRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('packing_requests', function (Blueprint $table) {
+        Schema::create('wishlists', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreatePackingRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('packing_requests');
+        Schema::dropIfExists('wishlists');
     }
 }
