@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+use \App\Models\category;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $slug = SlugService::createSlug(category::class, 'slug', 'My First Post');
+
+    return $slug;
 });
 
 Route::get('genrate-sitemap', function(){
