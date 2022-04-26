@@ -10,16 +10,17 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    @yield('style')
+    @yield('owl')
     <link href="{{ asset('front/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
+    @yield('style')
+
 </head>
 <body>
     @include('global.header')
@@ -30,6 +31,7 @@
         <router-view></router-view>
     </div>
     @include('global.footer')
+    <script src="{{ asset('js/app.js') }}" ></script>
     <script src="{{ asset('front/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{{ asset('front/js/main.js') }}"></script>

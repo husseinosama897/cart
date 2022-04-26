@@ -195,7 +195,7 @@
     </section>
 @endsection
 
-@section('style')
+@section('owl')
 <link href="{{ asset('front/css/owl.carousel.min.css') }}" rel="stylesheet">
 @endsection
 

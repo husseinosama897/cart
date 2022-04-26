@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\supplier;
+use App\Models\supplier;
 class supplierController extends Controller
 {
   public function __construct()
@@ -107,12 +107,8 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
           }
           
           public function supplierjson(){
-            
-    $supplier =  supplier::paginate(10);
-          return response()->json(['data'=>$supplier]);
-          
-          
-            
+            $supplier =  supplier::paginate(10);
+            return response()->json(['data'=>$supplier]);
           }
 
           public function supplierselex(){

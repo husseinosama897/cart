@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\supplierController;
 use Illuminate\Support\Facades\Route;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use \App\Models\category;
@@ -19,6 +20,10 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
  //   $slug = SlugService::createSlug(category::class, 'slug', 'My First Post');
     return view('front.home');
+});
+
+Route::get('/suppliers', function () {
+       return view('front.suppliers');
 });
 
 /*
