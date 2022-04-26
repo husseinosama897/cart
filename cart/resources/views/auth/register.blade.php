@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="login my-4 col-lg-5 col">
+        <div class="login my-4 mx-lg-0 mx-3  col-lg-5 col" style="display: flex;flex-direction: column;justify-content: center;">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <span class="d-block mb-3 fs-4">{{ __('Register') }}</span>
@@ -56,6 +56,31 @@
                         </button>
                     </div>
                 </div>
+                <span class="line" style="display:block; margin:25px">
+                    <h2 style="font-size:15px; text-align:center; border-bottom:1px solid rgb(214, 214, 214); position:relative; ">
+                        <span style="background-color: white; position: relative; top: 10px; padding: 0 10px;">او</span>
+                    </h2>
+                </span>
+                <div class="row">
+                    <div class="col-6 d-flex flex-column align-items-center">
+                        <span class="d-block mb-3">ادخل بواسطة</span>
+                        <div >
+                            <a href="#" class="mx-1">
+                               <img src="{{ asset('front/icons/facebook.png') }}" width="20" alt="" srcset="">
+                            </a>
+                            <a href="#" class="mx-1">
+                                <img src="{{ asset('front/icons/search.png') }}" width="20" alt="" srcset="">
+                            </a>
+                            <a href="#" class="mx-1">
+                                <img src="{{ asset('front/icons/linkedin.png') }}" width="20" alt="" srcset="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6 d-flex flex-column align-items-center">
+                        <span class="d-block mb-3">جديد بالموقع ؟</span>
+                        <a href="{{ route('register') }}">أنشاء حساب</a>
+                    </div>
+                </div>
             </form>
         </div>
         <div class="banner col-lg-7 d-none d-lg-block ">
@@ -67,8 +92,10 @@
 
 @section('style')
 <style>
-    .banner img{
-        width: 100%;
-    }
+.banner img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 </style>
 @endsection
