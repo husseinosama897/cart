@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\cart;
 use Session;
 use App\UpdateCoupon;
+use Illuminate\Support\Facades\Auth;
+
 class cartController extends Controller
 {
 
 public function cartpage(){
-    if(auth::id()){
+    if(Auth::id()){
         $data =    auth::user()->cart()->paginate(10);
         }else{
             $session_id = Session::get('session_id');
@@ -25,7 +27,7 @@ public function cartpage(){
      
     
     
-    return view('cart.index', $data);
+    return view('front.cart.index', $data);
 
 }
 

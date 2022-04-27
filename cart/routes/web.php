@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\cartController;
 use App\Http\Controllers\supplierController;
 use App\Http\Controllers\uiController;
 use Illuminate\Support\Facades\Route;
@@ -40,7 +41,7 @@ Route::get('/suppliers/{slug}/{supplier}', [uiController::class, 'supplierpage']
 //category
 Route::get('/json/categories/{category}', [uiController::class, 'jsoncategory']);
 
-Route::get('/categories' , function () {
+Route::get('/categories', function () {
        return view('front.home');
 });
 
@@ -61,8 +62,11 @@ Route::get('/home', [uiController::class, 'homepage']);
 
 //cart 
 
-Route::get('/Basket', [cartController::class, 'cartpage']);
+// Route::get('/basket', [cartController::class, 'cartpage']);
 
+Route::get('/basket', function () {
+    return view('front.cart.index');
+});
 
 
 Route::get('/counter', [cartController::class, 'counter']);
