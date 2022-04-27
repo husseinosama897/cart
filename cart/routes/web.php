@@ -22,6 +22,8 @@ Route::get('/', function () {
     return view('front.home');
 });
 
+Route::get('/json/suppliers', [supplierController::class, 'supplierjson']);
+
 Route::get('/suppliers', function () {
        return view('front.suppliers');
 });
