@@ -23,14 +23,28 @@ Route::get('/', function () {
 });
 
 Route::get('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
-
 Route::get('/suppliers/{slug}/{supplier}', [uiController::class, 'supplierpage']);
-
 
 //category
 Route::get('/json/categories/{category}', [uiController::class, 'jsoncategory']);
-
 Route::get('/categories/{slug}/{category}', [uiController::class, 'categorypage']);
+
+
+
+//product 
+
+Route::get('/json/product', [uiController::class, 'jsonproduct']);
+Route::get('/products', [uiController::class, 'productpage']);
+Route::get('/product/{slug}/{product}', [uiController::class, 'item']);
+
+//home 
+
+
+Route::get('/home', [uiController::class, 'homepage']);
+
+
+
+
 
 /*
 Route::get('genrate-sitemap', function(){
@@ -60,4 +74,4 @@ Route::get('genrate-sitemap', function(){
 */
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
