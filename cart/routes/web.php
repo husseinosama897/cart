@@ -22,11 +22,15 @@ Route::get('/', function () {
     return view('front.home');
 });
 
-Route::get('/json/suppliers', [supplierController::class, 'supplierjson']);
+Route::get('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
 
-Route::get('/suppliers', function () {
-       return view('front.suppliers');
-});
+Route::get('/suppliers/{slug}/{supplier}', [uiController::class, 'supplierpage']);
+
+
+//category
+Route::get('/json/categories/{category}', [uiController::class, 'jsoncategory']);
+
+Route::get('/categories/{slug}/{category}', [uiController::class, 'categorypage']);
 
 /*
 Route::get('genrate-sitemap', function(){

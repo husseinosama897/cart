@@ -21,8 +21,21 @@ $this->validate($request,[
   
 'category_id'=>['numeric','required'],
 'supplier_id'=>['numeric','required'],
-
+'image'=>[ 'image|mimes:jpeg,png,jpg,gif,svg|max:2048']
 ]);
+
+$slug = SlugService::createSlug(product::class, 'slug', $request->name);
+
+if($request->image){
+  $image_tmp = $request->image;
+
+      $extension = $image_tmp->getClientOriginalExtension();
+      $fileName = rand(111,99999).'.'.$extension;
+      $image_tmp->move('uploads/product', $fileName);
+
+}else{
+  $fileName = null;
+}
 
 $data = product::insert([
     'name'=>$request->name,
@@ -31,6 +44,8 @@ $data = product::insert([
       'qty'=>$request->qty,
    'discount'=>$request->discount,
     'offer'=>$request->offer,
+    'slug'=>$slug,
+    'image'=>$fileName,
   'category_id'=>$request->category_id,
   'supplier_id'=>$request->supplier_id,
   
@@ -53,10 +68,23 @@ $data = product::insert([
       
       ]);
       
+if($request->image){
+  $image_tmp = $request->image;
+
+      $extension = $image_tmp->getClientOriginalExtension();
+      $fileName = rand(111,99999).'.'.$extension;
+      $image_tmp->move('uploads/product', $fileName);
+
+}else{
+  $fileName = null;
+}
+
+      
       $product->update([
           'name'=>$request->name,
           'price'=>$request->price,
         'qty_type'=>$request->qty_type,
+        'image'=>$fileName,
             'qty'=>$request->qty,
          'discount'=>$request->discount,
           'offer'=>$request->offer,

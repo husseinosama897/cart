@@ -57,7 +57,7 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
         'country'=>['string','max:255'],
        
        'comp'=>['string','max:255'],
-   'customer_name'=>['string','max:255'],
+   
         
      'tax_number'=>['string','max:255'],
       
@@ -76,13 +76,22 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
    'email'=>['string','max:255'],
       ]);
       
+      if($request->image){
+        $image_tmp = $request->image;
+    
+            $extension = $image_tmp->getClientOriginalExtension();
+            $fileName = rand(111,99999).'.'.$extension;
+            $image_tmp->move('uploads/supplier', $fileName);
       
+      }else{
+        $fileName = null;
+      }
+      $slug = SlugService::createSlug(category::class, 'slug', $request->comp);
       supplier::create([
           'personal'=>$request->personal,
-          
-        'customer_name'=>$request->customer_name,
-        'status'=>1,
-        
+          'image'=>$fileName,
+        'slug'=>$slug,
+
       'comp'=>$request->comp,
           'postal_code'=>$request->postal_code,
           'building_num'=>$request->building_num,
@@ -148,12 +157,10 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
  'email'=>['string','max:255'],
     ]);
                   
-                  
+    $slug = SlugService::createSlug(category::class, 'slug', $request->comp);
                   $supplier->update([
                     'personal'=>$request->personal,
-          
-                    'customer_name'=>$request->customer_name,
-                    'status'=>1,
+          'slug'=>$slug,
                   'comp'=>$request->comp,
                       'postal_code'=>$request->postal_code,
                       'building_num'=>$request->building_num,
@@ -164,9 +171,7 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
                   'phone'=>$request->phone,
                   'location'=>$request->location,
                   'city'=>$request->city,
-              
                   'email'=>$request->email,
-
                   ]);
                   
                   return response()->json('done',200);

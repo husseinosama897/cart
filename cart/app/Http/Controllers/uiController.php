@@ -7,7 +7,7 @@ use App\Models\product;
 class uiController extends Controller
 {
     public function productpage(){
-        return view('ui.product');
+        return view('front.product');
     }
 
 
@@ -37,18 +37,23 @@ if(!empty($category)){
 
 
     public function homepage(){
-        $suppliers = supplier::get()->select(['id','name','comp','img'])->take(20);
+        $suppliers = supplier::get()->select(['id','name','slug','comp','img'])->take(20);
 
         $suppliers = category::get()->select(['id','name','img'])->take(20);
 
-        return view('ui.homepage')->with(['suppliers'=>$suppliers,'category'=>$category]);
+        return view('front.homepage')->with(['suppliers'=>$suppliers,'category'=>$category]);
     }
 
 
    public function supplierpage(supplier $supplier){
 
-       return view('ui.supplier')->with('supplier',$supplier);
+       return view('front.suppliers')->with('supplier',$supplier);
    }
+
+   public function categorypage(category $category){
+
+    return view('front.category')->with('category',$category);
+}
 
 
    public function jsonsupplier(request $request,supplier $supplier){
@@ -58,7 +63,7 @@ if(!empty($category)){
 
  $category = json_decode($request->category,true);
  if($category){
-    $data = $data->WhereIn('category_id',$category);
+    $data = $data->category()->WhereIn('id',$category);
  }
 
 $data = $data->paginate(10);
@@ -68,9 +73,28 @@ return response()->json(['data'=>$data]);
 
    }
 
+   
+
+   public function jsoncategory(request $request,category $category){
+
+    $data =    $supplier->product();
+
+    $supplier = json_decode($request->supplier,true);
+    if($supplier){
+       $data = $data->supplier()->WhereIn('id',$category);
+    }
+   
+   $data = $data->paginate(10);
+   
+   return response()->json(['data'=>$data]);
+       
+   
+      }
+
+      
    public function item(product $product){
 
-$related =  product::where('id','!=',$product->product)->select(['name','img'])->get()->take(10);
+$related =  product::where('id','!=',$product->id)->select(['name','slug','img'])->get()->take(10);
 
 return view('product.item')->with(['product'=>$product,'related'=>$related]);
 

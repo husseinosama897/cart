@@ -9,8 +9,16 @@ class category extends Model
 {
     use HasFactory, Sluggable;
 
+
+protected $fillable = [
+    'slug','name','img',
+];
+
     public function sluggable(): array
     {
+
+
+
         return [
             'slug' => [
                 'source' => 'name'
