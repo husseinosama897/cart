@@ -29,7 +29,7 @@ public function cartpage(){
 
 }
 
-    public function coaunter(){
+    public function counter(){
         if(auth::id()){
         $count =    auth::user()->cart()->count();
         
@@ -53,26 +53,19 @@ public function cartpage(){
         }
 
     
-public function delete($id){
-    if(auth::id()){
-        $cart = cart::where(['id'=>$id,
-    'user_id'=>auth::id()])->first();
+public function delete(cart $cart){
+    if(auth::id() && $cart->user_id == auth::id()){
+        $cart->delete();
+        $this->updatedis();
     }else{
         $session_id = Session::get('session_id');
-        if(!$session_id){
-            $session_id = str_random(40);
-            Session::put('session_id',$session_id);
-           
+        if($session_id && $session_id == $cart->session_id){
+            $cart->delete();
+            $this->updatedis();
         }
-        $cart = cart::where(['id'=>$id,'session_id'=>$session_id])->first();
+        
     }
 
-if($cart){    
-$cart->delete();
-
-$this->updatedis();
-}
-return back()->with('success_message', 'done');
 
 }
 
@@ -165,13 +158,12 @@ $this->updatedis();
 
 public function updatequantityjson(request $request,cart $cart){
 
-    if($cartz){
+    if($cart){
 
       $cart->total += $request->quantity  *   $cart->product->price;
    $cart->qty = $request->quantity;
-      $cartz->save();
-      return response()->json($cartz);
-        
+      $cart->save();
+     
     }
  
 

@@ -42,6 +42,25 @@ Route::get('/product/{slug}/{product}', [uiController::class, 'item']);
 
 Route::get('/home', [uiController::class, 'homepage']);
 
+//cart 
+
+Route::get('/Basket', [cartController::class, 'cartpage']);
+
+
+
+Route::get('/counter', [cartController::class, 'counter']);
+
+Route::delete('/cart/delete/{cart}', [cartController::class, 'delete']);
+
+Route::post('/couponsstore', [cartController::class, 'couponsstore']);
+
+Route::post('/storeincart', [cartController::class, 'store']);
+
+
+Route::post('/storeincart', [cartController::class, 'store']);
+
+Route::post('/updatequantityjson', [cartController::class, 'updatequantityjson']);
+
 
 
 
