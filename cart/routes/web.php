@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\supplierController;
+use App\Http\Controllers\uiController;
 use Illuminate\Support\Facades\Route;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use \App\Models\category;
@@ -22,11 +23,27 @@ Route::get('/', function () {
     return view('front.home');
 });
 
+
+
 Route::get('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
+
+Route::get('/json/suppliers/', [supplierController::class, 'supplierjson']);
+
+Route::get('/suppliers', function () {
+       return view('front.suppliers.suppliers');
+});
+
 Route::get('/suppliers/{slug}/{supplier}', [uiController::class, 'supplierpage']);
+
+
 
 //category
 Route::get('/json/categories/{category}', [uiController::class, 'jsoncategory']);
+
+Route::get('/categories' , function () {
+       return view('front.home');
+});
+
 Route::get('/categories/{slug}/{category}', [uiController::class, 'categorypage']);
 
 

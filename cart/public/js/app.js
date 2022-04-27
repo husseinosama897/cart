@@ -5481,158 +5481,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'Suppliers'
+  name: 'Suppliers',
+  data: function data() {
+    return {
+      suppliers: []
+    };
+  },
+  mounted: function mounted() {
+    this.loadSuppliers();
+  },
+  methods: {
+    loadSuppliers: function loadSuppliers() {
+      var _this = this;
+
+      axios.get('/json/suppliers').then(function (response) {
+        _this.suppliers = response.data.data;
+      })["catch"]();
+    }
+  }
 });
 
 /***/ }),
@@ -28401,8 +28268,6 @@ var render = function () {
       _c("aside", {}, [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "supplier-aside" }, [
-            _vm._m(0),
-            _vm._v(" "),
             _c("div", { staticClass: "categories" }, [
               _c(
                 "div",
@@ -28437,9 +28302,9 @@ var render = function () {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
-              _vm._m(2),
+              _vm._m(1),
             ]),
           ]),
         ]),
@@ -28449,487 +28314,45 @@ var render = function () {
         _c(
           "div",
           { staticClass: "row", staticStyle: { "column-gap": "10px" } },
-          [
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(3),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(4),
+          _vm._l(_vm.suppliers.data, function (supplier, index) {
+            return _c(
+              "div",
+              { key: index, staticClass: "product col-xl-3 col-md-4 col-sm-6" },
+              [
+                _vm._m(2, true),
                 _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
+                _c("div", { staticClass: "details" }, [
+                  _c("div", [
+                    _c("p", [
+                      _vm._v(
+                        _vm._s(supplier.customer_name) +
+                          " شركة تم التعاقد معها تورد من خلالنا : "
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(3, true),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    { staticClass: "supplier-cart", attrs: { href: "#" } },
+                    [
+                      _vm._v(
+                        "\r\n                           زيارة صفحة المورد\r\n                        "
+                      ),
+                    ]
                   ),
                 ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(5),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(6),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(7),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(8),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(9),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(10),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(11),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(12),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(13),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(14),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(15),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(16),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(17),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(18),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-          ]
+              ]
+            )
+          }),
+          0
         ),
       ]),
     ]),
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "supplier-details" }, [
-      _c("div", { staticClass: "logo" }, [
-        _c("img", {
-          attrs: { src: "/images/223141-AFIA_Logo_AR.webp", alt: "" },
-        }),
-        _vm._v(" "),
-        _c("span", [_vm._v("عافية")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("عافية شركة تم التعاقد معها تورد من خلالنا :")]),
-      ]),
-      _vm._v(" "),
-      _c("ul", [
-        _c("li", [
-          _c("a", { attrs: { href: "#" } }, [
-            _vm._v(
-              "\r\n                                    - زيوت\r\n                                "
-            ),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("a", { attrs: { href: "#" } }, [
-            _vm._v(
-              "\r\n                                    - سمنه\r\n                                "
-            ),
-          ]),
-        ]),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -28982,143 +28405,33 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
+      _c("img", { attrs: { src: "/front/images/N28862998A_1.jpg", alt: "" } }),
     ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c("ul", { staticClass: "p-0" }, [
+          _c("li", { staticClass: "my-1" }, [_vm._v("- زيوت")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "my-1" }, [_vm._v("- سمنة")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "my-1" }, [_vm._v("- زيوت")]),
+        ]),
+      ]),
       _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
+      _c("div", { staticClass: "col-6" }, [
+        _c("ul", { staticClass: "p-0" }, [
+          _c("li", { staticClass: "my-1" }, [_vm._v("- زيوت")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "my-1" }, [_vm._v("- سمنة")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "my-1" }, [_vm._v("- زيوت")]),
+        ]),
+      ]),
     ])
   },
 ]

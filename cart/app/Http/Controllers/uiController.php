@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\supplier;
+
 class uiController extends Controller
 {
     public function productpage(){
@@ -47,7 +50,7 @@ if(!empty($category)){
 
    public function supplierpage(supplier $supplier){
 
-       return view('front.suppliers')->with('supplier',$supplier);
+       return view('front.suppliers.supplier')->with('supplier', $supplier);
    }
 
    public function categorypage(category $category){
@@ -56,7 +59,7 @@ if(!empty($category)){
 }
 
 
-   public function jsonsupplier(request $request,supplier $supplier){
+   public function jsonsupplier(request $request, supplier $supplier){
 
  $data =    $supplier->product();
 

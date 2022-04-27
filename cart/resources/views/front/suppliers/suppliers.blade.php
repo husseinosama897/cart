@@ -6,6 +6,18 @@
 
 @section('style')
     <link href="{{ asset('front/css/supplier.css') }}" rel="stylesheet">
+    <style>
+        .supplier-aside{
+            width: 270px;
+        }
+        .supplier-products .product .details .supplier-cart{
+            background-color: #0b3046
+        }
+        .supplier-products {
+            position: relative;
+        }
+    </style>
+
 @endsection
 
 @section('scripts')
