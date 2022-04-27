@@ -28330,7 +28330,7 @@ var staticRenderFns = [
       {
         staticClass: "p-4 ",
         staticStyle: {
-          "max-width": "768px",
+          "max-width": "992px",
           margin: "0 auto",
           background: "#e1f0ee",
           "border-radius": "10px",

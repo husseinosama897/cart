@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 " style="max-width: 768px;margin: 0 auto;background: #e1f0ee;border-radius: 10px;">
+  <div class="p-4 " style="max-width: 992px;margin: 0 auto;background: #e1f0ee;border-radius: 10px;">
       <div class="items">
           <div class="photo">
               <img src="front/images/N28862998A_1.jpg" alt="">
