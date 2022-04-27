@@ -5413,6 +5413,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -28337,7 +28338,7 @@ var staticRenderFns = [
         },
       },
       [
-        _c("div", { staticClass: "items" }, [
+        _c("div", { staticClass: "items justify-content-between" }, [
           _c("div", { staticClass: "photo" }, [
             _c("img", {
               attrs: { src: "front/images/N28862998A_1.jpg", alt: "" },
@@ -28354,18 +28355,30 @@ var staticRenderFns = [
             _c("span"),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "qty" }, [
-            _c("span", [_vm._v("\n                العدد\n            ")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mb-3" }, [
-              _c("label", { staticClass: "form-label", attrs: { for: "qty" } }),
+          _c(
+            "div",
+            {
+              staticClass:
+                "qty d-flex flex-column justify-content-between col-1",
+            },
+            [
+              _c("span", [_vm._v("\n                العدد\n            ")]),
               _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "number", id: "qty", name: "qty" },
-              }),
-            ]),
-          ]),
+              _c("div", { staticClass: "mb-3" }, [
+                _c("label", {
+                  staticClass: "form-label",
+                  attrs: { for: "qty" },
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "number", id: "qty", name: "qty" },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("span"),
+            ]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "price" }, [
             _c("span", [_vm._v("\n                السعر الكلي\n            ")]),

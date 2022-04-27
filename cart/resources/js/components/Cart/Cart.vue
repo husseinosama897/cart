@@ -1,6 +1,6 @@
 <template>
   <div class="p-4 " style="max-width: 992px;margin: 0 auto;background: #e1f0ee;border-radius: 10px;">
-      <div class="items">
+      <div class="items justify-content-between">
           <div class="photo">
               <img src="front/images/N28862998A_1.jpg" alt="">
               <span>عافية</span>
@@ -14,7 +14,7 @@
               </span>
               <span></span>
           </div>
-          <div class="qty">
+          <div class="qty d-flex flex-column justify-content-between col-1">
                <span>
                   العدد
               </span>
@@ -22,6 +22,7 @@
                 <label for="qty" class="form-label"></label>
                 <input type="number" class="form-control" id="qty" name="qty">
             </div>
+            <span></span>
           </div>
           <div class="price">
                <span>

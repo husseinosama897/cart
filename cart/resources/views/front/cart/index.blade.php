@@ -38,7 +38,7 @@
     .items .cart-supplier {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
     }
     .items .cart-supplier span:first-child {
         font-size: 12px;
