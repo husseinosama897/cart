@@ -28325,7 +28325,7 @@ var render = function () {
                   _c("div", [
                     _c("p", [
                       _vm._v(
-                        _vm._s(supplier.customer_name) +
+                        _vm._s(supplier.comp) +
                           " شركة تم التعاقد معها تورد من خلالنا : "
                       ),
                     ]),

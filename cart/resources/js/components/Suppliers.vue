@@ -39,7 +39,7 @@
                     </div>
                     <div class="details">
                         <div>
-                            <p>{{supplier.customer_name}} شركة تم التعاقد معها تورد من خلالنا : </p>
+                            <p>{{supplier.comp}} شركة تم التعاقد معها تورد من خلالنا : </p>
                             <div class="row">
                                 <div class="col-6">
                                     <ul class="p-0">
