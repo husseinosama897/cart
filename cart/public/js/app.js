@@ -5414,6 +5414,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -28319,7 +28353,110 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "p-4 " }, [
+    _c("section", { staticClass: "section-content padding-y bg" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("aside", { staticClass: "col-lg-8" }, [
+            _c("div", { staticClass: "card cart" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom card_details",
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "pt-2 pt-sm-0 pe-sm-3 mx-auto mx-sm-0 text-center text-sm-start",
+                      staticStyle: { "max-width": "9rem" },
+                    },
+                    [
+                      _c("input", {
+                        staticClass: "product_id",
+                        attrs: { hidden: "", type: "hidden", value: "85" },
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-label",
+                          attrs: { for: "quantity" },
+                        },
+                        [_vm._v("الكمية")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control qty",
+                        staticStyle: {
+                          padding: "10px",
+                          "border-radius": "2px",
+                          width: "100px",
+                          height: "36px",
+                        },
+                        attrs: {
+                          type: "number",
+                          id: "quantity",
+                          min: "1",
+                          value: "1",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn px-0 text-danger remove",
+                          staticStyle: { cursor: "pointer" },
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "bi bi-x-circle",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: "16",
+                                height: "16",
+                                fill: "currentColor",
+                                viewBox: "0 0 16 16",
+                              },
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z",
+                                },
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                attrs: {
+                                  d: "M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z",
+                                },
+                              }),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "fs-sm" }, [_vm._v("حذف")]),
+                        ]
+                      ),
+                    ]
+                  ),
+                ]
+              ),
+            ]),
+            _vm._v(" "),
+            _vm._m(1),
+          ]),
+          _vm._v(" "),
+          _vm._m(2),
+        ]),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
@@ -28329,67 +28466,129 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass: "p-4 ",
-        staticStyle: {
-          "max-width": "992px",
-          margin: "0 auto",
-          background: "#e1f0ee",
-          "border-radius": "10px",
-        },
+        staticClass:
+          "d-block d-sm-flex align-items-center text-center text-sm-right",
       },
       [
-        _c("div", { staticClass: "items justify-content-between" }, [
-          _c("div", { staticClass: "photo" }, [
+        _c(
+          "a",
+          {
+            staticClass: "d-inline-block flex-shrink-0 mx-auto ml-sm-4 mr-sm-4",
+            attrs: { href: "shop-single-v1.html" },
+          },
+          [
             _c("img", {
-              attrs: { src: "front/images/N28862998A_1.jpg", alt: "" },
+              attrs: {
+                src: "https://www.pomegy.com/images/products/1650826829.He717e32048c74bd390d18d655ca5066cB.jpg",
+                width: "120",
+                alt: "Product",
+              },
             }),
-            _vm._v(" "),
-            _c("span", [_vm._v("عافية")]),
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "pt-2" }, [
+          _c("span", { staticClass: "product-title fs-base d-block mb-2" }, [
+            _c("a", { attrs: { href: "shop-single-v1.html" } }, [
+              _vm._v(
+                "\n                              ساعة سمارت , WFDRD -DM101 WATCH , تدعم شريحه الاتصال , كما تدعم ال JPS\n                              "
+              ),
+            ]),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "cart-supplier" }, [
-            _c("span", [_vm._v("\n                المورد\n            ")]),
-            _vm._v(" "),
-            _c("span", [_vm._v("\n                بيبسي\n            ")]),
-            _vm._v(" "),
-            _c("span"),
+          _c("div", { staticClass: "fs-sm mb-1" }, [
+            _c("span", { staticClass: "text-muted me-2" }, [
+              _vm._v("الحجم : "),
+            ]),
+            _vm._v("2.41 انش"),
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "qty d-flex flex-column justify-content-between col-1",
-            },
-            [
-              _c("span", [_vm._v("\n                العدد\n            ")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "mb-3" }, [
-                _c("label", {
-                  staticClass: "form-label",
-                  attrs: { for: "qty" },
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", id: "qty", name: "qty" },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("span"),
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "price" }, [
-            _c("span", [_vm._v("\n                السعر الكلي\n            ")]),
+          _c("div", { staticClass: "fs-sm mb-1" }, [
+            _c("span", { staticClass: "text-muted me-2" }, [
+              _vm._v("الالوان : "),
+            ]),
+            _vm._v("اسود"),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "remove" }, [
-            _vm._v("\n            حذف\n        "),
+          _c("div", { staticClass: "fs-sm mb-1" }, [
+            _c("span", { staticClass: "text-muted me-2 price" }, [
+              _vm._v("سعر المنتج : "),
+            ]),
+            _vm._v("  5750\n                           "),
           ]),
         ]),
       ]
     )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-3" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-light btn-block",
+          staticStyle: {
+            "border-radius": "0.3125rem",
+            "text-align": "center",
+            "max-width": "100%",
+            width: "200px",
+            "margin-bottom": "0.5rem",
+            border: "1px solid rgb(56, 102, 223)",
+            color: "rgb(56, 102, 223)",
+          },
+          attrs: { href: "/" },
+        },
+        [_vm._v("تابع التسوق")]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("aside", { staticClass: "col-lg-4" }, [
+      _c("div", { staticClass: "card cart2" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("h5", { staticClass: "text-center" }, [_vm._v("ملخص الطلبية")]),
+          _vm._v(" "),
+          _c("dl", { staticClass: "dlist-align" }, [
+            _c("dt", { staticClass: "text-right" }, [_vm._v("عدد طلبات :")]),
+            _vm._v(" "),
+            _c("dd", { staticClass: "text-start" }, [_vm._v("2")]),
+          ]),
+          _vm._v(" "),
+          _c("dl", { staticClass: "dlist-align" }, [
+            _c("dt", { staticClass: "text-right" }, [_vm._v("اجمالي السعر:")]),
+            _vm._v(" "),
+            _c("dd", { staticClass: "text-start" }, [_vm._v("8300 جنية")]),
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-light btn-block",
+              staticStyle: {
+                "border-radius": "0.3125rem",
+                color: "#fff",
+                background: "rgb(56, 102, 223)",
+                "text-align": "center",
+                "max-width": "100%",
+              },
+              attrs: { href: "/checkout" },
+            },
+            [
+              _vm._v(
+                "\n                     إتمام الشراء\n                     "
+              ),
+            ]
+          ),
+        ]),
+      ]),
+    ])
   },
 ]
 render._withStripped = true

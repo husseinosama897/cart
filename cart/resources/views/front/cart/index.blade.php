@@ -15,34 +15,27 @@
 
 @section('style')
 <style>
-    .items {
-        background: #fff;
-        border-radius: 5px;
-        display: flex;
-        column-gap: 20px;
-        padding: 10px 20px;
+    .cart {
+        border-right: 1px solid rgba(0, 0, 0, 0.125)
     }
-    .items .photo{
-        border-left: 2px solid #e9e7e7;
-        padding-left: 20px;
+    .text-muted {
+        color: #7d879c !important;
     }
-    .items .photo span{
-        font-size: 18px
-    }
-    .items .photo img {
-        height: 150px;
-        background: #e9e7e7;
-        padding: 5px;
-        margin-left: 15px;
-    }
-    .items .cart-supplier {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .items .cart-supplier span:first-child {
+    .fs-sm{
         font-size: 12px;
-        color: #c9c9c9;
+        color: #222
     }
+    [type="tel"], [type="url"], [type="email"], [type="number"] {
+        direction: rtl;
+    }
+    .dlist-align {
+        display: flex;
+        justify-content: space-between
+    }
+@media (min-width: 576px){
+    .text-sm-right {
+        text-align: right !important;
+    }
+}
 </style>
 @endsection
