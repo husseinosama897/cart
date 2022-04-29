@@ -5448,7 +5448,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'Suppliers',
+  data: function data() {
+    return {
+      products: []
+    };
+  },
+  mounted: function mounted() {
+    this.loadSuppliers();
+  },
+  methods: {
+    loadSuppliers: function loadSuppliers() {
+      var _this = this;
+
+      axios.get('/json/suppliers').then(function (response) {
+        _this.products = response.data.data;
+      })["catch"]();
+    }
+  }
+});
 
 /***/ }),
 
@@ -28353,7 +28372,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "p-4 " }, [
+  return _c("div", [
     _c("section", { staticClass: "section-content padding-y bg" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
@@ -28570,7 +28589,7 @@ var staticRenderFns = [
           _c(
             "a",
             {
-              staticClass: "btn btn-light btn-block",
+              staticClass: "btn btn-light btn-block w-100",
               staticStyle: {
                 "border-radius": "0.3125rem",
                 color: "#fff",

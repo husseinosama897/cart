@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col py-4">
+        <div class="col py-2">
             <div class="page-title-box">
-                <h4 class="page-title">عربة التسوق</h4>
+                <h5 class="page-title">عربة التسوق</h5>
             </div>
         </div>
     </div>

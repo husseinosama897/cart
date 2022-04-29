@@ -1,5 +1,5 @@
 <template>
-   <div class="p-4 ">
+   <div>
       <section class="section-content padding-y bg">
          <div class="container">
             <div class="row">
@@ -56,7 +56,7 @@
                            <dd class="text-start">8300 جنية</dd>
                         </dl>
                         <hr>
-                        <a href="/checkout" class="btn btn-light btn-block" style="border-radius: 0.3125rem;color:#fff;background: rgb(56, 102, 223);text-align: center;max-width: 100%;text-align: center;">
+                        <a href="/checkout" class="btn btn-light btn-block w-100" style="border-radius: 0.3125rem;color:#fff;background: rgb(56, 102, 223);text-align: center;max-width: 100%;text-align: center;">
                         إتمام الشراء
                         </a>
                      </div>
@@ -71,9 +71,27 @@
    </div>
 </template>
 <script>
-   export default {
-   
-   }
+export default {
+    name: 'Suppliers',
+    data() {
+        return {
+            products: [],
+        }
+    },
+    mounted() {
+        this.loadSuppliers();
+    },
+    
+    methods: {
+        loadSuppliers: function() {
+            axios.get('/json/suppliers')
+            .then((response) => {
+                this.products = response.data.data;
+            })
+            .catch();
+        }
+    },
+}
 </script>
 <style>
 </style>
