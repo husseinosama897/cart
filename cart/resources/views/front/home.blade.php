@@ -36,60 +36,16 @@
         <div class="container">
             <h5 class="mb-2">الموردون المعتمدون</h5>
             <div class="owl-carousel">
+
+            @foreach($suppliers as $supplier)
                 <div class="supplier">
                     <div class="photo">
-                        <img src="/images/223141-AFIA_Logo_AR.webp" alt="">
+                        <img src="{{asset('uploads/suppliers/'.$supplier->img)}}" alt="">
                     </div>
-                    <span>عافية</span>
+                    <span>{{$supplier->comp}}</span>
                 </div>
-                <div class="supplier">
-                    <div class="photo">
-                        <img src="/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="supplier">
-                    <div class="photo">
-                        <img src="/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="supplier">
-                    <div class="photo">
-                        <img src="/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="supplier">
-                    <div class="photo">
-                        <img src="/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="supplier">
-                    <div class="photo">
-                        <img src="/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="supplier">
-                    <div class="photo">
-                        <img src="/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="supplier">
-                    <div class="photo">
-                        <img src="/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="supplier">
-                    <div class="photo">
-                        <img src="/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
+             @endforeach
+              
             </div>
         </div>
     </section>
