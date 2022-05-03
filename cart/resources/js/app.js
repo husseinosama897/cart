@@ -12,7 +12,10 @@ Vue.use(VueRouter)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('suppliers', require('./components/Suppliers.vue').default);
+
 Vue.component('cart', require('./components/Cart/Cart.vue').default);
+
+Vue.component('view-product', require('./components/Products/View.vue').default);
 
 const app = new Vue({
     el: '#app',

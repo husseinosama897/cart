@@ -67,6 +67,9 @@ Route::get('/home', [uiController::class, 'homepage']);
 Route::get('/basket', function () {
     return view('front.cart.index');
 });
+Route::get('/view-product', function () {
+    return view('front.products.view');
+});
 
 
 Route::get('/counter', [cartController::class, 'counter']);
