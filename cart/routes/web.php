@@ -19,10 +19,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
- //   $slug = SlugService::createSlug(category::class, 'slug', 'My First Post');
-    return view('front.home');
-});
+
 
 
 
@@ -52,24 +49,28 @@ Route::get('/categories/{slug}/{category}', [uiController::class, 'categorypage'
 //product 
 
 Route::get('/json/product', [uiController::class, 'jsonproduct']);
-Route::get('/products', [uiController::class, 'productpage']);
+//Route::get('/products', [uiController::class, 'productpage']);
 Route::get('/product/{slug}/{product}', [uiController::class, 'item']);
 
 //home 
 
 
-Route::get('/home', [uiController::class, 'homepage']);
+Route::get('/', [uiController::class, 'homepage']);
 
 //cart 
 
-// Route::get('/basket', [cartController::class, 'cartpage']);
+ Route::get('/basket', [cartController::class, 'cartpage']);
 
+
+<<<<<<< HEAD
 Route::get('/basket', function () {
     return view('front.cart.index');
 });
 Route::get('/view-product', function () {
     return view('front.products.view');
 });
+=======
+>>>>>>> 7948d2242c143b8bb9c2caf23c6b45547d815097
 
 
 Route::get('/counter', [cartController::class, 'counter']);

@@ -10,7 +10,7 @@ use App\Models\supplier;
 class uiController extends Controller
 {
     public function productpage(){
-        return view('front.product');
+        return view('front.home');
     }
 
 
@@ -40,11 +40,11 @@ if(!empty($category)){
 
 
     public function homepage(){
-        $suppliers = supplier::get()->select(['id','name','slug','comp','img'])->take(20);
+        $suppliers = supplier::select(['id','slug','comp','img'])->get()->take(20);
 
-        $suppliers = category::get()->select(['id','name','img'])->take(20);
+        $category = category::select(['id','name','img'])->get()->take(20);
 
-        return view('front.homepage')->with(['suppliers'=>$suppliers,'category'=>$category]);
+        return view('front.home')->with(['suppliers'=>$suppliers,'category'=>$category]);
     }
 
 

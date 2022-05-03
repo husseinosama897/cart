@@ -7,7 +7,7 @@ use App\Models\cart;
 use Session;
 use App\UpdateCoupon;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Str;
 class cartController extends Controller
 {
 
@@ -17,7 +17,7 @@ public function cartpage(){
         }else{
             $session_id = Session::get('session_id');
             if(!$session_id){
-                $session_id = str_random(40);
+                $session_id = Str::random(40);
                 Session::put('session_id',$session_id);
         }
 
@@ -39,7 +39,7 @@ public function cartpage(){
         
             $session_id = Session::get('session_id');
             if(!$session_id){
-                $session_id = str_random(40);
+                $session_id = Str::random(40);
                 Session::put('session_id',$session_id);
               
           
@@ -108,7 +108,7 @@ public function store(request $request){
         }else{
             $session_id = Session::get('session_id');
             if(!$session_id){
-                $session_id = str_random(40);
+                $session_id = Str::random(40);
                 Session::put('session_id',$session_id);
             }
       $cart = cart::where(['session_id'=>$session_id])->first();
