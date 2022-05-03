@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\cartController;
 use App\Http\Controllers\supplierController;
+use App\Http\Controllers\uiController;
 use Illuminate\Support\Facades\Route;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use \App\Models\category;
@@ -22,44 +24,63 @@ Route::get('/', function () {
     return view('front.home');
 });
 
-Route::get('/json/suppliers/{supplier}', [App\Http\Controllers\uiController::class, 'jsonsupplier']);
-Route::get('/suppliers/{slug}/{supplier}', [App\Http\Controllers\uiController::class, 'supplierpage']);
+
+
+Route::get('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
+
+Route::get('/json/suppliers/', [supplierController::class, 'supplierjson']);
+
+Route::get('/suppliers', function () {
+       return view('front.suppliers.suppliers');
+});
+
+Route::get('/suppliers/{slug}/{supplier}', [uiController::class, 'supplierpage']);
+
+
 
 //category
-Route::get('/json/categories/{category}', [App\Http\Controllers\uiController::class, 'jsoncategory']);
-Route::get('/categories/{slug}/{category}', [App\Http\Controllers\uiController::class, 'categorypage']);
+Route::get('/json/categories/{category}', [uiController::class, 'jsoncategory']);
+
+Route::get('/categories', function () {
+       return view('front.home');
+});
+
+Route::get('/categories/{slug}/{category}', [uiController::class, 'categorypage']);
 
 
 
 //product 
 
-Route::get('/json/product', [App\Http\Controllers\uiController::class, 'jsonproduct']);
-Route::get('/products', [App\Http\Controllers\uiController::class, 'productpage']);
-Route::get('/product/{slug}/{product}', [App\Http\Controllers\uiController::class, 'item']);
+Route::get('/json/product', [uiController::class, 'jsonproduct']);
+Route::get('/products', [uiController::class, 'productpage']);
+Route::get('/product/{slug}/{product}', [uiController::class, 'item']);
 
 //home 
 
 
-Route::get('/home', [App\Http\Controllers\uiController::class, 'homepage']);
+Route::get('/home', [uiController::class, 'homepage']);
 
 //cart 
 
-Route::get('/Basket', [App\Http\Controllers\cartController::class, 'cartpage']);
+// Route::get('/basket', [cartController::class, 'cartpage']);
+
+Route::get('/basket', function () {
+    return view('front.cart.index');
+});
 
 
+Route::get('/counter', [cartController::class, 'counter']);
 
-Route::get('/counter', [App\Http\Controllers\cartController::class, 'counter']);
+Route::delete('/cart/delete/{cart}', [cartController::class, 'delete']);
 
-Route::delete('/cart/delete/{cart}', [App\Http\Controllers\cartController::class, 'delete']);
+Route::post('/couponsstore', [cartController::class, 'couponsstore']);
 
-Route::post('/couponsstore', [App\Http\Controllers\cartController::class, 'couponsstore']);
-
-Route::post('/storeincart', [App\Http\Controllers\cartController::class, 'store']);
+Route::post('/storeincart', [cartController::class, 'store']);
 
 
-Route::post('/storeincart', [App\Http\Controllers\cartController::class, 'store']);
+Route::post('/storeincart', [cartController::class, 'store']);
 
-Route::post('/updatequantityjson', [App\Http\Controllers\cartController::class, 'updatequantityjson']);
+Route::post('/updatequantityjson', [cartController::class, 'updatequantityjson']);
 
 
 

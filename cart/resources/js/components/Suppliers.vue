@@ -35,16 +35,30 @@
             <div class="row" style="column-gap: 10px;">
                 <div v-for="(supplier, index) in suppliers.data" :key="index" class="product col-xl-3 col-md-4 col-sm-6">
                     <div class="photo">
-                        <img src="/images/N28862998A_1.jpg" alt="">
+                        <img src="/front/images/N28862998A_1.jpg" alt="">
                     </div>
                     <div class="details">
-                        <p>{{supplier.customer_name}} شركة تم التعاقد معها تورد من خلالنا : </p>
-                        <a href="#" class="bulk-buy">
-                            شراء بالجملة
-                        </a>
+                        <div>
+                            <p>{{supplier.comp}} شركة تم التعاقد معها تورد من خلالنا : </p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <ul class="p-0">
+                                        <li class="my-1">- زيوت</li>
+                                        <li class="my-1">- سمنة</li>
+                                        <li class="my-1">- زيوت</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <ul class="p-0">
+                                        <li class="my-1">- زيوت</li>
+                                        <li class="my-1">- سمنة</li>
+                                        <li class="my-1">- زيوت</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                         <a href="#" class="supplier-cart">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"></path></svg>
-                            عربة التسوق
+                           زيارة صفحة المورد
                         </a>
                     </div>
                 </div>

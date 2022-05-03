@@ -5365,6 +5365,112 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Cart/Cart.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Cart/Cart.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'Suppliers',
+  data: function data() {
+    return {
+      products: []
+    };
+  },
+  mounted: function mounted() {
+    this.loadSuppliers();
+  },
+  methods: {
+    loadSuppliers: function loadSuppliers() {
+      var _this = this;
+
+      axios.get('/json/suppliers').then(function (response) {
+        _this.products = response.data.data;
+      })["catch"]();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -5481,158 +5587,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'Suppliers'
+  name: 'Suppliers',
+  data: function data() {
+    return {
+      suppliers: []
+    };
+  },
+  mounted: function mounted() {
+    this.loadSuppliers();
+  },
+  methods: {
+    loadSuppliers: function loadSuppliers() {
+      var _this = this;
+
+      axios.get('/json/suppliers').then(function (response) {
+        _this.suppliers = response.data.data;
+      })["catch"]();
+    }
+  }
 });
 
 /***/ }),
@@ -5657,6 +5630,7 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('example-component', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('suppliers', (__webpack_require__(/*! ./components/Suppliers.vue */ "./resources/js/components/Suppliers.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('cart', (__webpack_require__(/*! ./components/Cart/Cart.vue */ "./resources/js/components/Cart/Cart.vue")["default"]));
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#app',
   router: new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"](_routes__WEBPACK_IMPORTED_MODULE_0__["default"])
@@ -28166,6 +28140,45 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./resources/js/components/Cart/Cart.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/Cart/Cart.vue ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Cart_vue_vue_type_template_id_deb93918___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cart.vue?vue&type=template&id=deb93918& */ "./resources/js/components/Cart/Cart.vue?vue&type=template&id=deb93918&");
+/* harmony import */ var _Cart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cart.vue?vue&type=script&lang=js& */ "./resources/js/components/Cart/Cart.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Cart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Cart_vue_vue_type_template_id_deb93918___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Cart_vue_vue_type_template_id_deb93918___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Cart/Cart.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/ExampleComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/ExampleComponent.vue ***!
@@ -28244,6 +28257,22 @@ component.options.__file = "resources/js/components/Suppliers.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/Cart/Cart.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Cart/Cart.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Cart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Cart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Cart/Cart.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Cart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -28273,6 +28302,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Suppliers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Suppliers.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Suppliers.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Suppliers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Cart/Cart.vue?vue&type=template&id=deb93918&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/Cart/Cart.vue?vue&type=template&id=deb93918& ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Cart_vue_vue_type_template_id_deb93918___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Cart_vue_vue_type_template_id_deb93918___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Cart_vue_vue_type_template_id_deb93918___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Cart.vue?vue&type=template&id=deb93918& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Cart/Cart.vue?vue&type=template&id=deb93918&");
+
 
 /***/ }),
 
@@ -28306,6 +28352,266 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Suppliers_vue_vue_type_template_id_a9e90268___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Suppliers_vue_vue_type_template_id_a9e90268___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Suppliers.vue?vue&type=template&id=a9e90268& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Suppliers.vue?vue&type=template&id=a9e90268&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Cart/Cart.vue?vue&type=template&id=deb93918&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Cart/Cart.vue?vue&type=template&id=deb93918& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("section", { staticClass: "section-content padding-y bg" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("aside", { staticClass: "col-lg-8" }, [
+            _c("div", { staticClass: "card cart" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom card_details",
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "pt-2 pt-sm-0 pe-sm-3 mx-auto mx-sm-0 text-center text-sm-start",
+                      staticStyle: { "max-width": "9rem" },
+                    },
+                    [
+                      _c("input", {
+                        staticClass: "product_id",
+                        attrs: { hidden: "", type: "hidden", value: "85" },
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-label",
+                          attrs: { for: "quantity" },
+                        },
+                        [_vm._v("الكمية")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control qty",
+                        staticStyle: {
+                          padding: "10px",
+                          "border-radius": "2px",
+                          width: "100px",
+                          height: "36px",
+                        },
+                        attrs: {
+                          type: "number",
+                          id: "quantity",
+                          min: "1",
+                          value: "1",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn px-0 text-danger remove",
+                          staticStyle: { cursor: "pointer" },
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "bi bi-x-circle",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: "16",
+                                height: "16",
+                                fill: "currentColor",
+                                viewBox: "0 0 16 16",
+                              },
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z",
+                                },
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                attrs: {
+                                  d: "M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z",
+                                },
+                              }),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "fs-sm" }, [_vm._v("حذف")]),
+                        ]
+                      ),
+                    ]
+                  ),
+                ]
+              ),
+            ]),
+            _vm._v(" "),
+            _vm._m(1),
+          ]),
+          _vm._v(" "),
+          _vm._m(2),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "d-block d-sm-flex align-items-center text-center text-sm-right",
+      },
+      [
+        _c(
+          "a",
+          {
+            staticClass: "d-inline-block flex-shrink-0 mx-auto ml-sm-4 mr-sm-4",
+            attrs: { href: "shop-single-v1.html" },
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "https://www.pomegy.com/images/products/1650826829.He717e32048c74bd390d18d655ca5066cB.jpg",
+                width: "120",
+                alt: "Product",
+              },
+            }),
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "pt-2" }, [
+          _c("span", { staticClass: "product-title fs-base d-block mb-2" }, [
+            _c("a", { attrs: { href: "shop-single-v1.html" } }, [
+              _vm._v(
+                "\n                              ساعة سمارت , WFDRD -DM101 WATCH , تدعم شريحه الاتصال , كما تدعم ال JPS\n                              "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "fs-sm mb-1" }, [
+            _c("span", { staticClass: "text-muted me-2" }, [
+              _vm._v("الحجم : "),
+            ]),
+            _vm._v("2.41 انش"),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "fs-sm mb-1" }, [
+            _c("span", { staticClass: "text-muted me-2" }, [
+              _vm._v("الالوان : "),
+            ]),
+            _vm._v("اسود"),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "fs-sm mb-1" }, [
+            _c("span", { staticClass: "text-muted me-2 price" }, [
+              _vm._v("سعر المنتج : "),
+            ]),
+            _vm._v("  5750\n                           "),
+          ]),
+        ]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-3" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-light btn-block",
+          staticStyle: {
+            "border-radius": "0.3125rem",
+            "text-align": "center",
+            "max-width": "100%",
+            width: "200px",
+            "margin-bottom": "0.5rem",
+            border: "1px solid rgb(56, 102, 223)",
+            color: "rgb(56, 102, 223)",
+          },
+          attrs: { href: "/" },
+        },
+        [_vm._v("تابع التسوق")]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("aside", { staticClass: "col-lg-4" }, [
+      _c("div", { staticClass: "card cart2" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("h5", { staticClass: "text-center" }, [_vm._v("ملخص الطلبية")]),
+          _vm._v(" "),
+          _c("dl", { staticClass: "dlist-align" }, [
+            _c("dt", { staticClass: "text-right" }, [_vm._v("عدد طلبات :")]),
+            _vm._v(" "),
+            _c("dd", { staticClass: "text-start" }, [_vm._v("2")]),
+          ]),
+          _vm._v(" "),
+          _c("dl", { staticClass: "dlist-align" }, [
+            _c("dt", { staticClass: "text-right" }, [_vm._v("اجمالي السعر:")]),
+            _vm._v(" "),
+            _c("dd", { staticClass: "text-start" }, [_vm._v("8300 جنية")]),
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-light btn-block w-100",
+              staticStyle: {
+                "border-radius": "0.3125rem",
+                color: "#fff",
+                background: "rgb(56, 102, 223)",
+                "text-align": "center",
+                "max-width": "100%",
+              },
+              attrs: { href: "/checkout" },
+            },
+            [
+              _vm._v(
+                "\n                     إتمام الشراء\n                     "
+              ),
+            ]
+          ),
+        ]),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
 
 
 /***/ }),
@@ -28401,8 +28707,6 @@ var render = function () {
       _c("aside", {}, [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "supplier-aside" }, [
-            _vm._m(0),
-            _vm._v(" "),
             _c("div", { staticClass: "categories" }, [
               _c(
                 "div",
@@ -28437,9 +28741,9 @@ var render = function () {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
-              _vm._m(2),
+              _vm._m(1),
             ]),
           ]),
         ]),
@@ -28449,487 +28753,45 @@ var render = function () {
         _c(
           "div",
           { staticClass: "row", staticStyle: { "column-gap": "10px" } },
-          [
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(3),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(4),
+          _vm._l(_vm.suppliers.data, function (supplier, index) {
+            return _c(
+              "div",
+              { key: index, staticClass: "product col-xl-3 col-md-4 col-sm-6" },
+              [
+                _vm._m(2, true),
                 _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
+                _c("div", { staticClass: "details" }, [
+                  _c("div", [
+                    _c("p", [
+                      _vm._v(
+                        _vm._s(supplier.comp) +
+                          " شركة تم التعاقد معها تورد من خلالنا : "
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(3, true),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    { staticClass: "supplier-cart", attrs: { href: "#" } },
+                    [
+                      _vm._v(
+                        "\r\n                           زيارة صفحة المورد\r\n                        "
+                      ),
+                    ]
                   ),
                 ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(5),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(6),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(7),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(8),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(9),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(10),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(11),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(12),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(13),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(14),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(15),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(16),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product col-xl-3 col-md-4 col-sm-6" }, [
-              _vm._m(17),
-              _vm._v(" "),
-              _c("div", { staticClass: "details" }, [
-                _vm._m(18),
-                _vm._v(" "),
-                _c("span", { staticClass: "supplier-name" }, [
-                  _vm._v("المورد : عافية"),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\r\n                            شراء بالجملة\r\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                        },
-                      },
-                      [
-                        _c("path", {
-                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
-                        }),
-                        _c("path", {
-                          attrs: {
-                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(
-                      "\r\n                            عربة التسوق\r\n                        "
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-          ]
+              ]
+            )
+          }),
+          0
         ),
       ]),
     ]),
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "supplier-details" }, [
-      _c("div", { staticClass: "logo" }, [
-        _c("img", {
-          attrs: { src: "/images/223141-AFIA_Logo_AR.webp", alt: "" },
-        }),
-        _vm._v(" "),
-        _c("span", [_vm._v("عافية")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("عافية شركة تم التعاقد معها تورد من خلالنا :")]),
-      ]),
-      _vm._v(" "),
-      _c("ul", [
-        _c("li", [
-          _c("a", { attrs: { href: "#" } }, [
-            _vm._v(
-              "\r\n                                    - زيوت\r\n                                "
-            ),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("a", { attrs: { href: "#" } }, [
-            _vm._v(
-              "\r\n                                    - سمنه\r\n                                "
-            ),
-          ]),
-        ]),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -28982,143 +28844,33 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
+      _c("img", { attrs: { src: "/front/images/N28862998A_1.jpg", alt: "" } }),
     ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c("ul", { staticClass: "p-0" }, [
+          _c("li", { staticClass: "my-1" }, [_vm._v("- زيوت")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "my-1" }, [_vm._v("- سمنة")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "my-1" }, [_vm._v("- زيوت")]),
+        ]),
+      ]),
       _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/images/N28862998A_1.jpg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("span", [_vm._v("اسم المنتج")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("20 "), _c("span", [_vm._v("SAR")])]),
+      _c("div", { staticClass: "col-6" }, [
+        _c("ul", { staticClass: "p-0" }, [
+          _c("li", { staticClass: "my-1" }, [_vm._v("- زيوت")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "my-1" }, [_vm._v("- سمنة")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "my-1" }, [_vm._v("- زيوت")]),
+        ]),
+      ]),
     ])
   },
 ]
