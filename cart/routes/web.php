@@ -62,25 +62,19 @@ Route::get('/', [uiController::class, 'homepage']);
  Route::get('/basket', [cartController::class, 'cartpage']);
 
 
-<<<<<<< HEAD
+
 Route::get('/basket', function () {
     return view('front.cart.index');
 });
 Route::get('/view-product', function () {
     return view('front.products.view');
 });
-=======
->>>>>>> 7948d2242c143b8bb9c2caf23c6b45547d815097
-
 
 Route::get('/counter', [cartController::class, 'counter']);
 
 Route::delete('/cart/delete/{cart}', [cartController::class, 'delete']);
 
 Route::post('/couponsstore', [cartController::class, 'couponsstore']);
-
-Route::post('/storeincart', [cartController::class, 'store']);
-
 
 Route::post('/storeincart', [cartController::class, 'store']);
 
