@@ -1,9 +1,9 @@
 
 /*=============== VARIABLES CSS ===============*/
 :root {
-    --mainColor: #34d6de;
-    --secondColor: #092c47;
-    --colorText: #5e5e5e;
+    --mainColor: #40E9D9;
+    --secondColor: #0B3046;
+    --colorText: #45545D;
 
     --header-height: 3.5rem;
   
@@ -201,10 +201,12 @@ nav .menu li a {
     min-height: 44px;
     letter-spacing: 0.2px;
     font-weight: 500;
+    color: var(--colorText);
 }
 nav .menu li a:hover{
     background-color: rgb(255, 255, 255);
     box-shadow: rgb(0 0 0 / 18%) 0px 5px 4px 0px;
+    color: var(--secondColor);
 }
 nav .menu li a:hover:before {
     content: '';

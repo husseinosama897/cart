@@ -5633,6 +5633,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Suppliers',
   data: function data() {
@@ -28979,7 +28981,24 @@ var render = function () {
               "div",
               { key: index, staticClass: "product col-xl-3 col-md-4 col-sm-6" },
               [
-                _vm._m(2, true),
+                _c("div", { staticClass: "photo my-3" }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "/suppliers/" + supplier.slug + "/" + supplier.id,
+                      },
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/uploads/suppliers/" + supplier.img,
+                          alt: "",
+                        },
+                      }),
+                    ]
+                  ),
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "details" }, [
                   _c("div", [
@@ -28990,12 +29009,17 @@ var render = function () {
                       ),
                     ]),
                     _vm._v(" "),
-                    _vm._m(3, true),
+                    _vm._m(2, true),
                   ]),
                   _vm._v(" "),
                   _c(
                     "a",
-                    { staticClass: "supplier-cart", attrs: { href: "#" } },
+                    {
+                      staticClass: "supplier-cart",
+                      attrs: {
+                        href: "/suppliers/" + supplier.slug + "/" + supplier.id,
+                      },
+                    },
                     [
                       _vm._v(
                         "\r\n                           زيارة صفحة المورد\r\n                        "
@@ -29058,14 +29082,6 @@ var staticRenderFns = [
         staticClass: "form-check-input",
         attrs: { type: "checkbox", value: "", id: "flexCheckDefault" },
       }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", { attrs: { src: "/front/images/N28862998A_1.jpg", alt: "" } }),
     ])
   },
   function () {

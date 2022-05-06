@@ -39,8 +39,8 @@
             @foreach($suppliers as $supplier)
                 <div class="supplier">
                     <div class="photo">
-                   <a href="{{route('suppliers.page',['slug'=>$supplier->slug,'supplier'=>$supplier->id])}}">
-                        <img src="{{asset('uploads/suppliers/'.$supplier->img)}}" alt="">
+                   <a href="{{ route('suppliers.page', ['slug'=>$supplier->slug,'supplier'=>$supplier->id]) }}">
+                        <img src="{{ asset('uploads/suppliers/'.$supplier->img) }}" alt="">
                    </a>
                     </div>
                     <span>{{$supplier->comp}}</span>

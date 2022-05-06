@@ -34,8 +34,10 @@
         <div class="supplier-products">
             <div class="row" style="column-gap: 10px;">
                 <div v-for="(supplier, index) in suppliers.data" :key="index" class="product col-xl-3 col-md-4 col-sm-6">
-                    <div class="photo">
-                        <img src="/front/images/N28862998A_1.jpg" alt="">
+                    <div class="photo my-3">
+                        <a :href="'/suppliers/' + supplier.slug + '/' + supplier.id">
+                            <img :src="'/uploads/suppliers/' + supplier.img" alt="">
+                        </a>
                     </div>
                     <div class="details">
                         <div>
@@ -57,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="supplier-cart">
+                        <a :href="'/suppliers/' + supplier.slug + '/' + supplier.id" class="supplier-cart">
                            زيارة صفحة المورد
                         </a>
                     </div>

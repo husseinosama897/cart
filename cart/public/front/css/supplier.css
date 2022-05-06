@@ -41,7 +41,8 @@ aside.active {
     border-radius: 8px;
 }   
 .supplier-products .product .photo img {
-    width: 120px;
+    height: 120px;
+    object-fit: contain;
 }
 .supplier-products .product .photo {
     display: flex;
