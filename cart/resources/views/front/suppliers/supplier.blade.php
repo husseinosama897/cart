@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<supplier slug="{{$supplier->id}}"></supplier>
+<supplier :slug="{{ $supplier->id }}" :supplier="{{ $supplier }}"></supplier>
 @endsection
 
 @section('style')
@@ -15,6 +15,9 @@
         }
         .supplier-products {
             position: relative;
+        }
+        .supplier-cart svg {
+            fill: #ffffff;
         }
     </style>
 

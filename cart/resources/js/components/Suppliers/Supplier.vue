@@ -12,8 +12,8 @@
                     <div class="supplier-aside">
                         <div class="supplier-details">
                             <div class="logo">
-                                <img src="/images/223141-AFIA_Logo_AR.webp" alt="">
-                                <span>عافية</span>
+                                <img :src="'/uploads/suppliers/' + supplier.img" alt="">
+                                <span>{{ supplier.comp }}</span>
                                 <p>عافية شركة تم التعاقد معها تورد من خلالنا :</p>
                             </div>
                             <ul>
@@ -52,161 +52,24 @@
             </aside>
             <div class="supplier-products">
                 <div class="row" style="column-gap: 10px;">
-                    <div class="product col-xl-3 col-md-4 col-sm-6">
-                        <div class="photo">
-                            <img src="/images/N28862998A_1.jpg" alt="">
+                    <div v-for="(products, index) in supplierProducts.data" :key="index" class="product col-xl-3 col-md-4 col-sm-6">
+                        <div class="photo my-3">
+                            <img :src="'/uploads/product/' + products.img" alt="">
                         </div>
                         <div class="details">
                             <div class="name">
-                                <span >اسم المنتج</span>
-                                <span>20 <span>SAR</span> </span>
+                                <span style="display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;min-height: 1.25rem;">{{ products.name }}</span>
+                                <span>{{ products.price }} <span>SAR</span> </span>
                             </div>
-                            <span class="supplier-name">المورد : عافية</span>
+                            <span class="supplier-name">المورد : {{ supplier.comp }}</span>
                             <p>وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج </p>
                             <a href="#" class="bulk-buy">
                                 شراء بالجملة
                             </a>
-                            <a href="#" class="supplier-cart">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
-                                عربة التسوق
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product col-xl-3 col-md-4 col-sm-6">
-                        <div class="photo">
-                            <img src="/images/N28862998A_1.jpg" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="name">
-                                <span >اسم المنتج</span>
-                                <span>20 <span>SAR</span> </span>
-                            </div>
-                            <span class="supplier-name">المورد : عافية</span>
-                            <p>وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج </p>
-                            <a href="#" class="bulk-buy">
-                                شراء بالجملة
-                            </a>
-                            <a href="#" class="supplier-cart">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
-                                عربة التسوق
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product col-xl-3 col-md-4 col-sm-6">
-                        <div class="photo">
-                            <img src="/images/N28862998A_1.jpg" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="name">
-                                <span >اسم المنتج</span>
-                                <span>20 <span>SAR</span> </span>
-                            </div>
-                            <span class="supplier-name">المورد : عافية</span>
-                            <p>وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج </p>
-                            <a href="#" class="bulk-buy">
-                                شراء بالجملة
-                            </a>
-                            <a href="#" class="supplier-cart">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
-                                عربة التسوق
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product col-xl-3 col-md-4 col-sm-6">
-                        <div class="photo">
-                            <img src="/images/N28862998A_1.jpg" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="name">
-                                <span >اسم المنتج</span>
-                                <span>20 <span>SAR</span> </span>
-                            </div>
-                            <span class="supplier-name">المورد : عافية</span>
-                            <p>وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج </p>
-                            <a href="#" class="bulk-buy">
-                                شراء بالجملة
-                            </a>
-                            <a href="#" class="supplier-cart">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
-                                عربة التسوق
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product col-xl-3 col-md-4 col-sm-6">
-                        <div class="photo">
-                            <img src="/images/N28862998A_1.jpg" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="name">
-                                <span >اسم المنتج</span>
-                                <span>20 <span>SAR</span> </span>
-                            </div>
-                            <span class="supplier-name">المورد : عافية</span>
-                            <p>وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج </p>
-                            <a href="#" class="bulk-buy">
-                                شراء بالجملة
-                            </a>
-                            <a href="#" class="supplier-cart">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
-                                عربة التسوق
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product col-xl-3 col-md-4 col-sm-6">
-                        <div class="photo">
-                            <img src="/images/N28862998A_1.jpg" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="name">
-                                <span >اسم المنتج</span>
-                                <span>20 <span>SAR</span> </span>
-                            </div>
-                            <span class="supplier-name">المورد : عافية</span>
-                            <p>وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج </p>
-                            <a href="#" class="bulk-buy">
-                                شراء بالجملة
-                            </a>
-                            <a href="#" class="supplier-cart">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
-                                عربة التسوق
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product col-xl-3 col-md-4 col-sm-6">
-                        <div class="photo">
-                            <img src="/images/N28862998A_1.jpg" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="name">
-                                <span >اسم المنتج</span>
-                                <span>20 <span>SAR</span> </span>
-                            </div>
-                            <span class="supplier-name">المورد : عافية</span>
-                            <p>وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج </p>
-                            <a href="#" class="bulk-buy">
-                                شراء بالجملة
-                            </a>
-                            <a href="#" class="supplier-cart">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
-                                عربة التسوق
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product col-xl-3 col-md-4 col-sm-6">
-                        <div class="photo">
-                            <img src="/images/N28862998A_1.jpg" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="name">
-                                <span >اسم المنتج</span>
-                                <span>20 <span>SAR</span> </span>
-                            </div>
-                            <span class="supplier-name">المورد : عافية</span>
-                            <p>وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج </p>
-                            <a href="#" class="bulk-buy">
-                                شراء بالجملة
-                            </a>
-                            <a href="#" class="supplier-cart">
+                            <a href="#" class="supplier-cart"  @click="addProductInCart(products.id)">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
                                 عربة التسوق
                             </a>
@@ -222,12 +85,13 @@
 
 export default {
     name: 'Supplier',
-    props: [
-        'slug', 
-    ],
+    props: {
+        slug: String, 
+        supplier: Object,
+    },
     data() {
         return {
-            supplier: [],
+            supplierProducts: [],
         }
     },
     mounted() {
@@ -238,9 +102,18 @@ export default {
         loadSuppliers: function() {
             axios.get('/json/suppliers/'+ this.slug)
             .then((response) => {
-                this.supplier = response.data.data;
+                this.supplierProducts = response.data.data;
             })
             .catch();
+        },
+        addProductInCart: function($product){
+            axios.get('/storeincart/'+ $product, {
+                'quantity': 1,
+            });
+            // .then((response) => {
+            //     this.supplierProducts = response.data.data;
+            // })
+            // .catch();
         }
     },
 }
