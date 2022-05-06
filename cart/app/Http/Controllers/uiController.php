@@ -93,12 +93,9 @@ if(!empty($category)){
       }
 
       
-   public function item($slug,product $product){
-
-$related =  product::where('id','!=',$product->id)->select(['name','slug','img'])->get()->take(10);
-
-return view('front.products.view')->with(['product'=>$product,'related'=>$related]);
-
-}
+   public function item($slug, product $product){
+      $related =  product::where('id','!=',$product->id)->select(['name','slug','img'])->get()->take(10);
+      return view('front.products.view')->with(['product'=>$product, 'related'=>$related]);
+   }
 
 }

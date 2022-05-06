@@ -13,3 +13,21 @@
     <view-product></view-product>
 </div>
 @endsection
+
+@section('owl')
+<link href="{{ asset('front/css/owl.carousel.min.css') }}" rel="stylesheet">
+@endsection
+
+@section('scripts')
+<script src="{{ asset('/front/js/owl.carousel.js') }}"></script>
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav:true,
+        dots: false,
+        rtl: true,
+        items: 1
+    })
+</script>
+@endsection

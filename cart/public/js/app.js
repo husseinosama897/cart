@@ -5548,6 +5548,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -29014,8 +29027,25 @@ var staticRenderFns = [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "product-details" }, [
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "photos col-4" }, [
+            _c("div", { staticClass: "photos col-4 owl-carousel" }, [
               _c("img", {
+                staticStyle: { height: "350px", "object-fit": "contain" },
+                attrs: {
+                  src: "/front/images/kisspng-pepsi-logo-fizzy-drinks-cola-graphic-design-wework-logo-5b5bd94502e9b0.1963383115327460530119.png",
+                  alt: "",
+                },
+              }),
+              _vm._v(" "),
+              _c("img", {
+                staticStyle: { height: "350px", "object-fit": "contain" },
+                attrs: {
+                  src: "/front/images/kisspng-pepsi-logo-fizzy-drinks-cola-graphic-design-wework-logo-5b5bd94502e9b0.1963383115327460530119.png",
+                  alt: "",
+                },
+              }),
+              _vm._v(" "),
+              _c("img", {
+                staticStyle: { height: "350px", "object-fit": "contain" },
                 attrs: {
                   src: "/front/images/kisspng-pepsi-logo-fizzy-drinks-cola-graphic-design-wework-logo-5b5bd94502e9b0.1963383115327460530119.png",
                   alt: "",
@@ -29024,7 +29054,7 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "details col-8" }, [
-              _c("h1", [_vm._v("اسم المنتج")]),
+              _c("h1", { staticClass: "mb-2" }, [_vm._v("اسم المنتج")]),
               _vm._v(" "),
               _c("p", [
                 _vm._v(
@@ -29034,11 +29064,17 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", { staticClass: "sup-details mb-2 row" }, [
                 _c("span", { staticClass: "col-3" }, [
-                  _vm._v("اسم المورد : بيبسي"),
+                  _vm._v("اسم المورد :  "),
+                  _c("span", { staticStyle: { color: "#00786D" } }, [
+                    _vm._v("بيبسي"),
+                  ]),
                 ]),
                 _vm._v(" "),
                 _c("span", { staticClass: "col-3" }, [
-                  _vm._v("اسم الصنف : بيبسي"),
+                  _vm._v("اسم الصنف :  "),
+                  _c("span", { staticStyle: { color: "#00786D" } }, [
+                    _vm._v("بيبسي"),
+                  ]),
                 ]),
               ]),
               _vm._v(" "),
@@ -29053,27 +29089,36 @@ var staticRenderFns = [
                     attrs: { hidden: "", type: "hidden", value: "85" },
                   }),
                   _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "form-label", attrs: { for: "quantity" } },
-                    [_vm._v("الكمية")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control qty",
-                    staticStyle: {
-                      padding: "10px",
-                      "border-radius": "2px",
-                      width: "100px",
-                      height: "36px",
-                    },
-                    attrs: {
-                      type: "number",
-                      id: "quantity",
-                      min: "1",
-                      value: "1",
-                    },
-                  }),
+                  _c("div", { staticClass: "row g-3 align-items-center" }, [
+                    _c("div", { staticClass: "col-auto" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-label",
+                          attrs: { for: "quantity" },
+                        },
+                        [_vm._v("الكمية")]
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-auto" }, [
+                      _c("input", {
+                        staticClass: "form-control qty",
+                        staticStyle: {
+                          padding: "10px",
+                          "border-radius": "2px",
+                          width: "100px",
+                          height: "36px",
+                        },
+                        attrs: {
+                          type: "number",
+                          id: "quantity",
+                          min: "1",
+                          value: "1",
+                        },
+                      }),
+                    ]),
+                  ]),
                 ]),
               ]),
             ]),
