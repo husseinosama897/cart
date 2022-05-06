@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<suppliers></suppliers>
+<supplier></supplier>
 @endsection
 
 @section('style')
