@@ -10,6 +10,12 @@ class category extends Model
     use HasFactory, Sluggable;
 
 
+
+    public function product(){
+        return $this->HasMany(product::class,'category_id');
+    }
+
+
 protected $fillable = [
     'slug','name','img',
 ];
