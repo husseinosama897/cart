@@ -5561,7 +5561,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'View',
+  props: {
+    supplier: Object,
+    category: Object,
+    product: String,
+    related: Array
+  },
+  data: function data() {
+    return {
+      quantity: 1,
+      responseMsg: ''
+    };
+  },
+  mounted: function mounted() {},
+  methods: {
+    addProductInCart: function addProductInCart($product) {
+      var _this = this;
+
+      axios.post('/storeincart/' + $product, {
+        'quantity': this.quantity
+      }).then(function (response) {
+        _this.$toastr.s(response.data.msg);
+      }); // .catch();
+    }
+  }
+});
 
 /***/ }),
 
@@ -29016,114 +29084,327 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "product-details" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "photos col-4 owl-carousel" }, [
+            _c("img", {
+              attrs: { src: "/uploads/product/" + _vm.product.img },
+            }),
+            _vm._v(" "),
+            _c("img", {
+              staticStyle: { height: "350px", "object-fit": "contain" },
+              attrs: {
+                src: "/front/images/kisspng-pepsi-logo-fizzy-drinks-cola-graphic-design-wework-logo-5b5bd94502e9b0.1963383115327460530119.png",
+                alt: "",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "details col-8" }, [
+            _c("h1", { staticClass: "mb-2" }, [
+              _vm._v(_vm._s(_vm.product.name)),
+            ]),
+            _vm._v(" "),
+            _c(
+              "p",
+              {
+                staticStyle: {
+                  width: "80%",
+                  "margin-bottom": "20px",
+                  "line-height": "1.6rem",
+                },
+              },
+              [_vm._v(_vm._s(_vm.product.dis))]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "sup-details mb-4 row" }, [
+              _c("span", { staticClass: "col-3" }, [
+                _vm._v("اسم المورد :  "),
+                _c("span", { staticStyle: { color: "#00786D" } }, [
+                  _vm._v(_vm._s(_vm.supplier.comp)),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "col-3" }, [
+                _vm._v("اسم الصنف :  "),
+                _c("span", { staticStyle: { color: "#00786D" } }, [
+                  _vm._v(_vm._s(_vm.category.name)),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "product-price row mb-4" }, [
+              _c("span", { staticClass: "col-3" }, [
+                _vm._v("السعر : " + _vm._s(_vm.product.price) + " ر.س"),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "qty col-3" }, [
+                _c("input", {
+                  staticClass: "product_id",
+                  attrs: { hidden: "", type: "hidden", value: "85" },
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "row g-3 align-items-center" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-auto" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.quantity,
+                          expression: "quantity",
+                        },
+                      ],
+                      staticClass: "form-control qty",
+                      staticStyle: {
+                        padding: "10px",
+                        "border-radius": "2px",
+                        width: "100px",
+                        height: "36px",
+                        direction: "rtl",
+                      },
+                      attrs: { type: "number", id: "quantity", min: "1" },
+                      domProps: { value: _vm.quantity },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.quantity = $event.target.value
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "baw mb-4" }, [
+              _c(
+                "button",
+                { staticClass: "btn btn-sm btn-primary py-2 px-3 mx-2" },
+                [
+                  _c(
+                    "svg",
+                    {
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        viewBox: "0 0 24 24",
+                        width: "24",
+                        height: "24",
+                        fill: "#fff",
+                      },
+                    },
+                    [
+                      _c("path", {
+                        attrs: { fill: "none", d: "M0 0h24v24H0z" },
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d: "M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.5-6H14a.5.5 0 1 0 0-1h-4a2.5 2.5 0 1 1 0-5h1V6h2v2h2.5v2H10a.5.5 0 1 0 0 1h4a2.5 2.5 0 1 1 0 5h-1v2h-2v-2H8.5v-2z",
+                        },
+                      }),
+                    ]
+                  ),
+                  _vm._v(
+                    "\n                            شراء الان\n                        "
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm btn-primary py-2 px-3 mx-2",
+                  on: {
+                    click: function ($event) {
+                      return _vm.addProductInCart(_vm.product.id)
+                    },
+                  },
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        viewBox: "0 0 24 24",
+                        width: "24",
+                        height: "24",
+                        fill: "#fff",
+                      },
+                    },
+                    [
+                      _c("path", {
+                        attrs: { fill: "none", d: "M0 0h24v24H0z" },
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M4 16V4H2V2h3a1 1 0 0 1 1 1v12h12.438l2-8H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1zm2 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
+                        },
+                      }),
+                    ]
+                  ),
+                  _vm._v(
+                    "\n                           اضف الى العربة\n                        "
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn btn-sm btn-primary py-2 px-3 mx-2" },
+                [
+                  _c(
+                    "svg",
+                    {
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        viewBox: "0 0 24 24",
+                        width: "24",
+                        height: "24",
+                        fill: "#fff",
+                      },
+                    },
+                    [
+                      _c("path", {
+                        attrs: { fill: "none", d: "M0 0H24V24H0z" },
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z",
+                        },
+                      }),
+                    ]
+                  ),
+                  _vm._v(
+                    "\n                           اضف الى قائمة الرغبات\n                        "
+                  ),
+                ]
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "related-products" }, [
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.related, function (relatedProduct, index) {
+            return _c("div", { key: index, staticClass: "product" }, [
+              _c("div", { staticClass: "photo my-3" }, [
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href:
+                        "/product/" + _vm.supplier.slug + "/" + _vm.supplier.id,
+                    },
+                  },
+                  [
+                    _c("img", {
+                      attrs: {
+                        src: "/uploads/product/" + relatedProduct.img,
+                        alt: relatedProduct.name,
+                      },
+                    }),
+                  ]
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "details" }, [
+                _c("div", { staticClass: "name" }, [
+                  _c(
+                    "span",
+                    {
+                      staticStyle: {
+                        display: "-webkit-box",
+                        "-webkit-line-clamp": "1",
+                        "-webkit-box-orient": "vertical",
+                        overflow: "hidden",
+                        "min-height": "1.25rem",
+                      },
+                    },
+                    [
+                      _vm._v(
+                        "\n                                 " +
+                          _vm._s(relatedProduct.name) +
+                          "\n                              "
+                      ),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(_vm._s(relatedProduct.price) + " "),
+                    _c("span", [_vm._v("ر.س")]),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
+                  _vm._v(
+                    "\n                              شراء بالجملة\n                          "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "supplier-cart", attrs: { href: "#" } },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          viewBox: "0 0 24 24",
+                          width: "24",
+                          height: "24",
+                        },
+                      },
+                      [
+                        _c("path", {
+                          attrs: { fill: "none", d: "M0 0h24v24H0z" },
+                        }),
+                        _c("path", {
+                          attrs: {
+                            d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
+                          },
+                        }),
+                      ]
+                    ),
+                    _vm._v(
+                      "\n                              عربة التسوق\n                          "
+                    ),
+                  ]
+                ),
+              ]),
+            ])
+          }),
+          0
+        ),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "product-details" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "photos col-4 owl-carousel" }, [
-              _c("img", {
-                staticStyle: { height: "350px", "object-fit": "contain" },
-                attrs: {
-                  src: "/front/images/kisspng-pepsi-logo-fizzy-drinks-cola-graphic-design-wework-logo-5b5bd94502e9b0.1963383115327460530119.png",
-                  alt: "",
-                },
-              }),
-              _vm._v(" "),
-              _c("img", {
-                staticStyle: { height: "350px", "object-fit": "contain" },
-                attrs: {
-                  src: "/front/images/kisspng-pepsi-logo-fizzy-drinks-cola-graphic-design-wework-logo-5b5bd94502e9b0.1963383115327460530119.png",
-                  alt: "",
-                },
-              }),
-              _vm._v(" "),
-              _c("img", {
-                staticStyle: { height: "350px", "object-fit": "contain" },
-                attrs: {
-                  src: "/front/images/kisspng-pepsi-logo-fizzy-drinks-cola-graphic-design-wework-logo-5b5bd94502e9b0.1963383115327460530119.png",
-                  alt: "",
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "details col-8" }, [
-              _c("h1", { staticClass: "mb-2" }, [_vm._v("اسم المنتج")]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة"
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "sup-details mb-2 row" }, [
-                _c("span", { staticClass: "col-3" }, [
-                  _vm._v("اسم المورد :  "),
-                  _c("span", { staticStyle: { color: "#00786D" } }, [
-                    _vm._v("بيبسي"),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "col-3" }, [
-                  _vm._v("اسم الصنف :  "),
-                  _c("span", { staticStyle: { color: "#00786D" } }, [
-                    _vm._v("بيبسي"),
-                  ]),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "product-price row mb-2" }, [
-                _c("span", { staticClass: "col-3" }, [
-                  _vm._v("السعر : 20 ر.س"),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "qty col-3" }, [
-                  _c("input", {
-                    staticClass: "product_id",
-                    attrs: { hidden: "", type: "hidden", value: "85" },
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row g-3 align-items-center" }, [
-                    _c("div", { staticClass: "col-auto" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "form-label",
-                          attrs: { for: "quantity" },
-                        },
-                        [_vm._v("الكمية")]
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-auto" }, [
-                      _c("input", {
-                        staticClass: "form-control qty",
-                        staticStyle: {
-                          padding: "10px",
-                          "border-radius": "2px",
-                          width: "100px",
-                          height: "36px",
-                        },
-                        attrs: {
-                          type: "number",
-                          id: "quantity",
-                          min: "1",
-                          value: "1",
-                        },
-                      }),
-                    ]),
-                  ]),
-                ]),
-              ]),
-            ]),
-          ]),
-        ]),
+    return _c("div", { staticClass: "col-auto" }, [
+      _c("label", { staticClass: "form-label", attrs: { for: "quantity" } }, [
+        _vm._v("الكمية"),
       ]),
     ])
   },

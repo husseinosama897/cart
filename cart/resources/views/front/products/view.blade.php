@@ -10,16 +10,29 @@
             </div>
         </div>
     </div>
-    <view-product></view-product>
+    <view-product
+     :supplier="{{ App\Models\supplier::where('id', $product->supplier_id)->first() }}" 
+     :category="{{ App\Models\category::where('id', $product->category_id)->first() }}" 
+     :product="{{$product}}" 
+     :related="{{ $related }}"></view-product>
 </div>
 @endsection
 
 @section('owl')
 <link href="{{ asset('front/css/owl.carousel.min.css') }}" rel="stylesheet">
+<link href="{{ asset('front/css/view-product.css') }}" rel="stylesheet">
+@endsection
+
+@section('style')
+
 @endsection
 
 @section('scripts')
 <script src="{{ asset('/front/js/owl.carousel.js') }}"></script>
+
+<script src="https://unpkg.com/vue-toastr/dist/vue-toastr.umd.min.js"></script>
+
+
 <script>
     $('.owl-carousel').owlCarousel({
         loop: true,
@@ -28,6 +41,7 @@
         dots: false,
         rtl: true,
         items: 1
-    })
+    });
 </script>
+
 @endsection

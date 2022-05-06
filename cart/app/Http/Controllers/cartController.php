@@ -146,11 +146,12 @@ $cart->session_id = $session_id;
 }
 $cart->save();
 
+
 $this->updatedis();
 
 
 }
-
+return response()->json(['msg' => 'تم اضافه المنتج الي عربة التسوق']);
 
 }
 
