@@ -48,7 +48,7 @@ if(!empty($category)){
     }
 
 
-   public function supplierpage($slug,supplier $supplier){
+   public function supplierpage($slug, supplier $supplier){
 
        return view('front.suppliers.supplier')->with('supplier', $supplier);
    }
