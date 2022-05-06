@@ -107,7 +107,7 @@ export default {
             .catch();
         },
         addProductInCart: function($product){
-            axios.get('/storeincart/'+ $product, {
+            axios.post('/storeincart/'+ $product, {
                 'quantity': 1,
             });
             // .then((response) => {

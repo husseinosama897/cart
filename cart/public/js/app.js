@@ -5669,7 +5669,7 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"]();
     },
     addProductInCart: function addProductInCart($product) {
-      axios.get('/storeincart/' + $product, {
+      axios.post('/storeincart/' + $product, {
         'quantity': 1
       }); // .then((response) => {
       //     this.supplierProducts = response.data.data;

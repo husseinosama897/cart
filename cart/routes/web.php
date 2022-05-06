@@ -64,7 +64,7 @@ Route::delete('/cart/delete/{cart}', [cartController::class, 'delete']);
 
 Route::post('/couponsstore', [cartController::class, 'couponsstore']);
 
-Route::get('/storeincart/{product}', [cartController::class, 'store']);
+Route::post('/storeincart/{product}', [cartController::class, 'store']);
 
 Route::post('/updatequantityjson', [cartController::class, 'updatequantityjson']);
 
