@@ -40,7 +40,7 @@
             @foreach($suppliers as $supplier)
                 <div class="supplier">
                     <div class="photo">
-                        <img src="{{asset('uploads/suppliers/'.$supplier->img)}}" alt="">
+                   <a href="{{route('suppliers.page',['slug'=>$supplier->slug,'supplier'=>$supplier->id])}}">     <img src="{{asset('uploads/suppliers/'.$supplier->img)}}" alt="">
                     </div>
                     <span>{{$supplier->comp}}</span>
                 </div>
@@ -53,66 +53,17 @@
         <div class="container">
             <h5 class="mb-4">التصنيفات الرئيسية</h5>
             <div class="categories-content row mb-4">
+
+            @foreach($categories as $category)
                 <div class="category col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6">
                     <div class="photo">
-                        <img src="/front/images/223141-AFIA_Logo_AR.webp" alt="">
+                        <img src="{{asset('/uploads/categories/'.$category->image)}}" alt="{{$category->name}}">
                     </div>
-                    <span>عافية</span>
+                    <span>{{$category->name}}</span>
                 </div>
-                <div class="category col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6  ">
-                    <div class="photo">
-                        <img src="/front/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="category col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6  ">
-                    <div class="photo">
-                        <img src="/front/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="category col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6  ">
-                    <div class="photo">
-                        <img src="/front/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="category col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6  ">
-                    <div class="photo">
-                        <img src="/front/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="category col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6  ">
-                    <div class="photo">
-                        <img src="/front/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="category col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6  ">
-                    <div class="photo">
-                        <img src="/front/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="category col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6  ">
-                    <div class="photo">
-                        <img src="/front/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="category col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6  ">
-                    <div class="photo">
-                        <img src="/front/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
-                <div class="category col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6  ">
-                    <div class="photo">
-                        <img src="/front/images/223141-AFIA_Logo_AR.webp" alt="">
-                    </div>
-                    <span>عافية</span>
-                </div>
+               @endforeach
+    
+       
             </div>
             <h5 class="mb-4">ادوات المطاعم والكافيهات</h5>
             <div class="tools-content row justify-content-center">

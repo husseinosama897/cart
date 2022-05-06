@@ -42,13 +42,13 @@ if(!empty($category)){
     public function homepage(){
         $suppliers = supplier::select(['id','slug','comp','img'])->get()->take(20);
 
-        $category = category::select(['id','name'])->get()->take(20);
+        $category = category::select(['id','name','image'])->get()->take(20);
 
-        return view('front.home')->with(['suppliers'=>$suppliers,'category'=>$category]);
+        return view('front.home')->with(['suppliers'=>$suppliers,'categories'=>$category]);
     }
 
 
-   public function supplierpage(supplier $supplier){
+   public function supplierpage($slug,supplier $supplier){
 
        return view('front.suppliers.supplier')->with('supplier', $supplier);
    }
@@ -73,10 +73,8 @@ $data = $data->paginate(10);
 
 return response()->json(['data'=>$data]);
     
-
    }
 
-   
 
    public function jsoncategory(request $request,category $category){
 
@@ -95,11 +93,11 @@ return response()->json(['data'=>$data]);
       }
 
       
-   public function item(product $product){
+   public function item($slug,product $product){
 
 $related =  product::where('id','!=',$product->id)->select(['name','slug','img'])->get()->take(10);
 
-return view('product.item')->with(['product'=>$product,'related'=>$related]);
+return view('front.products.view')->with(['product'=>$product,'related'=>$related]);
 
 }
 

@@ -20,9 +20,6 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-
-
-
 Route::get('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
 
 Route::get('/json/suppliers/', [supplierController::class, 'supplierjson']);
@@ -31,9 +28,7 @@ Route::get('/suppliers', function () {
        return view('front.suppliers.suppliers');
 });
 
-Route::get('/suppliers/{slug}/{supplier}', [uiController::class, 'supplierpage']);
-
-
+Route::get('/suppliers/{slug}/{supplier}', [uiController::class, 'supplierpage'])->name('suppliers.page');
 
 //category
 Route::get('/json/categories/{category}', [uiController::class, 'jsoncategory']);
@@ -59,16 +54,9 @@ Route::get('/', [uiController::class, 'homepage']);
 
 //cart 
 
- Route::get('/basket', [cartController::class, 'cartpage']);
+ Route::get('/basket', [cartController::class, 'cartpage'])->name('basket');
 
 
-
-Route::get('/basket', function () {
-    return view('front.cart.index');
-});
-Route::get('/view-product', function () {
-    return view('front.products.view');
-});
 
 Route::get('/counter', [cartController::class, 'counter']);
 
@@ -76,7 +64,7 @@ Route::delete('/cart/delete/{cart}', [cartController::class, 'delete']);
 
 Route::post('/couponsstore', [cartController::class, 'couponsstore']);
 
-Route::post('/storeincart', [cartController::class, 'store']);
+Route::get('/storeincart/{product}', [cartController::class, 'store']);
 
 Route::post('/updatequantityjson', [cartController::class, 'updatequantityjson']);
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\cart;
 use Session;
+use App\Models\product;
 use App\UpdateCoupon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -94,16 +95,11 @@ $percent_off = session()->get('coupon')['percent_off'] ?? null;
      
     }
 
-public function store(request $request){
-
-    $this->validate($request,[
-  
-        'price'=>['required','digits_between:1,100000000'],
-    
-        ]);
+public function store(request $request,product $product){
 
         if(auth::id()){
-            $cart = auth()->user()->cart()->first();
+            $cart = auth()->user()->cart()
+            ->where('product_id',$product->id)->first();
             $count= auth()->user()->cart()->count();   
         }else{
             $session_id = Session::get('session_id');
@@ -111,14 +107,14 @@ public function store(request $request){
                 $session_id = Str::random(40);
                 Session::put('session_id',$session_id);
             }
-      $cart = cart::where(['session_id'=>$session_id])->first();
+      $cart = cart::where(['session_id'=>$session_id,'product_id'=>$product->id])->first();
                 $count= cart::where('session_id',$session_id)->count();   
               
         }
 
 
 if($count > 30){
-    return response()->json(['counter'=>'done']);
+    return response()->json(['error'=>'done']);
 }
 
  
@@ -134,10 +130,10 @@ if($cart){
 
 if(!$cart){
 $cart = new cart;
-
-$cart->seller_id = null;
+$cart->supplier_id = $product->supplier_id;
+$cart->product_id = $product->id ;
 $cart->price = $request->price ;
-$cart->total = $request->price ;
+$cart->total = $request->price * $request->quntity;
 $cart->quantity=1;
 if(auth::id()){
     $cart->user_id = auth::id();

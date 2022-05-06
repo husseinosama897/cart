@@ -13,7 +13,7 @@
                 </a>
             </div>
             <div class="cart col-auto">
-                <a href="">
+                <a href="{{route('basket')}}">
                     <!-- <span class="badge">
                     5
                     </span> -->
