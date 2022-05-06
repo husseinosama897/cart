@@ -12,6 +12,7 @@ Vue.use(VueRouter)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('suppliers', require('./components/Suppliers/Suppliers.vue').default);
+Vue.component('supplier', require('./components/Suppliers/Supplier.vue').default);
 
 Vue.component('cart', require('./components/Cart/Cart.vue').default);
 

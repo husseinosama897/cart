@@ -61,17 +61,17 @@ if(!empty($category)){
 
    public function jsonsupplier(request $request, supplier $supplier){
 
- $data =    $supplier->product();
+      $data =    $supplier->product();
 
 
- $category = json_decode($request->category,true);
- if($category){
-    $data = $data->category()->WhereIn('id',$category);
- }
+      $category = json_decode($request->category,true);
+      if($category){
+         $data = $data->category()->WhereIn('id',$category);
+      }
 
-$data = $data->paginate(10);
+      $data = $data->paginate(10);
 
-return response()->json(['data'=>$data]);
+      return response()->json(['data'=>$data]);
     
    }
 

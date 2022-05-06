@@ -219,8 +219,30 @@
 </template>
 
 <script>
-export default {
 
+export default {
+    name: 'Supplier',
+    props: [
+        'slug', 
+    ],
+    data() {
+        return {
+            supplier: [],
+        }
+    },
+    mounted() {
+        this.loadSuppliers();
+    },
+    
+    methods: {
+        loadSuppliers: function() {
+            axios.get('/json/suppliers/'+ this.slug)
+            .then((response) => {
+                this.supplier = response.data.data;
+            })
+            .catch();
+        }
+    },
 }
 </script>
 
