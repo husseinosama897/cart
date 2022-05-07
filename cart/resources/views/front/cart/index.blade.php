@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    <view-cart products="{{$data}}"></view-cart>
+    <view-cart :product="{{$data}}"></view-cart>
 </div>
 @endsection
 

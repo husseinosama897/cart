@@ -74,7 +74,7 @@
 export default {
    name: 'Cart',
    props: [
-      products , 
+      products:{} , 
    ],
     data() {
        return{
