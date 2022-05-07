@@ -71,11 +71,11 @@
    </div>
 </template>
 <script>
+
 export default {
+props:['product'],
    name: 'Cart',
-   props: [
-      products:{} , 
-   ],
+  
     data() {
        return{
 
