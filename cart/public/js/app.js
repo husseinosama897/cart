@@ -5449,21 +5449,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'Suppliers',
+  name: 'Cart',
+  props: {
+    products: Array
+  },
   data: function data() {
-    return {
-      products: []
-    };
+    return {};
   },
   mounted: function mounted() {
-    this.loadSuppliers();
+    this.loadCart();
   },
   methods: {
-    loadSuppliers: function loadSuppliers() {
-      var _this = this;
-
-      axios.get('/json/suppliers').then(function (response) {
-        _this.products = response.data.data;
+    loadCart: function loadCart() {
+      axios.get('/json/suppliers').then(function (response) {//  this.products = response.data.data;
       })["catch"]();
     }
   }
@@ -5517,6 +5515,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
 //
 //
 //
@@ -5889,7 +5890,7 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('example-component', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('suppliers', (__webpack_require__(/*! ./components/Suppliers/Suppliers.vue */ "./resources/js/components/Suppliers/Suppliers.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('supplier', (__webpack_require__(/*! ./components/Suppliers/Supplier.vue */ "./resources/js/components/Suppliers/Supplier.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('cart', (__webpack_require__(/*! ./components/Cart/Cart.vue */ "./resources/js/components/Cart/Cart.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('view-cart', (__webpack_require__(/*! ./components/Cart/Cart.vue */ "./resources/js/components/Cart/Cart.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('view-product', (__webpack_require__(/*! ./components/Products/View.vue */ "./resources/js/components/Products/View.vue")["default"]));
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#app',
@@ -29090,6 +29091,7 @@ var render = function () {
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "photos col-4 owl-carousel" }, [
             _c("img", {
+              staticStyle: { height: "350px", "object-fit": "contain" },
               attrs: { src: "/uploads/product/" + _vm.product.img },
             }),
             _vm._v(" "),
@@ -29304,7 +29306,10 @@ var render = function () {
                   {
                     attrs: {
                       href:
-                        "/product/" + _vm.supplier.slug + "/" + _vm.supplier.id,
+                        "/product/" +
+                        relatedProduct.slug +
+                        "/" +
+                        relatedProduct.id,
                     },
                   },
                   [
@@ -29321,21 +29326,35 @@ var render = function () {
               _c("div", { staticClass: "details" }, [
                 _c("div", { staticClass: "name" }, [
                   _c(
-                    "span",
+                    "a",
                     {
-                      staticStyle: {
-                        display: "-webkit-box",
-                        "-webkit-line-clamp": "1",
-                        "-webkit-box-orient": "vertical",
-                        overflow: "hidden",
-                        "min-height": "1.25rem",
+                      attrs: {
+                        href:
+                          "/product/" +
+                          relatedProduct.slug +
+                          "/" +
+                          relatedProduct.id,
                       },
                     },
                     [
-                      _vm._v(
-                        "\n                                 " +
-                          _vm._s(relatedProduct.name) +
-                          "\n                              "
+                      _c(
+                        "span",
+                        {
+                          staticStyle: {
+                            display: "-webkit-box",
+                            "-webkit-line-clamp": "1",
+                            "-webkit-box-orient": "vertical",
+                            overflow: "hidden",
+                            "min-height": "1.25rem",
+                          },
+                        },
+                        [
+                          _vm._v(
+                            "\n                                  " +
+                              _vm._s(relatedProduct.name) +
+                              "\n                                  "
+                          ),
+                        ]
                       ),
                     ]
                   ),

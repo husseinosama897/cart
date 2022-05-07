@@ -37,8 +37,8 @@
     $('.owl-carousel').owlCarousel({
         loop: true,
         margin: 10,
-        nav:true,
-        dots: false,
+        nav:false,
+        dots: true,
         rtl: true,
         items: 1
     });

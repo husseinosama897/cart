@@ -72,21 +72,24 @@
 </template>
 <script>
 export default {
-    name: 'Suppliers',
+   name: 'Cart',
+   props: {
+      products: Array, 
+   },
     data() {
-        return {
-            products: [],
-        }
+       return{
+
+       }
     },
     mounted() {
-        this.loadSuppliers();
+        this.loadCart();
     },
     
     methods: {
-        loadSuppliers: function() {
+        loadCart: function() {
             axios.get('/json/suppliers')
             .then((response) => {
-                this.products = response.data.data;
+               //  this.products = response.data.data;
             })
             .catch();
         }

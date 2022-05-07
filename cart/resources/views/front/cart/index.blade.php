@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    <cart></cart>
+    <view-cart products="{{$data}}"></view-cart>
 </div>
 @endsection
 

@@ -14,7 +14,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('suppliers', require('./components/Suppliers/Suppliers.vue').default);
 Vue.component('supplier', require('./components/Suppliers/Supplier.vue').default);
 
-Vue.component('cart', require('./components/Cart/Cart.vue').default);
+Vue.component('view-cart', require('./components/Cart/Cart.vue').default);
 
 Vue.component('view-product', require('./components/Products/View.vue').default);
 

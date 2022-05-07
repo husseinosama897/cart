@@ -5,7 +5,8 @@
               <div class="row">
                   <div class="photos col-4 owl-carousel">
                       <img 
-                      :src="'/uploads/product/' + product.img">
+                      :src="'/uploads/product/' + product.img" style="height: 350px;
+    object-fit: contain;">
                       <img src="/front/images/kisspng-pepsi-logo-fizzy-drinks-cola-graphic-design-wework-logo-5b5bd94502e9b0.1963383115327460530119.png" alt="" style="height: 350px;
     object-fit: contain;">
                   </div>
@@ -54,18 +55,20 @@
               <div class="row">
                     <div class="product" v-for="(relatedProduct, index) in related" :key="index">
                         <div class="photo my-3">
-                            <a :href="'/product/' + supplier.slug + '/' + supplier.id">
+                            <a :href="'/product/' + relatedProduct.slug + '/' + relatedProduct.id">
                                 <img :src="'/uploads/product/' + relatedProduct.img" :alt="relatedProduct.name">
                             </a>
                         </div>
                         <div class="details">
                             <div class="name">
-                                <span style="display: -webkit-box;
-                                -webkit-line-clamp: 1;
-                                -webkit-box-orient: vertical;
-                                overflow: hidden;min-height: 1.25rem;">
-                                   {{ relatedProduct.name }}
-                                </span>
+                                <a :href="'/product/' + relatedProduct.slug + '/' + relatedProduct.id">
+                                    <span style="display: -webkit-box;
+                                    -webkit-line-clamp: 1;
+                                    -webkit-box-orient: vertical;
+                                    overflow: hidden;min-height: 1.25rem;">
+                                    {{ relatedProduct.name }}
+                                    </span>
+                                </a>
                                 <span>{{ relatedProduct.price }} <span>ر.س</span> </span>
                             </div>
                             <p>وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج وصف المنتج </p>
