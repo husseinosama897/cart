@@ -27,6 +27,9 @@ public function cartpage(){
       $data = cart::where('session_id', $session_id)->with('product')->paginate(10);
 
     }
+
+
+    dd($data);
     return view('front.cart.index', compact('data', $data));
 
 }
