@@ -78,10 +78,10 @@ if(!empty($category)){
 
    public function supplierjson(){
       $supplier =  supplier::paginate(10);
-      dd($supplier);
+      
       return response()->json(['data'=>$supplier]);
     }
-    
+
 
    public function jsoncategory(request $request,category $category){
 
