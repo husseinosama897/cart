@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
 
-Route::get('/json/suppliers/', [supplierController::class, 'supplierjson']);
+Route::get('/json/suppliers/', [uiController::class, 'supplierjson']);
 
 Route::get('/suppliers', function () {
        return view('front.suppliers.suppliers');

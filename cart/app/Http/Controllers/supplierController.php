@@ -115,10 +115,7 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
             
           }
           
-          public function supplierjson(){
-            $supplier =  supplier::paginate(10);
-            return response()->json(['data'=>$supplier]);
-          }
+       
 
           public function supplierselex(){
           
