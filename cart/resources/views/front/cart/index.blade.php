@@ -9,11 +9,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
     <view-cart products="{{ $data }}"></view-cart>
-=======
-    <view-cart :product="{{$data}}"></view-cart>
->>>>>>> da536307d0b5ffb9ba4a489ee97fc1a2381790a8
 </div>
 @endsection
 

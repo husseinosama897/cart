@@ -5369,9 +5369,103 @@ module.exports = {
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Cart/Cart.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************************************************************************************************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: E:\\Project\\New folder (2)\\cart\\cart\\resources\\js\\components\\Cart\\Cart.vue: Unexpected token, expected \",\" (77:14)\n\n\u001b[0m \u001b[90m 75 |\u001b[39m    name\u001b[33m:\u001b[39m \u001b[32m'Cart'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 76 |\u001b[39m    props\u001b[33m:\u001b[39m [\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 77 |\u001b[39m       products\u001b[33m:\u001b[39m{} \u001b[33m,\u001b[39m \u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 78 |\u001b[39m    ]\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 79 |\u001b[39m     data() {\u001b[0m\n\u001b[0m \u001b[90m 80 |\u001b[39m        \u001b[36mreturn\u001b[39m{\u001b[0m\n    at instantiate (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:72:32)\n    at constructor (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:358:12)\n    at Parser.raise (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:3335:19)\n    at Parser.unexpected (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:3373:16)\n    at Parser.expect (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:4002:28)\n    at Parser.parseExprList (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:13900:14)\n    at Parser.parseArrayLike (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:13790:26)\n    at Parser.parseExprAtom (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:12879:23)\n    at Parser.parseExprSubscripts (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:12540:23)\n    at Parser.parseUpdate (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:12519:21)\n    at Parser.parseMaybeUnary (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:12490:23)\n    at Parser.parseMaybeUnaryOrPrivate (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:12284:61)\n    at Parser.parseExprOps (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:12291:23)\n    at Parser.parseMaybeConditional (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:12261:23)\n    at Parser.parseMaybeAssign (E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:12214:21)\n    at E:\\Project\\New folder (2)\\cart\\cart\\node_modules\\@babel\\parser\\lib\\index.js:12172:39");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'Cart',
+  props: {
+    products: Object
+  },
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {
+    this.loadCart();
+  },
+  methods: {
+    loadCart: function loadCart() {
+      axios.get('/json/suppliers').then(function (response) {//  this.products = response.data.data;
+      })["catch"]();
+    }
+  }
+});
 
 /***/ }),
 

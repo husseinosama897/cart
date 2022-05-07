@@ -73,9 +73,9 @@
 <script>
 export default {
    name: 'Cart',
-   props: [
-      products:{} , 
-   ],
+   props: {
+      products: Object, 
+   },
     data() {
        return{
 

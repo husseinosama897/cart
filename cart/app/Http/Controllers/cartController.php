@@ -28,8 +28,8 @@ public function cartpage(){
 
     }
 
+    dd($data);
 
-    
     return view('front.cart.index', compact('data', $data));
 
 }
