@@ -16,23 +16,25 @@ class cartController extends Controller
 
 
 public function cartpage(){
+    
     if(Auth::id()){
-        $data = cart::where('user_id', Auth::id())->with('product')->paginate(10);
+        $data = cart::where('user_id', Auth::id())->with('product')->get();
         }else{
             $session_id = Session::get('session_id');
             if(!$session_id){
                 $session_id = Str::random(40);
                 Session::put('session_id',$session_id);
             }
-      $data = cart::where('session_id', $session_id)->with('product')->paginate(10);
+      $data = cart::where('session_id', $session_id)->with('product')->get();
 
     }
 
-    dd($data);
 
     return view('front.cart.index', compact('data', $data));
 
 }
+
+
 
     public function counter(){
         if(auth::id()){

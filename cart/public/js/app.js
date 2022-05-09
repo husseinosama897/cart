@@ -5450,9 +5450,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Cart',
-  props: {
-    products: Object
-  },
+  props: ['products'],
   data: function data() {
     return {};
   },
