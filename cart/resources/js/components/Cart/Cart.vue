@@ -7,12 +7,12 @@
                   <div class="card cart">
                      <div v-for="(product, index) in carts" :key="index" class="d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom card_details">
                         <div class="d-block d-sm-flex align-items-center text-center text-sm-right">
-                           <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4 ms-sm-4" href="shop-single-v1.html">
-                           <img :src="'/uploads/product/' + product.product.img" width="120" alt="Product">
+                           <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4 ms-sm-4" :href="'/product/' + product.product.slug + '/' + product.product.id">
+                           <img :src="'/uploads/product/' + product.product.img" width="120" style="height: 100px;width: 100px;object-fit: contain;">
                            </a>
                            <div class="pt-2">
                               <span class="product-title fs-base d-block mb-2">
-                                 <a href="shop-single-v1.html">
+                                 <a :href="'/product/' + product.product.slug + '/' + product.product.id">
                                     {{ product.product.name }}
                                  </a>
                               </span>
@@ -85,8 +85,8 @@ export default {
     mounted() {
         this.carts = this.products;
         this.loadCounter();
+        this.totalPrice = this.total;
     },
-    
     methods: {
       loadCounter: function() {
          axios.get('/counter')
@@ -118,9 +118,10 @@ export default {
                totalPrice += item.product.price * item.quantity;
          });
         this.totalPrice = totalPrice;
-         return totalPrice;
+        return totalPrice;
       }
-   }
+   },
+
 }
 </script>
 <style>

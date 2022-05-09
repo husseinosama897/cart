@@ -9,6 +9,8 @@
 @endsection
 
 @section('scripts')
+<script src="https://unpkg.com/vue-toastr/dist/vue-toastr.umd.min.js"></script>
+
 <script>
     $('#app main .filter').click(function (e) { 
         e.preventDefault();

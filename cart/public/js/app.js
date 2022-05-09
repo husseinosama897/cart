@@ -5462,6 +5462,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.carts = this.products;
     this.loadCounter();
+    this.totalPrice = this.total;
   },
   methods: {
     loadCounter: function loadCounter() {
@@ -5657,6 +5658,15 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this.$toastr.s(response.data.msg);
       }); // .catch();
+    },
+    addRelatedProductInCart: function addRelatedProductInCart($product) {
+      var _this2 = this;
+
+      axios.post('/storeincart/' + $product, {
+        'quantity': 1
+      }).then(function (response) {
+        _this2.$toastr.s(response.data.msg);
+      }); // .catch();
     }
   }
 });
@@ -5780,12 +5790,13 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"]();
     },
     addProductInCart: function addProductInCart($product) {
+      var _this2 = this;
+
       axios.post('/storeincart/' + $product, {
         'quantity': 1
-      }); // .then((response) => {
-      //     this.supplierProducts = response.data.data;
-      // })
-      // .catch();
+      }).then(function (response) {
+        _this2.$toastr.s(response.data.msg);
+      })["catch"]();
     }
   }
 });
@@ -28835,14 +28846,24 @@ var render = function () {
                           {
                             staticClass:
                               "d-inline-block flex-shrink-0 mx-auto me-sm-4 ms-sm-4",
-                            attrs: { href: "shop-single-v1.html" },
+                            attrs: {
+                              href:
+                                "/product/" +
+                                product.product.slug +
+                                "/" +
+                                product.product.id,
+                            },
                           },
                           [
                             _c("img", {
+                              staticStyle: {
+                                height: "100px",
+                                width: "100px",
+                                "object-fit": "contain",
+                              },
                               attrs: {
                                 src: "/uploads/product/" + product.product.img,
                                 width: "120",
-                                alt: "Product",
                               },
                             }),
                           ]
@@ -28857,7 +28878,15 @@ var render = function () {
                             [
                               _c(
                                 "a",
-                                { attrs: { href: "shop-single-v1.html" } },
+                                {
+                                  attrs: {
+                                    href:
+                                      "/product/" +
+                                      product.product.slug +
+                                      "/" +
+                                      product.product.id,
+                                  },
+                                },
                                 [
                                   _vm._v(
                                     "\n                                 " +
@@ -29463,8 +29492,15 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c(
-                  "a",
-                  { staticClass: "supplier-cart", attrs: { href: "#" } },
+                  "button",
+                  {
+                    staticClass: "supplier-cart",
+                    on: {
+                      click: function ($event) {
+                        return _vm.addRelatedProductInCart(relatedProduct.id)
+                      },
+                    },
+                  },
                   [
                     _c(
                       "svg",
@@ -29677,10 +29713,9 @@ var render = function () {
                   ]),
                   _vm._v(" "),
                   _c(
-                    "a",
+                    "button",
                     {
                       staticClass: "supplier-cart",
-                      attrs: { href: "#" },
                       on: {
                         click: function ($event) {
                           return _vm.addProductInCart(products.id)
