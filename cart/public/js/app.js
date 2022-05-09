@@ -5462,7 +5462,6 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.carts = this.products;
     this.loadCounter();
-    this.totalPrice = this.total;
   },
   methods: {
     loadCounter: function loadCounter() {
@@ -5491,6 +5490,7 @@ __webpack_require__.r(__webpack_exports__);
       this.carts.forEach(function (item, i) {
         totalPrice += item.product.price * item.quantity;
       });
+      this.totalPrice = totalPrice;
       return totalPrice;
     }
   }

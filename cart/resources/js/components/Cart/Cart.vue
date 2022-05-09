@@ -85,7 +85,6 @@ export default {
     mounted() {
         this.carts = this.products;
         this.loadCounter();
-        this.totalPrice = this.total
     },
     
     methods: {
@@ -103,6 +102,7 @@ export default {
                'quantity': $qty,
          })
          .catch();
+
       },
       deleteCart: function($id) {
          axios.delete('/cart/delete/' + $id,)
@@ -113,10 +113,11 @@ export default {
    },
    computed: {
       total(){
-         let totalPrice = 0;
+         var totalPrice = 0;
          this.carts.forEach((item, i) => {
                totalPrice += item.product.price * item.quantity;
          });
+        this.totalPrice = totalPrice;
          return totalPrice;
       }
    }
