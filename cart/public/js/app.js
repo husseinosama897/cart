@@ -5452,15 +5452,46 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Cart',
   props: ['products'],
   data: function data() {
-    return {};
+    return {
+      carts: [],
+      test: {},
+      counter: 0,
+      totalPrice: 0
+    };
   },
   mounted: function mounted() {
-    this.loadCart();
+    this.carts = this.products;
+    this.loadCounter();
+    this.totalPrice = this.total;
   },
   methods: {
-    loadCart: function loadCart() {
-      axios.get('/json/suppliers').then(function (response) {//  this.products = response.data.data;
+    loadCounter: function loadCounter() {
+      var _this = this;
+
+      axios.get('/counter').then(function (response) {
+        _this.counter = response.data.data;
       })["catch"]();
+    },
+    updateCart: function updateCart($id, $qty) {
+      this.test = $id + $qty;
+      axios.post('/updatequantityjson/', {
+        'cart_id': $id,
+        'quantity': $qty
+      })["catch"]();
+    },
+    deleteCart: function deleteCart($id) {
+      axios["delete"]('/cart/delete/' + $id).then(function (response) {
+        window.location.reload();
+      });
+    }
+  },
+  computed: {
+    total: function total() {
+      var totalPrice = 0;
+      this.carts.forEach(function (item, i) {
+        totalPrice += item.product.price * item.quantity;
+      });
+      return totalPrice;
     }
   }
 });
@@ -28780,101 +28811,246 @@ var render = function () {
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c("aside", { staticClass: "col-lg-8" }, [
-            _c("div", { staticClass: "card cart" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom card_details",
-                },
-                [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "pt-2 pt-sm-0 pe-sm-3 mx-auto mx-sm-0 text-center text-sm-start",
-                      staticStyle: { "max-width": "9rem" },
-                    },
-                    [
-                      _c("input", {
-                        staticClass: "product_id",
-                        attrs: { hidden: "", type: "hidden", value: "85" },
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          staticClass: "form-label",
-                          attrs: { for: "quantity" },
-                        },
-                        [_vm._v("الكمية")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "form-control qty",
-                        staticStyle: {
-                          padding: "10px",
-                          "border-radius": "2px",
-                          width: "100px",
-                          height: "36px",
-                        },
-                        attrs: {
-                          type: "number",
-                          id: "quantity",
-                          min: "1",
-                          value: "1",
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn px-0 text-danger remove",
-                          staticStyle: { cursor: "pointer" },
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass: "bi bi-x-circle",
+            _c(
+              "div",
+              { staticClass: "card cart" },
+              _vm._l(_vm.carts, function (product, index) {
+                return _c(
+                  "div",
+                  {
+                    key: index,
+                    staticClass:
+                      "d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom card_details",
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "d-block d-sm-flex align-items-center text-center text-sm-right",
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "d-inline-block flex-shrink-0 mx-auto me-sm-4 ms-sm-4",
+                            attrs: { href: "shop-single-v1.html" },
+                          },
+                          [
+                            _c("img", {
                               attrs: {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                width: "16",
-                                height: "16",
-                                fill: "currentColor",
-                                viewBox: "0 0 16 16",
+                                src: "/uploads/product/" + product.product.img,
+                                width: "120",
+                                alt: "Product",
                               },
+                            }),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "pt-2" }, [
+                          _c(
+                            "span",
+                            {
+                              staticClass: "product-title fs-base d-block mb-2",
                             },
                             [
-                              _c("path", {
-                                attrs: {
-                                  d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z",
-                                },
-                              }),
-                              _vm._v(" "),
-                              _c("path", {
-                                attrs: {
-                                  d: "M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z",
-                                },
-                              }),
+                              _c(
+                                "a",
+                                { attrs: { href: "shop-single-v1.html" } },
+                                [
+                                  _vm._v(
+                                    "\n                                 " +
+                                      _vm._s(product.product.name) +
+                                      "\n                              "
+                                  ),
+                                ]
+                              ),
                             ]
                           ),
                           _vm._v(" "),
-                          _c("span", { staticClass: "fs-sm" }, [_vm._v("حذف")]),
-                        ]
-                      ),
-                    ]
-                  ),
-                ]
-              ),
-            ]),
+                          _vm._m(0, true),
+                          _vm._v(" "),
+                          _vm._m(1, true),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "fs-sm mb-1" }, [
+                            _c(
+                              "span",
+                              { staticClass: "text-muted me-2 price" },
+                              [_vm._v("سعر المنتج : ")]
+                            ),
+                            _vm._v(
+                              "  " +
+                                _vm._s(product.product.price) +
+                                " ر.س\n                           "
+                            ),
+                          ]),
+                        ]),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "pt-2 pt-sm-0 pe-sm-3 mx-auto mx-sm-0 text-center text-sm-start",
+                        staticStyle: { "max-width": "9rem" },
+                      },
+                      [
+                        _c("input", {
+                          staticClass: "product_id",
+                          attrs: { hidden: "", type: "hidden", value: "85" },
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label",
+                            attrs: { for: "quantity" },
+                          },
+                          [_vm._v("الكمية")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: product.quantity,
+                              expression: "product.quantity",
+                            },
+                          ],
+                          staticClass: "form-control qty",
+                          staticStyle: {
+                            padding: "10px",
+                            "border-radius": "2px",
+                            width: "100px",
+                            height: "36px",
+                          },
+                          attrs: { type: "number", id: "quantity", min: "1" },
+                          domProps: { value: product.quantity },
+                          on: {
+                            change: function ($event) {
+                              return _vm.updateCart(
+                                product.id,
+                                product.quantity
+                              )
+                            },
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(product, "quantity", $event.target.value)
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn px-0 text-danger remove",
+                            staticStyle: { cursor: "pointer" },
+                            on: {
+                              click: function ($event) {
+                                return _vm.deleteCart(product.id)
+                              },
+                            },
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "bi bi-x-circle",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  width: "16",
+                                  height: "16",
+                                  fill: "currentColor",
+                                  viewBox: "0 0 16 16",
+                                },
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z",
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  attrs: {
+                                    d: "M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z",
+                                  },
+                                }),
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "fs-sm" }, [
+                              _vm._v("حذف"),
+                            ]),
+                          ]
+                        ),
+                      ]
+                    ),
+                  ]
+                )
+              }),
+              0
+            ),
             _vm._v(" "),
-            _vm._m(1),
+            _vm._m(2),
           ]),
           _vm._v(" "),
-          _vm._m(2),
+          _c("aside", { staticClass: "col-lg-4" }, [
+            _c("div", { staticClass: "card cart2" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h5", { staticClass: "text-center" }, [
+                  _vm._v("ملخص الطلبية"),
+                ]),
+                _vm._v(" "),
+                _c("dl", { staticClass: "dlist-align" }, [
+                  _c("dt", { staticClass: "text-right" }, [
+                    _vm._v("عدد طلبات :"),
+                  ]),
+                  _vm._v(" "),
+                  _c("dd", { staticClass: "text-start" }, [
+                    _vm._v(_vm._s(_vm.counter)),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("dl", { staticClass: "dlist-align" }, [
+                  _c("dt", { staticClass: "text-right" }, [
+                    _vm._v("اجمالي السعر:"),
+                  ]),
+                  _vm._v(" "),
+                  _c("dd", { staticClass: "text-start" }, [
+                    _vm._v(_vm._s(_vm.totalPrice) + " ر.س"),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-light btn-block w-100",
+                    staticStyle: {
+                      "border-radius": "0.3125rem",
+                      color: "#fff",
+                      background: "rgb(56, 102, 223)",
+                      "text-align": "center",
+                      "max-width": "100%",
+                    },
+                    attrs: { href: "/checkout" },
+                  },
+                  [
+                    _vm._v(
+                      "\n                     إتمام الشراء\n                     "
+                    ),
+                  ]
+                ),
+              ]),
+            ]),
+          ]),
         ]),
       ]),
     ]),
@@ -28885,62 +29061,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "d-block d-sm-flex align-items-center text-center text-sm-right",
-      },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "d-inline-block flex-shrink-0 mx-auto ml-sm-4 mr-sm-4",
-            attrs: { href: "shop-single-v1.html" },
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: "https://www.pomegy.com/images/products/1650826829.He717e32048c74bd390d18d655ca5066cB.jpg",
-                width: "120",
-                alt: "Product",
-              },
-            }),
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "pt-2" }, [
-          _c("span", { staticClass: "product-title fs-base d-block mb-2" }, [
-            _c("a", { attrs: { href: "shop-single-v1.html" } }, [
-              _vm._v(
-                "\n                              ساعة سمارت , WFDRD -DM101 WATCH , تدعم شريحه الاتصال , كما تدعم ال JPS\n                              "
-              ),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "fs-sm mb-1" }, [
-            _c("span", { staticClass: "text-muted me-2" }, [
-              _vm._v("الحجم : "),
-            ]),
-            _vm._v("2.41 انش"),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "fs-sm mb-1" }, [
-            _c("span", { staticClass: "text-muted me-2" }, [
-              _vm._v("الالوان : "),
-            ]),
-            _vm._v("اسود"),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "fs-sm mb-1" }, [
-            _c("span", { staticClass: "text-muted me-2 price" }, [
-              _vm._v("سعر المنتج : "),
-            ]),
-            _vm._v("  5750\n                           "),
-          ]),
-        ]),
-      ]
-    )
+    return _c("div", { staticClass: "fs-sm mb-1" }, [
+      _c("span", { staticClass: "text-muted me-2" }, [_vm._v("الحجم : ")]),
+      _vm._v("2.41 انش"),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "fs-sm mb-1" }, [
+      _c("span", { staticClass: "text-muted me-2" }, [_vm._v("الالوان : ")]),
+      _vm._v("اسود"),
+    ])
   },
   function () {
     var _vm = this
@@ -28964,52 +29097,6 @@ var staticRenderFns = [
         },
         [_vm._v("تابع التسوق")]
       ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("aside", { staticClass: "col-lg-4" }, [
-      _c("div", { staticClass: "card cart2" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("h5", { staticClass: "text-center" }, [_vm._v("ملخص الطلبية")]),
-          _vm._v(" "),
-          _c("dl", { staticClass: "dlist-align" }, [
-            _c("dt", { staticClass: "text-right" }, [_vm._v("عدد طلبات :")]),
-            _vm._v(" "),
-            _c("dd", { staticClass: "text-start" }, [_vm._v("2")]),
-          ]),
-          _vm._v(" "),
-          _c("dl", { staticClass: "dlist-align" }, [
-            _c("dt", { staticClass: "text-right" }, [_vm._v("اجمالي السعر:")]),
-            _vm._v(" "),
-            _c("dd", { staticClass: "text-start" }, [_vm._v("8300 جنية")]),
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-light btn-block w-100",
-              staticStyle: {
-                "border-radius": "0.3125rem",
-                color: "#fff",
-                background: "rgb(56, 102, 223)",
-                "text-align": "center",
-                "max-width": "100%",
-              },
-              attrs: { href: "/checkout" },
-            },
-            [
-              _vm._v(
-                "\n                     إتمام الشراء\n                     "
-              ),
-            ]
-          ),
-        ]),
-      ]),
     ])
   },
 ]
