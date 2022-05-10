@@ -2,16 +2,78 @@
     <div class="container">
         <div class="row align-items-center desktop">
             <div class="logo col-auto">
-                <img src="/front/images/noon-black-ar.svg" alt="" color="">
-            </div>
-            <div class="account col-auto">
-                <a href="{{ route('login') }}" class="login">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-                        <path fill="none" d="M0 0h24v24H0z"></path><path d="M4 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"></path>
-                    </svg>
-                    تسجيل الدخول
+                <a href="/">
+                    <img src="{{ asset('/front/images/Component 51 – 2.png') }}" alt="" color="">
                 </a>
             </div>
+            @if (Auth::check())
+                <div class="account col-auto">
+                      <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="outline: 0 !important;box-shadow: 0 0 0 0 !important;">
+                            <img src="{{  Auth::user()->avatar }}" alt="" srcset="" width="24" style="border-radius: 40px;margin-left: 5px;"> 
+                            {{ Auth::user()->name }}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="font-size: 14px !important">
+                            <li>
+                                <a class="dropdown-item" href="#" style="padding: 0.35rem 1rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" style="width: 16px !important;height: 16px !important;">
+                                        <path fill="none" d="M0 0h24v24H0z"></path><path d="M4 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"></path>
+                                    </svg>
+                                    {{ Auth::user()->name }}
+                                    </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" style="padding: 0.35rem 1rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" style="width: 16px !important;height: 16px !important;"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 20.9l4.95-4.95a7 7 0 1 0-9.9 0L12 20.9zm0 2.828l-6.364-6.364a9 9 0 1 1 12.728 0L12 23.728zM12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 2a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"></path>
+                                    </svg>
+                                تغيير العنوان
+                                </a>
+                            </li>
+                          <li>
+                            <a class="dropdown-item" href="#" style="padding: 0.35rem 1rem;"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" style="width: 16px !important;height: 16px !important;"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 1l9.5 5.5v11L12 23l-9.5-5.5v-11L12 1zm0 2.311L4.5 7.653v8.694l7.5 4.342 7.5-4.342V7.653L12 3.311zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+                                الاعدادات
+                              </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#" style="padding: 0.35rem 1rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" style="width: 16px !important;height: 16px !important;"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z"/></svg>
+                                طلب المساعدة
+                              </a>
+                          </li>
+                          <hr>
+                          <li>
+                            <a class="dropdown-item" href="#" style="padding: 0.35rem 1rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" style="width: 16px !important;height: 16px !important;"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2a9.985 9.985 0 0 1 8 4h-2.71a8 8 0 1 0 .001 12h2.71A9.985 9.985 0 0 1 12 22zm7-6v-3h-8v-2h8V8l5 4-5 4z"/></svg>
+                                تسجيل الخروج
+                              </a>
+                          </li>
+                        </ul>
+                      </div>
+                </div>
+            @else
+                <div class="account col-auto">
+                    <a href="{{ route('login') }}" class="login">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="none" d="M0 0h24v24H0z"></path><path d="M4 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"></path>
+                        </svg>
+                        تسجيل الدخول
+                    </a>
+                </div>
+            @endif
+
+            @if (Auth::check())
+            <div class="cart col-auto">
+                <a href="{{route('basket')}}">
+                    <span class="badge cartcount">
+                        0
+                    </span>
+                    <svg id="cart-fill" xmlns="http://www.w3.org/2000/svg" width="31" height="32" viewBox="0 0 31.999 32" style="width: 26px !important;height: 26px !important;">
+                        <path id="Path_36" data-name="Path 36" d="M0,3.067A1.067,1.067,0,0,1,1.067,2h3.2A1.067,1.067,0,0,1,5.3,2.809l.865,3.458H30.933A1.067,1.067,0,0,1,31.981,7.53L28.781,24.6a1.067,1.067,0,0,1-1.048.87H8.533a1.067,1.067,0,0,1-1.048-.87L4.288,7.562,3.435,4.133H1.067A1.067,1.067,0,0,1,0,3.067Zm10.667,22.4a4.267,4.267,0,1,0,4.267,4.267A4.267,4.267,0,0,0,10.667,25.467Zm14.933,0a4.267,4.267,0,1,0,4.267,4.267A4.267,4.267,0,0,0,25.6,25.467ZM10.667,27.6A2.133,2.133,0,1,0,12.8,29.733,2.133,2.133,0,0,0,10.667,27.6Zm14.933,0a2.133,2.133,0,1,0,2.133,2.133A2.133,2.133,0,0,0,25.6,27.6Z" transform="translate(0 -2)" fill="#149e00" fill-rule="evenodd"/>
+                      </svg>                      
+                </a>
+            </div>
+            @else
             <div class="cart col-auto">
                 <a href="{{route('basket')}}">
                     <!-- <span class="badge">
@@ -22,6 +84,7 @@
                     عربة التسوق
                 </a>
             </div>
+            @endif
 
             <div class="search col-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20">
