@@ -50,6 +50,21 @@ Route::get('/product/{slug}/{product}', [uiController::class, 'item']);
 //home 
 
 
+
+/// packing 
+
+
+Route::get('/packaging', [packingController::class, 'index']);
+
+Route::post('/getCup', [packingController::class, 'getCup']);
+
+Route::post('/insertcup', [packingController::class, 'insertcup']);
+
+
+
+
+//
+
 Route::get('/', [uiController::class, 'homepage']);
 
 //cart 
