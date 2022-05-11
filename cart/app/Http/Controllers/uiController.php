@@ -11,13 +11,6 @@ class uiController extends Controller
 {
 
 
-   public function finishing(){
-return view('finishing');
-   }
-
-public function checker(request $request){
-  return response()->json(['data'=>$request->token]);
-}
 
     public function productpage(){
         return view('front.home');
@@ -25,11 +18,7 @@ public function checker(request $request){
 
 
 
-    public function checkout(){
-      return view('checkout');
-  }
-
-
+   
 
     public function jsonproduct(request $request){
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\cartController;
 use App\Http\Controllers\packingController;
 use App\Http\Controllers\supplierController;
 use App\Http\Controllers\uiController;
+use App\Http\Controllers\completeorderController;
 use Illuminate\Support\Facades\Route;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use \App\Models\category;
@@ -21,14 +22,14 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-Route::get('/checker', [uiController::class, 'finishing'])->name('checker');
+Route::get('/checker', [completeorderController::class, 'finishing'])->name('checker');
 
 
 Route::get('/checker2', function (request $request) {
     return response()->json(['data'=>$request]);
 })->name('checker2');
 
-Route::get('/checkout', [uiController::class, 'checkout']);
+Route::get('/checkout', [completeorderController::class, 'checkout']);
 
 
 
