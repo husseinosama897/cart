@@ -21,6 +21,17 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
+Route::get('/checker', [uiController::class, 'finishing'])->name('checker');
+
+
+Route::get('/checker2', function (request $request) {
+    return response()->json(['data'=>$request]);
+})->name('checker2');
+
+Route::get('/checkout', [uiController::class, 'checkout']);
+
+
+
 Route::get('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
 
 Route::get('/json/suppliers/', [uiController::class, 'supplierjson']);
