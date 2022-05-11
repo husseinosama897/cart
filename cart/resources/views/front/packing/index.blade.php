@@ -96,7 +96,7 @@
         position: relative;
     }
     .page-products .product {
-        margin: 5px;
+        margin: 10px 5px;
         width: 100%;
     }
     @media (max-width: 479px) { 
