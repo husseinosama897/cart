@@ -31,8 +31,6 @@ Route::get('/checker2', function (request $request) {
 
 Route::get('/checkout', [completeorderController::class, 'checkout']);
 
-
-
 Route::get('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
 
 Route::get('/json/suppliers/', [uiController::class, 'supplierjson']);

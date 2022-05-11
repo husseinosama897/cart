@@ -18,7 +18,7 @@ class cartController extends Controller
 public function cartpage(){
     
     if(Auth::id()){
-        $data = cart::where('user_id', Auth::id())->with('product')->get();
+        $data = auth()->user()->cart()->with('product');
         }else{
             $session_id = Session::get('session_id');
             if(!$session_id){
