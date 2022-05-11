@@ -8,7 +8,7 @@ use App\Models\product;
 class packingController extends Controller
 {
     public function index(){
-        return view('packing.index');
+        return view('front.packing.index');
     }
 
     public function getCup(request $request){

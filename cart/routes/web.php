@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\cartController;
+use App\Http\Controllers\packingController;
 use App\Http\Controllers\supplierController;
 use App\Http\Controllers\uiController;
 use Illuminate\Support\Facades\Route;

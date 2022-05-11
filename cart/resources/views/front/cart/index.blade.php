@@ -9,7 +9,6 @@
             </div>
         </div>
     </div>
-    
     <view-cart :products="{{ $data }}"></view-cart>
 </div>
 @endsection
