@@ -10,6 +10,11 @@ class packingController extends Controller
     public function index(){
         return view('front.packing.index');
     }
+    public function newpackaging(){
+        return view('front.packing.newpackaging');
+    }
+
+
 
     public function getCup(request $request){
 
