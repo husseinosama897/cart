@@ -51,45 +51,58 @@
                         </div>
                         <!-- End Input -->
                         <div class="w-100"></div>
-                        <div class="col">
+                        <div class="col-md-6">
                             <!-- Input -->
                             <div class="js-form-message mb-4">
                                 <label class="form-label text-right">
-                                    العنوان بالتفصيل
+                                    المدينة
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="text" name="details_address" class="form-control" name="streetAddress" placeholder="اكتب هنا" required="" data-msg="Please enter a valid address." data-error-class="u-has-error" data-success-class="u-has-success">
                             </div>
                             <!-- End Input -->
                         </div>
-
-                        <div class="w-100"></div>
                         <div class="col-md-6">
                             <!-- Input -->
                             <div class="js-form-message mb-4">
                                 <label class="form-label text-right">
-                                    رقم الهاتف
+                                    المنطقة
+                                    <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" name="phone" class="form-control" placeholder="01000000000" aria-label="+1 (062) 109-9222" data-msg="من فضلك اكتب رقم هاتفك" data-error-class="u-has-error" data-success-class="u-has-success" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <!-- Input -->
-                            <div class="js-form-message mb-4">
-                                <label class="form-label text-right">
-                                    رقم الهاتف البديل
-                                </label>
-                                <input type="text" name="altphone" class="form-control" placeholder="01000000000" aria-label="+1 (062) 109-9222" data-msg="من فضلك اكتب رقم هاتفك" data-error-class="u-has-error" data-success-class="u-has-success">
+                                <input type="text" name="details_address" class="form-control" name="streetAddress" placeholder="اكتب هنا" required="" data-msg="Please enter a valid address." data-error-class="u-has-error" data-success-class="u-has-success">
                             </div>
                             <!-- End Input -->
                         </div>
+                        <div class="col-md-6">
+                            <!-- Input -->
+                            <div class="js-form-message mb-4">
+                                <label class="form-label text-right">
+                                    الشارع
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" name="details_address" class="form-control" name="streetAddress" placeholder="اكتب هنا" required="" data-msg="Please enter a valid address." data-error-class="u-has-error" data-success-class="u-has-success">
+                            </div>
+                            <!-- End Input -->
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Input -->
+                            <div class="js-form-message mb-4">
+                                <label class="form-label text-right">
+                                    اسم المطعم
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" name="details_address" class="form-control" name="streetAddress" placeholder="اكتب هنا" required="" data-msg="Please enter a valid address." data-error-class="u-has-error" data-success-class="u-has-success">
+                            </div>
+                            <!-- End Input -->
+                        </div>
+                        <div class="w-100"></div>
                         <div class="w-100"></div>
                     </div>
                     <!-- End Billing Form -->
                     <!-- Input -->
                     <div class="js-form-message mb-4">
                         <label class="form-label text-right">
-                            الملاحظات
+                            ملاحظات اضافية
                         </label>
 
                         <div class="input-group">
@@ -100,12 +113,12 @@
                 </div>
             </div>
             <div class="col-lg-5 order-lg-2 mb-4 mb-lg-0">
-                <div class="pr-lg-3 ">
+                <div class="ps-lg-3">
                     <div class="bg-gray-1 rounded-lg">
                         <!-- Order Summary -->
                         <div class="p-4 mb-4 checkout-table">
                             <!-- Title -->
-                            <div class="border-bottom border-color-1 mb-5">
+                            <div class="border-bottom border-color-1 mb-4">
                                 <h3 class="section-title mb-0 pb-2 font-size-25">طلباتك</h3>
                             </div>
                             <!-- End Title -->
@@ -118,20 +131,27 @@
                                         <th class="product-total text-left">اجمالي السعر</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="border-0">
+                                    <tr class="cart_item">
+                                        <td class="text-right">
+                                            تدعم الخواص الصحيه والرياضيه 
+                                            <strong class="product-quantity"> × 1</strong>
+                                        </td>
+                                        <td class="text-left"> 575 جنية</td>
+                                    </tr>
                                 </tbody>
-                                <tfoot>
+                                <tfoot class="border-0">
                                     <tr>
                                         <th class="text-right">إجمالي سعر المنتجات</th>
-                                        <td class="text-left"><strong class="products-price"></strong> جنية </td>
+                                        <td class="text-left"><strong class="products-price"></strong> 500 جنية</td>
                                     </tr>
                                     <tr>
                                         <th class="text-right">سعر الشحن</th>
-                                        <td class="text-left"><strong class="shipping-cost">0</strong><span> جنية </span></td>
+                                        <td class="text-left"><strong class="shipping-cost">50</strong><span> جنية</span></td>
                                     </tr>
                                     <tr>
                                         <th class="text-right">إجمالي السعر</th>
-                                        <td class="text-left"><strong class="total-price"></strong>  جنية  </td>
+                                        <td class="text-left"><strong class="total-price"></strong>550 جنية</td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -157,4 +177,31 @@
 @endsection
 
 @section('style')
+<style>
+    .checkout-table .table th, .checkout-table .table td {
+    padding: 0.75rem 0;
+    border-color: #dddddd;
+    }
+    .text-right {
+        text-align: right !important;
+    }
+    .btn-primary-dark-w {
+        color: #333e48;
+        background-color: #fed700;
+        border-color: #fed700;
+    }
+    .font-size-20 {
+    font-size: 1.25038rem;
+    }
+    .rounded-lg {
+        border-radius: 0.4375rem !important;
+    }
+    .bg-gray-1 {
+        background-color: #f5f5f5 !important;
+    }
+    .btn-block {
+        display: block;
+        width: 100%;
+    }
+</style>
 @endsection
