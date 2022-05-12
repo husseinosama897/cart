@@ -11,7 +11,7 @@ class packingController extends Controller
         return view('front.packing.index');
     }
     public function newpackaging(){
-        return view('front.packing.newpackaging');
+        return view('front.packing.create');
     }
 
 

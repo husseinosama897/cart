@@ -10,7 +10,7 @@ use App\Models\cart;
 class completeorderController extends Controller
 {
     public function checkout(){
-        return view('checkout');
+        return view('front.checkout.index');
     }
 
     public function finishing(){
@@ -22,7 +22,7 @@ class completeorderController extends Controller
         }
 
 
-        public function saveorder(request $request)
+public function saveorder(request $request)
 {
   $order = order::create([
  'user_id'=>auth()->user()->id,

@@ -71,7 +71,6 @@ Route::post('/getCup', [packingController::class, 'getCup']);
 
 Route::post('/insertcup', [packingController::class, 'insertcup']);
 
-
 Route::get('/packaging_order', [packingController::class, 'newpackaging']);
 
 
