@@ -6,15 +6,16 @@ const findMyState = () => {
         const latitude = postion.coords.latitude;
         const longitude = postion.coords.longitude;
 
-        // const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=ar`
+        const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=ar`
         
-        const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=21.543333&longitude=39.172779&localityLanguage=ar`
+        // تجربه منطقه بداخل السعوديه
+        // const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=25.994478&longitude=45.318161&localityLanguage=ar`
 
         fetch(geoApiUrl)
         .then(res => res.json())
         .then(data => {
            console.log(data);
-           state.textContent = data.countryName + ' - ' + data.locality + ' - ' + data.localityInfo.administrative[1].name;
+           state.textContent = data.localityInfo.administrative[1].name + ' - ' + data.locality + ' - ' + data.countryName;
            document.querySelector('.get-state').classList.add("d-none");
         })
     }
