@@ -530,4 +530,6 @@ header .mobile {
  }
 /* End  Responsive Header */
 
-
+.toast-title{
+    font-size: 12px !important;
+}

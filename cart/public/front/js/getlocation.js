@@ -15,7 +15,8 @@ const findMyState = () => {
         })
     }
     const error = () => {
-        console.log(error)
+        toastr.options.progressBar = true;
+        toastr.error('', 'لا يمكننا تحديد مكانك! برجاء تمكين الموقع لنا في المتصفح لديك')
     }
 
     navigator.geolocation.getCurrentPosition(success, error);
