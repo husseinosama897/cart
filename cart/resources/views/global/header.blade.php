@@ -102,7 +102,11 @@
                 </svg>
                 <div class="details">
                     <span class=""> التوصيل الي  </span>
-                    <span class="place d-block get-state" style="text-decoration: underline;cursor: pointer;">استخدم موقعك</span>
+                    <div style="font-weight: bold;flex: 1 1 0%;min-width: 0px;display: flex;max-width: 200px;-webkit-box-align: center;align-items: center;">
+                        <span class="place d-block get-state" style="text-decoration: underline;cursor: pointer;">استخدم موقعك</span>
+                        <span class="hstate" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline;">
+                        </span>
+                </div>
                 </div>
             </div>
             <div class="lang col-auto">
