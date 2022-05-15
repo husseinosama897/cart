@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class completeorderController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+
     public function checkout(){
       $data = auth()->user()->cart()->with('product')->get();
         // $carts = cart::where('user_id', Auth::id())->get();
@@ -32,11 +37,11 @@ class completeorderController extends Controller
 public function saveorder(request $request)
 {
   $order = order::create([
- 'user_id'=>1,
+ 'user_id'=>auth()->user()->id,
   'billing_name'=>$request->billing_name,
 'billing_email'=>$request->billing_email,
    'billing_number'=>$request->billing_number,
-    'type'=>$request->type,
+    'type'=>0,
     'billing_discount_code'=>getNumbers()->get('code'),
     'billing_subtotal'=>getNumbers()->get('newSubtotal'),
     'billing_total'=>getNumbers()->get('newtotal'),
