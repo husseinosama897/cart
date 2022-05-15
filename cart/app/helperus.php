@@ -22,7 +22,17 @@ $total_amount = 0;
 $total = 0;
 $value =$discount;
 foreach($userCart as $item){
-   $total_amount = $total_amount + $item->total;
+
+  if($item->product->price == $item->price){
+
+    $total_amount = $total_amount + $item->total;
+
+
+
+  }else{
+    $total_amount = $total_amount + $item->product->price * $item->quantity;
+  }
+  
 
 }
 
@@ -38,7 +48,7 @@ if($total_amount - $discount > 0 ){
 }
 
 
-  $newTax = $newSubtotal * $tax / 100 ;
+  $newTax = $newSubtotal * $tax ;
 
   $newtotal = ($newSubtotal + $newTax );
 
