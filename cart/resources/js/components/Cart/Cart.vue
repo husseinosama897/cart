@@ -44,6 +44,15 @@
                </aside>
                <!-- col.// -->
                <aside class="col-lg-4">
+                  <div class="card mb-3">
+                      <div class="card-body"> 
+                        <label class="form-label">هل لديك كوبون ؟</label>
+                        <div class="input-group">
+                           <input type="text" class="form-control" placeholder="رمز الكوبون" v-model="CouponCode">
+                              <button class="btn btn-primary" @click="setCoupon">تطبيق</button>
+                        </div> 
+                     </div> <!-- card-body.// --> 
+                  </div>
                   <div class="card cart2">
                      <div class="card-body">
                         <h5 class="text-center">ملخص الطلبية</h5>
@@ -56,7 +65,7 @@
                            <dd class="text-start">{{ totalPrice }} ر.س</dd>
                         </dl>
                         <hr>
-                        <a href="/checkout" class="btn btn-light btn-block w-100" style="border-radius: 0.3125rem;color:#fff;background: rgb(56, 102, 223);text-align: center;max-width: 100%;text-align: center;">
+                        <a href="/checkout" class="btn btn-primary btn-block w-100" style="border-radius: 0.3125rem;color:#fff;text-align: center;max-width: 100%;text-align: center;">
                         إتمام الشراء
                         </a>
                      </div>
@@ -80,6 +89,7 @@ export default {
           test: {},
           counter: 0,
           totalPrice: 0,
+          CouponCode,
        }
     },
     mounted() {
@@ -98,7 +108,6 @@ export default {
       updateCart: function ($id, $qty) { 
          this.test = $id + $qty;
          axios.post('/updatequantityjson/'+id, {
-             
                'quantity': $qty,
          })
          .catch();
@@ -109,6 +118,14 @@ export default {
          .then((response) => {
              window.location.reload();
          });
+      },
+      setCoupon: function () { 
+         axios.post('/couponsstore/', {
+               'code': this.CouponCode,
+         }).then((response) => {
+             console.log(response);
+         })
+         .catch();
       }
    },
    computed: {

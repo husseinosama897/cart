@@ -5448,6 +5448,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Cart',
   props: ['products'],
@@ -5456,7 +5465,8 @@ __webpack_require__.r(__webpack_exports__);
       carts: [],
       test: {},
       counter: 0,
-      totalPrice: 0
+      totalPrice: 0,
+      CouponCode: CouponCode
     };
   },
   mounted: function mounted() {
@@ -5482,6 +5492,13 @@ __webpack_require__.r(__webpack_exports__);
       axios["delete"]('/cart/delete/' + $id).then(function (response) {
         window.location.reload();
       });
+    },
+    setCoupon: function setCoupon() {
+      axios.post('/couponsstore/', {
+        'code': this.CouponCode
+      }).then(function (response) {
+        console.log(response);
+      })["catch"]();
     }
   },
   computed: {
@@ -29158,6 +29175,47 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("aside", { staticClass: "col-lg-4" }, [
+            _c("div", { staticClass: "card mb-3" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("label", { staticClass: "form-label" }, [
+                  _vm._v("هل لديك كوبون ؟"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.CouponCode,
+                        expression: "CouponCode",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "رمز الكوبون" },
+                    domProps: { value: _vm.CouponCode },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.CouponCode = $event.target.value
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: { click: _vm.setCoupon },
+                    },
+                    [_vm._v("تطبيق")]
+                  ),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "card cart2" }, [
               _c("div", { staticClass: "card-body" }, [
                 _c("h5", { staticClass: "text-center" }, [
@@ -29189,11 +29247,10 @@ var render = function () {
                 _c(
                   "a",
                   {
-                    staticClass: "btn btn-light btn-block w-100",
+                    staticClass: "btn btn-primary btn-block w-100",
                     staticStyle: {
                       "border-radius": "0.3125rem",
                       color: "#fff",
-                      background: "rgb(56, 102, 223)",
                       "text-align": "center",
                       "max-width": "100%",
                     },

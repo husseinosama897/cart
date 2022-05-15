@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\cart;
+use App\Models\coupon;
 use Session;
 use App\Models\product;
 use App\jobs\UpdateCoupon;
@@ -81,7 +82,7 @@ public function delete(cart $cart){
 }
 
     
-    public function couponsstore(Request $request){
+public function couponsstore(Request $request){
     
         $coupon = coupon::where('code', $request->code)->first();
         if (!$coupon) {
@@ -90,17 +91,13 @@ public function delete(cart $cart){
      else{
     dispatch_now(new UpdateCoupon($coupon));
 }
-  $code = session()->get('coupon')['name'] ?? null; 
+$code = session()->get('coupon')['name'] ?? null; 
 $discount= session()->get('coupon')['discount'] ?? null; 
 $value = session()->get('coupon')['value'] ?? null;
 $type = session()->get('coupon')['type'] ?? null;
 $percent_off = session()->get('coupon')['percent_off'] ?? null;
-
-
-        return response()->json(['code'=>$code,'discount'=>$discount,'type'=>$type,'value'=>$value,'percent_off'=>$percent_off]);
-    
-     
-    }
+return response()->json(['code'=>$code,'discount'=>$discount,'type'=>$type,'value'=>$value,'percent_off'=>$percent_off]);
+}
 
 public function store(request $request,product $product){
 
