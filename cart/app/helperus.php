@@ -23,14 +23,14 @@ $total = 0;
 $value =$discount;
 foreach($userCart as $item){
 
-  if($item->product()->price == $item->price){
+  if($item->product->price == $item->price){
 
     $total_amount = $total_amount + $item->total;
 
 
 
   }else{
-    $total_amount = $total_amount + $item->product()->price * $item->quantity;
+    $total_amount = $total_amount + $item->product->price * $item->quantity;
   }
   
 
