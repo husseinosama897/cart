@@ -18,7 +18,7 @@ class cartController extends Controller
 public function cartpage(){
     if(getNumbers()->get('newtotal')  > 0){
         if(Auth::id()){
-            $data = auth()->user()->cart()->with('product');
+            $data = auth()->user()->cart()->with('product')->get();
             }else{
                 $session_id = Session::get('session_id');
                 if(!$session_id){
@@ -28,8 +28,10 @@ public function cartpage(){
           $data = cart::where('session_id', $session_id)->with('product')->get();
     
         }
+
+        
       
-        return view('front.cart.index',)->with(['data'=>$data]);
+        return view('front.cart.index',compact('data',$data));
     
     }else{
         return redirect()->route('welcome');
