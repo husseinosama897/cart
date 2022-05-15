@@ -133,7 +133,7 @@
             sms: true
           },
           redirect: "{{route('checker')}}",
-          post: "{{route('checker2')}}",
+          post: null,
         }
      }
     });

@@ -16,22 +16,27 @@ class cartController extends Controller
 
 
 public function cartpage(){
+    if(getNumbers()->get('newtotal')  > 0){
+        if(Auth::id()){
+            $data = auth()->user()->cart()->with('product');
+            }else{
+                $session_id = Session::get('session_id');
+                if(!$session_id){
+                    $session_id = Str::random(40);
+                    Session::put('session_id',$session_id);
+                }
+          $data = cart::where('session_id', $session_id)->with('product')->get();
     
-    if(Auth::id()){
-        $data = auth()->user()->cart()->with('product');
-        }else{
-            $session_id = Session::get('session_id');
-            if(!$session_id){
-                $session_id = Str::random(40);
-                Session::put('session_id',$session_id);
-            }
-      $data = cart::where('session_id', $session_id)->with('product')->get();
-
+        }
+      
+      
+    
+        return view('front.cart.index',)->with(['data'=>$data]);
+    
+    }else{
+        return redirect()->route('welcome');
     }
-
-
-    return view('front.cart.index', compact('data', $data));
-
+  
 }
 
 

@@ -1,6 +1,6 @@
 <?php
 use App\setting;
-use DB;
+
 function getNumbers()
 {
 

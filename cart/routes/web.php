@@ -78,7 +78,7 @@ Route::get('/packaging_order', [packingController::class, 'newpackaging']);
 
 //
 
-Route::get('/', [uiController::class, 'homepage']);
+Route::get('/', [uiController::class, 'homepage'])->name('welcome');
 
 //cart 
 
