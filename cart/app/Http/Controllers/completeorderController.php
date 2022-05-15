@@ -13,7 +13,7 @@ class completeorderController extends Controller
       $data = auth()->user()->cart()->with('product');
 
         return view('front.checkout.index')->with(['data'=>$data,
-        
+
         'total'=>getNumbers()->get('newtotal'),
         'tax'=>getNumbers()->get('newTax'),
       ]);
@@ -48,7 +48,6 @@ public function saveorder(request $request)
 
 public function completeorder(order $order){
   
-
   $order->update(['confirmed'=>1]);
 
 $cart =  auth()->user()->cart()->with('product');
