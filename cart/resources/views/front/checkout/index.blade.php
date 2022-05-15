@@ -17,7 +17,7 @@
         </div>
         @endif
     </div>
-    <form class="js-validate" method="POST" action="">
+    <form class="js-validate" method="POST" action="/saveorder">
         @csrf
         <div class="row">
             <div class="col-lg-7 order-lg-1">

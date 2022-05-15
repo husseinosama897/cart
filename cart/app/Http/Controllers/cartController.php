@@ -29,8 +29,6 @@ public function cartpage(){
     
         }
       
-      
-    
         return view('front.cart.index',)->with(['data'=>$data]);
     
     }else{
@@ -51,8 +49,7 @@ public function cartpage(){
             if(!$session_id){
                 $session_id = Str::random(40);
                 Session::put('session_id',$session_id);
-              
-          
+            
         }
         $count = cart::where('session_id',$session_id)->count();
         
@@ -91,7 +88,6 @@ public function delete(cart $cart){
      else{
     dispatch_now(new UpdateCoupon($coupon));
 }
-
   $code = session()->get('coupon')['name'] ?? null; 
 $discount= session()->get('coupon')['discount'] ?? null; 
 $value = session()->get('coupon')['value'] ?? null;
@@ -130,10 +126,7 @@ if($count > 30){
 if($cart){
     $cart->quantity +=1;
     $cart->total = $cart->price  *  $cart->quantity ;
-
     $cart->save();
-
-
    $this->updatedis();
 }
 
@@ -141,8 +134,8 @@ if(!$cart){
 $cart = new cart;
 $cart->supplier_id = $product->supplier_id;
 $cart->product_id = $product->id ;
-$cart->price = $request->price ;
-$cart->total = $request->price * $request->quntity;
+$cart->price = $product->price ;
+$cart->total = $product->price * 1;
 $cart->quantity=1;
 if(auth::id()){
     $cart->user_id = auth::id();

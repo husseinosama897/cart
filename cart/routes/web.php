@@ -31,6 +31,9 @@ Route::get('/checker2', function (request $request) {
 
 Route::get('/checkout', [completeorderController::class, 'checkout']);
 
+Route::post('/saveorder', [completeorderController::class, 'saveorder']);
+
+
 Route::get('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
 
 Route::get('/json/suppliers/', [uiController::class, 'supplierjson']);
@@ -95,8 +98,6 @@ Route::post('/couponsstore', [cartController::class, 'couponsstore']);
 Route::post('/storeincart/{product}', [cartController::class, 'store']);
 
 Route::post('/updatequantityjson/{cart}', [cartController::class, 'updatequantityjson']);
-
-
 
 
 

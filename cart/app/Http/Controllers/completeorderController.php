@@ -25,7 +25,7 @@ class completeorderController extends Controller
 public function saveorder(request $request)
 {
   $order = order::create([
- 'user_id'=>auth()->user()->id,
+ 'user_id'=>1,
   'billing_name'=>$request->billing_name,
 'billing_email'=>$request->billing_email,
    'billing_number'=>$request->billing_number,
@@ -35,6 +35,14 @@ public function saveorder(request $request)
     'billing_total'=>getNumbers()->get('newtotal'),
     'billing_tax'=>getNumbers()->get('newTax'),
   ]);
+  return view('completeorder')->with('order',$order);
+}
+
+
+public function completeorder(order $order){
+  
+
+  $order->update(['confirmed'=>1]);
 
 $cart =  auth()->user()->cart()->with('product');
 $orderitemarray = [];
