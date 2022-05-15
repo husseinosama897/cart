@@ -7,13 +7,14 @@ use App\Models\order;
 use App\Models\orderitem;
 use App\Models\seller_order;
 use App\Models\cart;
+use Illuminate\Support\Facades\Auth;
+
 class completeorderController extends Controller
 {
     public function checkout(){
-      $data = auth()->user()->cart()->with('product');
-
+      $data = auth()->user()->cart()->with('product')->get();
+        // $carts = cart::where('user_id', Auth::id())->get();
         return view('front.checkout.index')->with(['data'=>$data,
-
         'total'=>getNumbers()->get('newtotal'),
         'tax'=>getNumbers()->get('newTax'),
       ]);

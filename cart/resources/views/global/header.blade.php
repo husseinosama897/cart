@@ -109,9 +109,6 @@
                 </div>
                 </div>
             </div>
-            <div class="lang col-auto">
-                <span>English</span>
-            </div>
             <div class="pna col-auto">
                 <button>
                     طلب منتجات غير متوفرة

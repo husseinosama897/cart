@@ -30,14 +30,23 @@
 
                     <!-- Billing Form -->
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-12">
                             <!-- Input -->
                             <div class="js-form-message mb-4">
                                 <label class="form-label text-right">
                                     الاسم بالكامل
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" {{ old('firstName') }} class="form-control" name="name" placeholder="محمد" aria-label="محمد" required="" data-msg="من فضلك اكتب الاسم الاول" data-error-class="u-has-error" data-success-class="u-has-success" autocomplete="off">
+                                <input type="text" {{ old('firstName') }} class="form-control" name="billing_name" placeholder="محمد" aria-label="محمد" required="" data-msg="من فضلك اكتب الاسم الاول" data-error-class="u-has-error" data-success-class="u-has-success" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Input -->
+                            <div class="js-form-message mb-4">
+                                <label class="form-label text-right">
+                                   البريد الالكتروني
+                                </label>
+                                <input type="email" name="billing_email" class="form-control" placeholder="example@gmail.com" aria-label="+1 (062) 109-9222" data-msg="من فضلك اكتب رقم هاتفك" data-error-class="u-has-error" data-success-class="u-has-success" required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -46,7 +55,7 @@
                                 <label class="form-label text-right">
                                     رقم الهاتف
                                 </label>
-                                <input type="text" name="phone" class="form-control" placeholder="01000000000" aria-label="+1 (062) 109-9222" data-msg="من فضلك اكتب رقم هاتفك" data-error-class="u-has-error" data-success-class="u-has-success" required>
+                                <input type="text" name="billing_number" class="form-control" placeholder="01000000000" aria-label="+1 (062) 109-9222" data-msg="من فضلك اكتب رقم هاتفك" data-error-class="u-has-error" data-success-class="u-has-success" required>
                             </div>
                         </div>
                         <!-- End Input -->
@@ -58,7 +67,7 @@
                                     المدينة
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" name="details_address" class="form-control" name="streetAddress" placeholder="اكتب هنا" required="" data-msg="Please enter a valid address." data-error-class="u-has-error" data-success-class="u-has-success">
+                                <input type="text" name="details_address" class="form-control" placeholder="اكتب هنا" required="" data-msg="Please enter a valid address." data-error-class="u-has-error" data-success-class="u-has-success">
                             </div>
                             <!-- End Input -->
                         </div>
@@ -132,26 +141,31 @@
                                     </tr>
                                 </thead>
                                 <tbody class="border-0">
+                                    @php
+                                        $totalPriceProducts = 0;
+                                    @endphp
+                                    @foreach ($data as $items)
                                     <tr class="cart_item">
-                                        <td class="text-right">
-                                            تدعم الخواص الصحيه والرياضيه 
-                                            <strong class="product-quantity"> × 1</strong>
-                                        </td>
-                                        <td class="text-left"> 575 جنية</td>
+                                        <td class="text-right"> {{ $items->product->name }} <strong class="product-quantity"> × {{ $items->quantity }}</strong></td>
+                                        <td class="text-left"> {{ $items->product->price *  $items->quantity}} ر.س</td>
                                     </tr>
+                                    @php
+                                        $totalPriceProducts += $items->product->price *  $items->quantity;
+                                    @endphp
+                                    @endforeach
                                 </tbody>
                                 <tfoot class="border-0">
                                     <tr>
                                         <th class="text-right">إجمالي سعر المنتجات</th>
-                                        <td class="text-left"><strong class="products-price"></strong> 500 جنية</td>
+                                        <td class="text-left"><strong class="products-price"></strong> {{ $totalPriceProducts }} ر.س</td>
                                     </tr>
                                     <tr>
-                                        <th class="text-right">سعر الشحن</th>
-                                        <td class="text-left"><strong class="shipping-cost">50</strong><span> جنية</span></td>
+                                        <th class="text-right">القيمه المضافه</th>
+                                        <td class="text-left"><strong class="shipping-cost">{{ $tax }}</strong><span> ر.س</span></td>
                                     </tr>
                                     <tr>
                                         <th class="text-right">إجمالي السعر</th>
-                                        <td class="text-left"><strong class="total-price"></strong>550 جنية</td>
+                                        <td class="text-left"><strong class="total-price"></strong>{{ $total }} ر.س</td>
                                     </tr>
                                 </tfoot>
                             </table>
