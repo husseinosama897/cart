@@ -166,18 +166,13 @@ return response()->json(['msg' => 'تم اضافه المنتج الي عربة 
 
 public function updatequantityjson(request $request, cart $cart){
 
-    // if($cart){
+    if($cart){
 
-    //   $cart->total += $request->quantity  *  $cart->product->price;
-    //   $cart->qty = $request->quantity;
-    //   $cart->save();
-    // }
+      $cart->total += $request->quantity  *  $cart->product->price;
+      $cart->qty = $request->quantity;
+      $cart->save();
+     }
 
-    $cart = cart::where('id', $request->cart_id)->with('product')->first();
-    $cart->price = $cart->product->price;
-    $cart->quantity = $request->quantity;
-    $cart->total = $cart->quantity * $cart->price;
-    $cart->update();
     $this->updatedis();
 
 }

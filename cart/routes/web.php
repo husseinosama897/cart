@@ -94,7 +94,7 @@ Route::post('/couponsstore', [cartController::class, 'couponsstore']);
 
 Route::post('/storeincart/{product}', [cartController::class, 'store']);
 
-Route::post('/updatequantityjson', [cartController::class, 'updatequantityjson']);
+Route::post('/updatequantityjson/{cart}', [cartController::class, 'updatequantityjson']);
 
 
 
