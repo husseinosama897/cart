@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\cart;
 use Session;
 use App\Models\product;
-use App\UpdateCoupon;
+use App\jobs\UpdateCoupon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class cartController extends Controller

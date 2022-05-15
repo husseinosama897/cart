@@ -16,7 +16,7 @@ $order = $order->where('billing_name',$request->billing_name);
 
 $order = $order->where('billing_number',$request->billing_number);
 
-
+$order = $order->
 
     }
 }
