@@ -10,7 +10,13 @@ use App\Models\cart;
 class completeorderController extends Controller
 {
     public function checkout(){
-        return view('front.checkout.index');
+      $data = auth()->user()->cart()->with('product');
+
+        return view('front.checkout.index')->with(['data'=>$data,
+        
+        'total'=>getNumbers()->get('newtotal'),
+        'tax'=>getNumbers()->get('newTax'),
+      ]);
     }
 
     public function finishing(){
@@ -35,6 +41,7 @@ public function saveorder(request $request)
     'billing_total'=>getNumbers()->get('newtotal'),
     'billing_tax'=>getNumbers()->get('newTax'),
   ]);
+
   return view('completeorder')->with('order',$order);
 }
 
