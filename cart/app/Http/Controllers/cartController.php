@@ -39,11 +39,10 @@ public function cartpage(){
         $percent_off = session()->get('coupon')['percent_off'] ?? null;
 
         return view('front.cart.index')->with(['data'=>$data,
-    
-      'code'=>  $code ,
+      'code'=>  $code,
       'discount'=>  $discount,
       'value'=>     $value,
-      'type'=>  $type ,
+      'type'=>  $type,
       'percent_off'=>  $percent_off
     ]);
     
@@ -174,7 +173,7 @@ public function updatequantityjson(request $request, cart $cart){
     if($cart){
 
       $cart->total += $request->quantity  *  $cart->product->price;
-      $cart->qty = $request->quantity;
+      $cart->quantity = $request->quantity;
       $cart->save();
      }
 

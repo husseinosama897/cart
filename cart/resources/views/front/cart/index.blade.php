@@ -9,7 +9,8 @@
             </div>
         </div>
     </div>
-    <view-cart :products="{{ $data }}" ></view-cart>
+    <view-cart :products="{{ $data }}" :code="{{ json_encode($code) }}" :discount="{{ $discount }}" :value="{{ $value }}" :type="{{ $type }}" percentoff="{{ $percent_off }}" >
+    </view-cart>
 </div>
 @endsection
 

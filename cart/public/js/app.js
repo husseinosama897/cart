@@ -5457,22 +5457,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Cart',
-  props: ['products'],
+  props: ['products', 'code', 'discount', 'value', 'type', 'percentoff'],
   data: function data() {
     return {
       carts: [],
       test: {},
       counter: 0,
       totalPrice: 0,
-      CouponCode: ''
+      CouponCode: '',
+      Vdiscount: 0,
+      totalfinalPrice: 0
     };
   },
   mounted: function mounted() {
     this.carts = this.products;
     this.loadCounter();
     this.totalPrice = this.total;
+    this.CouponCode = this.code;
+    this.Vdiscount = this.discount;
   },
   methods: {
     loadCounter: function loadCounter() {
@@ -5483,8 +5497,7 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"]();
     },
     updateCart: function updateCart($id, $qty) {
-      this.test = $id + $qty;
-      axios.post('/updatequantityjson/' + id, {
+      axios.post('/updatequantityjson/' + $id, {
         'quantity': $qty
       })["catch"]();
     },
@@ -5509,6 +5522,17 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.totalPrice = totalPrice;
       return totalPrice;
+    },
+    finalPrice: function finalPrice() {
+      var totalfinalPrice = 0;
+
+      if (this.discount > 0) {
+        this.carts.forEach(function (item, i) {
+          totalfinalPrice += item.product.price * item.quantity;
+        });
+        this.totalfinalPrice = totalfinalPrice - this.discount;
+        return totalfinalPrice;
+      }
     }
   }
 });
@@ -29204,14 +29228,27 @@ var render = function () {
                     },
                   }),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      on: { click: _vm.setCoupon },
-                    },
-                    [_vm._v("تطبيق")]
-                  ),
+                  this.code == ""
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          on: { click: _vm.setCoupon },
+                        },
+                        [_vm._v("تطبيق")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.code !== ""
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          on: { click: _vm.setCoupon },
+                        },
+                        [_vm._v("إزالة")]
+                      )
+                    : _vm._e(),
                 ]),
               ]),
             ]),
@@ -29239,6 +29276,28 @@ var render = function () {
                   _vm._v(" "),
                   _c("dd", { staticClass: "text-start" }, [
                     _vm._v(_vm._s(_vm.totalPrice) + " ر.س"),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _vm.Vdiscount > 0
+                  ? _c("dl", { staticClass: "dlist-align" }, [
+                      _c("dt", { staticClass: "text-right" }, [
+                        _vm._v("كوبون :"),
+                      ]),
+                      _vm._v(" "),
+                      _c("dd", { staticClass: "text-start" }, [
+                        _vm._v("- " + _vm._s(_vm.Vdiscount) + " ر.س"),
+                      ]),
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("dl", { staticClass: "dlist-align" }, [
+                  _c("dt", { staticClass: "text-right" }, [
+                    _vm._v("السعر النهائي:"),
+                  ]),
+                  _vm._v(" "),
+                  _c("dd", { staticClass: "text-start" }, [
+                    _vm._v(_vm._s(_vm.totalfinalPrice) + " ر.س"),
                   ]),
                 ]),
                 _vm._v(" "),

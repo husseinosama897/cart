@@ -49,7 +49,9 @@
                         <label class="form-label">هل لديك كوبون ؟</label>
                         <div class="input-group">
                            <input type="text" class="form-control" placeholder="رمز الكوبون" v-model="CouponCode">
-                              <button class="btn btn-primary" @click="setCoupon">تطبيق</button>
+                              <button class="btn btn-primary" @click="setCoupon" v-if="this.code == ''">تطبيق</button>
+                              <button class="btn btn-primary" @click="setCoupon" v-if="this.code !== ''">إزالة</button>
+
                         </div> 
                      </div> <!-- card-body.// --> 
                   </div>
@@ -63,6 +65,14 @@
                         <dl class="dlist-align">
                            <dt class="text-right">اجمالي السعر:</dt>
                            <dd class="text-start">{{ totalPrice }} ر.س</dd>
+                        </dl>
+                        <dl class="dlist-align" v-if="Vdiscount > 0">
+                           <dt class="text-right">كوبون :</dt>
+                           <dd class="text-start">- {{ Vdiscount }} ر.س</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                           <dt class="text-right">السعر النهائي:</dt>
+                           <dd class="text-start">{{ totalfinalPrice }} ر.س</dd>
                         </dl>
                         <hr>
                         <a href="/checkout" class="btn btn-primary btn-block w-100" style="border-radius: 0.3125rem;color:#fff;text-align: center;max-width: 100%;text-align: center;">
@@ -82,7 +92,7 @@
 <script>
 export default {
    name: 'Cart',
-   props: ['products'],
+   props: ['products', 'code', 'discount', 'value', 'type', 'percentoff'],
     data() {
        return{
           carts: [],
@@ -90,12 +100,17 @@ export default {
           counter: 0,
           totalPrice: 0,
           CouponCode: '',
+          Vdiscount: 0,
+          totalfinalPrice: 0,
        }
     },
     mounted() {
         this.carts = this.products;
         this.loadCounter();
         this.totalPrice = this.total;
+        this.CouponCode = this.code;
+        this.Vdiscount = this.discount;
+
     },
     methods: {
       loadCounter: function() {
@@ -106,12 +121,10 @@ export default {
          .catch();
       },
       updateCart: function ($id, $qty) { 
-         this.test = $id + $qty;
-         axios.post('/updatequantityjson/'+id, {
+         axios.post('/updatequantityjson/'+ $id, {
                'quantity': $qty,
          })
          .catch();
-
       },
       deleteCart: function($id) {
          axios.delete('/cart/delete/' + $id,)
@@ -136,6 +149,16 @@ export default {
          });
         this.totalPrice = totalPrice;
         return totalPrice;
+      },
+      finalPrice(){
+         var totalfinalPrice = 0;
+         if(this.discount > 0){
+            this.carts.forEach((item, i,) => {
+                  totalfinalPrice += item.product.price * item.quantity;
+            });
+         this.totalfinalPrice = totalfinalPrice - this.discount;
+         return totalfinalPrice;
+         }
       }
    },
 
