@@ -31,8 +31,20 @@ public function cartpage(){
         }
 
         
-      
-        return view('front.cart.index',compact('data',$data));
+        $code = session()->get('coupon')['name'] ?? null; 
+        $discount= session()->get('coupon')['discount'] ?? null; 
+        $value = session()->get('coupon')['value'] ?? null;
+        $type = session()->get('coupon')['type'] ?? null;
+        $percent_off = session()->get('coupon')['percent_off'] ?? null;
+
+        return view('front.cart.index')->with(['data'=>$data,
+    
+      'code'=>  $code ,
+      'discount'=>  $discount,
+      'value'=>     $value,
+      'type'=>  $type ,
+      'percent_off'=>  $percent_off
+    ]);
     
     }else{
         return redirect()->route('welcome');

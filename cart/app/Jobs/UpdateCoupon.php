@@ -12,6 +12,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use DB;
 use Auth;
 use Carbon\Carbon;
+
 use Session;
 class UpdateCoupon implements ShouldQueue
 {
@@ -37,19 +38,33 @@ class UpdateCoupon implements ShouldQueue
     public function handle()
     {
         if( $this->coupon->expire >= Carbon::now()    || $this->coupon->type  == 'percent'  ){
-        if(Auth::check()){
-            $user_email = Auth::user()->id;
-           
-            $userCart = DB::table('carts')->where(['user_id' => $user_email])->get();     
-            
-            }else{
-              $session_id = Session::get('session_id');
-              $userCart = DB::table('carts')->where(['session_id' => $session_id])->get();   
-            }
-            $total_amount = 0;
+
+
+            if(Auth::check()){
+
+                $userCart = auth()->user()->cart()->get();     
+                
+                }else{
+                  $session_id = Session::get('session_id');
+                  $userCart = cart::where(['session_id' => $session_id])->get();   
+                }
+
+
             foreach($userCart as $item){
-               $total_amount = $total_amount + $item->total;
-            }
+
+                if($item->product->price == $item->price){
+              
+                  $total_amount = $total_amount + $item->total;
+              
+              
+              
+                }else{
+                  $total_amount = $total_amount + $item->product->price * $item->quantity;
+                }
+                
+              
+              }
+              
   
             Session::put('coupon',[
             'name' => $this->coupon->code,
