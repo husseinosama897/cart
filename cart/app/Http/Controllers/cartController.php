@@ -17,7 +17,8 @@ class cartController extends Controller
 
 
 public function cartpage(){
-    if(getNumbers()->get('newtotal')  > 0){
+   
+    if(auth()->user()->cart()->count() > 0 || cart::where('session_id',$session_id)->count() > 0 ){
         if(Auth::id()){
             $data = auth()->user()->cart()->with('product')->get();
             }else{

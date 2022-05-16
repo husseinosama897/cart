@@ -28,7 +28,6 @@ foreach($userCart as $item){
     $total_amount = $total_amount + $item->total;
 
 
-
   }else{
     $total_amount = $total_amount + $item->product->price * $item->quantity;
   }

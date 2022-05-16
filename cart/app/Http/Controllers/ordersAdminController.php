@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\order;
 class ordersAdminController extends Controller
 {
+
+
+public function 
+
     public function orderjson(request $request){
 
 $order = order::query();
