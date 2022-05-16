@@ -6,17 +6,38 @@ use Illuminate\Http\Request;
 use App\Models\order;
 class ordersAdminController extends Controller
 {
-    public function index(request $request){
+    public function orderjson(request $request){
 
 $order = order::query();
 
-$order = $order->where('id',$request->id);
 
-$order = $order->where('billing_name',$request->billing_name);
+if($request->id){
+    $order = $order->where('id',$request->id);
+}
+if($request->billing_name){
+    $order = $order->where('billing_name',$request->billing_name);
+}
+if($request->billing_number){
+    $order = $order->where('billing_number',$request->billing_number);
+}
+if($request->receive_date){
+    $order = $order->where('receive_date',$request->receive_date);
+}
+if($request->delivery_date){
+    $order = $order->where('delivery_date',$request->delivery_date);
 
-$order = $order->where('billing_number',$request->billing_number);
+}
 
-$order = $order->
+if($request->track_order){
+    $order = $order->where('track_order',$request->track_order);
+
+}
+
+
+$order = $order->paginate(20);
+
+
+return response()->json(['data'=>$order]);
 
     }
 }

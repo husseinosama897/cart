@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Coupon;
+use App\Models\coupon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -24,7 +24,7 @@ class UpdateCoupon implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(Coupon $coupon)
+    public function __construct(coupon $coupon)
     {
         $this->coupon = $coupon;
     }
@@ -36,7 +36,7 @@ class UpdateCoupon implements ShouldQueue
      */
     public function handle()
     {
-        if( $this->coupon->order !== null  && $this->coupon->expire >= Carbon::now()    || $this->coupon->type  == 'percent'  ){
+        if( $this->coupon->expire >= Carbon::now()    || $this->coupon->type  == 'percent'  ){
         if(Auth::check()){
             $user_email = Auth::user()->id;
            
