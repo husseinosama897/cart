@@ -121,12 +121,7 @@ export default {
          .catch();
       },
       updateCart: function ($id, $qty) { 
-<<<<<<< HEAD
-         axios.post('/updatequantityjson/'+ $id, {
-=======
-         this.test = $id + $qty;
          axios.post('/updatequantityjson/'+$id, {
->>>>>>> 06ece1687901f5b763e88f6601cd5f353f95d1cb
                'quantity': $qty,
          })
          .catch();
