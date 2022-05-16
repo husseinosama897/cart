@@ -9,14 +9,21 @@ class reportController extends Controller
 {
 
 
+
+public function bestarea(){
+
+}
+
+
+
     public function bestsellerpage(){
         return view('admin.report.bestseller');
     }
-    public function bestsellerjson(){
+    public function bestsellerjson(request $request){
 
-$order = order::with(['itemorder'=>function($q){
+$order = order::with(['itemorder'=>function($q)use($request) {
 
-    return $q->select(['id','product_id','quantity'])->with(['product'=>function($qe){
+    return $q->select(['id','product_id','quantity'])->with(['product'=>function($qe)use($request){
      return   $qe->select(['id','name']);
     }])->withcount();
 }])->query();

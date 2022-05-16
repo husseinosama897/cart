@@ -20,4 +20,8 @@ class order extends Model
           'billing_total',
           'billing_tax',
     ];
+
+    public function itemorder(){
+        return $this->hasmany(order::class,'order_id');
+    }
 }
