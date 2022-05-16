@@ -5466,7 +5466,7 @@ __webpack_require__.r(__webpack_exports__);
       test: {},
       counter: 0,
       totalPrice: 0,
-      CouponCode: CouponCode
+      CouponCode: ''
     };
   },
   mounted: function mounted() {
