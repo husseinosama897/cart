@@ -8,8 +8,26 @@ class ordersAdminController extends Controller
 {
 
 
-public function 
+public function index(){
+    return view('admin.order.index');
+}
 
+
+public function revieworder(order $order){
+    return view('admin.order.review')->with(['data'=>$order]);
+}
+
+
+public function changestatus(order $order,request $request){
+   
+    $order->update(['track_order'=>$request->track_order,
+    'delivery_date'=>$request->delivery_date,
+    'receive_date'=>$request->receive_date,
+    'confirmation_date'=>$request->confirmation_date,
+]);
+
+
+}
     public function orderjson(request $request){
 
 $order = order::query();
