@@ -5457,22 +5457,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Cart',
-  props: ['products'],
+  props: ['products', 'code', 'discount', 'value', 'type', 'percentoff'],
   data: function data() {
     return {
       carts: [],
       test: {},
       counter: 0,
       totalPrice: 0,
-      CouponCode: ''
+      CouponCode: '',
+      Vdiscount: 0,
+      totalfinalPrice: 0
     };
   },
   mounted: function mounted() {
     this.carts = this.products;
     this.loadCounter();
     this.totalPrice = this.total;
+    this.CouponCode = this.code;
+    this.Vdiscount = this.discount;
   },
   methods: {
     loadCounter: function loadCounter() {
@@ -5483,7 +5497,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"]();
     },
     updateCart: function updateCart($id, $qty) {
-      this.test = $id + $qty;
       axios.post('/updatequantityjson/' + $id, {
         'quantity': $qty
       })["catch"]();
@@ -5509,6 +5522,17 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.totalPrice = totalPrice;
       return totalPrice;
+    },
+    finalPrice: function finalPrice() {
+      var totalfinalPrice = 0;
+
+      if (this.discount > 0) {
+        this.carts.forEach(function (item, i) {
+          totalfinalPrice += item.product.price * item.quantity;
+        });
+        this.totalfinalPrice = totalfinalPrice - this.discount;
+        return totalfinalPrice;
+      }
     }
   }
 });
@@ -5594,13 +5618,55 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'CreatePacking',
   data: function data() {
-    return {};
+    return {
+      orders: [{
+        productName: '',
+        qty: 0,
+        notes: '',
+        attached: null
+      }, {
+        productName: '',
+        qty: 0,
+        notes: '',
+        attached: null
+      }],
+      url: null
+    };
   },
   mounted: function mounted() {},
-  methods: {},
+  methods: {
+    onFileChange: function onFileChange(index, e) {
+      var file = e.target.files[0];
+      this.url = file;
+      this.orders[index].attached = file;
+    },
+    createOrder: function createOrder(param) {
+      this.orders.push({
+        productName: '',
+        qty: 0,
+        notes: '',
+        attached: null
+      });
+    },
+    deleteOrder: function deleteOrder(index) {
+      this.orders.splice(index, 1);
+    }
+  },
   computed: {}
 });
 
@@ -29204,14 +29270,27 @@ var render = function () {
                     },
                   }),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      on: { click: _vm.setCoupon },
-                    },
-                    [_vm._v("تطبيق")]
-                  ),
+                  this.code == ""
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          on: { click: _vm.setCoupon },
+                        },
+                        [_vm._v("تطبيق")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.code !== ""
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          on: { click: _vm.setCoupon },
+                        },
+                        [_vm._v("إزالة")]
+                      )
+                    : _vm._e(),
                 ]),
               ]),
             ]),
@@ -29239,6 +29318,28 @@ var render = function () {
                   _vm._v(" "),
                   _c("dd", { staticClass: "text-start" }, [
                     _vm._v(_vm._s(_vm.totalPrice) + " ر.س"),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _vm.Vdiscount > 0
+                  ? _c("dl", { staticClass: "dlist-align" }, [
+                      _c("dt", { staticClass: "text-right" }, [
+                        _vm._v("كوبون :"),
+                      ]),
+                      _vm._v(" "),
+                      _c("dd", { staticClass: "text-start" }, [
+                        _vm._v("- " + _vm._s(_vm.Vdiscount) + " ر.س"),
+                      ]),
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("dl", { staticClass: "dlist-align" }, [
+                  _c("dt", { staticClass: "text-right" }, [
+                    _vm._v("السعر النهائي:"),
+                  ]),
+                  _vm._v(" "),
+                  _c("dd", { staticClass: "text-start" }, [
+                    _vm._v(_vm._s(_vm.totalfinalPrice) + " ر.س"),
                   ]),
                 ]),
                 _vm._v(" "),
@@ -29384,86 +29485,240 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "orders" },
+      [
+        _vm._l(_vm.orders, function (order, index) {
+          return _c("div", { key: index, staticClass: "order mb-4" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-danger",
+                staticStyle: {
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  "border-radius": "20px 0 0 0",
+                },
+                on: {
+                  click: function ($event) {
+                    return _vm.deleteOrder(index)
+                  },
+                },
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 16 16",
+                      width: "14",
+                      height: "14",
+                      fill: "#fff",
+                    },
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d: "M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z",
+                      },
+                    }),
+                  ]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c("div", { staticClass: "row details mt-4" }, [
+              _c(
+                "p",
+                { staticClass: "w-75", staticStyle: { margin: "0 auto" } },
+                [
+                  _vm._v(
+                    "وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة"
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-8 pt-3 d-flex m-auto" }, [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: order.productName,
+                        expression: "order.productName",
+                      },
+                    ],
+                    staticClass: "form-select",
+                    attrs: { "aria-label": "Default select example" },
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          order,
+                          "productName",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                    },
+                  },
+                  [
+                    _c("option", { attrs: { value: "Hello" } }, [
+                      _vm._v("Hello"),
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Hello" } }, [
+                      _vm._v("Hello"),
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Hello" } }, [
+                      _vm._v("Hello"),
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Hello" } }, [
+                      _vm._v("Hello"),
+                    ]),
+                  ]
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-8 pt-3 d-flex m-auto" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: order.qty,
+                      expression: "order.qty",
+                    },
+                  ],
+                  staticClass: "form-control",
+                  staticStyle: { direction: "rtl" },
+                  attrs: { type: "number" },
+                  domProps: { value: order.qty },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(order, "qty", $event.target.value)
+                    },
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-8 pt-3 d-flex m-auto" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: order.notes,
+                      expression: "order.notes",
+                    },
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    placeholder: "ملاحظات للطباعة",
+                    id: "",
+                    cols: "15",
+                    rows: "5",
+                  },
+                  domProps: { value: order.notes },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(order, "notes", $event.target.value)
+                    },
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-8 p-2 d-flex m-auto" }, [
+                _c("div", { staticClass: "col-12 pt-3" }, [
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "file",
+                      name: "attached",
+                      accept: "image/*",
+                    },
+                    on: {
+                      change: function ($event) {
+                        return _vm.onFileChange(index, $event)
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+            ]),
+          ])
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "row gap-2 justify-content-sm-start",
+            staticStyle: { "max-width": "1024px", width: "100%" },
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-success col-auto",
+                on: { click: _vm.createOrder },
+              },
+              [_vm._v("اضافه منتج اخر")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary col-auto",
+                staticStyle: {
+                  "background-color": "#00786D !important",
+                  border: "none !important",
+                },
+              },
+              [_vm._v("طلب الان")]
+            ),
+          ]
+        ),
+      ],
+      2
+    ),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "orders" }, [
-        _c("div", { staticClass: "order" }, [
-          _c("div", { staticClass: "photo" }, [
-            _c("img", {
-              attrs: {
-                src: "/front/images/purple-marble-cups-mockup-psd-handmade-experimental-art_53876-111290.png",
-                alt: "",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "details mt-4" }, [
-            _c(
-              "p",
-              { staticClass: "w-75", staticStyle: { margin: "0 auto" } },
-              [
-                _vm._v(
-                  "وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة"
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-12 pt-3" }, [
-              _c(
-                "select",
-                {
-                  staticClass: "form-control select2-select",
-                  attrs: { required: "", size: "1" },
-                },
-                [
-                  _c("option", { attrs: { value: "Hello" } }, [
-                    _vm._v("Hello"),
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Hello" } }, [
-                    _vm._v("Hello"),
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Hello" } }, [
-                    _vm._v("Hello"),
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Hello" } }, [
-                    _vm._v("Hello"),
-                  ]),
-                ]
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-12 p-2" }, [
-              _c("div", { staticClass: "col-12" }, [
-                _vm._v(
-                  "\n                          الصورة الرئيسية\n                      "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-12 pt-3" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "file",
-                    name: "main_image",
-                    accept: "image/*",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-12 pt-3" }),
-            ]),
-          ]),
-        ]),
-      ]),
+    return _c("div", { staticClass: "photo" }, [
+      _c("img", {
+        attrs: {
+          src: "/front/images/purple-marble-cups-mockup-psd-handmade-experimental-art_53876-111290.png",
+          alt: "",
+        },
+      }),
     ])
   },
 ]
