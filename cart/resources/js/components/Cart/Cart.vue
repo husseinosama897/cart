@@ -89,7 +89,7 @@ export default {
           test: {},
           counter: 0,
           totalPrice: 0,
-          CouponCode,
+          CouponCode: '',
        }
     },
     mounted() {
