@@ -174,7 +174,7 @@ public function updatequantityjson(request $request, cart $cart){
     if($cart){
 
       $cart->total += $request->quantity  *  $cart->product->price;
-      $cart->qty = $request->quantity;
+      $cart->quantity = $request->quantity;
       $cart->save();
      }
 

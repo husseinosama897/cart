@@ -5484,7 +5484,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateCart: function updateCart($id, $qty) {
       this.test = $id + $qty;
-      axios.post('/updatequantityjson/' + id, {
+      axios.post('/updatequantityjson/' + $id, {
         'quantity': $qty
       })["catch"]();
     },
