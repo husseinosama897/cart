@@ -49,6 +49,8 @@ class UpdateCoupon implements ShouldQueue
                   $userCart = cart::where(['session_id' => $session_id])->get();   
                 }
 
+                
+$total_amount = 0;
 
             foreach($userCart as $item){
 
