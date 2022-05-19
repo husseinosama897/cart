@@ -6,6 +6,9 @@ use App\Models\packaging;
 use App\Models\coupon;
 use Session;
 use App\Models\product;
+
+use App\Models\cart;
+
 use App\jobs\UpdateCoupon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -26,7 +29,6 @@ class packingController extends Controller
           $data = packaging::where('session_id', $session_id)->with('product')->get();
     
         }
-
 
         return view('front.packing.create')->with('data',$data);
     }
@@ -140,9 +142,21 @@ $insrting[
 $chunkcup = array_chunk($insrting, 10);
 
 foreach($chunkcup as $cup){
-    packaging::insert($cup);
+    cart::insert($cup);
 }
 
+
+if(Auth::id()){
+    $data = auth()->user()->packaging()->delete();
+    }else{
+        $session_id = Session::get('session_id');
+        if(!$session_id){
+            $session_id = Str::random(40);
+            Session::put('session_id',$session_id);
+        }
+  $data = packaging::where('session_id', $session_id)->delete();
+
+}
 
     }
 

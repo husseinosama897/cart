@@ -5,6 +5,9 @@ use App\Http\Controllers\packingController;
 use App\Http\Controllers\supplierController;
 use App\Http\Controllers\uiController;
 use App\Http\Controllers\completeorderController;
+use App\Http\Controllers\productnotfoundController;
+
+
 use Illuminate\Support\Facades\Route;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use \App\Models\category;
@@ -63,8 +66,17 @@ Route::get('/categories/{slug}/{category}', [uiController::class, 'categorypage'
 Route::get('/json/product', [uiController::class, 'jsonproduct']);
 //Route::get('/products', [uiController::class, 'productpage']);
 Route::get('/product/{slug}/{product}', [uiController::class, 'item']);
-Route::get('pna', [uiController::class, 'pna'])->name('pna');
+
 //home 
+
+
+//productnotfound
+Route::get('findproduct', [uiController::class, 'pna'])->name('pna');
+
+Route::post('productnotfound', [productnotfoundController::class, 'createorder'])->name('productnotfound');
+
+//
+
 
 
 
