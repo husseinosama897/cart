@@ -96,29 +96,11 @@ aside.active {
 .filter .container svg {
     fill: #092c47;
 }
-@media (min-width: 576px){
-    .supplier-products .col-sm-6 {
-        flex: 0 0 auto;
-        width: 49%;
-    }
- }
- @media (min-width: 768px) {
-    .supplier-products .col-md-4 {
-        flex: 0 0 auto;
-        width: 32.333333%;
-    }
- }
 @media (min-width: 992px) {
     aside{
         display: block;
     }
     .filter{
         display: none;
-    }
- }
- @media (min-width: 1200px) {
-    .supplier-products .col-xl-3 {
-        flex: 0 0 auto;
-        width: 24%;
     }
  }

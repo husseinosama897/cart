@@ -32,8 +32,8 @@
             </div>
         </aside>
         <div class="supplier-products">
-            <div class="row" style="column-gap: 10px;">
-                <div v-for="(supplier, index) in suppliers.data" :key="index" class="product col-xl-3 col-md-4 col-sm-6">
+            <div class="supplierProductContainer">
+                <div v-for="(supplier, index) in suppliers.data" :key="index" class="product supplierProduct">
                     <div class="photo my-3">
                         <a :href="'/suppliers/' + supplier.slug + '/' + supplier.id">
                             <img :src="'/uploads/suppliers/' + supplier.img" alt="">

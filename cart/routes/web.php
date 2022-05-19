@@ -40,7 +40,7 @@ Route::get('/json/suppliers/', [uiController::class, 'supplierjson']);
 
 Route::get('/suppliers', function () {
        return view('front.suppliers.suppliers');
-});
+})->name('suppliers');
 
 Route::get('/suppliers/{slug}/{supplier}', [uiController::class, 'supplierpage'])->name('suppliers.page');
 
@@ -72,7 +72,7 @@ Route::post('/getCup', [packingController::class, 'getCup']);
 
 Route::post('/insertcup', [packingController::class, 'insertcup']);
 
-Route::get('/packaging_order', [packingController::class, 'newpackaging']);
+Route::get('/packaging_order', [packingController::class, 'newpackaging'])->name('packaging_order');
 
 
 

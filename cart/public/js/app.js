@@ -30207,11 +30207,11 @@ var render = function () {
       _c("div", { staticClass: "supplier-products" }, [
         _c(
           "div",
-          { staticClass: "row", staticStyle: { "column-gap": "10px" } },
+          { staticClass: "supplierProductContainer" },
           _vm._l(_vm.supplierProducts.data, function (products, index) {
             return _c(
               "div",
-              { key: index, staticClass: "product col-xl-3 col-md-4 col-sm-6" },
+              { key: index, staticClass: "product supplierProduct" },
               [
                 _c("div", { staticClass: "photo my-3" }, [
                   _c("img", {
@@ -30469,11 +30469,11 @@ var render = function () {
       _c("div", { staticClass: "supplier-products" }, [
         _c(
           "div",
-          { staticClass: "row", staticStyle: { "column-gap": "10px" } },
+          { staticClass: "supplierProductContainer" },
           _vm._l(_vm.suppliers.data, function (supplier, index) {
             return _c(
               "div",
-              { key: index, staticClass: "product col-xl-3 col-md-4 col-sm-6" },
+              { key: index, staticClass: "product supplierProduct" },
               [
                 _c("div", { staticClass: "photo my-3" }, [
                   _c(

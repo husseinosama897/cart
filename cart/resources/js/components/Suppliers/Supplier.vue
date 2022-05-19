@@ -51,8 +51,8 @@
                 </div>
             </aside>
             <div class="supplier-products">
-                <div class="row" style="column-gap: 10px;">
-                    <div v-for="(products, index) in supplierProducts.data" :key="index" class="product col-xl-3 col-md-4 col-sm-6">
+                <div class="supplierProductContainer">
+                    <div v-for="(products, index) in supplierProducts.data" :key="index" class="product supplierProduct">
                         <div class="photo my-3">
                             <img :src="'/uploads/product/' + products.img" alt="">
                         </div>

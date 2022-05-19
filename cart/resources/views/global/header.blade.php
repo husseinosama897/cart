@@ -158,13 +158,13 @@
             </button>
             <ul class="menu col-6 m-0">
                 <li>
-                    <a href="#">الرئيسية</a>
+                    <a href="/">الرئيسية</a>
                 </li>
                 <li>
-                    <a href="#">تسوق حسب المورد</a>
+                    <a href="{{ route('suppliers') }}">تسوق حسب المورد</a>
                 </li>
                 <li>
-                    <a href="#">التغليف المخصص</a>
+                    <a href="{{ route('packaging_order') }}">التغليف المخصص</a>
                 </li>
             </ul>
         </div>
