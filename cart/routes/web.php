@@ -71,11 +71,19 @@ Route::get('pna', [uiController::class, 'pna'])->name('pna');
 /// packing 
 
 
-Route::get('/packaging', [packingController::class, 'index']);
+Route::get('/packaging', [packingController::class, 'index'])->name('packaging');
 
 Route::post('/getCup', [packingController::class, 'getCup']);
 
 Route::post('/insertcup', [packingController::class, 'insertcup']);
+
+Route::post('/insertnewone/{product}', [packingController::class, 'insertnewone']);
+
+
+
+
+
+
 
 Route::get('/packaging_order', [packingController::class, 'newpackaging'])->name('packaging_order');
 

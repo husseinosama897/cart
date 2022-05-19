@@ -41,4 +41,15 @@ class User extends Authenticatable
     public function cart(){
         return $this->HasMany(cart::class, 'user_id');
     }
+
+    public function packaging(){
+        return $this->HasMany(packaging::class, 'user_id');
+    }
+
+
+    
+
+
 }
+
+
