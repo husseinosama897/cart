@@ -322,11 +322,15 @@ nav .menu li a:hover:before {
     height: 0.3125rem;
     width: 1.25rem;
 }
-.pna button {
+.pna a {
     background: #092c47;
     color: #fff;
     padding: 10px;
     border-radius: 8px;
+    display: block;
+}
+.pna a:hover{
+    color: #fff;
 }
 /* End Header */
 /* Categories */

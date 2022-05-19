@@ -59,12 +59,9 @@ if(!empty($category)){
        return view('front.suppliers.supplier')->with('supplier', $supplier);
    }
 
-   public function categorypage( $slug , category $category){
-
-
-
-    return view('front.category')->with('category',$category);
-}
+   public function categorypage($slug , category $category){
+      return view('front.category')->with('category',$category);
+   }
 
 
    public function jsonsupplier(request $request, supplier $supplier){
@@ -88,10 +85,15 @@ if(!empty($category)){
       $supplier =  supplier::paginate(10);
       
       return response()->json(['data'=>$supplier]);
-    }
+   }
 
+   public function categoryjson(){
+      $category =  category::paginate(10);
+      
+      return response()->json(['data'=>$category]);
+   }
 
-   public function jsoncategory(request $request,category $category){
+   public function jsoncategory(request $request, category $category){
 
     $data =    $supplier->product();
 
@@ -103,15 +105,18 @@ if(!empty($category)){
    $data = $data->paginate(10);
    
    return response()->json(['data'=>$data]);
-       
-   
-      }
+      
+   }
 
       
    public function item($slug, product $product){
       $related =  product::where('id','!=', $product->id)->select(['name','slug','img', 'id', 'price'])->get()->take(10);
 
       return view('front.products.view')->with(['product'=>$product, 'related'=>$related]);
+   }
+   public function pna()
+   {
+      return view('front.products.productsNotAvailable');
    }
 
 }

@@ -110,9 +110,9 @@
                 </div>
             </div>
             <div class="pna col-auto">
-                <button>
+                <a href="{{ route('pna') }}" >
                     طلب منتجات غير متوفرة
-                </button>
+                </a>
             </div>
         </div>
         <div class="row align-items-center mobile">

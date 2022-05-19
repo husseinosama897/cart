@@ -44,11 +44,16 @@ Route::get('/suppliers', function () {
 
 Route::get('/suppliers/{slug}/{supplier}', [uiController::class, 'supplierpage'])->name('suppliers.page');
 
+
 //category
+Route::get('/categories', function () {
+    return view('front.categories.categories');
+})->name('categories');
+
+
+Route::get('/json/categories/', [uiController::class, 'categoryjson']);
+
 Route::get('/json/categories/{category}', [uiController::class, 'jsoncategory']);
-
-
-
 Route::get('/categories/{slug}/{category}', [uiController::class, 'categorypage'])->name('categorypage');
 
 
@@ -58,7 +63,7 @@ Route::get('/categories/{slug}/{category}', [uiController::class, 'categorypage'
 Route::get('/json/product', [uiController::class, 'jsonproduct']);
 //Route::get('/products', [uiController::class, 'productpage']);
 Route::get('/product/{slug}/{product}', [uiController::class, 'item']);
-
+Route::get('pna', [uiController::class, 'pna'])->name('pna');
 //home 
 
 
