@@ -48,7 +48,7 @@ if(!empty($category)){
     public function homepage(){
         $suppliers = supplier::select(['id','dis','slug','comp','img'])->get()->take(20);
 
-        $category = category::select(['id','name','image'])->get()->take(20);
+        $category = category::select(['id','name','image','slug'])->get()->take(20);
 
         return view('front.home')->with(['suppliers'=>$suppliers,'categories'=>$category]);
     }
@@ -59,7 +59,9 @@ if(!empty($category)){
        return view('front.suppliers.supplier')->with('supplier', $supplier);
    }
 
-   public function categorypage(category $category){
+   public function categorypage( $slug , category $category){
+
+
 
     return view('front.category')->with('category',$category);
 }

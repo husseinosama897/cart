@@ -47,11 +47,9 @@ Route::get('/suppliers/{slug}/{supplier}', [uiController::class, 'supplierpage']
 //category
 Route::get('/json/categories/{category}', [uiController::class, 'jsoncategory']);
 
-Route::get('/categories', function () {
-       return view('front.home');
-});
 
-Route::get('/categories/{slug}/{category}', [uiController::class, 'categorypage']);
+
+Route::get('/categories/{slug}/{category}', [uiController::class, 'categorypage'])->name('categorypage');
 
 
 
