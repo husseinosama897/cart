@@ -110,7 +110,6 @@ export default {
         this.totalPrice = this.total;
         this.CouponCode = this.code;
         this.Vdiscount = this.discount;
-
     },
     methods: {
       loadCounter: function() {

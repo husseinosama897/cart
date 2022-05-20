@@ -3,7 +3,7 @@
         <div v-for="(category, index) in categories.data" :key="index" class="category" style="border: 1px solid #fafafa;">
             <a class="card border-0 shadow" href="food-delivery-category.html">
                 <img class="card-img-top" :src="'/uploads/categories/'+ category.image" alt="Noodles">
-                <div class="card-body py-4 text-center">
+                <div class="card-body py-2 text-center">
                     <h3 class="h5 mt-1">{{ category.name }}</h3>
                 </div>
             </a>

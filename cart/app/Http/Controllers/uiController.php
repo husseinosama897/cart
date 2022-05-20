@@ -59,8 +59,9 @@ if(!empty($category)){
        return view('front.suppliers.supplier')->with('supplier', $supplier);
    }
 
-   public function categorypage($slug , category $category){
-      return view('front.category')->with('category',$category);
+   public function categorypage($slug, $category){
+      $getCategory = category::where('id', $category)->where('slug', $slug)->with('product')->first();
+      return view('front.categories.productCategory')->with('category', $getCategory);
    }
 
 
