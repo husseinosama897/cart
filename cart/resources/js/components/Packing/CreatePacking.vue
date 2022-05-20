@@ -16,7 +16,7 @@
                     <div class="drop-search" id="drop-search" v-if="searchGetProduct !== ''" v-bind:class="{ active: isActive, }">
                         <ul class="ps-0 mb-0">
                             <li v-for="(product, index) in products" :key="index" >
-                                <a @click="addIdProduct(index, product.id)">
+                                <a @click="addIdProduct(index, product.id, product.name)">
                                 <span class="name-search" style="display: flex;align-items: center;">
                                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="7.5" cy="7.5" r="6.5" stroke="#3A4046" stroke-width="2"></circle>
@@ -116,8 +116,9 @@ export default {
             })
             .catch();
         },
-        addIdProduct: function(index, idProduct){
+        addIdProduct: function(index, idProduct, nameProduct){
             this.orders[index].product_id = idProduct;
+            this.searchGetProduct = nameProduct;
             this.isActive = false;
         },
         sendOrder: function () {  

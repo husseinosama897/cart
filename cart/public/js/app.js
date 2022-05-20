@@ -5824,8 +5824,9 @@ __webpack_require__.r(__webpack_exports__);
         _this.isActive = true;
       })["catch"]();
     },
-    addIdProduct: function addIdProduct(index, idProduct) {
+    addIdProduct: function addIdProduct(index, idProduct, nameProduct) {
       this.orders[index].product_id = idProduct;
+      this.searchGetProduct = nameProduct;
       this.isActive = false;
     },
     sendOrder: function sendOrder() {
@@ -30574,7 +30575,8 @@ var render = function () {
                                         click: function ($event) {
                                           return _vm.addIdProduct(
                                             index,
-                                            product.id
+                                            product.id,
+                                            product.name
                                           )
                                         },
                                       },
