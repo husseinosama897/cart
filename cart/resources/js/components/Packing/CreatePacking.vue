@@ -11,13 +11,32 @@
               </div>
               <div class="row details mt-4">
                   <p class="w-75" style="margin: 0 auto;">وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة</p>
-                <div class="col-md-8 pt-3 d-flex m-auto">
-                    <select class="form-select" aria-label="Default select example" v-model="order.productName">
-                        <option value="Hello">Hello</option>
-                        <option value="Hello">Hello</option>
-                        <option value="Hello">Hello</option>
-                        <option value="Hello">Hello</option>
-                    </select>
+                <div class="col-md-8 pt-3 d-flex m-auto position-relative">
+                    <input type="text" class="form-control" v-model="searchGetProduct" v-on:keyup="getProduct" style="direction: rtl;">
+                    <div class="drop-search" id="drop-search" v-if="searchGetProduct !== ''" v-bind:class="{ active: isActive, }">
+                        <ul class="ps-0 mb-0">
+                            <li v-for="(product, index) in products" :key="index" >
+                                <a @click="addIdProduct(index, product.id)">
+                                <span class="name-search" style="display: flex;align-items: center;">
+                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="7.5" cy="7.5" r="6.5" stroke="#3A4046" stroke-width="2"></circle>
+                                    </svg>                                                    
+                                    <span>{{ product.name }}</span>
+                                </span>                                          
+                                </a>
+                            </li>
+                            <li v-if="!products.length">
+                                <a>
+                                <span class="name-search" style="display: flex;align-items: center;">
+                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="7.5" cy="7.5" r="6.5" stroke="#3A4046" stroke-width="2"></circle>
+                                    </svg>                                                    
+                                    <span>لا يوجد منتج بهذا الاسم</span>
+                                </span>                                          
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-md-8 pt-3 d-flex m-auto">
                     <input type="number" class="form-control" v-model="order.qty" style="direction: rtl;">
@@ -29,7 +48,7 @@
                 </div>
                 <div class="col-md-8 p-2 d-flex m-auto">
                     <div class="col-12 pt-3">
-                        <input type="file" name="attached" @change="onFileChange(index, $event)" class="form-control" accept="image/*">
+                        <input type="file" name="image" @change="onFileChange(index, $event)" class="form-control" accept="image/*">
                     </div>
                 </div>
               </div>
@@ -48,21 +67,24 @@ export default {
    name: 'CreatePacking',
     data() {
        return{
+           isActive: false,
            orders: [
                {
-                   productName: '',
+                   product_id: '',
                    qty: 0,
                    notes: '',
-                   attached: null
+                   image: null
                },
                {
-                   productName: '',
+                   product_id: '',
                    qty: 0,
                    notes: '',
-                   attached: null
+                   image: null
                },
            ],
-           url: null
+           url: null,
+           searchGetProduct: '',
+           products: [],
        }
     },
     mounted() {
@@ -71,18 +93,40 @@ export default {
         onFileChange(index, e) {
             const file = e.target.files[0];
             this.url = file;
-            this.orders[index].attached = file;
+            this.orders[index].image = file;
         },
-        createOrder: function (param) { 
+        createOrder: function () { 
             this.orders.push({
-                productName: '',
+                product_id: '',
                 qty: 0,
                 notes: '',
-                attached: null
+                image: null
                });
         },
         deleteOrder: function (index) { 
             this.orders.splice(index, 1)
+        },
+        getProduct: function (){
+            axios.post('/getCup/', {
+                'name': this.searchGetProduct,
+            }).then((response) => {
+                console.log(response);
+                this.products = response.data.data;
+                this.isActive = true;
+            })
+            .catch();
+        },
+        addIdProduct: function(index, idProduct){
+            this.orders[index].product_id = idProduct;
+            this.isActive = false;
+        },
+        sendOrder: function () {  
+            axios.post('/insertcup/', {
+               
+            }).then((response) => {
+                this.$toastr.s(response.data.msg);
+            })
+            .catch();
         }
     },
     computed: {

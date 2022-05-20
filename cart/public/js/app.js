@@ -5466,7 +5466,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Cart',
   props: ['products', 'code', 'discount', 'value', 'type', 'percentoff'],
@@ -5486,6 +5485,14 @@ __webpack_require__.r(__webpack_exports__);
     this.loadCounter();
     this.totalPrice = this.total;
     this.CouponCode = this.code;
+
+    if (this.code !== 'null') {
+      this.CouponCode == '';
+    } else {
+      this.CouponCode = this.code;
+    }
+
+    ;
     this.Vdiscount = this.discount;
   },
   methods: {
@@ -5641,6 +5648,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.ProductsCategory = this.category;
+  },
+  methods: {
+    addProductInCart: function addProductInCart($product) {
+      var _this = this;
+
+      axios.post('/storeincart/' + $product, {
+        'quantity': 1
+      }).then(function (response) {
+        _this.$toastr.s(response.data.msg);
+      })["catch"]();
+    }
   }
 });
 
@@ -5737,22 +5755,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'CreatePacking',
   data: function data() {
     return {
+      isActive: false,
       orders: [{
-        productName: '',
+        product_id: '',
         qty: 0,
         notes: '',
-        attached: null
+        image: null
       }, {
-        productName: '',
+        product_id: '',
         qty: 0,
         notes: '',
-        attached: null
+        image: null
       }],
-      url: null
+      url: null,
+      searchGetProduct: '',
+      products: []
     };
   },
   mounted: function mounted() {},
@@ -5760,18 +5800,40 @@ __webpack_require__.r(__webpack_exports__);
     onFileChange: function onFileChange(index, e) {
       var file = e.target.files[0];
       this.url = file;
-      this.orders[index].attached = file;
+      this.orders[index].image = file;
     },
-    createOrder: function createOrder(param) {
+    createOrder: function createOrder() {
       this.orders.push({
-        productName: '',
+        product_id: '',
         qty: 0,
         notes: '',
-        attached: null
+        image: null
       });
     },
     deleteOrder: function deleteOrder(index) {
       this.orders.splice(index, 1);
+    },
+    getProduct: function getProduct() {
+      var _this = this;
+
+      axios.post('/getCup/', {
+        'name': this.searchGetProduct
+      }).then(function (response) {
+        console.log(response);
+        _this.products = response.data.data;
+        _this.isActive = true;
+      })["catch"]();
+    },
+    addIdProduct: function addIdProduct(index, idProduct) {
+      this.orders[index].product_id = idProduct;
+      this.isActive = false;
+    },
+    sendOrder: function sendOrder() {
+      var _this2 = this;
+
+      axios.post('/insertcup/', {}).then(function (response) {
+        _this2.$toastr.s(response.data.msg);
+      })["catch"]();
     }
   },
   computed: {}
@@ -11311,7 +11373,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.ProductCategoryContainer{\n    display: flex;\n    align-items: center;\n    position: relative;\n    width: 100%;\n    flex-wrap: wrap;\n}\n.ProductCategory{\n    margin: 10px;\n    width: 100%;\n}\n@media (min-width: 480px) {\n.ProductCategory {\n        width: calc(50% - 20px);\n}\n}\n@media (min-width: 768px) {\n.ProductCategory {\n        width: calc(33.33% - 20px);\n}\n}\n@media (min-width: 992px) {\n.ProductCategory {\n        width: calc(33.33% - 20px);\n}\n}\n@media (min-width: 1200px) {\n.ProductCategory {\n        width: calc(25% - 20px);\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ProductCategoryContainer{\n    display: flex;\n    align-items: center;\n    position: relative;\n    width: 100%;\n    flex-wrap: wrap;\n}\n.ProductCategory{\n    margin: 10px;\n    padding: 10px;\n    width: 100%;\n}\n@media (min-width: 480px) {\n.ProductCategory {\n        width: calc(50% - 20px);\n}\n}\n@media (min-width: 768px) {\n.ProductCategory {\n        width: calc(33.33% - 20px);\n}\n}\n@media (min-width: 992px) {\n.ProductCategory {\n        width: calc(33.33% - 20px);\n}\n}\n@media (min-width: 1200px) {\n.ProductCategory {\n        width: calc(25% - 20px);\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30016,7 +30078,7 @@ var render = function () {
                     },
                   }),
                   _vm._v(" "),
-                  this.code == ""
+                  this.CouponCode == ""
                     ? _c(
                         "button",
                         {
@@ -30027,7 +30089,7 @@ var render = function () {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  this.code !== ""
+                  this.CouponCode !== ""
                     ? _c(
                         "button",
                         {
@@ -30291,28 +30353,39 @@ var render = function () {
             _vm._v("\n                  شراء بالجملة\n              "),
           ]),
           _vm._v(" "),
-          _c("button", { staticClass: "supplier-cart" }, [
-            _c(
-              "svg",
-              {
-                attrs: {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  viewBox: "0 0 24 24",
-                  width: "24",
-                  height: "24",
+          _c(
+            "button",
+            {
+              staticClass: "supplier-cart",
+              on: {
+                click: function ($event) {
+                  return _vm.addProductInCart(product.id)
                 },
               },
-              [
-                _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0z" } }),
-                _c("path", {
+            },
+            [
+              _c(
+                "svg",
+                {
                   attrs: {
-                    d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 24 24",
+                    width: "24",
+                    height: "24",
                   },
-                }),
-              ]
-            ),
-            _vm._v("\n                  عربة التسوق\n              "),
-          ]),
+                },
+                [
+                  _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0z" } }),
+                  _c("path", {
+                    attrs: {
+                      d: "M6 9h13.938l.5-2H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1V4H2V2h3a1 1 0 0 1 1 1v6zm0 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
+                    },
+                  }),
+                ]
+              ),
+              _vm._v("\n                  عربة التسوق\n              "),
+            ]
+          ),
         ]),
       ])
     }),
@@ -30449,59 +30522,163 @@ var render = function () {
                 ]
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-8 pt-3 d-flex m-auto" }, [
-                _c(
-                  "select",
-                  {
+              _c(
+                "div",
+                {
+                  staticClass: "col-md-8 pt-3 d-flex m-auto position-relative",
+                },
+                [
+                  _c("input", {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: order.productName,
-                        expression: "order.productName",
+                        value: _vm.searchGetProduct,
+                        expression: "searchGetProduct",
                       },
                     ],
-                    staticClass: "form-select",
-                    attrs: { "aria-label": "Default select example" },
+                    staticClass: "form-control",
+                    staticStyle: { direction: "rtl" },
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.searchGetProduct },
                     on: {
-                      change: function ($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function (o) {
-                            return o.selected
-                          })
-                          .map(function (o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          order,
-                          "productName",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
+                      keyup: _vm.getProduct,
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.searchGetProduct = $event.target.value
                       },
                     },
-                  },
-                  [
-                    _c("option", { attrs: { value: "Hello" } }, [
-                      _vm._v("Hello"),
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Hello" } }, [
-                      _vm._v("Hello"),
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Hello" } }, [
-                      _vm._v("Hello"),
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Hello" } }, [
-                      _vm._v("Hello"),
-                    ]),
-                  ]
-                ),
-              ]),
+                  }),
+                  _vm._v(" "),
+                  _vm.searchGetProduct !== ""
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "drop-search",
+                          class: { active: _vm.isActive },
+                          attrs: { id: "drop-search" },
+                        },
+                        [
+                          _c(
+                            "ul",
+                            { staticClass: "ps-0 mb-0" },
+                            [
+                              _vm._l(_vm.products, function (product, index) {
+                                return _c("li", { key: index }, [
+                                  _c(
+                                    "a",
+                                    {
+                                      on: {
+                                        click: function ($event) {
+                                          return _vm.addIdProduct(
+                                            index,
+                                            product.id
+                                          )
+                                        },
+                                      },
+                                    },
+                                    [
+                                      _c(
+                                        "span",
+                                        {
+                                          staticClass: "name-search",
+                                          staticStyle: {
+                                            display: "flex",
+                                            "align-items": "center",
+                                          },
+                                        },
+                                        [
+                                          _c(
+                                            "svg",
+                                            {
+                                              attrs: {
+                                                width: "15",
+                                                height: "15",
+                                                viewBox: "0 0 15 15",
+                                                fill: "none",
+                                                xmlns:
+                                                  "http://www.w3.org/2000/svg",
+                                              },
+                                            },
+                                            [
+                                              _c("circle", {
+                                                attrs: {
+                                                  cx: "7.5",
+                                                  cy: "7.5",
+                                                  r: "6.5",
+                                                  stroke: "#3A4046",
+                                                  "stroke-width": "2",
+                                                },
+                                              }),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(_vm._s(product.name)),
+                                          ]),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ])
+                              }),
+                              _vm._v(" "),
+                              !_vm.products.length
+                                ? _c("li", [
+                                    _c("a", [
+                                      _c(
+                                        "span",
+                                        {
+                                          staticClass: "name-search",
+                                          staticStyle: {
+                                            display: "flex",
+                                            "align-items": "center",
+                                          },
+                                        },
+                                        [
+                                          _c(
+                                            "svg",
+                                            {
+                                              attrs: {
+                                                width: "15",
+                                                height: "15",
+                                                viewBox: "0 0 15 15",
+                                                fill: "none",
+                                                xmlns:
+                                                  "http://www.w3.org/2000/svg",
+                                              },
+                                            },
+                                            [
+                                              _c("circle", {
+                                                attrs: {
+                                                  cx: "7.5",
+                                                  cy: "7.5",
+                                                  r: "6.5",
+                                                  stroke: "#3A4046",
+                                                  "stroke-width": "2",
+                                                },
+                                              }),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v("لا يوجد منتج بهذا الاسم"),
+                                          ]),
+                                        ]
+                                      ),
+                                    ]),
+                                  ])
+                                : _vm._e(),
+                            ],
+                            2
+                          ),
+                        ]
+                      )
+                    : _vm._e(),
+                ]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-8 pt-3 d-flex m-auto" }, [
                 _c("input", {
@@ -30561,11 +30738,7 @@ var render = function () {
                 _c("div", { staticClass: "col-12 pt-3" }, [
                   _c("input", {
                     staticClass: "form-control",
-                    attrs: {
-                      type: "file",
-                      name: "attached",
-                      accept: "image/*",
-                    },
+                    attrs: { type: "file", name: "image", accept: "image/*" },
                     on: {
                       change: function ($event) {
                         return _vm.onFileChange(index, $event)

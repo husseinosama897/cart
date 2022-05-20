@@ -12,7 +12,9 @@
 @endsection
 
 @section('style')
-
     <link href="{{ asset('front/css/supplier.css') }}" rel="stylesheet">
+@endsection
 
+@section('scripts')
+<script src="https://unpkg.com/vue-toastr/dist/vue-toastr.umd.min.js"></script>
 @endsection

@@ -49,9 +49,8 @@
                         <label class="form-label">هل لديك كوبون ؟</label>
                         <div class="input-group">
                            <input type="text" class="form-control" placeholder="رمز الكوبون" v-model="CouponCode">
-                              <button class="btn btn-primary" @click="setCoupon" v-if="this.code == ''">تطبيق</button>
-                              <button class="btn btn-primary" @click="setCoupon" v-if="this.code !== ''">إزالة</button>
-
+                              <button class="btn btn-primary" @click="setCoupon" v-if="this.CouponCode == ''">تطبيق</button>
+                              <button class="btn btn-primary" @click="setCoupon" v-if="this.CouponCode !== ''">إزالة</button>
                         </div> 
                      </div> <!-- card-body.// --> 
                   </div>
@@ -109,6 +108,11 @@ export default {
         this.loadCounter();
         this.totalPrice = this.total;
         this.CouponCode = this.code;
+        if(this.code !== 'null'){
+           this.CouponCode == '';
+        }else{
+           this.CouponCode = this.code;
+        };
         this.Vdiscount = this.discount;
     },
     methods: {

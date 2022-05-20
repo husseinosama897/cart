@@ -6,3 +6,4 @@
         <categories></categories>
     </div>
 @endsection
+

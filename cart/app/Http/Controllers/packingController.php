@@ -89,7 +89,7 @@ $packaging->save();
             'name'=>['required','string','max:255'],
         ]);
 $data = product::where('name', 'LIKE', '%' . $request->name . '%')
-->select(['name','image','price','type','id'])->where('type',2)->get()->take(5);
+->select(['name','img','price','type','id'])->where('type',2)->get()->take(5);
 
 return response()->json(['data'=>$data]);
     }
