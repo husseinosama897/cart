@@ -164,7 +164,7 @@
                     <a href="{{ route('suppliers') }}">تسوق حسب المورد</a>
                 </li>
                 <li>
-                    <a href="{{ route('packaging_order') }}">التغليف المخصص</a>
+                    <a href="{{ route('packaging') }}">التغليف المخصص</a>
                 </li>
             </ul>
         </div>
