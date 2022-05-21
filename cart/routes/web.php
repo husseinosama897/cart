@@ -5,6 +5,7 @@ use App\Http\Controllers\packingController;
 use App\Http\Controllers\supplierController;
 use App\Http\Controllers\uiController;
 use App\Http\Controllers\completeorderController;
+use App\Http\Controllers\ordersAdminController;
 use App\Http\Controllers\productnotfoundController;
 
 
@@ -153,3 +154,15 @@ Route::get('genrate-sitemap', function(){
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// -----------------------------AdminDashboard----------------------------------------//
+Route::group(['prefix' => 'admin',], function () {
+
+// -----------------------------Orders----------------------------------------//
+Route::prefix('orders')->name('orders.')->group(function () {
+    Route::get('/',[ordersAdminController::class,'index'])->name('index');
+    Route::put('/update',[SettingController::class,'update'])->name('update');
+});
+
+});

@@ -16,7 +16,7 @@
                     <div class="drop-search" id="drop-search" v-if="searchGetProduct !== ''" v-bind:class="{ active: isActive, }">
                         <ul class="ps-0 mb-0">
                             <li v-for="(product, index) in products" :key="index" >
-                                <a @click="addIdProduct(index, product.id, product.name)">
+                                <a @click="addIdProduct(index, product.id, product.name, product.price)">
                                 <span class="name-search" style="display: flex;align-items: center;">
                                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="7.5" cy="7.5" r="6.5" stroke="#3A4046" stroke-width="2"></circle>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 pt-3 d-flex m-auto">
-                    <input type="number" class="form-control" v-model="order.qty" style="direction: rtl;">
+                    <input type="number" class="form-control" v-model="order.quantity" style="direction: rtl;">
                 </div>
                 <div class="col-md-8 pt-3 d-flex m-auto">
                     <textarea class="form-control" placeholder="ملاحظات للطباعة" v-model="order.notes" id="" cols="15" rows="5">
@@ -55,7 +55,7 @@
           </div>
           <div class="row gap-2 justify-content-sm-start" style="max-width: 1024px;width: 100%;">
             <button class="btn btn-outline-success col-auto" @click="createOrder">اضافه منتج اخر</button>
-            <button class="btn btn-primary col-auto" style="background-color: #00786D !important;border: none !important">طلب الان</button>
+            <button class="btn btn-primary col-auto" @click="sendOrder" style="background-color: #00786D !important;border: none !important">طلب الان</button>
           </div>
 
       </div>
@@ -71,13 +71,15 @@ export default {
            orders: [
                {
                    product_id: '',
-                   qty: 0,
+                   product_price: 0,
+                   quantity: 0,
                    notes: '',
                    image: null
                },
                {
                    product_id: '',
-                   qty: 0,
+                   product_price: 0,
+                   quantity: 0,
                    notes: '',
                    image: null
                },
@@ -98,7 +100,8 @@ export default {
         createOrder: function () { 
             this.orders.push({
                 product_id: '',
-                qty: 0,
+                product_price: 0,
+                quantity: 0,
                 notes: '',
                 image: null
                });
@@ -116,14 +119,15 @@ export default {
             })
             .catch();
         },
-        addIdProduct: function(index, idProduct, nameProduct){
+        addIdProduct: function(index, idProduct, nameProduct, priceProduct){
             this.orders[index].product_id = idProduct;
             this.searchGetProduct = nameProduct;
             this.isActive = false;
+            this.orders[index].product_price = priceProduct;
         },
         sendOrder: function () {  
             axios.post('/insertcup/', {
-               
+               packing: this.orders,
             }).then((response) => {
                 this.$toastr.s(response.data.msg);
             })

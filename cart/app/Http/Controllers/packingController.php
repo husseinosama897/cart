@@ -12,6 +12,10 @@ use App\Models\cart;
 use App\jobs\UpdateCoupon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+
+
 class packingController extends Controller
 {
     public function index(){
@@ -96,12 +100,10 @@ return response()->json(['data'=>$data]);
 
 
     public function insertcup(request $request){
-$data =  json_decode($request->packing,true);
+$data =  $request->packing;
 $rules = [
-              
-           
     'id' => 'required|exists:products,id',
-    'image'=>[ 'image|mimes:jpeg,png,jpg,gif,svg|max:2048']
+    'image'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
 ];
 
 $insrting = [];
@@ -114,7 +116,6 @@ foreach($data as $dat){
 
      );
     if ($validator->passes()) {
-
 
         if($dat['image']){
             $image_tmp = $dat['image'];
@@ -157,7 +158,7 @@ if(Auth::id()){
   $data = packaging::where('session_id', $session_id)->delete();
 
 }
-
+    return response()->json('Hello');
     }
 
 }

@@ -5781,12 +5781,14 @@ __webpack_require__.r(__webpack_exports__);
       isActive: false,
       orders: [{
         product_id: '',
-        qty: 0,
+        product_price: 0,
+        quantity: 0,
         notes: '',
         image: null
       }, {
         product_id: '',
-        qty: 0,
+        product_price: 0,
+        quantity: 0,
         notes: '',
         image: null
       }],
@@ -5805,7 +5807,8 @@ __webpack_require__.r(__webpack_exports__);
     createOrder: function createOrder() {
       this.orders.push({
         product_id: '',
-        qty: 0,
+        product_price: 0,
+        quantity: 0,
         notes: '',
         image: null
       });
@@ -5824,15 +5827,18 @@ __webpack_require__.r(__webpack_exports__);
         _this.isActive = true;
       })["catch"]();
     },
-    addIdProduct: function addIdProduct(index, idProduct, nameProduct) {
+    addIdProduct: function addIdProduct(index, idProduct, nameProduct, priceProduct) {
       this.orders[index].product_id = idProduct;
       this.searchGetProduct = nameProduct;
       this.isActive = false;
+      this.orders[index].product_price = priceProduct;
     },
     sendOrder: function sendOrder() {
       var _this2 = this;
 
-      axios.post('/insertcup/', {}).then(function (response) {
+      axios.post('/insertcup/', {
+        packing: this.orders
+      }).then(function (response) {
         _this2.$toastr.s(response.data.msg);
       })["catch"]();
     }
@@ -30576,7 +30582,8 @@ var render = function () {
                                           return _vm.addIdProduct(
                                             index,
                                             product.id,
-                                            product.name
+                                            product.name,
+                                            product.price
                                           )
                                         },
                                       },
@@ -30688,20 +30695,20 @@ var render = function () {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: order.qty,
-                      expression: "order.qty",
+                      value: order.quantity,
+                      expression: "order.quantity",
                     },
                   ],
                   staticClass: "form-control",
                   staticStyle: { direction: "rtl" },
                   attrs: { type: "number" },
-                  domProps: { value: order.qty },
+                  domProps: { value: order.quantity },
                   on: {
                     input: function ($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(order, "qty", $event.target.value)
+                      _vm.$set(order, "quantity", $event.target.value)
                     },
                   },
                 }),
@@ -30777,6 +30784,7 @@ var render = function () {
                   "background-color": "#00786D !important",
                   border: "none !important",
                 },
+                on: { click: _vm.sendOrder },
               },
               [_vm._v("طلب الان")]
             ),
