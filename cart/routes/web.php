@@ -82,9 +82,6 @@ Route::post('productnotfound', [productnotfoundController::class, 'createorder']
 //
 
 
-
-
-
 /// packing 
 
 
@@ -97,8 +94,6 @@ Route::post('/insertcup', [packingController::class, 'insertcup']);
 Route::post('/insertnewone/{product}', [packingController::class, 'insertnewone']);
 
 Route::get('/packaging_order', [packingController::class, 'newpackaging'])->name('packaging_order');
-
-
 
 
 //
@@ -194,18 +189,6 @@ Route::post('/orderjson', [ordersAdminController::class, 'orderjson']);
 //table orders
 Route::post('/orders_index', [ordersAdminController::class, 'index']);
 ///end of orders routes
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

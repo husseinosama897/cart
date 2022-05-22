@@ -13,7 +13,6 @@ class categoryController extends Controller
     }
  
 
-
     public function delete(category $category){
 $category->delete();
     }
