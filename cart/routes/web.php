@@ -8,7 +8,7 @@ use App\Http\Controllers\completeorderController;
 use App\Http\Controllers\ordersAdminController;
 use App\Http\Controllers\productnotfoundController;
 
-
+use App\Http\Controllers\productController;
 
 use Illuminate\Support\Facades\Route;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
@@ -82,6 +82,7 @@ Route::post('productnotfound', [productnotfoundController::class, 'createorder']
 
 
 
+
 /// packing 
 
 
@@ -92,12 +93,6 @@ Route::post('/getCup', [packingController::class, 'getCup']);
 Route::post('/insertcup', [packingController::class, 'insertcup']);
 
 Route::post('/insertnewone/{product}', [packingController::class, 'insertnewone']);
-
-
-
-
-
-
 
 Route::get('/packaging_order', [packingController::class, 'newpackaging'])->name('packaging_order');
 
@@ -126,6 +121,23 @@ Route::post('/updatequantityjson/{cart}', [cartController::class, 'updatequantit
 
 //Admin
 
+
+
+//  start with  product
+//index table product
+Route::get('/product_index', [productController::class, 'index'])->name('index');
+/// create product 
+Route::post('/create_product', [productController::class, 'products'])->name('products');
+
+// update product
+Route::post('/update_product/{product}', [productController::class, 'update'])->name('update_product');
+// delete product
+Route::post('/delete_product/{product}', [productController::class, 'delete'])->name('delete_product');
+
+/// end of product routes 
+
+
+/////
 
 //supplier
 
