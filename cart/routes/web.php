@@ -10,6 +10,8 @@ use App\Http\Controllers\productnotfoundController;
 
 use App\Http\Controllers\productController;
 
+use App\Http\Controllers\categoryController;
+
 use Illuminate\Support\Facades\Route;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use \App\Models\category;
@@ -120,6 +122,18 @@ Route::post('/storeincart/{product}', [cartController::class, 'store']);
 Route::post('/updatequantityjson/{cart}', [cartController::class, 'updatequantityjson']);
 
 //Admin
+
+// start with categories 
+
+
+// index category 
+Route::get('/categories_index', [categoryController::class, 'index'])->name('index');
+// update cateogry
+Route::post('/categories_update/{category}', [categoryController::class, 'update'])->name('category_update');
+
+// delete category 
+Route::post('/categories_delete/{category}', [categoryController::class, 'delete'])->name('category_delete');
+
 
 
 

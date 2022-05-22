@@ -13,6 +13,10 @@ class categoryController extends Controller
     }
  
 
+
+    public function delete(category $category){
+$category->delete();
+    }
 public function update(request $request, category $category){
 
 $this->validate($request,[
