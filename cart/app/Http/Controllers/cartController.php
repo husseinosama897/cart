@@ -17,12 +17,12 @@ class cartController extends Controller
 
 
 public function cartpage(){
-   
-    if(auth()->user()->cart()->count() > 0 || cart::where('session_id',$session_id)->count() > 0 ){
+    $session_id = Session::get('session_id');
+    if(auth()->user() &&  auth()->user()->cart()->count() > 0 || cart::where('session_id',$session_id)->count() > 0 ){
         if(Auth::id()){
             $data = auth()->user()->cart()->with('product')->get();
             }else{
-                $session_id = Session::get('session_id');
+                
                 if(!$session_id){
                     $session_id = Str::random(40);
                     Session::put('session_id',$session_id);

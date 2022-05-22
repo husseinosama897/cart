@@ -12,17 +12,7 @@ class supplierController extends Controller
   }
 
 
-public function suppilercount(){
-  if(auth()->user()->orderpackage && auth()->user()->orderpackage->date >= date('Y-m-d')){
 
-    $supplier = auth()->user()->orderpackage
-    ->supplier()->count();
-
-return response()->json(['data'=>$supplier]);
-    
-
-  }
-}
 
 public function getselectboxsupp(request $request){
 
@@ -139,14 +129,14 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
         'personal'=>['numeric','digits_between:1,2'],
       'country'=>['string','max:255'],
      'comp'=>['string','max:255'],
- 'customer_name'=>['string','max:255'],  
+ 
    'tax_number'=>['string','max:255'],
      'postal_code'=>['string','max:255'],
      'building_num'=>['string','max:255'],
      'street_name'=>['string','max:255'],
  'tax_number'=>['string','max:255'],
- 'country'=>['string','max:255'],
- 'representative'=>['string','max:255'],
+ 
+
  'phone'=>['string','max:255'],
  'location'=>['string','max:255'],
  'city'=>['string','max:255'],

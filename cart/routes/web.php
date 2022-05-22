@@ -123,6 +123,39 @@ Route::post('/storeincart/{product}', [cartController::class, 'store']);
 
 Route::post('/updatequantityjson/{cart}', [cartController::class, 'updatequantityjson']);
 
+//Admin
+
+
+//supplier
+//create supplier
+Route::post('/createsupp', [supplierController::class, 'createsupp']);
+// for autocomplete supplier
+Route::post('/getselectboxsupp', [supplierController::class, 'getselectboxsupp']);
+
+//supplier create page
+Route::get('/createpage', [supplierController::class, 'createpage']);
+
+
+//supplier suppliertable
+Route::get('/supplier_table', [supplierController::class, 'suppliertable']);
+
+
+//supplier select box //chunk 
+Route::get('/supplierselex', [supplierController::class, 'supplierselex']);
+
+// supplier update
+Route::post('/updatesupp/{supplier}', [supplierController::class, 'updatesupp']);
+
+// supplier delete 
+Route::post('/deletesupp/{supplier}', [supplierController::class, 'delete']);
+
+
+
+
+
+///
+
+
 
 
 /*
