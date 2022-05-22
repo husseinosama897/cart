@@ -9,6 +9,7 @@ use App\Http\Controllers\ordersAdminController;
 use App\Http\Controllers\productnotfoundController;
 
 
+
 use Illuminate\Support\Facades\Route;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use \App\Models\category;
@@ -127,6 +128,8 @@ Route::post('/updatequantityjson/{cart}', [cartController::class, 'updatequantit
 
 
 //supplier
+
+//***
 //create supplier
 Route::post('/createsupp', [supplierController::class, 'createsupp']);
 // for autocomplete supplier
@@ -148,6 +151,33 @@ Route::post('/updatesupp/{supplier}', [supplierController::class, 'updatesupp'])
 
 // supplier delete 
 Route::post('/deletesupp/{supplier}', [supplierController::class, 'delete']);
+///end of supplier routes
+
+
+//start with order 
+
+// read order
+Route::get('/revieworder/{order}', [ordersAdminController::class, 'revieworder']);
+
+//change status order
+
+Route::post('/changestatus/{order}', [ordersAdminController::class, 'changestatus']);
+
+// json order table 
+Route::post('/orderjson', [ordersAdminController::class, 'orderjson']);
+//table orders
+Route::post('/orders_index', [ordersAdminController::class, 'index']);
+///end of orders routes
+
+
+
+
+
+
+
+
+
+
 
 
 
