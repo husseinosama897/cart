@@ -93,7 +93,7 @@ $packaging->save();
             'name'=>['required','string','max:255'],
         ]);
 $data = product::where('name', 'LIKE', '%' . $request->name . '%')
-->select(['name','img','price','type','id'])->where('type',2)->get()->take(5);
+->select(['name','img','price','supplier_id','type','id'])->where('type',2)->get()->take(5);
 
 return response()->json(['data'=>$data]);
     }
@@ -101,24 +101,35 @@ return response()->json(['data'=>$data]);
 
     public function insertcup(request $request){
 $data =  $request->packing;
-$rules = [
-    'id' => 'required|exists:products,id',
-    'image'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-];
+
 
 $insrting = [];
 
+
+
+$count = 0;
+$data = json_decode($data, true);
+
 foreach($data as $dat){
+    if($dat['exist_image'] == 1){
+    $img = 'files-'.$count;
+    }
+    $validator = $this->validate($request,[
+        $img=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    
+    ]
 
-    $validator = Validator::make($dat,
-
-        $rules
+ 
+        
+     
 
      );
-    if ($validator->passes()) {
+  
 
-        if($dat['image']){
-            $image_tmp = $dat['image'];
+    
+        if($dat['exist_image'] == 1){
+           
+            $image_tmp = $request->$img;
                 $extension = $image_tmp->getClientOriginalExtension();
                 $fileName = rand(111,99999).'.'.$extension;
                 $image_tmp->move('uploads/attachment', $fileName);
@@ -129,22 +140,26 @@ foreach($data as $dat){
 $insrting[
 
 ]= [
-    'product_id'=>$dat['id'],
-    'price'=>$dat['price'],
+    'product_id'=>$dat['product_id'],
+    'price'=>$dat['product_price'],
+    'supplier_id'=>$dat['supplier_id'],
     'quantity'=>$dat['quantity'],
-    'total'=>$dat['quantity'] *  $dat['price'],
+    'total'=>$dat['quantity'] *  $dat['product_price'],
     'image'=>$fileName,
 
 ];
 
-    }
+    
 
 }
+
 $chunkcup = array_chunk($insrting, 10);
 
 foreach($chunkcup as $cup){
+    
     cart::insert($cup);
 }
+
 
 
 if(Auth::id()){

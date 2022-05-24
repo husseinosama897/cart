@@ -5778,6 +5778,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'CreatePacking',
   data: function data() {
     return {
+      image: [],
       isActive: false,
       orders: [{
         product_id: '',
@@ -5801,7 +5802,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onFileChange: function onFileChange(index, e) {
       var file = e.target.files[0];
-      this.url = file;
       this.orders[index].image = file;
     },
     createOrder: function createOrder() {
@@ -5827,17 +5827,35 @@ __webpack_require__.r(__webpack_exports__);
         _this.isActive = true;
       })["catch"]();
     },
-    addIdProduct: function addIdProduct(index, idProduct, nameProduct, priceProduct) {
+    addIdProduct: function addIdProduct(index, idProduct, supplier_id, nameProduct, priceProduct) {
       this.orders[index].product_id = idProduct;
       this.searchGetProduct = nameProduct;
+      this.orders[index].supplier_id = supplier_id;
       this.isActive = false;
       this.orders[index].product_price = priceProduct;
     },
     sendOrder: function sendOrder() {
       var _this2 = this;
 
-      axios.post('/insertcup/', {
-        packing: this.orders
+      var config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      var formData = new FormData();
+      this.orders.forEach(function (element, index) {
+        if (element.image !== undefined && element.image !== null) {
+          formData.append('files-' + index, element.image);
+          Vue.set(element, 'exist_image', 1);
+        } else {
+          Vue.set(element, 'exist_image', 0);
+        }
+      });
+      formData.append('packing', JSON.stringify(this.orders));
+      axios.post('/insertcup/', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       }).then(function (response) {
         _this2.$toastr.s(response.data.msg);
       })["catch"]();
@@ -30582,6 +30600,7 @@ var render = function () {
                                           return _vm.addIdProduct(
                                             index,
                                             product.id,
+                                            product.supplier_id,
                                             product.name,
                                             product.price
                                           )
