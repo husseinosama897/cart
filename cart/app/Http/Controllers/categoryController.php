@@ -24,7 +24,7 @@ class categoryController extends Controller
 
         $this->validate($request,[
         'name'=>['required','string','max:255'],
-        'image'=>[ 'image|mimes:jpeg,png,jpg,gif,svg|max:2048']
+        'image'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if($request->image){
