@@ -19,7 +19,7 @@ class product extends Model
       'category_id',
       'supplier_id',
     ];
-    
+
     use HasFactory , Sluggable;
     public function sluggable(): array
     {
@@ -31,5 +31,10 @@ class product extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+
+    public function category(){
+        
     }
 }

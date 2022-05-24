@@ -65,15 +65,24 @@ if(!empty($category)){
    }
 
 
+<<<<<<< HEAD
+   public function jsonsuppliers(request $request){
+=======
    public function jsonsupplier(request $request, supplier $supplier){
 
-      $data =    $supplier->product();
+      $data = $supplier->product();
 
+>>>>>>> 1df61932fe8bc7cbbaec66a93c8e465f73fc326a
 
       $category = json_decode($request->category,true);
+      
+      $data = supplier::query();
       if($category){
-         $data = $data->category()->WhereIn('id',$category);
+ 
+        $data = $data->category()->WhereIn('id',$category);
       }
+
+      $data =    $data->product();
 
       $data = $data->paginate(10);
 
@@ -82,12 +91,24 @@ if(!empty($category)){
    }
 
 
-   public function supplierjson(){
-      $supplier =  supplier::paginate(10);
-      
-      return response()->json(['data'=>$supplier]);
+   public function jsonsupplier(request $request, supplier $supplier){
+
+      $category = json_decode($request->category,true);
+  
+      if($category){
+         $data = $supplier->category()->WhereIn('id',$category);
+      }
+
+      $data =    $data->product();
+
+      $data = $data->paginate(10);
+
+      return response()->json(['data'=>$data]);
+    
    }
 
+
+ 
    public function categoryjson(){
       $category =  category::paginate(10);
       

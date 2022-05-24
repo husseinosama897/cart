@@ -14,20 +14,7 @@
                             <div class="logo">
                                 <img :src="'/uploads/suppliers/' + supplier.img" alt="">
                                 <span>{{ supplier.comp }}</span>
-                                <p>عافية شركة تم التعاقد معها تورد من خلالنا :</p>
                             </div>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        - زيوت
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        - سمنه
-                                    </a>
-                                </li>
-                            </ul>
                             </div>
                             <div class="categories">
                                 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -100,7 +87,7 @@ export default {
     
     methods: {
         loadSuppliers: function() {
-            axios.get('/json/suppliers/'+ this.slug)
+            axios.get('/json/suppliers/'+ this.slug + '?category=1')
             .then((response) => {
                 this.supplierProducts = response.data.data;
             })
