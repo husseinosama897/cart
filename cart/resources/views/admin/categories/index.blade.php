@@ -49,8 +49,8 @@
                                     @endphp
                                     <td>{{ $date }}</td>
                                     <td name="bstable-actions"><div class="btn-list">
-                                        <a id="bEdit" type="button" class="btn btn-sm btn-primary" style="color:white">
-                                            <span class="fe fe-eye"></span>
+                                        <a  href="/categories_update/{{ $category->id }}" id="bEdit" type="button" class="btn btn-sm btn-primary" style="color:white">
+                                            <span class="fe fe-edit"></span>
                                         </a>
                                         <a href="/categories_delete/{{ $category->id }}" onclick="return confirm('هل انت متاكد من حذف قسم {{ $category->name }}')" id="bDel" type="button" class="btn  btn-sm btn-danger" style="color:white">
                                             <span class="fe fe-trash-2"> </span>

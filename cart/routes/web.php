@@ -146,17 +146,17 @@ Route::post('/categories_save', [categoryController::class, 'save'])->name('cate
 //index table product
 Route::get('/product_index', [productController::class, 'index'])->name('products_index');
 
-
+/// create product 
 Route::get('/create_product', [productController::class, 'create'])->name('create_products');
 
-
-/// create product 
-Route::post('/create_product', [productController::class, 'products'])->name('save_products');
+Route::post('/save_products', [productController::class, 'products'])->name('save_products');
 
 // update product
+Route::get('/update_product/{product}', [productController::class, 'index_update'])->name('index_update_products');
 Route::post('/update_product/{product}', [productController::class, 'update'])->name('update_product');
+
 // delete product
-Route::post('/delete_product/{product}', [productController::class, 'delete'])->name('delete_product');
+Route::get('/delete_product/{product}', [productController::class, 'delete'])->name('delete_product');
 
 /// end of product routes 
 

@@ -18,7 +18,6 @@ class productController extends Controller
      $categories = category::all();
      $suppliers = supplier::all();
      return view('admin.products.create', compact('categories', 'suppliers'));
-
    }
    public function products(request $request){
 $this->validate($request,[
@@ -28,7 +27,6 @@ $this->validate($request,[
     'qty'=>['numeric'],
  'discount'=>['numeric'],
   'offer'=>['numeric'],
-  
 'category_id'=>['numeric','required'],
 'supplier_id'=>['numeric','required'],
 'image'=>[ 'image|mimes:jpeg,png,jpg,gif,svg|max:2048']
@@ -64,6 +62,12 @@ $data = product::insert([
 
    }
 
+   public function index_update(product $product)
+   {
+      $categories = category::all();
+      $suppliers = supplier::all();
+      return view('admin.products.update', compact('categories', 'suppliers', 'product'));
+   }
    public function update(request $request,product $product){
    
     $this->validate($request,[
@@ -108,7 +112,7 @@ if($request->image){
 
 
    public function delete(product $product){
-$product->delete();
-
+    $product->delete();
+    return redirect()->route('products_index')->with('success', 'تم حذف المنتج بنجاح بنجاح');
    }
 }

@@ -6,10 +6,21 @@
     <h1 class="page-title">المنتجات</h1>
 </div>
 <!-- PAGE-HEADER END -->
-
+<div class="errors mb-3 mt-2">
+    @if (session('success'))
+    <div class="alert alert-success" role="alert"> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
+        {{ session('success') }}
+    </div>
+    @endif
+    @if (session('error'))
+    <div class="alert alert-warning text-right" role="alert" style="border-radius: 4px">
+       {{ session('error') }}
+    </div>
+    @endif
+ </div>
 <!-- Row -->
 <div class="row row-cards">
-
     <div class="col-xl-12 col-lg-8">
         <div class="row">
             <div class="col-xl-12">
@@ -50,12 +61,12 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="add-product.html" class="bg-success text-white border-success border">
+                                            <a href="/update_product/{{ $product->id }}" class="bg-success text-white border-success border">
                                                 <i  class="fe fe-edit"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)" class="bg-danger text-white border-danger border">
+                                            <a href="/delete_product/{{ $product->id }}" onclick="return confirm('هل انت متاكد من حذف منتج {{ $product->name }}')" class="bg-danger text-white border-danger border">
                                                 <i class="fe fe-x"></i>
                                             </a>
                                         </li>
