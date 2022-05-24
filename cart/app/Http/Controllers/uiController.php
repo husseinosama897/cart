@@ -65,14 +65,10 @@ if(!empty($category)){
    }
 
 
-<<<<<<< HEAD
+
    public function jsonsuppliers(request $request){
-=======
-   public function jsonsupplier(request $request, supplier $supplier){
 
       $data = $supplier->product();
-
->>>>>>> 1df61932fe8bc7cbbaec66a93c8e465f73fc326a
 
       $category = json_decode($request->category,true);
       
