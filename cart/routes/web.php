@@ -43,7 +43,7 @@ Route::post('/saveorder', [completeorderController::class, 'saveorder']);
 
 Route::post('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
 
-Route::post('/json/suppliers', [uiController::class, 'jsonsuppliers']);
+Route::get('/json/suppliers', [uiController::class, 'jsonsuppliers']);
 
 Route::get('/suppliers', function () {
        return view('front.suppliers.suppliers');
