@@ -6099,6 +6099,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Supplier',
   props: {
@@ -6109,7 +6112,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       supplierProducts: [],
-      Categories: []
+      Categories: [],
+      filterCategory: []
     };
   },
   mounted: function mounted() {
@@ -6121,7 +6125,9 @@ __webpack_require__.r(__webpack_exports__);
     loadSuppliers: function loadSuppliers(category_id) {
       var _this = this;
 
-      axios.post('/json/suppliers/' + this.slug + '?category=' + category_id).then(function (response) {
+      axios.post('/json/suppliers/' + this.slug, {
+        'category': this.filterCategory
+      }).then(function (response) {
         _this.supplierProducts = response.data.data;
       })["catch"]();
     },
@@ -31356,16 +31362,48 @@ var render = function () {
                         ),
                         _vm._v(" "),
                         _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.filterCategory,
+                              expression: "filterCategory",
+                            },
+                          ],
                           staticClass: "form-check-input",
-                          attrs: {
-                            type: "checkbox",
-                            name: "category[]",
-                            id: "flexCheckDefault",
+                          attrs: { type: "checkbox", id: "flexCheckDefault" },
+                          domProps: {
+                            value: item.id,
+                            checked: Array.isArray(_vm.filterCategory)
+                              ? _vm._i(_vm.filterCategory, item.id) > -1
+                              : _vm.filterCategory,
                           },
                           on: {
-                            click: function ($event) {
-                              return _vm.loadSuppliers(item.id)
-                            },
+                            change: [
+                              function ($event) {
+                                var $$a = _vm.filterCategory,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = item.id,
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      (_vm.filterCategory = $$a.concat([$$v]))
+                                  } else {
+                                    $$i > -1 &&
+                                      (_vm.filterCategory = $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1)))
+                                  }
+                                } else {
+                                  _vm.filterCategory = $$c
+                                }
+                              },
+                              function ($event) {
+                                return _vm.loadSuppliers(item.id)
+                              },
+                            ],
                           },
                         }),
                       ]
@@ -31389,25 +31427,54 @@ var render = function () {
               { key: index, staticClass: "product supplierProduct" },
               [
                 _c("div", { staticClass: "photo my-3" }, [
-                  _c("img", {
-                    attrs: { src: "/uploads/product/" + products.img, alt: "" },
-                  }),
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "/product/" + products.slug + "/" + products.id,
+                      },
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/uploads/product/" + products.img,
+                          alt: "",
+                        },
+                      }),
+                    ]
+                  ),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "details" }, [
                   _c("div", { staticClass: "name" }, [
                     _c(
-                      "span",
+                      "a",
                       {
-                        staticStyle: {
-                          display: "-webkit-box",
-                          "-webkit-line-clamp": "1",
-                          "-webkit-box-orient": "vertical",
-                          overflow: "hidden",
-                          "min-height": "1.25rem",
+                        attrs: {
+                          href: "/product/" + products.slug + "/" + products.id,
                         },
                       },
-                      [_vm._v(_vm._s(products.name))]
+                      [
+                        _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              display: "-webkit-box",
+                              "-webkit-line-clamp": "1",
+                              "-webkit-box-orient": "vertical",
+                              overflow: "hidden",
+                              "min-height": "1.25rem",
+                            },
+                          },
+                          [
+                            _vm._v(
+                              "\n                                      " +
+                                _vm._s(products.name) +
+                                "\n                                  "
+                            ),
+                          ]
+                        ),
+                      ]
                     ),
                     _vm._v(" "),
                     _c("span", [

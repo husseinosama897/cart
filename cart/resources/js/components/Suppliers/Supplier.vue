@@ -32,7 +32,7 @@
                                     <label class="form-check-label" for="flexCheckDefault">
                                         {{ item.name }}
                                         </label>
-                                    <input class="form-check-input" type="checkbox" name="category[]" @click="loadSuppliers(item.id)" id="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" :value="item.id" v-model="filterCategory" @change="loadSuppliers(item.id)" id="flexCheckDefault">
                                 </div>
                                 </form>
                             </div>
@@ -43,14 +43,17 @@
                 <div class="supplierProductContainer">
                     <div v-for="(products, index) in supplierProducts.data" :key="index" class="product supplierProduct">
                         <div class="photo my-3">
-                            <img :src="'/uploads/product/' + products.img" alt="">
+                            <a :href="'/product/' + products.slug + '/' + products.id">
+                                <img :src="'/uploads/product/' + products.img" alt="">              
+                            </a>
                         </div>
                         <div class="details">
                             <div class="name">
-                                <span style="display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;min-height: 1.25rem;">{{ products.name }}</span>
+                                <a :href="'/product/' + products.slug + '/' + products.id">
+                                    <span style="display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;min-height: 1.25rem;">
+                                        {{ products.name }}
+                                    </span>
+                                </a>
                                 <span>{{ products.price }} <span>SAR</span> </span>
                             </div>
                             <span class="supplier-name">المورد : {{ supplier.comp }}</span>
@@ -83,6 +86,7 @@ export default {
         return {
             supplierProducts: [],
             Categories: [],
+            filterCategory: [],
         }
     },
     mounted() {
@@ -94,7 +98,9 @@ export default {
         loadCategories: function(){
         },
         loadSuppliers: function(category_id) {
-            axios.post('/json/suppliers/'+ this.slug + '?category=' + category_id)
+            axios.post('/json/suppliers/'+ this.slug,{
+                'category': this.filterCategory,
+            })
             .then((response) => {
                 this.supplierProducts = response.data.data;
             })
