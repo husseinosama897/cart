@@ -28,10 +28,6 @@ class categoryController extends Controller
     }
     public function update(request $request, category $category){
 
-        $request->validate([
-            'name'=>['required','string','max:255'],
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
         if($request->image){
             $image_tmp = $request->image;
 
