@@ -55,8 +55,9 @@ if(!empty($category)){
 
 
    public function supplierpage($slug, supplier $supplier){
+      $category = category::select(['id','name','image','slug'])->get()->take(20);
 
-       return view('front.suppliers.supplier')->with('supplier', $supplier);
+       return view('front.suppliers.supplier')->with(['supplier'=> $supplier,'category'=>$category]);
    }
 
    public function categorypage($slug, $category){
