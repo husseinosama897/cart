@@ -24,6 +24,13 @@
                     </a>
                 </li>
                 <li class="slide">
+                    <a class="side-menu__item" href="{{ route('categories_index') }}">
+                        <i class="side-menu__icon fe fe-grid"></i>
+                        <span class="side-menu__label">الاقسام</span>
+                        <i class="angle fe fe-chevron-right"></i>
+                    </a>
+                </li>
+                <li class="slide">
                     <a class="side-menu__item" href="{{ route('admin.suppliers') }}">
                         <i class="side-menu__icon fe fe-users"></i>
                         <span class="side-menu__label">الموردين</span>
