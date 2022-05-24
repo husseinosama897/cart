@@ -68,8 +68,6 @@ if(!empty($category)){
 
    public function jsonsuppliers(request $request){
 
-      $data = $supplier->product();
-
       $category = json_decode($request->category,true);
       
       $data = supplier::query();
