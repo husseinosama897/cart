@@ -21,7 +21,7 @@
                                     <span class="fs-5">التصنيفات</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg>
                                 </div>
-                                <div>
+                                <form method="GET">
                                 <div class="form-check mb-2">
                                     <label class="form-check-label" for="flexCheckChecked">
                                         الكل
@@ -32,9 +32,9 @@
                                     <label class="form-check-label" for="flexCheckDefault">
                                         {{ item.name }}
                                         </label>
-                                    <input class="form-check-input" type="checkbox" @click="loadSuppliers(item.id)" id="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" name="category[]" @click="loadSuppliers(item.id)" id="flexCheckDefault">
                                 </div>
-                                </div>
+                                </form>
                             </div>
                     </div>
                 </div>
@@ -92,14 +92,9 @@ export default {
     
     methods: {
         loadCategories: function(){
-            axios.get('/json/suppliers/'+ this.slug + '?category=' + '')
-            .then((response) => {
-                this.supplierProducts = response.data.data;
-            })
-            .catch();
         },
         loadSuppliers: function(category_id) {
-            axios.get('/json/suppliers/'+ this.slug + '?category=' + category_id)
+            axios.post('/json/suppliers/'+ this.slug + '?category=' + category_id)
             .then((response) => {
                 this.supplierProducts = response.data.data;
             })

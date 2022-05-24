@@ -6117,27 +6117,21 @@ __webpack_require__.r(__webpack_exports__);
     this.Categories = this.category;
   },
   methods: {
-    loadCategories: function loadCategories() {
+    loadCategories: function loadCategories() {},
+    loadSuppliers: function loadSuppliers(category_id) {
       var _this = this;
 
-      axios.get('/json/suppliers/' + this.slug + '?category=' + '').then(function (response) {
+      axios.post('/json/suppliers/' + this.slug + '?category=' + category_id).then(function (response) {
         _this.supplierProducts = response.data.data;
       })["catch"]();
     },
-    loadSuppliers: function loadSuppliers(category_id) {
-      var _this2 = this;
-
-      axios.get('/json/suppliers/' + this.slug + '?category=' + category_id).then(function (response) {
-        _this2.supplierProducts = response.data.data;
-      })["catch"]();
-    },
     addProductInCart: function addProductInCart($product) {
-      var _this3 = this;
+      var _this2 = this;
 
       axios.post('/storeincart/' + $product, {
         'quantity': 1
       }).then(function (response) {
-        _this3.$toastr.s(response.data.msg);
+        _this2.$toastr.s(response.data.msg);
       })["catch"]();
     }
   }
@@ -31336,7 +31330,8 @@ var render = function () {
               ),
               _vm._v(" "),
               _c(
-                "div",
+                "form",
+                { attrs: { method: "GET" } },
                 [
                   _vm._m(0),
                   _vm._v(" "),
@@ -31362,7 +31357,11 @@ var render = function () {
                         _vm._v(" "),
                         _c("input", {
                           staticClass: "form-check-input",
-                          attrs: { type: "checkbox", id: "flexCheckDefault" },
+                          attrs: {
+                            type: "checkbox",
+                            name: "category[]",
+                            id: "flexCheckDefault",
+                          },
                           on: {
                             click: function ($event) {
                               return _vm.loadSuppliers(item.id)

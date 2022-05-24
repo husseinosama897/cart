@@ -41,7 +41,7 @@ Route::get('/checkout', [completeorderController::class, 'checkout']);
 Route::post('/saveorder', [completeorderController::class, 'saveorder']);
 
 
-Route::get('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
+Route::post('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
 
 Route::get('/json/suppliers', [uiController::class, 'jsonsuppliers']);
 
