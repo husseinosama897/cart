@@ -5789,7 +5789,8 @@ __webpack_require__.r(__webpack_exports__);
         quantity: 1,
         notes: '',
         image: null,
-        nameProduct: ''
+        nameProduct: '',
+        supplier_id: ''
       }],
       url: null,
       searchGetProduct: '',
@@ -5809,7 +5810,8 @@ __webpack_require__.r(__webpack_exports__);
         quantity: 0,
         notes: '',
         image: null,
-        nameProduct: ''
+        nameProduct: '',
+        supplier_id: ''
       });
     },
     deleteOrder: function deleteOrder(index) {
@@ -5826,14 +5828,14 @@ __webpack_require__.r(__webpack_exports__);
         _this.isActive = true;
       })["catch"]();
     },
-<<<<<<< HEAD
-    addIdProduct: function addIdProduct(index, idProduct, nameProduct, priceProduct) {
+    addIdProduct: function addIdProduct(index, idProduct, supplier_id, nameProduct, priceProduct) {
       var _this2 = this;
 
       this.orders.forEach(function (item, indexx) {
         if (idProduct !== item.product_id) {
           _this2.orders[index].product_id = idProduct;
           _this2.orders[index].nameProduct = nameProduct;
+          _this2.orders[index].supplier_id = supplier_id;
           _this2.isActive = false;
           _this2.orders[index].product_price = priceProduct;
         } else {
@@ -5842,14 +5844,6 @@ __webpack_require__.r(__webpack_exports__);
           _this2.orders.splice(index, 1);
         }
       });
-=======
-    addIdProduct: function addIdProduct(index, idProduct, supplier_id, nameProduct, priceProduct) {
-      this.orders[index].product_id = idProduct;
-      this.searchGetProduct = nameProduct;
-      this.orders[index].supplier_id = supplier_id;
-      this.isActive = false;
-      this.orders[index].product_price = priceProduct;
->>>>>>> fdfb2a495b380fe46dcaa532875b06c4a2e5d553
     },
     sendOrder: function sendOrder() {
       var _this3 = this;

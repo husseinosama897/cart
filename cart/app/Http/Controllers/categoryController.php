@@ -74,7 +74,7 @@ public function save(Request $request){
         'slug'=>$slug,
         ]);
 
-   
+
         return redirect()->route('categories_index')->with('success', 'تم إضافة القسم بنجاح');
     }
 }
