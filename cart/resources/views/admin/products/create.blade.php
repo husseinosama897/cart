@@ -25,6 +25,15 @@
                     </div>
                 </div>
                 <div class="row mb-4">
+                    <label class="col-md-3 form-label">عدد المنتجات :</label>
+                    <div class="col-md-9">
+                        <select name="country" class="form-control form-select select2" data-bs-placeholder="Select Country">
+                                <option value="1">عدد عادي</option>
+                                <option value="2">عدد لانهائي</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-4">
                     <label class="col-md-3 form-label">الكمية :</label>
                     <div class="col-md-9">
                         <input type="number" class="form-control">

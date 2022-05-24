@@ -134,7 +134,7 @@ Route::post('/categories_delete/{category}', [categoryController::class, 'delete
 
 //  start with  product
 //index table product
-Route::get('/product_index', [productController::class, 'index'])->name('index');
+Route::get('/product_index', [productController::class, 'index'])->name('products_index');
 
 
 Route::get('/create_product', [productController::class, 'create'])->name('create_products');
