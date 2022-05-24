@@ -135,7 +135,7 @@ Route::post('/categories_update/{category}', [categoryController::class, 'update
 // delete category 
 Route::post('/categories_delete/{category}', [categoryController::class, 'delete'])->name('category_delete');
 
-Route::post('/categories_save', [categoryController::class, 'create'])->name('category_create');
+Route::post('/categories_save', [categoryController::class, 'save'])->name('categories_save');
 
 
 
