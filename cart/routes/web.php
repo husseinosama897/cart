@@ -46,7 +46,8 @@ Route::get('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
 Route::get('/json/suppliers', [uiController::class, 'jsonsuppliers']);
 
 Route::get('/suppliers', function () {
-       return view('front.suppliers.suppliers');
+    $category = category::select(['id','name'])->get()->take(20);
+     return view('front.suppliers.suppliers')->with('category',$category);
 })->name('suppliers');
 
 Route::get('/suppliers/{slug}/{supplier}', [uiController::class, 'supplierpage'])->name('suppliers.page');
