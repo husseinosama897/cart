@@ -128,7 +128,6 @@ Route::get('/categories_index', [categoryController::class, 'index'])->name('cat
 Route::get('/categories_create', [categoryController::class, 'create'])->name('categories_create');
 
 
-Route::post('/categories_save', [categoryController::class, 'save'])->name('categories_save');
 
 // update cateogry
 Route::post('/categories_update/{category}', [categoryController::class, 'update'])->name('category_update');
