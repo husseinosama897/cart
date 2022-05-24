@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\category;
+use Illuminate\Support\Facades\Validator;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 class categoryController extends Controller
 {
@@ -22,11 +23,10 @@ class categoryController extends Controller
         }
     public function update(request $request, category $category){
 
-        $this->validate($request,[
-        'name'=>['required','string','max:255'],
-        'image'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        $request->validate([
+            'name'=>['required','string','max:255'],
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
         if($request->image){
             $image_tmp = $request->image;
 
@@ -50,10 +50,9 @@ class categoryController extends Controller
 public function save(Request $request){
 
     
- 
-    $this->validate($request,[
-        'name'=> ['required','string','max:255'],
-        'image'=>['image|mimes:jpeg,png,jpg,gif,svg|max:2048'],
+    $request->validate([
+        'name'=>['required','string','max:255'],
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
 
 
