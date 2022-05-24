@@ -17,9 +17,9 @@ class category extends Model
 
 
 protected $fillable = [
-    'slug','name','img',
+    'slug', 'name', 'image',
 ];
-
+public $timestamps = false;
     public function sluggable(): array
     {
 

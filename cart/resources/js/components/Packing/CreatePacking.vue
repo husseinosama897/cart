@@ -12,7 +12,10 @@
               <div class="row details mt-4">
                   <p class="w-75" style="margin: 0 auto;">وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة وصف المنتج الذي تم اخيارة</p>
                 <div class="col-md-8 pt-3 d-flex m-auto position-relative">
-                    <input type="text" class="form-control" v-model="searchGetProduct" v-on:keyup="getProduct" style="direction: rtl;">
+                    
+                    <input type="text" class="form-control" v-if="order.product_id !== ''" v-model="order.nameProduct" v-on:keyup="getProduct" style="direction: rtl;">
+                    <input type="text" class="form-control" v-if="order.nameProduct == ''" v-model="searchGetProduct" v-on:keyup="getProduct" style="direction: rtl;">
+
                     <div class="drop-search" id="drop-search" v-if="searchGetProduct !== ''" v-bind:class="{ active: isActive, }">
                         <ul class="ps-0 mb-0">
                             <li v-for="(product, index) in products" :key="index" >
@@ -72,16 +75,11 @@ export default {
                {
                    product_id: '',
                    product_price: 0,
-                   quantity: 0,
+                   quantity: 1,
                    notes: '',
-                   image: null
-               },
-               {
-                   product_id: '',
-                   product_price: 0,
-                   quantity: 0,
-                   notes: '',
-                   image: null
+                   image: null,
+                   nameProduct: '',
+
                },
            ],
            url: null,
@@ -103,8 +101,9 @@ export default {
                 product_price: 0,
                 quantity: 0,
                 notes: '',
-                image: null
-               });
+                image: null,
+                nameProduct: '',
+            });
         },
         deleteOrder: function (index) { 
             this.orders.splice(index, 1)
@@ -120,10 +119,18 @@ export default {
             .catch();
         },
         addIdProduct: function(index, idProduct, nameProduct, priceProduct){
-            this.orders[index].product_id = idProduct;
-            this.searchGetProduct = nameProduct;
-            this.isActive = false;
-            this.orders[index].product_price = priceProduct;
+
+            this.orders.forEach((item, indexx) => {
+                if(idProduct !== item.product_id){
+                    this.orders[index].product_id = idProduct;
+                    this.orders[index].nameProduct = nameProduct;
+                    this.isActive = false;
+                    this.orders[index].product_price = priceProduct;
+                }else{
+                   item.quantity += 1;
+                   this.orders.splice(index, 1)
+                }
+            });
         },
         sendOrder: function () {  
             axios.post('/insertcup/', {

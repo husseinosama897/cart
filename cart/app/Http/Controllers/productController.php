@@ -50,14 +50,14 @@ if($request->image){
 $data = product::insert([
     'name'=>$request->name,
     'price'=>$request->price,
-  'qty_type'=>$request->qty_type,
-      'qty'=>$request->qty,
-   'discount'=>$request->discount,
+    'qty_type'=>$request->qty_type,
+    'qty'=>$request->qty,
+    'discount'=>$request->discount,
     'offer'=>$request->offer,
     'slug'=>$slug,
     'image'=>$fileName,
-  'category_id'=>$request->category_id,
-  'supplier_id'=>$request->supplier_id,
+    'category_id'=>$request->category_id,
+    'supplier_id'=>$request->supplier_id,
   
 ]);
 

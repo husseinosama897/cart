@@ -3,10 +3,26 @@
 @section('content')
 <!-- PAGE-HEADER -->
 <div class="page-header">
-    <h1 class="page-title">الطلبات</h1>
+    <h1 class="page-title">الاقسام</h1>
+    <div class="col-xl-2 col-lg-2">
+        <a href="{{route('categories_create')}}" class="btn btn-primary btn-block float-end my-2"><i class="fa fa-plus-square me-2"></i>إضافة قسم جديد</a>
+    </div>
 </div>
-<!-- PAGE-HEADER END -->
 
+<div class="errors mb-3 mt-2">
+    @if (session('success'))
+    <div class="alert alert-success" role="alert"> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
+        {{ session('success') }}
+    </div>
+    @endif
+    @if (session('error'))
+    <div class="alert alert-warning text-right" role="alert" style="border-radius: 4px">
+       {{ session('error') }}
+    </div>
+    @endif
+ </div>
+<!-- PAGE-HEADER END -->
 <!-- Row -->
 <div class="row row-sm">
     <div class="col-lg-12">
@@ -17,23 +33,19 @@
                         <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">الاسم</th>
-                                <th class="wd-15p border-bottom-0">البريد الالكتروني</th>
-                                <th class="wd-20p border-bottom-0">رقم الهاتف</th>
-                                <th class="wd-15p border-bottom-0">اجمالي سعر الطلب</th>
-                                <th class="wd-25p border-bottom-0">تاريخ الطلب</th>
+                                <th class="wd-15p border-bottom-0">الرابط</th>
+                                <th class="wd-25p border-bottom-0">تاريخ التأسيس</th>
                                 <th class="wd-10p border-bottom-0">إعدادات</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($orders as $order)
+                            @foreach ($categories as $category)
                                 <tr>
-                                    <td>{{ $order->billing_name }}</td>
-                                    <td>{{ $order->billing_email }}</td>
-                                    <td>{{ $order->billing_number }}</td>
-                                    <td>{{ $order->billing_total }}</td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->slug }}</td>
                                     @php
                                         setlocale(LC_ALL, 'ar.utf8');
-                                        $date = Carbon\Carbon::parse($order->created_at)->translatedFormat('l j F Y H:i:s');
+                                        $date = Carbon\Carbon::parse($category->created_at)->translatedFormat('l j F Y H:i:s');
                                     @endphp
                                     <td>{{ $date }}</td>
                                     <td name="bstable-actions"><div class="btn-list">

@@ -5774,6 +5774,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'CreatePacking',
   data: function data() {
@@ -5782,15 +5785,10 @@ __webpack_require__.r(__webpack_exports__);
       orders: [{
         product_id: '',
         product_price: 0,
-        quantity: 0,
+        quantity: 1,
         notes: '',
-        image: null
-      }, {
-        product_id: '',
-        product_price: 0,
-        quantity: 0,
-        notes: '',
-        image: null
+        image: null,
+        nameProduct: ''
       }],
       url: null,
       searchGetProduct: '',
@@ -5810,7 +5808,8 @@ __webpack_require__.r(__webpack_exports__);
         product_price: 0,
         quantity: 0,
         notes: '',
-        image: null
+        image: null,
+        nameProduct: ''
       });
     },
     deleteOrder: function deleteOrder(index) {
@@ -5828,18 +5827,28 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"]();
     },
     addIdProduct: function addIdProduct(index, idProduct, nameProduct, priceProduct) {
-      this.orders[index].product_id = idProduct;
-      this.searchGetProduct = nameProduct;
-      this.isActive = false;
-      this.orders[index].product_price = priceProduct;
+      var _this2 = this;
+
+      this.orders.forEach(function (item, indexx) {
+        if (idProduct !== item.product_id) {
+          _this2.orders[index].product_id = idProduct;
+          _this2.orders[index].nameProduct = nameProduct;
+          _this2.isActive = false;
+          _this2.orders[index].product_price = priceProduct;
+        } else {
+          item.quantity += 1;
+
+          _this2.orders.splice(index, 1);
+        }
+      });
     },
     sendOrder: function sendOrder() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.post('/insertcup/', {
         packing: this.orders
       }).then(function (response) {
-        _this2.$toastr.s(response.data.msg);
+        _this3.$toastr.s(response.data.msg);
       })["catch"]();
     }
   },
@@ -30535,29 +30544,57 @@ var render = function () {
                   staticClass: "col-md-8 pt-3 d-flex m-auto position-relative",
                 },
                 [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.searchGetProduct,
-                        expression: "searchGetProduct",
-                      },
-                    ],
-                    staticClass: "form-control",
-                    staticStyle: { direction: "rtl" },
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.searchGetProduct },
-                    on: {
-                      keyup: _vm.getProduct,
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.searchGetProduct = $event.target.value
-                      },
-                    },
-                  }),
+                  order.product_id !== ""
+                    ? _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: order.nameProduct,
+                            expression: "order.nameProduct",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        staticStyle: { direction: "rtl" },
+                        attrs: { type: "text" },
+                        domProps: { value: order.nameProduct },
+                        on: {
+                          keyup: _vm.getProduct,
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(order, "nameProduct", $event.target.value)
+                          },
+                        },
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  order.nameProduct == ""
+                    ? _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.searchGetProduct,
+                            expression: "searchGetProduct",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        staticStyle: { direction: "rtl" },
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.searchGetProduct },
+                        on: {
+                          keyup: _vm.getProduct,
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.searchGetProduct = $event.target.value
+                          },
+                        },
+                      })
+                    : _vm._e(),
                   _vm._v(" "),
                   _vm.searchGetProduct !== ""
                     ? _c(
