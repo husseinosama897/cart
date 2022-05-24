@@ -51,7 +51,7 @@ public function save(Request $request){
 
     $this->validate($request,[
         'name'=> ['required','string','max:255'],
-        'image'=> ['mimes:jpeg,png,jpg,gif,svg|max:2048'],
+        'image'=> ['image|mimes:jpeg,png,jpg,gif,svg|max:2048'],
     ]);
 
 
