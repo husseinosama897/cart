@@ -49,9 +49,11 @@ class categoryController extends Controller
 
 public function save(Request $request){
 
+    
+ 
     $this->validate($request,[
         'name'=> ['required','string','max:255'],
-        'image'=> ['image|mimes:jpeg,png,jpg,gif,svg|max:2048'],
+        'image'=>['image|mimes:jpeg,png,jpg,gif,svg|max:2048'],
     ]);
 
 
@@ -66,12 +68,13 @@ public function save(Request $request){
         $fileName = null;
       }
     $slug = SlugService::createSlug(category::class, 'slug', $request->name);
-        category::create([
+    $category =     category::create([
         'image'=>$fileName,
         'name'=>$request->name,
         'slug'=>$slug,
         ]);
 
-        return redirect()->view('admin.categories.index')->with('success', 'تم إضافة القسم بنجاح');
+   
+        return redirect()->route('categories_index')->with('success', 'تم إضافة القسم بنجاح');
     }
 }
