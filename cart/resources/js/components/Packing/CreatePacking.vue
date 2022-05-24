@@ -19,7 +19,7 @@
                     <div class="drop-search" id="drop-search" v-if="searchGetProduct !== ''" v-bind:class="{ active: isActive, }">
                         <ul class="ps-0 mb-0">
                             <li v-for="(product, index) in products" :key="index" >
-                                <a @click="addIdProduct(index, product.id, product.name, product.price)">
+                                <a @click="addIdProduct(index, product.id,product.supplier_id, product.name, product.price)">
                                 <span class="name-search" style="display: flex;align-items: center;">
                                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="7.5" cy="7.5" r="6.5" stroke="#3A4046" stroke-width="2"></circle>
@@ -70,6 +70,7 @@ export default {
    name: 'CreatePacking',
     data() {
        return{
+           image:[],
            isActive: false,
            orders: [
                {
@@ -92,8 +93,9 @@ export default {
     methods: {
         onFileChange(index, e) {
             const file = e.target.files[0];
-            this.url = file;
-            this.orders[index].image = file;
+       this.orders[index].image = file
+
+ 
         },
         createOrder: function () { 
             this.orders.push({
@@ -118,6 +120,7 @@ export default {
             })
             .catch();
         },
+<<<<<<< HEAD
         addIdProduct: function(index, idProduct, nameProduct, priceProduct){
 
             this.orders.forEach((item, indexx) => {
@@ -131,11 +134,47 @@ export default {
                    this.orders.splice(index, 1)
                 }
             });
+=======
+        addIdProduct: function(index, idProduct,supplier_id, nameProduct, priceProduct){
+            this.orders[index].product_id = idProduct;
+            this.searchGetProduct = nameProduct;
+            this.orders[index].supplier_id = supplier_id
+            this.isActive = false;
+            this.orders[index].product_price = priceProduct;
+>>>>>>> fdfb2a495b380fe46dcaa532875b06c4a2e5d553
         },
         sendOrder: function () {  
-            axios.post('/insertcup/', {
-               packing: this.orders,
-            }).then((response) => {
+            
+     	const config = {
+   
+                   headers: { 'content-type': 'multipart/form-data' }
+   
+               }
+   
+               let formData = new FormData();
+
+         
+   
+
+    
+    this.orders.forEach((element,index) => {
+       
+   if(element.image !== undefined && element.image !== null){
+       
+   formData.append('files-' + index, element.image);
+
+   Vue.set(element,'exist_image',1)
+   }else{
+       Vue.set(element,'exist_image',0)
+   }
+    
+   });
+   
+formData.append('packing',JSON.stringify(this.orders));
+            axios.post('/insertcup/',formData, {
+                   headers: {
+                       'Content-Type': 'multipart/form-data' },
+   }).then((response) => {
                 this.$toastr.s(response.data.msg);
             })
             .catch();
