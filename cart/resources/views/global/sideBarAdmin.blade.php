@@ -24,9 +24,9 @@
                     </a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('products_index') }}">
-                        <i class="side-menu__icon fe fe-shopping-bag"></i>
-                        <span class="side-menu__label">الطلبات</span>
+                    <a class="side-menu__item" href="{{ route('admin.suppliers') }}">
+                        <i class="side-menu__icon fe fe-users"></i>
+                        <span class="side-menu__label">الموردين</span>
                         <i class="angle fe fe-chevron-right"></i>
                     </a>
                 </li>
@@ -34,6 +34,13 @@
                     <a class="side-menu__item" href="{{ route('products_index') }}">
                         <i class="side-menu__icon fe fe-shopping-bag"></i>
                         <span class="side-menu__label">المنتجات</span>
+                        <i class="angle fe fe-chevron-right"></i>
+                    </a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item" href="{{ route('orders.index') }}">
+                        <i class="side-menu__icon fe fe-box"></i>
+                        <span class="side-menu__label">الطلبات</span>
                         <i class="angle fe fe-chevron-right"></i>
                     </a>
                 </li>

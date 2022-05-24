@@ -166,7 +166,7 @@ Route::get('/createpage', [supplierController::class, 'createpage']);
 
 
 //supplier suppliertable
-Route::get('/supplier_table', [supplierController::class, 'suppliertable']);
+Route::get('/supplier_table', [supplierController::class, 'suppliertable'])->name('admin.suppliers');
 
 
 //supplier select box //chunk 
@@ -181,6 +181,16 @@ Route::post('/deletesupp/{supplier}', [supplierController::class, 'delete']);
 
 
 //start with order 
+
+// -----------------------------AdminDashboard----------------------------------------//
+Route::group(['prefix' => 'admin',], function () {
+
+// -----------------------------Orders----------------------------------------//
+    Route::prefix('orders')->name('orders.')->group(function () {
+        Route::get('/',[ordersAdminController::class,'index'])->name('index');
+        Route::put('/update',[SettingController::class,'update'])->name('update');
+    });
+});
 
 // read order
 Route::get('/revieworder', [ordersAdminController::class, 'revieworder']);
@@ -233,13 +243,3 @@ Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-// -----------------------------AdminDashboard----------------------------------------//
-Route::group(['prefix' => 'admin',], function () {
-
-// -----------------------------Orders----------------------------------------//
-Route::prefix('orders')->name('orders.')->group(function () {
-    Route::get('/',[ordersAdminController::class,'index'])->name('index');
-    Route::put('/update',[SettingController::class,'update'])->name('update');
-});
-
-});
