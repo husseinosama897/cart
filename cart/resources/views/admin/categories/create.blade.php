@@ -16,7 +16,7 @@
     <div class="col-md-12 col-xl-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="{{ route('categories_save') }}">
+                <form method="POST" action="{{ route('categories_save') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="">
                         <div class="form-group">
@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group">
                             <label for="demo" class="form-label">الصورة</label>
-                            <input id="demo" type="file" name="image" accept=".jpg, .png, image/jpeg, image/png">
+                            <input id="" type="file" name="image" accept=".jpg, .png, image/jpeg, image/png">
                         </div>
                     </div>
                     <button class="btn btn-primary mt-4 mb-0">إضافة</button>
