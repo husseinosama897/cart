@@ -39,11 +39,14 @@ class categoryController extends Controller
             $fileName = null;
         }
             $slug = SlugService::createSlug(category::class, 'slug', $request->name);
-        $category->update([
-        'image'=>$fileName,
-        'name'=>$request->name,
-        'slug'=>$slug,
-        ]);
+ if($fileName  !== null){
+    $category-> image=$fileName;
+
+ }
+      
+        $category-> name=$request->name;
+        $category-> slug=$slug;
+$category->save();
         return redirect()->route('categories_index')->with('success', 'تم تعديل القسم بنجاح');
 
     }
