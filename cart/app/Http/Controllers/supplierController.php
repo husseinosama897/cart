@@ -100,9 +100,8 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
     
           }
           public function suppliertable(){
-           
-          return view('supplier.table');
-            
+           $suppliers = supplier::get();
+           return view('admin.suppliers.index', compact('suppliers'));
           }
           
        

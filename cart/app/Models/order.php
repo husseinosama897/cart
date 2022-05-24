@@ -12,7 +12,7 @@ class order extends Model
     protected $fillable = [
         'user_id',
         'billing_name',
-      'billing_email',
+        'billing_email',
          'billing_number',
           'type',
           'billing_discount_code',

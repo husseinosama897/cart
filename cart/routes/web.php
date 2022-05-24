@@ -135,8 +135,13 @@ Route::post('/categories_delete/{category}', [categoryController::class, 'delete
 //  start with  product
 //index table product
 Route::get('/product_index', [productController::class, 'index'])->name('index');
+
+
+Route::get('/create_product', [productController::class, 'create'])->name('create_products');
+
+
 /// create product 
-Route::post('/create_product', [productController::class, 'products'])->name('products');
+Route::post('/create_product', [productController::class, 'products'])->name('save_products');
 
 // update product
 Route::post('/update_product/{product}', [productController::class, 'update'])->name('update_product');
@@ -178,7 +183,7 @@ Route::post('/deletesupp/{supplier}', [supplierController::class, 'delete']);
 //start with order 
 
 // read order
-Route::get('/revieworder/{order}', [ordersAdminController::class, 'revieworder']);
+Route::get('/revieworder', [ordersAdminController::class, 'revieworder']);
 
 //change status order
 

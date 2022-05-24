@@ -19,17 +19,18 @@
     <link rel="icon" href="{{ asset('/admin/assets/images/favicon.ico')}}" type="image/x-icon">
     <link href="{{ asset('/admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-    <link href="{{ asset('/admin/assets/plugins/iconfonts/icons.css') }}" rel="stylesheet" />
     <!-- Custom Css -->
-    <link href="{{ asset('/admin/assets/css/main.css')}}" rel="stylesheet">
-    <link href="{{ asset('/admin/assets/plugins/prism/prism.css') }}" rel="stylesheet">
-    <link href="{{ asset('/admin/assets/plugins/treeview-prism/prism.css') }}" rel="stylesheet">
-    <link href="{{ asset('/admin/assets/plugins/treeview-prism/prism-treeview.css') }}" rel="stylesheet">
-    <link href="{{ asset('/admin/assets/css/themes/all-themes.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('/admin/assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('/admin/assets/css/dark-style.css')}}" rel="stylesheet">
+    <link href="{{ asset('/admin/assets/css/transparent-style.css')}}" rel="stylesheet">
+    <link href="{{ asset('/admin/assets/css/skin-modes.css')}}" rel="stylesheet">
+    <link href="{{ asset('/admin/assets/plugins/iconfonts/icons.css') }}" rel="stylesheet" />
+
+    
     @yield('style')
 
 </head>
-<body class="theme-blush">
+<body class="app sidebar-mini light-mode rtl">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -55,37 +56,57 @@
     <div class="sidebar-overlay" data-toggle="sidebar"></div>
     
     <!-- #Top Bar -->
-    <section>
-        @include('global.sideBarAdmin')
-    </section>
-    <section class="content home">
-        <div class="container-fluid">
-            @yield('content')
+        <!-- PAGE -->
+        <div class="page">
+            <div class="page-main">
+                @include('global.navAdmin')
+                @include('global.sideBarAdmin')
+                <!--app-content open-->
+                <div class="main-content app-content mt-0">
+                    <div class="side-app">
+
+                        <!-- CONTAINER -->
+                        <div class="main-container container-fluid">
+                            @yield('content')
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
-    @include('global.navAdmin')
+
     <script src="{{ asset('js/app.js') }}" ></script>
 
     <!-- Jquery Core Js -->
-    <script src="{{asset('admin/assets/bundles/libscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js -->
-    <script src="{{asset('admin/assets/bundles/morphingsearchscripts.bundle.js')}}"></script> <!-- morphing search Js -->
-    <script src="{{asset('admin/assets/bundles/vendorscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js -->
-    <script src="{{asset('admin/assets/bundles/mainscripts.bundle.js')}}"></script><!-- Custom Js -->
-    <script src="{{asset('admin/assets/bundles/morphingscripts.bundle.js')}}"></script><!-- morphing search page js -->
+    <script src="{{asset('admin/assets/js/jquery.min.js')}}"></script> 
+    <script src="{{asset('admin/assets/plugins/bootstrap/js/popper.min.js')}}"></script> 
+    <script src="{{asset('admin/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script> 
+    <script src="{{asset('admin/assets/js/jquery.sparkline.min.js')}}"></script>
 
-    <!-- Internal Prism js-->
-    <script src="{{asset('admin/assets/plugins/prism/prism.js')}}"></script>
+    <script src="{{asset('admin/assets/js/circle-progress.min.js')}}"></script>
 
-    <!-- Treeview js-->
-    <script src="{{asset('admin/assets/plugins/treeview-prism/prism.js')}}"></script>
-    <script src="{{asset('admin/assets/plugins/treeview-prism/prism-treeview.js')}}"></script>
+    <script src="{{asset('admin/assets/plugins/charts-c3/d3.v5.min.js')}}"></script>
+    <script src="{{asset('admin/assets/plugins/charts-c3/c3-chart.js')}}"></script>
 
-    <!-- Perfectscroll js-->
-    <script src="{{asset('admin/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{asset('admin/assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
+    <script src="{{asset('admin/assets/plugins/input-mask/jquery.mask.min.js')}}"></script>
 
-    <!-- Custom js-->
+    <script src="{{asset('admin/assets/plugins/sidemenu/sidemenu.js')}}"></script>
+
+    <script src="{{asset('admin/assets/plugins/select2/select2.full.min.js')}}"></script>
+
+    <script src="{{asset('admin/assets/plugins/sidebar/sidebar.js')}}"></script>
+
+    <script src="{{asset('admin/assets/plugins/p-scroll/perfect-scrollbar.js')}}"></script>
+
+    <script src="{{asset('admin/assets/plugins/p-scroll/pscroll.js')}}"></script>
+
+    <script src="{{asset('admin/assets/plugins/p-scroll/pscroll-1.js')}}"></script>
+
+    <script src="{{asset('admin/assets/js/themeColors.js')}}"></script>
+
+    <script src="{{asset('admin/assets/js/sticky.js')}}"></script>
+
     <script src="{{asset('admin/assets/js/custom.js')}}"></script>
-    <script src="{{asset('admin/assets/js/menuspy.min.js.js')}}"></script>
+
+    @yield('script')
 </body>
 </html>

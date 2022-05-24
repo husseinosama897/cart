@@ -9,12 +9,13 @@ class ordersAdminController extends Controller
 
 
 public function index(){
-    return view('admin.orders.index');
+    $orders = order::paginate(15);
+    return view('admin.orders.index', compact('orders'));
 }
 
 
 public function revieworder(order $order){
-    return view('admin.order.review')->with(['data'=>$order]);
+    return view('admin.orders.index')->with(['data'=>$order]);
 }
 
 

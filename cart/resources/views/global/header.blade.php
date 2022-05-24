@@ -3,7 +3,7 @@
         <div class="row align-items-center desktop">
             <div class="logo col-auto">
                 <a href="/">
-                    <img src="{{ asset('/front/images/Component 51 – 2.png') }}" alt="" color="">
+                    <img src="{{ asset('/front/images/logo.png') }}" alt="" color="">
                 </a>
             </div>
             @if (Auth::check())

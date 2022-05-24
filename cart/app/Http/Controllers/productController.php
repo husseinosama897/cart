@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\supplier;
+
 class productController extends Controller
 {
    public function index(){
-       return view('product.index');
+      $products = product::latest()->paginate(4);
+       return view('admin.products.index', compact('products'));
    }
+   public function create()
+   {
+     $categories = category::all();
+     $suppliers = supplier::all();
+     return view('admin.products.create', compact('categories', 'suppliers'));
 
+   }
    public function products(request $request){
 $this->validate($request,[
   'name'=>['string','required','max:255'],
