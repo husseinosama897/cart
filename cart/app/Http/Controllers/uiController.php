@@ -89,11 +89,13 @@ if(!empty($category)){
 
       $category = json_decode($request->category,true);
   
+      $data = $supplier;
+      
       if($category){
          $data = $supplier->category()->WhereIn('id',$category);
       }
 
-      $data =    $data->product();
+      $data =    $supplier->product();
 
       $data = $data->paginate(10);
 
