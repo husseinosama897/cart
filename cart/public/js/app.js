@@ -6097,35 +6097,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Supplier',
   props: {
     slug: String,
-    supplier: Object
+    supplier: Object,
+    category: Array
   },
   data: function data() {
     return {
-      supplierProducts: []
+      supplierProducts: [],
+      Categories: []
     };
   },
   mounted: function mounted() {
     this.loadSuppliers();
+    this.Categories = this.category;
   },
   methods: {
-    loadSuppliers: function loadSuppliers() {
+    loadCategories: function loadCategories() {
       var _this = this;
 
-      axios.get('/json/suppliers/' + this.slug + '?category=1').then(function (response) {
+      axios.get('/json/suppliers/' + this.slug + '?category=' + '').then(function (response) {
         _this.supplierProducts = response.data.data;
       })["catch"]();
     },
-    addProductInCart: function addProductInCart($product) {
+    loadSuppliers: function loadSuppliers(category_id) {
       var _this2 = this;
+
+      axios.get('/json/suppliers/' + this.slug + '?category=' + category_id).then(function (response) {
+        _this2.supplierProducts = response.data.data;
+      })["catch"]();
+    },
+    addProductInCart: function addProductInCart($product) {
+      var _this3 = this;
 
       axios.post('/storeincart/' + $product, {
         'quantity': 1
       }).then(function (response) {
-        _this2.$toastr.s(response.data.msg);
+        _this3.$toastr.s(response.data.msg);
       })["catch"]();
     }
   }
@@ -31323,9 +31335,46 @@ var render = function () {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._m(1),
+              _c(
+                "div",
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _vm._l(_vm.Categories, function (item, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "form-check mb-2" },
+                      [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "flexCheckDefault" },
+                          },
+                          [
+                            _vm._v(
+                              "\n                                      " +
+                                _vm._s(item.name) +
+                                "\n                                      "
+                            ),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-check-input",
+                          attrs: { type: "checkbox", id: "flexCheckDefault" },
+                          on: {
+                            click: function ($event) {
+                              return _vm.loadSuppliers(item.id)
+                            },
+                          },
+                        }),
+                      ]
+                    )
+                  }),
+                ],
+                2
+              ),
             ]),
           ]),
         ]),
@@ -31455,27 +31504,6 @@ var staticRenderFns = [
           id: "flexCheckChecked",
           checked: "",
         },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check mb-2" }, [
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
-        [
-          _vm._v(
-            "\n                                      السيروب والمنكهات\n                                      "
-          ),
-        ]
-      ),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: { type: "checkbox", value: "", id: "flexCheckDefault" },
       }),
     ])
   },

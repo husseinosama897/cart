@@ -21,17 +21,19 @@
                                     <span class="fs-5">التصنيفات</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg>
                                 </div>
+                                <div>
                                 <div class="form-check mb-2">
                                     <label class="form-check-label" for="flexCheckChecked">
                                         الكل
                                         </label>
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
                                 </div>
-                                <div class="form-check mb-2">
+                                <div class="form-check mb-2" v-for="(item, index) in Categories" :key="index">
                                     <label class="form-check-label" for="flexCheckDefault">
-                                        السيروب والمنكهات
+                                        {{ item.name }}
                                         </label>
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" @click="loadSuppliers(item.id)" id="flexCheckDefault">
+                                </div>
                                 </div>
                             </div>
                     </div>
@@ -75,19 +77,29 @@ export default {
     props: {
         slug: String, 
         supplier: Object,
+        category: Array,
     },
     data() {
         return {
             supplierProducts: [],
+            Categories: [],
         }
     },
     mounted() {
         this.loadSuppliers();
+        this.Categories = this.category;
     },
     
     methods: {
-        loadSuppliers: function() {
-            axios.get('/json/suppliers/'+ this.slug + '?category=1')
+        loadCategories: function(){
+            axios.get('/json/suppliers/'+ this.slug + '?category=' + '')
+            .then((response) => {
+                this.supplierProducts = response.data.data;
+            })
+            .catch();
+        },
+        loadSuppliers: function(category_id) {
+            axios.get('/json/suppliers/'+ this.slug + '?category=' + category_id)
             .then((response) => {
                 this.supplierProducts = response.data.data;
             })

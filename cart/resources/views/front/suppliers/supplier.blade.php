@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<supplier :slug="{{ $supplier->id }}" :supplier="{{ $supplier }}"></supplier>
+<supplier :slug="{{ $supplier->id }}" :supplier="{{ $supplier }}" :category="{{ $category }}"></supplier>
 @endsection
 
 @section('style')
