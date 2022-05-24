@@ -107,12 +107,8 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
        
 
           public function supplierselex(){
-          
             $supplier =  supplier::get()->chunk(10);
-          return response()->json(['data'=>$supplier]);
-          
-          
-            
+            return response()->json(['data'=>$supplier]);
           }
           
           

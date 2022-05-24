@@ -6097,19 +6097,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Supplier',
   props: {
@@ -6128,7 +6115,7 @@ __webpack_require__.r(__webpack_exports__);
     loadSuppliers: function loadSuppliers() {
       var _this = this;
 
-      axios.get('/json/suppliers/' + this.slug).then(function (response) {
+      axios.get('/json/suppliers/' + this.slug + '?category=1').then(function (response) {
         _this.supplierProducts = response.data.data;
       })["catch"]();
     },
@@ -31299,13 +31286,7 @@ var render = function () {
                 }),
                 _vm._v(" "),
                 _c("span", [_vm._v(_vm._s(_vm.supplier.comp))]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v("عافية شركة تم التعاقد معها تورد من خلالنا :"),
-                ]),
               ]),
-              _vm._v(" "),
-              _vm._m(0),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "categories" }, [
@@ -31342,9 +31323,9 @@ var render = function () {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
-              _vm._m(2),
+              _vm._m(1),
             ]),
           ]),
         ]),
@@ -31451,28 +31432,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", [
-      _c("li", [
-        _c("a", { attrs: { href: "#" } }, [
-          _vm._v(
-            "\n                                      - زيوت\n                                  "
-          ),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _c("a", { attrs: { href: "#" } }, [
-          _vm._v(
-            "\n                                      - سمنه\n                                  "
-          ),
-        ]),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

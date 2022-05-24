@@ -67,7 +67,7 @@ if(!empty($category)){
 
    public function jsonsupplier(request $request, supplier $supplier){
 
-      $data =    $supplier->product();
+      $data = $supplier->product();
 
 
       $category = json_decode($request->category,true);
