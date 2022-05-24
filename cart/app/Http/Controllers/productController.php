@@ -6,7 +6,7 @@ use App\Models\category;
 use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\supplier;
-
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 class productController extends Controller
 {
    public function index(){
@@ -20,7 +20,7 @@ class productController extends Controller
      return view('admin.products.create', compact('categories', 'suppliers'));
    }
    public function products(request $request){
-$this->validate($request,[
+ $request->validate([
   'name'=>['string','required','max:255'],
   'price'=>['numeric','required'],
 'qty_type'=>['numeric','digits_between:1,9'],
@@ -29,10 +29,11 @@ $this->validate($request,[
   'offer'=>['numeric'],
 'category_id'=>['numeric','required'],
 'supplier_id'=>['numeric','required'],
-'image'=>[ 'image|mimes:jpeg,png,jpg,gif,svg|max:2048']
+'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 ]);
 
-$slug = SlugService::createSlug(product::class, 'slug', $request->name);
+$slug = SlugService::createSlug(product::class,'slug', $request->name);
+
 
 if($request->image){
   $image_tmp = $request->image;
@@ -53,7 +54,7 @@ $data = product::insert([
     'discount'=>$request->discount,
     'offer'=>$request->offer,
     'slug'=>$slug,
-    'image'=>$fileName,
+    'img'=>$fileName,
     'category_id'=>$request->category_id,
     'supplier_id'=>$request->supplier_id,
   
