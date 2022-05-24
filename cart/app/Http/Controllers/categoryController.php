@@ -19,8 +19,9 @@ class categoryController extends Controller
     }
 
     public function delete(category $category){
-    $category->delete();
-        }
+        $category->delete();
+        return redirect()->route('categories_index')->with('success', 'تم إضافة القسم بنجاح');
+    }
     public function update(request $request, category $category){
 
         $request->validate([
