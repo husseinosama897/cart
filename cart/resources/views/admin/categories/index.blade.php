@@ -52,7 +52,7 @@
                                         <a id="bEdit" type="button" class="btn btn-sm btn-primary" style="color:white">
                                             <span class="fe fe-eye"></span>
                                         </a>
-                                        <a id="bDel" type="button" class="btn  btn-sm btn-danger" style="color:white">
+                                        <a href="/categories_delete/{{$category->id}}" id="bDel" type="button" class="btn  btn-sm btn-danger" style="color:white">
                                             <span class="fe fe-trash-2"> </span>
                                         </a>
                                     </div></td>

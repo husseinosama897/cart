@@ -133,7 +133,7 @@ Route::get('/categories_create', [categoryController::class, 'create'])->name('c
 Route::post('/categories_update/{category}', [categoryController::class, 'update'])->name('category_update');
 
 // delete category 
-Route::post('/categories_delete/{category}', [categoryController::class, 'delete'])->name('category_delete');
+Route::get('/categories_delete/{category}', [categoryController::class, 'delete'])->name('category_delete');
 
 Route::post('/categories_save', [categoryController::class, 'save'])->name('categories_save');
 
