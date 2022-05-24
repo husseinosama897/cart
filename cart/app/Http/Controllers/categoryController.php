@@ -17,10 +17,14 @@ class categoryController extends Controller
     {
         return view('admin.categories.create');
     }
+    public function categories_index_update(category $category)
+    {
+        return view('admin.categories.update', compact('category'));
+    }
 
     public function delete(category $category){
         $category->delete();
-        return redirect()->route('categories_index')->with('success', 'تم إضافة القسم بنجاح');
+        return redirect()->route('categories_index')->with('success', 'تم حذف القسم بنجاح');
     }
     public function update(request $request, category $category){
 
@@ -44,6 +48,7 @@ class categoryController extends Controller
         'name'=>$request->name,
         'slug'=>$slug,
         ]);
+        return redirect()->route('categories_index')->with('success', 'تم تعديل القسم بنجاح');
 
     }
 
