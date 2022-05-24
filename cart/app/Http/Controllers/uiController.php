@@ -76,7 +76,7 @@ if(!empty($category)){
         $data = $data->category()->WhereIn('id',$category);
       }
 
-      $data =    $data->product();
+    
 
       $data = $data->paginate(10);
 
@@ -87,15 +87,16 @@ if(!empty($category)){
 
    public function jsonsupplier(request $request, supplier $supplier){
 
-      $category = json_decode($request->category,true);
+      $category = $request->category;
   
       $data = $supplier;
-      
-      if($category){
-         $data = $supplier->category()->WhereIn('id',$category);
-      }
 
-      $data =    $supplier->product();
+      $data =    $data->product();
+
+      if($category){
+         $data = $data->where('category_id',$category);
+     
+      }
 
       $data = $data->paginate(10);
 

@@ -15,6 +15,6 @@ class supplier extends Model
 
 
     public function category(){
-        BelongsTOmany(category::class,'category_id');
+     $this->BelongsTOmany(category::class,'category_id');
     }
 }

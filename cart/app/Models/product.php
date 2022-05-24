@@ -35,6 +35,6 @@ class product extends Model
 
 
     public function category(){
-        
+        return $this->belongsto(category::class,'category_id');
     }
 }
