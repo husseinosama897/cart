@@ -80,7 +80,7 @@ export default {
                    notes: '',
                    image: null,
                    nameProduct: '',
-
+                   supplier_id: ''
                },
            ],
            url: null,
@@ -105,6 +105,7 @@ export default {
                 notes: '',
                 image: null,
                 nameProduct: '',
+                supplier_id: ''
             });
         },
         deleteOrder: function (index) { 
@@ -120,13 +121,13 @@ export default {
             })
             .catch();
         },
-<<<<<<< HEAD
-        addIdProduct: function(index, idProduct, nameProduct, priceProduct){
+        addIdProduct: function(index, idProduct, supplier_id, nameProduct, priceProduct){
 
             this.orders.forEach((item, indexx) => {
                 if(idProduct !== item.product_id){
                     this.orders[index].product_id = idProduct;
                     this.orders[index].nameProduct = nameProduct;
+                                this.orders[index].supplier_id = supplier_id
                     this.isActive = false;
                     this.orders[index].product_price = priceProduct;
                 }else{
@@ -134,14 +135,6 @@ export default {
                    this.orders.splice(index, 1)
                 }
             });
-=======
-        addIdProduct: function(index, idProduct,supplier_id, nameProduct, priceProduct){
-            this.orders[index].product_id = idProduct;
-            this.searchGetProduct = nameProduct;
-            this.orders[index].supplier_id = supplier_id
-            this.isActive = false;
-            this.orders[index].product_price = priceProduct;
->>>>>>> fdfb2a495b380fe46dcaa532875b06c4a2e5d553
         },
         sendOrder: function () {  
             
