@@ -27,7 +27,8 @@
 <!-- ROW-1 OPEN -->
 <div class="row">
     <div class="col-lg-12">
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form method="POST" action="{{route('update_data_product',$product->id)}}" enctype="multipart/form-data">
+        @csrf
             <div class="card">
                 <div class="card-body">
                     <div class="row mb-4">

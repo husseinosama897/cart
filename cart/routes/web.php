@@ -153,7 +153,7 @@ Route::post('/save_products', [productController::class, 'products'])->name('sav
 
 // update product
 Route::get('/update_product/{product}', [productController::class, 'index_update'])->name('index_update_products');
-Route::post('/update_product/{product}', [productController::class, 'update'])->name('update_product');
+Route::post('/update_data_product/{product}', [productController::class, 'update'])->name('update_data_product');
 
 // delete product
 Route::get('/delete_product/{product}', [productController::class, 'delete'])->name('delete_product');

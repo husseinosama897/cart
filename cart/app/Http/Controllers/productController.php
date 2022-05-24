@@ -60,6 +60,8 @@ $data = product::insert([
   
 ]);
 
+return redirect()->route('products_index');
+
 
    }
 
@@ -71,7 +73,7 @@ $data = product::insert([
    }
    public function update(request $request,product $product){
    
-    $this->validate($request,[
+    $request->validate([
         'name'=>['string','required','max:255'],
         'price'=>['numeric','required'],
       'qty_type'=>['numeric','digits_between:1,9'],
@@ -95,17 +97,24 @@ if($request->image){
 }
 
       
-      $product->update([
-          'name'=>$request->name,
-          'price'=>$request->price,
-        'qty_type'=>$request->qty_type,
-        'image'=>$fileName,
-            'qty'=>$request->qty,
-         'discount'=>$request->discount,
-          'offer'=>$request->offer,
-        'category_id'=>$request->category_id,
-        'supplier_id'=>$request->supplier_id,
-      ]);
+      $product->name=$request->name;
+
+      $product->price=$request->price;
+
+      $product->qty_type=$request->qty_type;
+if($fileName !== null){
+  $product->image=$fileName;
+}
+     
+
+      $product->qty=$request->qty;
+      $product->discount=$request->discount;
+      $product->offer=$request->offer;
+      $product->category_id=$request->category_id;
+      $product->supplier_id=$request->supplier_id;
+      $product->save();
+
+      return redirect()->route('products_index');
 
       
    }
