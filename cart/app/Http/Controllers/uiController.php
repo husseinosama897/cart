@@ -99,11 +99,17 @@ if(!empty($category)){
 
       $data =    $data->product();
       if($request->category && $request->category !== 'all'){
-         $data = $data->whereHas(['category'=> function($q) use($request){
-        return  $q->WhereIn('id',explode(",",$request->category));
-         }]);
-
+         
+         $data = $data->whereHas('category', function($q) use($request){
+ 
+        return  $q->whereIn('id',$request->category);
+ 
+ 
+         });
+         
+       
        }
+ 
       $data = $data->paginate(10);
 
       return response()->json(['data'=>$data]);
