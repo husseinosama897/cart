@@ -73,7 +73,11 @@ if(!empty($category)){
       $data = supplier::query();
       if($request->category){
  
-        $data = $data->category()->WhereIn('id',explode(",",$request->category));
+        $data = $data->whereHas(['category'=> function($q) use($request){
+       return  $q->WhereIn('id',explode(",",$request->category));
+        }]);
+        
+        
       }
 
     
@@ -87,17 +91,15 @@ if(!empty($category)){
 
    public function jsonsupplier(request $request, supplier $supplier){
 
-      $category = $request->category;
-  
       $data = $supplier;
 
       $data =    $data->product();
       if($request->category){
+         $data = $data->whereHas(['category'=> function($q) use($request){
+        return  $q->WhereIn('id',explode(",",$request->category));
+         }]);
          
-         $data = $data->category()->WhereIn('id',explode(",",$request->category));
-    
-      }
- 
+       }
       $data = $data->paginate(10);
 
       return response()->json(['data'=>$data]);
