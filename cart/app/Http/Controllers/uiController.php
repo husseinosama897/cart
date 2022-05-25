@@ -93,7 +93,6 @@ if(!empty($category)){
 
       $data =    $data->product();
       if($request->category){
- 
          $data = $data->category()->WhereIn('id',explode(",",$request->category));
        }
  
