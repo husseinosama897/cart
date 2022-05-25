@@ -31,7 +31,6 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/checker', [completeorderController::class, 'finishing'])->name('checker');
 
-
 Route::get('/checker2', function (request $request) {
     return response()->json(['data'=>$request]);
 })->name('checker2');
@@ -117,6 +116,12 @@ Route::post('/storeincart/{product}', [cartController::class, 'store']);
 
 Route::post('/updatequantityjson/{cart}', [cartController::class, 'updatequantityjson']);
 
+
+
+// profile
+Route::get('/profile', function () {
+     return view('front.profile');
+})->name('suppliers');
 //Admin
 
 // start with categories 

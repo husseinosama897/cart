@@ -532,6 +532,11 @@ header .mobile {
         padding-right: 1.5rem;
     }
  }
+ @media (max-width: 991px) { 
+    header{
+        overflow: hidden;
+    }
+}
 /* End  Responsive Header */
 
 .toast-title{

@@ -10,12 +10,6 @@
         <aside class="">
             <div class="container">
                 <div class="supplier-aside">
-                    <div class="supplier-details">
-                        <div class="logo">
-                            <img :src="'/uploads/suppliers/' + supplier.img" alt="">
-                            <span>{{ supplier.comp }}</span>
-                        </div>
-                        </div>
                         <div class="categories">
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <span class="fs-5">التصنيفات</span>

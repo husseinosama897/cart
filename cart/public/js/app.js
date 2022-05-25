@@ -6230,12 +6230,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Suppliers',
   props: {
@@ -31639,19 +31633,6 @@ var render = function () {
       _c("aside", {}, [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "supplier-aside" }, [
-            _c("div", { staticClass: "supplier-details" }, [
-              _c("div", { staticClass: "logo" }, [
-                _c("img", {
-                  attrs: {
-                    src: "/uploads/suppliers/" + _vm.supplier.img,
-                    alt: "",
-                  },
-                }),
-                _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.supplier.comp))]),
-              ]),
-            ]),
-            _vm._v(" "),
             _c("div", { staticClass: "categories" }, [
               _c(
                 "div",
