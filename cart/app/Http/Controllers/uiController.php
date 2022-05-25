@@ -71,8 +71,7 @@ if(!empty($category)){
 
    
       $data = supplier::query();
-      if($request->category){
- 
+      if($request->category && $request->category !== 'all'){
         $data = $data->whereHas(['category'=> function($q) use($request){
        return  $q->WhereIn('id',explode(",",$request->category));
         }]);
@@ -94,11 +93,11 @@ if(!empty($category)){
       $data = $supplier;
 
       $data =    $data->product();
-      if($request->category){
+      if($request->category && $request->category !== 'all'){
          $data = $data->whereHas(['category'=> function($q) use($request){
         return  $q->WhereIn('id',explode(",",$request->category));
          }]);
-         
+
        }
       $data = $data->paginate(10);
 
