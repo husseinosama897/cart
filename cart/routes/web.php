@@ -12,6 +12,10 @@ use App\Http\Controllers\productController;
 
 use App\Http\Controllers\categoryController;
 
+use App\Http\Controllers\profileController;
+
+
+
 use Illuminate\Support\Facades\Route;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use \App\Models\category;
@@ -71,8 +75,14 @@ Route::get('/json/product', [uiController::class, 'jsonproduct']);
 //Route::get('/products', [uiController::class, 'productpage']);
 Route::get('/product/{slug}/{product}', [uiController::class, 'item']);
 
+
+
 //home 
 
+
+
+//profile
+Route::get('/profile', [profileController::class, 'profile']);
 
 //productnotfound
 Route::get('findproduct', [uiController::class, 'pna'])->name('pna');
