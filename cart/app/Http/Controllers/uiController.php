@@ -57,7 +57,7 @@ if(!empty($category)){
    public function supplierpage($slug, supplier $supplier){
       $category = category::select(['id','name'])->get()->take(20);
 
-       return view('front.suppliers.supplier')->with(['supplier'=> $supplier, 'category'=> $category] );
+       return view('front.suppliers.supplier')->with(['supplier'=> $supplier,'category'=>$category]);
    }
 
    public function categorypage($slug, $category){
@@ -69,12 +69,11 @@ if(!empty($category)){
 
    public function jsonsuppliers(request $request){
 
-      $category = json_decode($request->category,true);
-      
+   
       $data = supplier::query();
-      if($category){
+      if($request->category){
  
-        $data = $data->category()->WhereIn('id',$category);
+        $data = $data->category()->WhereIn('id',explode(",",$request->category));
       }
 
     
@@ -93,12 +92,11 @@ if(!empty($category)){
       $data = $supplier;
 
       $data =    $data->product();
-
-      if($category){
-         $data = $data->where('category_id',$category);
-     
-      }
-
+      if($request->category){
+ 
+         $data = $data->category()->WhereIn('id',explode(",",$request->category));
+       }
+ 
       $data = $data->paginate(10);
 
       return response()->json(['data'=>$data]);
