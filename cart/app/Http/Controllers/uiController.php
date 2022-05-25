@@ -71,12 +71,17 @@ if(!empty($category)){
 
    
       $data = supplier::query();
+   
       if($request->category && $request->category !== 'all'){
-        $data = $data->whereHas(['category'=> function($q) use($request){
-       return  $q->WhereIn('id',explode(",",$request->category));
-        }]);
+         
+        $data = $data->whereHas('category', function($q) use($request){
+
+       return  $q->whereIn('id',$request->category);
+
+
+        });
         
-        
+      
       }
 
     
