@@ -6228,21 +6228,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Suppliers',
+  props: {
+    category: Array
+  },
   data: function data() {
     return {
-      suppliers: []
+      suppliers: [],
+      Categories: [],
+      filterCategory: []
     };
   },
   mounted: function mounted() {
     this.loadSuppliers();
+    this.Categories = this.category;
   },
   methods: {
     loadSuppliers: function loadSuppliers() {
       var _this = this;
 
-      axios.get('/json/suppliers').then(function (response) {
+      axios.post('/json/suppliers', {
+        'category': this.filterCategory
+      }).then(function (response) {
         _this.suppliers = response.data.data;
       })["catch"]();
     }
@@ -31623,6 +31639,19 @@ var render = function () {
       _c("aside", {}, [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "supplier-aside" }, [
+            _c("div", { staticClass: "supplier-details" }, [
+              _c("div", { staticClass: "logo" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/uploads/suppliers/" + _vm.supplier.img,
+                    alt: "",
+                  },
+                }),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.supplier.comp))]),
+              ]),
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "categories" }, [
               _c(
                 "div",
@@ -31657,9 +31686,83 @@ var render = function () {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._m(1),
+              _c(
+                "form",
+                { attrs: { method: "GET" } },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _vm._l(_vm.Categories, function (item, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "form-check mb-2" },
+                      [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "flexCheckDefault" },
+                          },
+                          [
+                            _vm._v(
+                              "\r\n                                    " +
+                                _vm._s(item.name) +
+                                "\r\n                                    "
+                            ),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.filterCategory,
+                              expression: "filterCategory",
+                            },
+                          ],
+                          staticClass: "form-check-input",
+                          attrs: { type: "checkbox", id: "flexCheckDefault" },
+                          domProps: {
+                            value: item.id,
+                            checked: Array.isArray(_vm.filterCategory)
+                              ? _vm._i(_vm.filterCategory, item.id) > -1
+                              : _vm.filterCategory,
+                          },
+                          on: {
+                            change: [
+                              function ($event) {
+                                var $$a = _vm.filterCategory,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = item.id,
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      (_vm.filterCategory = $$a.concat([$$v]))
+                                  } else {
+                                    $$i > -1 &&
+                                      (_vm.filterCategory = $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1)))
+                                  }
+                                } else {
+                                  _vm.filterCategory = $$c
+                                }
+                              },
+                              function ($event) {
+                                return _vm.loadSuppliers(item.id)
+                              },
+                            ],
+                          },
+                        }),
+                      ]
+                    )
+                  }),
+                ],
+                2
+              ),
             ]),
           ]),
         ]),
@@ -31702,7 +31805,7 @@ var render = function () {
                       ),
                     ]),
                     _vm._v(" "),
-                    _vm._m(2, true),
+                    _vm._m(1, true),
                   ]),
                   _vm._v(" "),
                   _c(
@@ -31753,27 +31856,6 @@ var staticRenderFns = [
           id: "flexCheckChecked",
           checked: "",
         },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check mb-2" }, [
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
-        [
-          _vm._v(
-            "\r\n                                    السيروب والمنكهات\r\n                                    "
-          ),
-        ]
-      ),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: { type: "checkbox", value: "", id: "flexCheckDefault" },
       }),
     ])
   },

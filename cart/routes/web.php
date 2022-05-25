@@ -43,7 +43,7 @@ Route::post('/saveorder', [completeorderController::class, 'saveorder']);
 
 Route::post('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier']);
 
-Route::get('/json/suppliers', [uiController::class, 'jsonsuppliers']);
+Route::post('/json/suppliers', [uiController::class, 'jsonsuppliers']);
 
 Route::get('/suppliers', function () {
     $category = category::select(['id','name'])->get()->take(20);

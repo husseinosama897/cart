@@ -10,23 +10,31 @@
         <aside class="">
             <div class="container">
                 <div class="supplier-aside">
+                    <div class="supplier-details">
+                        <div class="logo">
+                            <img :src="'/uploads/suppliers/' + supplier.img" alt="">
+                            <span>{{ supplier.comp }}</span>
+                        </div>
+                        </div>
                         <div class="categories">
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <span class="fs-5">التصنيفات</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg>
                             </div>
+                            <form method="GET">
                             <div class="form-check mb-2">
                                 <label class="form-check-label" for="flexCheckChecked">
                                     الكل
                                     </label>
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
                             </div>
-                            <div class="form-check mb-2">
+                            <div class="form-check mb-2" v-for="(item, index) in Categories" :key="index">
                                 <label class="form-check-label" for="flexCheckDefault">
-                                    السيروب والمنكهات
+                                    {{ item.name }}
                                     </label>
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" :value="item.id" v-model="filterCategory" @change="loadSuppliers(item.id)" id="flexCheckDefault">
                             </div>
+                            </form>
                         </div>
                 </div>
             </div>
@@ -73,18 +81,26 @@
 <script>
 export default {
     name: 'Suppliers',
+    props: {
+        category: Array,
+    },
     data() {
         return {
             suppliers: [],
+            Categories: [],
+            filterCategory: [],
         }
     },
     mounted() {
         this.loadSuppliers();
+        this.Categories = this.category;
     },
     
     methods: {
         loadSuppliers: function() {
-            axios.get('/json/suppliers')
+            axios.post('/json/suppliers',{
+                'category': this.filterCategory,
+            })
             .then((response) => {
                 this.suppliers = response.data.data;
             })

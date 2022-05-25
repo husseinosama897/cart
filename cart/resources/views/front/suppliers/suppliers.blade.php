@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<suppliers></suppliers>
+<suppliers :category="{{$category}}"></suppliers>
 @endsection
 
 @section('style')
