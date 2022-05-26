@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 class profileController extends Controller
 {
     public function profile(){
+ 
+        $user = Auth::user();
 
-        $data = auth()->user()->with(['order'=>function($q){
+        $orders = $user->order()->with(['itemorder'=>function($q){
+            
+        }])->get();
 
-return $q->with('itemorder');
-        
-}]);
+
         return view('front.profile')->with(['data'=>$data]);
     }
 }
