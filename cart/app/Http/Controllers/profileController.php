@@ -10,16 +10,7 @@ class profileController extends Controller
  
         $user = Auth::user();
 
-        $orders = $user->order()->with(['itemorder'=>function($q){
-            
-        }])->get();
-
-$data = [
-'order'=>$orders,
-'user'=>$user,
-];
-       
-        return view('front.profile')->with(['data'=>$data]);
+        return view('front.profile', compact('user'));
     }
 
     public function order(){

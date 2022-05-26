@@ -18,7 +18,7 @@
                 <div class="details">
                     <h6 class="pt-2" style="color: #0B3046">اسم المنتج</h6>
                     <p>وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف</p>
-                    <a class="btn btn-sm btn-success" href="#" style="border-radius: 0;width:100%;background-color: #00786D">
+                    <a class="btn btn-sm btn-success" href="/packaging_order" style="border-radius: 0;width:100%;background-color: #00786D">
                         طلب مماثل
                     </a>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="details">
                      <h6 class="pt-2" style="color: #0B3046">اسم المنتج</h6>
                     <p>وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف</p>
-                    <a class="btn btn-sm btn-success" href="#" style="border-radius: 0;width:100%;background-color: #00786D">
+                    <a class="btn btn-sm btn-success" href="/packaging_order" style="border-radius: 0;width:100%;background-color: #00786D">
                         طلب مماثل
                     </a>
                 </div>
@@ -42,7 +42,7 @@
                 <div class="details">
                      <h6 class="pt-2" style="color: #0B3046">اسم المنتج</h6>
                     <p>وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف</p>
-                    <a class="btn btn-sm btn-success" href="#" style="border-radius: 0;width:100%;background-color: #00786D">
+                    <a class="btn btn-sm btn-success" href="/packaging_order" style="border-radius: 0;width:100%;background-color: #00786D">
                         طلب مماثل
                     </a>
                 </div>
@@ -54,7 +54,7 @@
                 <div class="details">
                      <h6 class="pt-2" style="color: #0B3046">اسم المنتج</h6>
                     <p>وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف</p>
-                    <a class="btn btn-sm btn-success" href="#" style="border-radius: 0;width:100%;background-color: #00786D">
+                    <a class="btn btn-sm btn-success" href="/packaging_order" style="border-radius: 0;width:100%;background-color: #00786D">
                         طلب مماثل
                     </a>
                 </div>
@@ -66,7 +66,7 @@
                 <div class="details">
                      <h6 class="pt-2" style="color: #0B3046">اسم المنتج</h6>
                      <p>وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف</p>
-                    <a class="btn btn-sm btn-success" href="#" style="border-radius: 0;width:100%;background-color: #00786D">
+                    <a class="btn btn-sm btn-success" href="/packaging_order" style="border-radius: 0;width:100%;background-color: #00786D">
                         طلب مماثل
                     </a>
                 </div>
@@ -78,7 +78,7 @@
                 <div class="details">
                      <h6 class="pt-2" style="color: #0B3046">اسم المنتج</h6>
                      <p>وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف وصف</p>
-                    <a class="btn btn-sm btn-success" href="#" style="border-radius: 0;width:100%;background-color: #00786D">
+                    <a class="btn btn-sm btn-success" href="/packaging_order" style="border-radius: 0;width:100%;background-color: #00786D">
                         طلب مماثل
                     </a>
                 </div>

@@ -77,6 +77,7 @@
             <!-- Settings-->
             <form enctype="multipart/form-data" method="POST" action="">
                 @csrf
+                {{ $user }}
                 <div class="rounded-3 p-4 mb-4">
                     <div class="d-flex align-items-center">
                         <img id="preview" class="rounded" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/avatars/avatar.jpg" width="90" alt="Susan Gardner" style="height: 90px !important;object-fit: cover" v-if="Avatar == null">
@@ -102,11 +103,11 @@
                     </div>
                     <div class="col-sm-6">
                         <label class="form-label text-right mt-3" for="account-email">البريد الإلكتروني</label>
-                        <input class="form-control" type="email" id="account-email" name="email" disabled="" value="">
+                        <input class="form-control" type="email" id="account-email" name="email" disabled="" value="{{ $user->email }}">
                     </div>
                     <div class="col-sm-6">
                         <label class="form-label text-right mt-3" for="account-phone">رقم الهاتف</label>
-                        <input class="form-control" type="text" id="account-phone" name="phone_number" disabled="" value="">
+                        <input class="form-control" type="text" id="account-phone" name="phone_number" disabled="" value="{{ $user->phone }}">
                     </div>
                     <div class="col-sm-4">
                         <label class="form-label text-right mt-3" for="old-account-pass">كلمة المرور الحالية</label>
