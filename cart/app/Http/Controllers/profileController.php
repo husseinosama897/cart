@@ -14,7 +14,11 @@ class profileController extends Controller
             
         }])->get();
 
-
+$data = [
+'order'=>$orders,
+'user'=>$user,
+];
+       
         return view('front.profile')->with(['data'=>$data]);
     }
 }
