@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 class profileController extends Controller
 {
     public function profile(){
-        return view('front.profile');
+
+        $data = auth()->user()->with(['order'=>function($q){
+
+return $q->with('itemorder');
+        
+}]);
+
+        return view('front.profile')->with(['data'=>$data]);
     }
 }
