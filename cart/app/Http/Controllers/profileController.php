@@ -21,4 +21,18 @@ $data = [
        
         return view('front.profile')->with(['data'=>$data]);
     }
+
+    public function order(){
+ 
+        $user = Auth::user();
+
+
+        $orders = $user->order()->with(['itemorder'=>function($q){
+            
+        }])->get();
+
+       
+        return view('front.order')->with(['data'=>$orders]);
+    }
+
 }

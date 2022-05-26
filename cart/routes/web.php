@@ -84,6 +84,9 @@ Route::get('/product/{slug}/{product}', [uiController::class, 'item']);
 //profile
 Route::get('/profile', [profileController::class, 'profile']);
 
+Route::get('/order', [profileController::class, 'order']);
+
+
 //productnotfound
 Route::get('findproduct', [uiController::class, 'pna'])->name('pna');
 
