@@ -13,7 +13,6 @@ class profileController extends Controller
 return $q->with('itemorder');
         
 }]);
-
         return view('front.profile')->with(['data'=>$data]);
     }
 }

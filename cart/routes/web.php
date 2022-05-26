@@ -128,10 +128,7 @@ Route::post('/updatequantityjson/{cart}', [cartController::class, 'updatequantit
 
 
 
-// profile
-Route::get('/profile', function () {
-     return view('front.profile');
-})->name('profile');
+
 //Admin
 
 // start with categories 

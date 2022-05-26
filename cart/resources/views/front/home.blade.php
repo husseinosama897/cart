@@ -100,7 +100,7 @@
     <section class="unavailable py-4">
         <div class="container d-flex flex-column align-items-center">
             <h1>يمكن طلب طلبات غير متوفرة من هنا </h1>
-            <button class="btn my-2">معرفة المزيد</button>
+            <a href="{{ route('pna') }}" class="btn btn-primary my-2">معرفة المزيد</a>
         </div>
     </section>
 @endsection

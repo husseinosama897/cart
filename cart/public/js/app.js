@@ -5807,7 +5807,7 @@ __webpack_require__.r(__webpack_exports__);
       this.orders.push({
         product_id: '',
         product_price: 0,
-        quantity: 0,
+        quantity: 1,
         notes: '',
         image: null,
         nameProduct: '',
@@ -5820,6 +5820,7 @@ __webpack_require__.r(__webpack_exports__);
     getProduct: function getProduct() {
       var _this = this;
 
+      this.isActive = true;
       axios.post('/getCup/', {
         'name': this.searchGetProduct
       }).then(function (response) {
@@ -5832,18 +5833,24 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.orders.forEach(function (item, indexx) {
-        if (idProduct !== item.product_id) {
-          _this2.orders[index].product_id = idProduct;
-          _this2.orders[index].nameProduct = nameProduct;
-          _this2.orders[index].supplier_id = supplier_id;
-          _this2.isActive = false;
-          _this2.orders[index].product_price = priceProduct;
-        } else {
+        if (idProduct == item.product_id) {
           item.quantity += 1;
 
           _this2.orders.splice(index, 1);
+
+          _this2.isActive = false;
+          _this2.searchGetProduct = '';
         }
       });
+
+      if (idProduct !== this.orders[index].product_id) {
+        this.orders[index].product_id = idProduct;
+        this.orders[index].nameProduct = nameProduct;
+        this.orders[index].supplier_id = supplier_id;
+        this.orders[index].product_price = priceProduct;
+        this.isActive = false;
+        this.searchGetProduct = '';
+      }
     },
     sendOrder: function sendOrder() {
       var _this3 = this;
@@ -30638,68 +30645,71 @@ var render = function () {
                             "ul",
                             { staticClass: "ps-0 mb-0" },
                             [
-                              _vm._l(_vm.products, function (product, index) {
-                                return _c("li", { key: index }, [
-                                  _c(
-                                    "a",
-                                    {
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.addIdProduct(
-                                            index,
-                                            product.id,
-                                            product.supplier_id,
-                                            product.name,
-                                            product.price
-                                          )
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "name-search",
-                                          staticStyle: {
-                                            display: "flex",
-                                            "align-items": "center",
+                              _vm._l(
+                                _vm.products,
+                                function (product, indexProduct) {
+                                  return _c("li", { key: indexProduct }, [
+                                    _c(
+                                      "a",
+                                      {
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.addIdProduct(
+                                              index,
+                                              product.id,
+                                              product.supplier_id,
+                                              product.name,
+                                              product.price
+                                            )
                                           },
                                         },
-                                        [
-                                          _c(
-                                            "svg",
-                                            {
-                                              attrs: {
-                                                width: "15",
-                                                height: "15",
-                                                viewBox: "0 0 15 15",
-                                                fill: "none",
-                                                xmlns:
-                                                  "http://www.w3.org/2000/svg",
-                                              },
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass: "name-search",
+                                            staticStyle: {
+                                              display: "flex",
+                                              "align-items": "center",
                                             },
-                                            [
-                                              _c("circle", {
+                                          },
+                                          [
+                                            _c(
+                                              "svg",
+                                              {
                                                 attrs: {
-                                                  cx: "7.5",
-                                                  cy: "7.5",
-                                                  r: "6.5",
-                                                  stroke: "#3A4046",
-                                                  "stroke-width": "2",
+                                                  width: "15",
+                                                  height: "15",
+                                                  viewBox: "0 0 15 15",
+                                                  fill: "none",
+                                                  xmlns:
+                                                    "http://www.w3.org/2000/svg",
                                                 },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("span", [
-                                            _vm._v(_vm._s(product.name)),
-                                          ]),
-                                        ]
-                                      ),
-                                    ]
-                                  ),
-                                ])
-                              }),
+                                              },
+                                              [
+                                                _c("circle", {
+                                                  attrs: {
+                                                    cx: "7.5",
+                                                    cy: "7.5",
+                                                    r: "6.5",
+                                                    stroke: "#3A4046",
+                                                    "stroke-width": "2",
+                                                  },
+                                                }),
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("span", [
+                                              _vm._v(_vm._s(product.name)),
+                                            ]),
+                                          ]
+                                        ),
+                                      ]
+                                    ),
+                                  ])
+                                }
+                              ),
                               _vm._v(" "),
                               !_vm.products.length
                                 ? _c("li", [

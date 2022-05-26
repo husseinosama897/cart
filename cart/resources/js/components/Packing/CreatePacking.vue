@@ -18,7 +18,7 @@
 
                     <div class="drop-search" id="drop-search" v-if="searchGetProduct !== ''" v-bind:class="{ active: isActive, }">
                         <ul class="ps-0 mb-0">
-                            <li v-for="(product, index) in products" :key="index" >
+                            <li v-for="(product, indexProduct) in products" :key="indexProduct" >
                                 <a @click="addIdProduct(index, product.id,product.supplier_id, product.name, product.price)">
                                 <span class="name-search" style="display: flex;align-items: center;">
                                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,7 +101,7 @@ export default {
             this.orders.push({
                 product_id: '',
                 product_price: 0,
-                quantity: 0,
+                quantity: 1,
                 notes: '',
                 image: null,
                 nameProduct: '',
@@ -112,6 +112,7 @@ export default {
             this.orders.splice(index, 1)
         },
         getProduct: function (){
+            this.isActive = true;
             axios.post('/getCup/', {
                 'name': this.searchGetProduct,
             }).then((response) => {
@@ -124,17 +125,21 @@ export default {
         addIdProduct: function(index, idProduct, supplier_id, nameProduct, priceProduct){
 
             this.orders.forEach((item, indexx) => {
-                if(idProduct !== item.product_id){
-                    this.orders[index].product_id = idProduct;
-                    this.orders[index].nameProduct = nameProduct;
-                                this.orders[index].supplier_id = supplier_id
-                    this.isActive = false;
-                    this.orders[index].product_price = priceProduct;
-                }else{
+                if(idProduct == item.product_id){
                    item.quantity += 1;
-                   this.orders.splice(index, 1)
+                   this.orders.splice(index, 1);
+                   this.isActive = false;
+                   this.searchGetProduct = '';
                 }
             });
+            if(idProduct !== this.orders[index].product_id){
+                this.orders[index].product_id = idProduct;
+                this.orders[index].nameProduct = nameProduct;
+                this.orders[index].supplier_id = supplier_id
+                this.orders[index].product_price = priceProduct;
+                this.isActive = false;
+                this.searchGetProduct = '';
+            }
         },
         sendOrder: function () {  
             
