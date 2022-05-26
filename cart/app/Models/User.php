@@ -46,7 +46,9 @@ class User extends Authenticatable
         return $this->HasMany(packaging::class, 'user_id');
     }
 
-
+public function order(){
+    return $this->hasMany(order::class,'user_id');
+}
     
 
 
