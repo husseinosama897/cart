@@ -34,7 +34,7 @@
                             <img class="rounded-circle h-100" src="Avatar" alt="" style="object-fit: cover">
 
                         </div>
-                        <div class="pe-md-3">
+                        <div class="ps-md-3">
                             <h3 class="fs-base mb-0">محمد اشرف</h3><span class="text-accent fs-sm">mohamed@gmail.com</span>
                         </div>
                     </div><a class="btn btn-primary d-lg-none mb-2 mt-3 mt-md-0" href="#account-menu" data-bs-toggle="collapse" aria-expanded="false"><i class="ci-menu me-2"></i>الحساب</a>
@@ -77,7 +77,6 @@
             <!-- Settings-->
             <form enctype="multipart/form-data" method="POST" action="">
                 @csrf
-                {{ $user }}
                 <div class="rounded-3 p-4 mb-4">
                     <div class="d-flex align-items-center">
                         <img id="preview" class="rounded" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/avatars/avatar.jpg" width="90" alt="Susan Gardner" style="height: 90px !important;object-fit: cover" v-if="Avatar == null">
