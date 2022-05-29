@@ -35,7 +35,7 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
 
    public function createpage(){
    
-      return view('supplier.create');
+    return view('admin.suppliers.create');
     
    }
 

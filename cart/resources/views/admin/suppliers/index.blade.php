@@ -3,10 +3,28 @@
 @section('content')
 <!-- PAGE-HEADER -->
 <div class="page-header">
-    <h1 class="page-title">الطلبات</h1>
+    <h1 class="page-title">الموردين</h1>
+    <div class="col-xl-2 col-lg-2">
+        <a href="{{route('admin.suppliers.create')}}" class="btn btn-primary btn-block float-end my-2">
+            <i class="fa fa-plus-square me-2"></i>
+            إضافة مورد جديد
+        </a>
+    </div>
 </div>
 <!-- PAGE-HEADER END -->
-
+<div class="errors mb-3 mt-2">
+    @if (session('success'))
+    <div class="alert alert-success" role="alert"> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
+        {{ session('success') }}
+    </div>
+    @endif
+    @if (session('error'))
+    <div class="alert alert-warning text-right" role="alert" style="border-radius: 4px">
+       {{ session('error') }}
+    </div>
+    @endif
+ </div>
 <!-- Row -->
 <div class="row row-sm">
     <div class="col-lg-12">
