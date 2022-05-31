@@ -31320,7 +31320,7 @@ var render = function () {
               _c("div", { staticClass: "logo" }, [
                 _c("img", {
                   attrs: {
-                    src: "/uploads/suppliers/" + _vm.supplier.img,
+                    src: "/uploads/suppliers/" + _vm.supplier.image,
                     alt: "",
                   },
                 }),
@@ -31787,7 +31787,7 @@ var render = function () {
                     [
                       _c("img", {
                         attrs: {
-                          src: "/uploads/suppliers/" + supplier.img,
+                          src: "/uploads/suppliers/" + supplier.image,
                           alt: "",
                         },
                       }),

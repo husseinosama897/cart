@@ -3,7 +3,7 @@
 @section('content')
 <!-- PAGE-HEADER -->
 <div class="page-header">
-    <h1 class="page-title">إضافة مورد جديد</h1>
+    <h1 class="page-title">تعديل المورد</h1>
 </div>
 @foreach ($errors->all() as $error)
 <div class="alert alert-danger " role="alert" style="border-radius: 4px">
@@ -16,54 +16,54 @@
     <div class="col-md-12 col-xl-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="{{ route('createsupplier') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('categories_save') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="name" class="form-label">اسم المورد</label>
-                            <input type="text" class="form-control" id="name" name="comp" placeholder="الاسم">
+                            <input type="text" class="form-control" id="name" name="comp" placeholder="الاسم" value="">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="name" class="form-label">البريد الالكتروني</label>
-                            <input type="text" class="form-control" id="name" name="email" placeholder="رقم الهاتف">
+                            <input type="text" class="form-control" id="name" name="email" placeholder="رقم الهاتف" value="">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="name" class="form-label">رقم الهاتف</label>
-                            <input type="text" class="form-control" id="name" name="phone" placeholder="رقم الهاتف">
+                            <input type="text" class="form-control" id="name" name="phone" placeholder="رقم الهاتف" value="">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="name" class="form-label">الرقم الضريبي</label>
-                            <input type="text" class="form-control" id="name" name="tax_number" placeholder="الرقم الضريبي">
+                            <input type="text" class="form-control" id="name" name="tax_number" placeholder="الرقم الضريبي" value="">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="name" class="form-label">الوكيل</label>
-                            <input type="text" class="form-control" id="name" name="representative" placeholder="الوكيل">
+                            <input type="text" class="form-control" id="name" name="representative" placeholder="الوكيل" value="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="name" class="form-label">الدولة</label>
-                            <input type="text" class="form-control" id="name" name="country" placeholder="الدولة">
+                            <input type="text" class="form-control" id="name" name="country" placeholder="الدولة" value="">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="name" class="form-label">المدينة</label>
-                            <input type="text" class="form-control" id="name" name="city" placeholder="المدينة">
+                            <input type="text" class="form-control" id="name" name="city" placeholder="المدينة" value="">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="name" class="form-label">الرمز البريدي</label>
-                            <input type="text" class="form-control" id="name" name="postal_code" placeholder="الرمز البريدي">
+                            <input type="text" class="form-control" id="name" name="postal_code" placeholder="الرمز البريدي" value="">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="name" class="form-label">اسم الشارع</label>
-                            <input type="text" class="form-control" id="name" name="street_name" placeholder="اسم الشارع">
+                            <input type="text" class="form-control" id="name" name="street_name" placeholder="اسم الشارع" value="">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="name" class="form-label">رقم المبني</label>
-                            <input type="text" class="form-control" id="name" name="building_num" placeholder="رقم المبنى">
+                            <input type="text" class="form-control" id="name" name="building_num" placeholder="رقم المبنى" value="">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="name" class="form-label">الموقع</label>
-                            <input type="text" class="form-control" id="name" name="location" placeholder="الموقع">
+                            <input type="text" class="form-control" id="name" name="location" placeholder="الموقع" value="">
                         </div>
                     </div>
                     <div class="form-group">

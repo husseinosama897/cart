@@ -37,8 +37,8 @@
                                     @endphp
                                     <td>{{ $date }}</td>
                                     <td name="bstable-actions"><div class="btn-list">
-                                        <a id="bEdit" type="button" class="btn btn-sm btn-primary" style="color:white">
-                                            <span class="fe fe-eye"></span>
+                                        <a href="{{ route('admin.revieworder', $order->id) }}" id="bEdit" type="button" class="btn btn-sm btn-primary" style="color:white">
+                                            <span class="fe fe-edit"></span>
                                         </a>
                                         <a id="bDel" type="button" class="btn  btn-sm btn-danger" style="color:white">
                                             <span class="fe fe-trash-2"> </span>
