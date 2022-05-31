@@ -221,7 +221,7 @@ Route::group(['prefix' => 'admin',], function () {
 });
 
 // read order
-Route::get('/revieworder', [ordersAdminController::class, 'revieworder']);
+Route::get('/revieworder/{order}', [ordersAdminController::class, 'revieworder']);
 
 //change status order
 
