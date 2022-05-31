@@ -16,7 +16,7 @@
     <div class="col-md-12 col-xl-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="{{ route('categories_save') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('createsupplier') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="">
                         <div class="form-group">

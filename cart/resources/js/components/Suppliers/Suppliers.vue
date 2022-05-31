@@ -38,7 +38,7 @@
                 <div v-for="(supplier, index) in suppliers.data" :key="index" class="product supplierProduct">
                     <div class="photo my-3">
                         <a :href="'/suppliers/' + supplier.slug + '/' + supplier.id">
-                            <img :src="'/uploads/suppliers/' + supplier.img" alt="">
+                            <img :src="'/uploads/suppliers/' + supplier.image" alt="">
                         </a>
                     </div>
                     <div class="details">

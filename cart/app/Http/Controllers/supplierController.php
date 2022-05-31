@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+
 use App\Models\supplier;
 class supplierController extends Controller
 {
@@ -43,9 +46,8 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
    public function createsupp(request $request ){
 
       $this->validate($request,[
-          'personal'=>['numeric','digits_between:1,2'],
-        'country'=>['string','max:255'],
-       
+        
+     
        'comp'=>['string','max:255'],
    
         
@@ -76,28 +78,24 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
       }else{
         $fileName = null;
       }
-      $slug = SlugService::createSlug(category::class, 'slug', $request->comp);
+      $slug = SlugService::createSlug(supplier::class, 'slug', $request->name);
       supplier::create([
-          'personal'=>$request->personal,
           'image'=>$fileName,
         'slug'=>$slug,
-
-      'comp'=>$request->comp,
+      'comp'=>$request->name,
           'postal_code'=>$request->postal_code,
           'building_num'=>$request->building_num,
           'street_name'=>$request->street_name,
       'tax_number'=>$request->tax_number,
       'country'=>$request->country,
-      'representative'=>$request->representative,
+      
       'phone'=>$request->phone,
       'location'=>$request->location,
       'city'=>$request->city,
-  
       'email'=>$request->email,
       ]);
       
-      return response()->json('done',200);
-    
+  return redirect()->route('admin.suppliers');
           }
           public function suppliertable(){
            $suppliers = supplier::get();

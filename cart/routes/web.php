@@ -183,14 +183,14 @@ Route::get('/delete_product/{product}', [productController::class, 'delete'])->n
 
 //***
 //create supplier
-Route::post('/createsupp', [supplierController::class, 'createsupp']);
+Route::post('/createsupplier', [supplierController::class, 'createsupp'])->name('createsupplier');
 
 // for autocomplete supplier
 Route::post('/getselectboxsupp', [supplierController::class, 'getselectboxsupp']);
 
 
 //supplier create page
-Route::get('/createpage', [supplierController::class, 'createpage'])->name('admin.suppliers.create');
+Route::get('/supplier_create_page', [supplierController::class, 'createpage'])->name('admin.suppliers.create');
 
 
 //supplier suppliertable

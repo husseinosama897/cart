@@ -46,7 +46,7 @@ if(!empty($category)){
 
 
     public function homepage(){
-        $suppliers = supplier::select(['id','dis','slug','comp','img'])->get()->take(20);
+        $suppliers = supplier::select(['id','dis','slug','comp','image'])->get()->take(20);
 
         $category = category::select(['id','name','image','slug'])->get()->take(20);
 

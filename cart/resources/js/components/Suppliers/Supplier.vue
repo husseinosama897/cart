@@ -12,7 +12,7 @@
                     <div class="supplier-aside">
                         <div class="supplier-details">
                             <div class="logo">
-                                <img :src="'/uploads/suppliers/' + supplier.img" alt="">
+                                <img :src="'/uploads/suppliers/' + supplier.image" alt="">
                                 <span>{{ supplier.comp }}</span>
                             </div>
                             </div>
