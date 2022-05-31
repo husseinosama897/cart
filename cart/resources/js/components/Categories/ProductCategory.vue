@@ -3,7 +3,9 @@
   <div class="ProductCategoryContainer">
       <div v-for="(product, index) in ProductsCategory.product" :key="index" class="product ProductCategory">
             <div class="photo my-3">
+                  <a :href="'/product/' + product.slug + '/' + product.id">
                 <img :src="'/uploads/product/' + product.img" alt="">
+                </a>
             </div>
             <div class="details">
                 <div class="name">

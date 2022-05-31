@@ -5638,6 +5638,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'ProductCategory',
   props: ['category'],
@@ -30366,9 +30368,15 @@ var render = function () {
     _vm._l(_vm.ProductsCategory.product, function (product, index) {
       return _c("div", { key: index, staticClass: "product ProductCategory" }, [
         _c("div", { staticClass: "photo my-3" }, [
-          _c("img", {
-            attrs: { src: "/uploads/product/" + product.img, alt: "" },
-          }),
+          _c(
+            "a",
+            { attrs: { href: "/product/" + product.slug + "/" + product.id } },
+            [
+              _c("img", {
+                attrs: { src: "/uploads/product/" + product.img, alt: "" },
+              }),
+            ]
+          ),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "details" }, [
