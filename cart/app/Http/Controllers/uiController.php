@@ -145,6 +145,14 @@ if(!empty($category)){
 
       return view('front.products.view')->with(['product'=>$product, 'related'=>$related]);
    }
+
+public function jsonpackging(){
+   $data = product::select(['img','name','dis','type'])->where('type',2)->paginate(10);
+
+   return response()->json(['data'=>$data]);
+
+}
+
    public function pna()
    {
       return view('front.products.productsNotAvailable');

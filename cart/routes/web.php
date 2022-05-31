@@ -109,6 +109,10 @@ Route::post('/insertnewone/{product}', [packingController::class, 'insertnewone'
 Route::get('/packaging_order', [packingController::class, 'newpackaging'])->name('packaging_order');
 
 
+
+Route::get('/jsonpackging', [uiController::class, 'jsonpackging'])->name('jsonpackging');
+
+
 //
 
 Route::get('/', [uiController::class, 'homepage'])->name('welcome');
