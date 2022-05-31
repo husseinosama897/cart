@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\order;
+use Carbon\Carbon;
 class ordersAdminController extends Controller
 {
+
 
 
 public function index(){
@@ -26,7 +28,7 @@ public function changestatus(order $order,request $request){
     $order->update(['track_order'=>$request->track_order,
     'delivery_date'=>$request->delivery_date,
     'receive_date'=>$request->receive_date,
-    'confirmation_date'=>$request->confirmation_date,
+    'confirmation_date'=>Carbon::now(),
 ]);
 
 

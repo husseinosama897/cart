@@ -225,6 +225,10 @@ Route::get('/revieworder/{order}', [ordersAdminController::class, 'revieworder']
 
 //change status order
 
+
+
+
+
 Route::post('/changestatus/{order}', [ordersAdminController::class, 'changestatus']);
 
 // json order table 
