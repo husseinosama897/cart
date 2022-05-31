@@ -15,6 +15,7 @@ public function index(){
 
 
 public function revieworder(order $order){
+    $item = $order->itemorder;
     return view('admin.orders.index')->with(['data'=>$order]);
 }
 

@@ -18,7 +18,7 @@ use App\Http\Controllers\profileController;
 
 use Illuminate\Support\Facades\Route;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
-use \App\Models\category;
+use \App\Models\supplier;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -49,7 +49,7 @@ Route::post('/json/suppliers/{supplier}', [uiController::class, 'jsonsupplier'])
 Route::post('/json/suppliers', [uiController::class, 'jsonsuppliers']);
 
 Route::get('/suppliers', function () {
-    $category = category::select(['id','name'])->get()->take(20);
+    $category = supplier::select(['id','comp'])->get()->take(20);
      return view('front.suppliers.suppliers')->with('category',$category);
 })->name('suppliers');
 
