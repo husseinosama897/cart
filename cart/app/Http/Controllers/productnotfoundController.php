@@ -26,4 +26,18 @@ $this->validate($request,[
 
 
     }
+
+
+    public function tableproductfound(){
+        return view('admin.product.notfound');
+    }
+
+
+    public function json_productnotfound(){
+
+        $data = productnotfound::paginate(10);
+
+        return response()->json(['data'=>$data]);
+
+    }
 }

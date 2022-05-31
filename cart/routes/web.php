@@ -89,8 +89,14 @@ Route::get('/order', [profileController::class, 'order']);
 
 //productnotfound
 Route::get('findproduct', [uiController::class, 'pna'])->name('pna');
-
+//create product notfound
 Route::post('productnotfound', [productnotfoundController::class, 'createorder'])->name('productnotfound');
+
+//json for product notfound
+Route::get('json_productnotfound', [productnotfoundController::class, 'json_productnotfound'])->name('json_productnotfound');
+//table for product notfound
+Route::get('table_product_notfound', [productnotfoundController::class, 'tableproductfound'])->name('tableproductfound');
+
 
 //
 
@@ -107,6 +113,10 @@ Route::post('/insertcup', [packingController::class, 'insertcup']);
 Route::post('/insertnewone/{product}', [packingController::class, 'insertnewone']);
 
 Route::get('/packaging_order', [packingController::class, 'newpackaging'])->name('packaging_order');
+
+
+
+Route::get('/jsonpackging', [uiController::class, 'jsonpackging'])->name('jsonpackging');
 
 
 //
@@ -224,6 +234,10 @@ Route::group(['prefix' => 'admin',], function () {
 Route::get('/revieworder/{order}', [ordersAdminController::class, 'revieworder'])->name('admin.revieworder');
 
 //change status order
+
+
+
+
 
 Route::post('/changestatus/{order}', [ordersAdminController::class, 'changestatus']);
 
