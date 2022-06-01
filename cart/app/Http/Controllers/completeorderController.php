@@ -61,38 +61,6 @@ $orderitemarray = [];
 foreach($cart as $car){
    $seller =  $order->seller()->where('seller_id',$car->seller_id)->first();
 
-   $bestseller_product = bestseller_product::where(['product_id'=>$car->product_id,
-
-   'seller_id'=>$car->supplier_id,
-
-   'category_id'=>$car->product->category_id,
-   ])->first();
-
-   if($bestseller_product){
-
-    $bestseller_product->increment(
-      'profit',$car->product->price * $car->quantity,
-      ['number_of_sales'=>1],
-    );
-
-   }else{
-    bestseller_product::insert([
-      'profit'=>$car->product->price * $car->quantity,
-      'number_of_sales'=>1,
-
-      'product_id'=>$car->product_id,
- 
-   
-      'seller_id'=>$car->supplier_id,
-   
-      'category_id'=>$car->product->category_id,
-   
-   
-
-    ]
-    );
-   }
-
    $fileName = null;
 
   if(!empty($seller)){

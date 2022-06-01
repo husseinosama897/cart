@@ -5,22 +5,90 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\order;
 use App\Models\orderitem;
+
+use App\Models\User;
 class reportController extends Controller
 {
 
 
+public function customer_purchases(){
+    return view('admin.report.customer_purchases');
 
-public function bestarea(){
+}
+
+public function json_customer_purchases(){
+
+ $data =   User::withSum('order','billing_total')->paginate(10);
+
+return response()->json(['data'=>$data]);
 
 }
 
 
 
+public function products_by_supplier(){
+//Report of the best selling products_by_supplier page
+
+return view('admin.report.products_by_supplier');
+
+}
+
+
+public function newcustomer(){
+    //  new customer 
+    return view('admin.report.newcustomer');
+}
+
+
+
+public function jsonnewcustomer(request $request){
+
+    $data = User::get()->orderby('created_at','desc')->take(100);
+    return response()->json(['data'=>$data]);
+
+}
+
+public function json_products_by_supplier(request $request){
+
+
+    $order = order::with(['itemorder'=>function($q)use($request) {
+
+        return $q->select(['id','product_id','quantity'])->with(['product'=>function($qe)use($request){
+            $q->select(['id','name','seller_id']);
+
+            if($request->seller_id)
+{
+    $q->where('seller_id',$request->seller_id);
+}
+
+return $q;
+        }])->withcount();
+    }])->query();
+    
+    if($request->from){
+        $order = $order->where('confirmation_date','>=',$request->from);
+    }
+    
+    if($request->to){
+        $order = $order->where('confirmation_date','=<',$request->to);
+    }
+    
+     $order =  $order->get()->chunk(100);
+    
+    return response()->json(['data'=>$order]);
+    
+}
+
+
     public function bestsellerpage(){
+// best seller product
+
         return view('admin.report.bestseller');
     }
     public function bestsellerjson(request $request){
 
+
+        
 $order = order::with(['itemorder'=>function($q)use($request) {
 
     return $q->select(['id','product_id','quantity'])->with(['product'=>function($qe)use($request){

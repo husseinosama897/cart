@@ -13,6 +13,7 @@ use App\Http\Controllers\productController;
 use App\Http\Controllers\categoryController;
 
 use App\Http\Controllers\profileController;
+use App\Http\Controllers\reportController;
 
 
 
@@ -32,6 +33,56 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+//report 
+
+
+//customer_purchases
+
+Route::get('/json_customer_purchases', [reportController::class, 'json_customer_purchases'])
+->name('json_customer_purchases');
+
+// customer_purchases page
+
+Route::get('/customer_purchases', [reportController::class, 'customer_purchases'])
+->name('customer_purchases');
+//// Report of the best selling products_by_supplier page
+
+Route::get('/products_by_supplier', [reportController::class, 'products_by_supplier'])
+->name('products_by_supplier');
+
+
+
+// json Report of the best selling products_by_supplier page
+Route::post('/json_products_by_supplier', [reportController::class, 'json_products_by_supplier'])
+->name('json_products_by_supplier');
+
+/// bestsellerpage
+//json
+Route::post('/bestsellerjson', [reportController::class, 'bestsellerjson'])
+->name('bestsellerjson');
+
+//page
+Route::get('/bestsellerpage', [reportController::class, 'bestsellerpage'])
+->name('bestsellerpage');
+
+
+
+/// newcustomers
+Route::get('/newcustomers', [reportController::class, 'newcustomer'])
+->name('newcustomer');
+
+
+
+///json_newcustomer
+Route::get('/jsonnewcustomer', [reportController::class, 'jsonnewcustomer'])
+->name('jsonnewcustomer');
+
+
+
+
+
+
+/////////
 
 Route::get('/checker', [completeorderController::class, 'finishing'])->name('checker');
 
