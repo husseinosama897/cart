@@ -15,6 +15,13 @@ class order extends Model
         'billing_email',
          'billing_number',
           'type',
+          'confirmed',
+
+          'track_order',
+          'delivery_date',
+          'receive_date',
+          'confirmation_date',
+
           'billing_discount_code',
           'billing_subtotal',
           'billing_total',
@@ -23,5 +30,10 @@ class order extends Model
 
     public function itemorder(){
         return $this->hasmany(orderitem::class,'order_id');
+    }
+
+
+    public function seller(){
+        return $this->HasMany(seller_order::Class,'order_id');
     }
 }

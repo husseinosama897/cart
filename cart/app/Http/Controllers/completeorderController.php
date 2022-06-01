@@ -8,7 +8,7 @@ use App\Models\orderitem;
 use App\Models\seller_order;
 use App\Models\cart;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\bestseller_product;
 class completeorderController extends Controller
 {
   public function __construct()
@@ -18,7 +18,7 @@ class completeorderController extends Controller
 
     public function checkout(){
       $data = auth()->user()->cart()->with('product')->get();
-        // $carts = cart::where('user_id', Auth::id())->get();
+  
         return view('front.checkout.index')->with(['data'=>$data,
         'total'=>getNumbers()->get('newtotal'),
         'tax'=>getNumbers()->get('newTax'),
@@ -53,31 +53,58 @@ public function saveorder(request $request)
 
 
 public function completeorder(order $order){
-  
+ 
   $order->update(['confirmed'=>1]);
-
-$cart =  auth()->user()->cart()->with('product');
+ 
+$cart =  auth()->user()->cart()->with('product')->get();
 $orderitemarray = [];
 foreach($cart as $car){
    $seller =  $order->seller()->where('seller_id',$car->seller_id)->first();
+
+   $bestseller_product = bestseller_product::where(['product_id'=>$car->product_id,
+
+   'seller_id'=>$car->supplier_id,
+
+   'category_id'=>$car->product->category_id,
+   ])->first();
+
+   if($bestseller_product){
+
+    $bestseller_product->increment(
+      'profit',$car->product->price * $car->quantity,
+      ['number_of_sales'=>1],
+    );
+
+   }else{
+    bestseller_product::insert([
+      'profit'=>$car->product->price * $car->quantity,
+      'number_of_sales'=>1,
+
+      'product_id'=>$car->product_id,
+ 
+   
+      'seller_id'=>$car->supplier_id,
+   
+      'category_id'=>$car->product->category_id,
+   
+   
+
+    ]
+    );
+   }
+
+   $fileName = null;
+
   if(!empty($seller)){
 
-    if($request->image){
-      $image_tmp = $request->image;
-          $extension = $image_tmp->getClientOriginalExtension();
-          $fileName = rand(111,99999).'.'.$extension;
-          $image_tmp->move('uploads/packaging', $fileName);
-    
-    }else{
-      $fileName = null;
-    }
+  
 
     $orderitemarray [ ] = [
       'product_id'=>$car->product_id,
       'seller_order_id'=>$seller->id,
   'user_id'=>auth()->user()->id,
     'type'=>$car->type,
-     'image'=>$fileName,
+     'image'=>$car->image,
       'status'=>0,
     'amount'=>$car->price,
       'quantity'=>$car->quantity,
@@ -85,7 +112,7 @@ foreach($cart as $car){
 
   }else{
    $seller =  seller_order::create([
-     'seller_id'=>$seller->id,
+     'seller_id'=>$car->seller_id,
      'order_id'=>$order->id,
     ]);
   
@@ -94,7 +121,7 @@ foreach($cart as $car){
       'seller_order_id'=>$seller->id,
   'user_id'=>auth()->user()->id,
     'type'=>$car->type,
-     'image'=>$fileName,
+    'image'=>$car->image,
       'status'=>0,
     'amount'=>$car->price,
       'quantity'=>$car->quantity,
@@ -104,6 +131,7 @@ foreach($cart as $car){
 }
 
 $chunkitem = array_chunk($orderitemarray, 10);
+
 foreach($chunkitem as $items){
   orderitem::insert($items);
 }

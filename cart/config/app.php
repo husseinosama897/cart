@@ -189,7 +189,7 @@ return [
     */
 
     'aliases' => [
-
+        'Invoice' => LaravelDaily\Invoices\Facades\Invoice::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
