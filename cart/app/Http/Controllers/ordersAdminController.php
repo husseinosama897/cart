@@ -22,11 +22,15 @@ public function revieworder(order $order){
 }
 
 
+
+
+
 public function changestatus(order $order,request $request){
    
     $order->update(['track_order'=>$request->track_order,
     'delivery_date'=>$request->delivery_date,
     'receive_date'=>$request->receive_date,
+    
     'confirmation_date'=>Carbon::now(),
 ]);
 

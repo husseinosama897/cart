@@ -34,6 +34,52 @@ use Illuminate\Support\Facades\Auth;
 */
 
 //report 
+  
+
+
+
+
+
+// canceled orders report json 
+Route::get('/ArrivedOrderReport', [reportController::class, 'ArrivedOrderReport'])
+->name('ArrivedOrderReport');
+
+ // canceled orders Report   json 
+
+Route::post('/jsonArrivedOrderReport', [reportController::class, 'jsonArrivedOrderReport'])
+->name('jsonArrivedOrderReport');
+
+
+
+
+
+
+
+
+
+// canceled orders report json 
+Route::get('/jsoncanceledOrderReport', [reportController::class, 'jsoncanceledOrderReport'])
+->name('jsoncanceledOrderReport');
+
+ // canceled orders Report   json 
+
+Route::post('/canceledReport', [reportController::class, 'canceledReport'])
+->name('canceledReport');
+
+
+
+
+
+
+
+// sales Report page
+  Route::get('/salesReportpage', [reportController::class, 'salesReportpage'])
+->name('salesReportpage');
+
+/// json_Rportsales
+
+Route::post('/jsonRportsales', [reportController::class, 'jsonRportsales'])
+->name('jsonRportsales');
 
 
 //customer_purchases

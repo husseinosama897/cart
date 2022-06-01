@@ -11,19 +11,110 @@ class reportController extends Controller
 {
 
 
+    
+    public function jsoncanceledOrderReport(request $request){
+        // canceled orders report json 
+              $data = order::query();
+      
+              $data = $data->where('track_order',3);
+          
+
+              if($request->from){
+                  $data = $data->where('confirmation_date','>=',$request->from);
+              }
+              
+              if($request->to){
+                  $data = $data->where('confirmation_date','=<',$request->to);
+              }
+              
+               $data =  $data->paginate(10);
+              
+              return response()->json(['data'=>$data]);
+              
+      
+          }
+      
+
+
+
+
+    public function canceledReport(){
+        // canceled orders Report   json 
+        return view('admin.report.canceledReport');
+    }
+
+
+
+    public function jsonArrivedOrderReport(request $request){
+  // arrived orders report json 
+        $data = order::query();
+
+        $data = $data->where('track_order',2);
+    
+        if($request->from){
+            $data = $data->where('receive_date','>=',$request->from);
+        }
+        
+        if($request->to){
+            $data = $data->where('receive_date','=<',$request->to);
+        }
+        
+         $data =  $data->paginate(10);
+        
+        return response()->json(['data'=>$data]);
+        
+
+    }
+
+public function  ArrivedOrderReport(){
+    // arrived orders report page 
+    return view('admin.report.ArrivedOrder');
+}
+
+
+
 public function customer_purchases(){
+    /// customer purchase counting billing total for user page
     return view('admin.report.customer_purchases');
 
 }
 
 public function json_customer_purchases(){
-
+/// customer purchase counting billing total for user
  $data =   User::withSum('order','billing_total')->paginate(10);
 
 return response()->json(['data'=>$data]);
 
 }
 
+
+
+public function salesReportpage(){
+    // report sales page 
+    return view('admin.report.sales');
+}
+
+
+
+public function jsonRportsales(request $request){
+    //   json Report of the best selling products_by_supplier page
+
+$data = order::query();
+    
+if($request->from){
+    $data = $data->where('confirmation_date','>=',$request->from);
+}
+
+if($request->to){
+    $data = $data->where('confirmation_date','=<',$request->to);
+}
+
+ $data =  $data->paginate(10);
+
+return response()->json(['data'=>$data]);
+
+
+}
 
 
 public function products_by_supplier(){
@@ -73,7 +164,7 @@ return $q;
         $order = $order->where('confirmation_date','=<',$request->to);
     }
     
-     $order =  $order->get()->chunk(100);
+     $order =  $order->paginate(10);
     
     return response()->json(['data'=>$order]);
     
@@ -104,7 +195,7 @@ if($request->to){
     $order = $order->where('confirmation_date','=<',$request->to);
 }
 
- $order =  $order->get()->chunk(100);
+ $order =  $order->get()->paginate(10);
 
 return response()->json(['data'=>$order]);
 
