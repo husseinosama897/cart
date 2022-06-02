@@ -51,22 +51,10 @@
                         </a>
                         </li>
                         <li class="border-bottom mb-0">
-                            <a class="nav-link-style d-flex align-items-center px-2 py-3" href="/orders">
+                            <a class="nav-link-style d-flex align-items-center px-2 py-3" href="/order">
                                 <i class="ci-location opacity-60 me-2"></i>
                                 الطلبات
                             </a>
-                        </li>
-                        <li class="mb-0">
-                            <a class="nav-link-style d-flex align-items-center px-2 py-3" href="/cashback">
-                            <i class="ci-card opacity-60 me-2"></i>
-                            المحفظة
-                        </a>
-                        </li>
-                        <li class="">
-                            <a class="nav-link-style d-flex align-items-center px-2 py-3" href="/logout">
-                            <i class="ci-sign-out opacity-60 me-2"></i>
-                            تسجيل الخروج
-                        </a>
                         </li>
                     </ul>
                 </div>

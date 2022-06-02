@@ -6,8 +6,38 @@
     <h1 class="page-title">مراجعة الطلب</h1>
 </div>
 <!-- PAGE-HEADER END -->
-{{ $data }}
-<div class="row">
+<header class="card-header mb-2 bg-white w-100 d-block" style="border: none">
+    <div class="row align-items-center">
+        <div class="col-lg-6 col-md-6">
+        <span>
+            <i class="material-icons md-calendar_today"></i>
+            <b>
+                @php
+                setlocale(LC_ALL, 'ar.utf8');
+                $date = Carbon\Carbon::parse($data->created_at)->translatedFormat('l j F Y H:i:s');
+            @endphp
+             {{ $date }}
+            </b>
+        </span> <br>
+        <small class="text-muted">معرف الطلب : 1654079933</small>
+        </div>
+        <div class="col-lg-6 col-md-6 ms-auto text-md-start">
+        <form method="POST" action="{{ url('/changestatus', $data->id  ) }}">
+            @csrf
+            <input class="form-control d-inline-block mb-1 delivery-date" type="date" name="delivery_date" id="delivery-date" style="max-width: 200px">
+            <input class="form-control d-inline-block mb-1 receive-date" type="date" name="receive_date" id="receive-date" style="max-width: 200px">
+
+            <select class="form-select d-inline-block change-status" name="track_order" style="max-width: 200px">
+                <option value="0">معلق</option>
+                <option value="1">في الطريق</option>
+                <option value="2">تم توصيل الطلب</option>
+                <option value="3">الغاء الطلب</option>
+            </select>
+            <button class="btn btn-light" name="save">حفظ</button>
+        </form>
+        </div>
+    </div>
+</header>
 <!-- Content  -->
 <section class="col-12 bg-white rounded-3 border pt-3 p-3 mb-5 mb-lg-0">
     <!-- Orders-->
@@ -71,7 +101,7 @@
                 <div class="card-body">
                     <h6 class="header-title mb-3">منتجات الطلب # 1649960877</h6>
                         <div class="table-responsive">
-                        <table class="table mb-2 table-bordered">
+                        <table class="table mb-2 table-bordered" style="border: 1px solid #e9edf4">
                             <thead>
                             <tr>
                                 <th>اسم المنتج</th>
@@ -145,6 +175,14 @@
     <link href="{{ asset('/admin/assets/scss/plugins/_dataTables.bootstrap.scss') }}" rel="stylesheet"/>
     <link href="{{ asset('/admin/assets/scss/plugins/_buttons.bootstrap5.scss') }}" rel="stylesheet"/>
     <link href="{{ asset('/admin/assets/scss/plugins/_responsive.bootstrap.scss') }}" rel="stylesheet"/>
+    <style>
+        .delivery-date{
+            display: none !important
+        }
+        .receive-date{
+            display: none !important
+        }
+    </style>
 @endsection
 
 @section('script')
@@ -161,4 +199,6 @@
     <script src="{{ asset('/admin/assets/plugins/datatable/dataTables.responsive.min.js')}}"></script>
     <script src="{{ asset('/admin/assets/plugins/datatable/responsive.bootstrap5.min.js')}}"></script>
     <script src="{{ asset('/admin/assets/js/table-data.js')}}"></script>
+    <script src="{{ asset('/admin/assets/js/review.js')}}"></script>
+
 @endsection

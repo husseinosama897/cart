@@ -9,10 +9,12 @@
             </div>
             <div class="details">
                 <div class="name">
-                    <span style="display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;min-height: 1.25rem;">{{ product.name }}</span>
+                    <a :href="'/product/' + product.slug + '/' + product.id">  
+                                        <span style="display: -webkit-box;
+                        -webkit-line-clamp: 1;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;min-height: 1.25rem;">{{ product.name }}</span>
+                    </a>
                     <span>{{ product.price }} <span>SAR</span> </span>
                 </div>
                 <span class="supplier-name">المورد : </span>

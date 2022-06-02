@@ -5640,6 +5640,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'ProductCategory',
   props: ['category'],
@@ -5897,6 +5899,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -30382,17 +30410,25 @@ var render = function () {
         _c("div", { staticClass: "details" }, [
           _c("div", { staticClass: "name" }, [
             _c(
-              "span",
+              "a",
               {
-                staticStyle: {
-                  display: "-webkit-box",
-                  "-webkit-line-clamp": "1",
-                  "-webkit-box-orient": "vertical",
-                  overflow: "hidden",
-                  "min-height": "1.25rem",
-                },
+                attrs: { href: "/product/" + product.slug + "/" + product.id },
               },
-              [_vm._v(_vm._s(product.name))]
+              [
+                _c(
+                  "span",
+                  {
+                    staticStyle: {
+                      display: "-webkit-box",
+                      "-webkit-line-clamp": "1",
+                      "-webkit-box-orient": "vertical",
+                      overflow: "hidden",
+                      "min-height": "1.25rem",
+                    },
+                  },
+                  [_vm._v(_vm._s(product.name))]
+                ),
+              ]
             ),
             _vm._v(" "),
             _c("span", [
@@ -31085,7 +31121,7 @@ var render = function () {
                     ]
                   ),
                   _vm._v(
-                    "\n                           اضف الى العربة\n                        "
+                    "\n                            اضف الى العربة\n                        "
                   ),
                 ]
               ),
@@ -31117,7 +31153,7 @@ var render = function () {
                     ]
                   ),
                   _vm._v(
-                    "\n                           اضف الى قائمة الرغبات\n                        "
+                    "\n                            اضف الى قائمة الرغبات\n                        "
                   ),
                 ]
               ),
@@ -31125,6 +31161,8 @@ var render = function () {
           ]),
         ]),
       ]),
+      _vm._v(" "),
+      _vm._m(1),
       _vm._v(" "),
       _c("div", { staticClass: "related-products" }, [
         _c(
@@ -31182,9 +31220,9 @@ var render = function () {
                         },
                         [
                           _vm._v(
-                            "\n                                  " +
+                            "\n                                " +
                               _vm._s(relatedProduct.name) +
-                              "\n                                  "
+                              "\n                                "
                           ),
                         ]
                       ),
@@ -31205,7 +31243,7 @@ var render = function () {
                 _vm._v(" "),
                 _c("a", { staticClass: "bulk-buy", attrs: { href: "#" } }, [
                   _vm._v(
-                    "\n                              شراء بالجملة\n                          "
+                    "\n                            شراء بالجملة\n                        "
                   ),
                 ]),
                 _vm._v(" "),
@@ -31242,7 +31280,7 @@ var render = function () {
                       ]
                     ),
                     _vm._v(
-                      "\n                              عربة التسوق\n                          "
+                      "\n                            عربة التسوق\n                        "
                     ),
                   ]
                 ),
@@ -31263,6 +31301,73 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-auto" }, [
       _c("label", { staticClass: "form-label", attrs: { for: "quantity" } }, [
         _vm._v("الكمية"),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mb-8" }, [
+      _c(
+        "div",
+        { staticClass: "position-relative position-md-static px-md-6" },
+        [
+          _c(
+            "ul",
+            {
+              staticClass:
+                "nav nav-classic nav-tab nav-tab-lg flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble border-0 pb-1 pb-xl-0 mb-n1 mb-xl-0",
+              attrs: { id: "pills-tab-8", role: "tablist" },
+            },
+            [
+              _c(
+                "li",
+                {
+                  staticClass:
+                    "nav-item flex-shrink-0 flex-xl-shrink-1 z-index-2",
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link active",
+                      attrs: {
+                        id: "Jpills-two-example1-tab",
+                        "data-toggle": "pill",
+                        href: "#Jpills-two-example1",
+                        role: "tab",
+                        "aria-controls": "Jpills-two-example1",
+                        "aria-selected": "false",
+                      },
+                    },
+                    [
+                      _vm._v(
+                        "\n                    الوصف\n                    "
+                      ),
+                    ]
+                  ),
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "borders-radius-17 border p-4 mt-4 mt-md-0" }, [
+        _c("div", { staticClass: "tab-content" }, [
+          _c("div", { staticClass: "tab-pane fade active show" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "pt-lg-2" }, [
+                  _vm._v(
+                    "\n                                Test\n                            "
+                  ),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
       ]),
     ])
   },
