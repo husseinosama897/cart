@@ -31,31 +31,32 @@
 
 </head>
 <body class="app sidebar-mini light-mode rtl">
-    <!-- Page Loader -->
-    <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="preloader">
-                <div class="spinner-layer pl-blush">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
+    <div id="app">
+        <!-- Page Loader -->
+        <div class="page-loader-wrapper">
+            <div class="loader">
+                <div class="preloader">
+                    <div class="spinner-layer pl-blush">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- #END# Page Loader -->
-    
-    <!-- Overlay For Sidebars -->
-    <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
-    
-    <!-- Sidebarover lay -->
-    <div class="sidebar-overlay" data-toggle="sidebar"></div>
-    
-    <!-- #Top Bar -->
+        <!-- #END# Page Loader -->
+        
+        <!-- Overlay For Sidebars -->
+        <div class="overlay"></div>
+        <!-- #END# Overlay For Sidebars -->
+        
+        <!-- Sidebarover lay -->
+        <div class="sidebar-overlay" data-toggle="sidebar"></div>
+        
+        <!-- #Top Bar -->
         <!-- PAGE -->
         <div class="page">
             <div class="page-main">
@@ -73,7 +74,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
     <script src="{{ asset('js/app.js') }}" ></script>
 
     <!-- Jquery Core Js -->

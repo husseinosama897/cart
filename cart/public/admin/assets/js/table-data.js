@@ -23,14 +23,16 @@ $(function(e) {
     });
 
     //______File-Export Data Table
+
     var table = $('#file-datatable').DataTable({
-        buttons: ['copy', 'excel', 'pdf', 'colvis'],
+        buttons: ['excel', 'pdf',],
+        "searching": false,
+        "info": false,
+        "paging": false,
         language: {
             searchPlaceholder: 'Search...',
             scrollX: "100%",
             sSearch: '',
-            "url": "https://cdn.datatables.net/plug-ins/1.12.0/i18n/ar.json"
-
         }
     });
     table.buttons().container()

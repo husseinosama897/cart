@@ -40,7 +40,7 @@ class reportController extends Controller
 
     public function canceledReport(){
         // canceled orders Report   json 
-        return view('admin.report.canceledReport');
+        return view('admin.reports.canceledReport');
     }
 
 
@@ -68,14 +68,14 @@ class reportController extends Controller
 
 public function  ArrivedOrderReport(){
     // arrived orders report page 
-    return view('admin.report.ArrivedOrder');
+    return view('admin.reports.ArrivedOrder');
 }
 
 
 
 public function customer_purchases(){
     /// customer purchase counting billing total for user page
-    return view('admin.report.customer_purchases');
+    return view('admin.reports.customer_purchases');
 
 }
 
@@ -91,7 +91,7 @@ return response()->json(['data'=>$data]);
 
 public function salesReportpage(){
     // report sales page 
-    return view('admin.report.sales');
+    return view('admin.reports.sales');
 }
 
 
@@ -120,21 +120,21 @@ return response()->json(['data'=>$data]);
 public function products_by_supplier(){
 //Report of the best selling products_by_supplier page
 
-return view('admin.report.products_by_supplier');
+return view('admin.reports.productsBySupplier');
 
 }
 
 
 public function newcustomer(){
     //  new customer 
-    return view('admin.report.newcustomer');
+    return view('admin.reports.newcustomer');
 }
 
 
 
 public function jsonnewcustomer(request $request){
 
-    $data = User::get()->orderby('created_at','desc')->take(100);
+    $data = User::orderBy('created_at','desc')->get()->take(100);
     return response()->json(['data'=>$data]);
 
 }
@@ -174,7 +174,7 @@ return $q;
     public function bestsellerpage(){
 // best seller product
 
-        return view('admin.report.bestseller');
+        return view('admin.reports.bestseller');
     }
     public function bestsellerjson(request $request){
 

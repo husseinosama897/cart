@@ -59,12 +59,12 @@ Route::post('/jsonArrivedOrderReport', [reportController::class, 'jsonArrivedOrd
 
 
 // canceled orders report json 
-Route::get('/jsoncanceledOrderReport', [reportController::class, 'jsoncanceledOrderReport'])
+Route::post('/jsoncanceledOrderReport', [reportController::class, 'jsoncanceledOrderReport'])
 ->name('jsoncanceledOrderReport');
 
  // canceled orders Report   json 
 
-Route::post('/canceledReport', [reportController::class, 'canceledReport'])
+Route::get('/canceledReport', [reportController::class, 'canceledReport'])
 ->name('canceledReport');
 
 
@@ -92,6 +92,8 @@ Route::get('/json_customer_purchases', [reportController::class, 'json_customer_
 
 Route::get('/customer_purchases', [reportController::class, 'customer_purchases'])
 ->name('customer_purchases');
+
+
 //// Report of the best selling products_by_supplier page
 
 Route::get('/products_by_supplier', [reportController::class, 'products_by_supplier'])
