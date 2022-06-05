@@ -145,14 +145,14 @@ public function json_products_by_supplier(request $request){
     $order = order::with(['itemorder'=>function($q)use($request) {
 
         return $q->select(['id','product_id','quantity'])->with(['product'=>function($qe)use($request){
-            $q->select(['id','name','seller_id']);
+            $qe->select(['id','name','supplier_id']);
 
-            if($request->seller_id)
+            if($request->supplier_id)
 {
-    $q->where('seller_id',$request->seller_id);
+    $qe->where('supplier_id',$request->supplier_id);
 }
 
-return $q;
+return $qe;
         }])->withcount('product');
     }]);
     
