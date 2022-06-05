@@ -184,8 +184,8 @@ $order = order::with(['itemorder'=>function($q)use($request) {
 
     return $q->select(['id','product_id','quantity'])->with(['product'=>function($qe)use($request){
      return   $qe->select(['id','name']);
-    }])->withcount();
-}])->query();
+    }])->withcount('product');
+}]);
 
 if($request->from){
     $order = $order->where('confirmation_date','>=',$request->from);
@@ -195,7 +195,7 @@ if($request->to){
     $order = $order->where('confirmation_date','=<',$request->to);
 }
 
- $order =  $order->get()->paginate(10);
+ $order =  $order->paginate(10);
 
 return response()->json(['data'=>$order]);
 
