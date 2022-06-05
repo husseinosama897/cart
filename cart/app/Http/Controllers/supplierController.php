@@ -19,6 +19,10 @@ class supplierController extends Controller
 
 public function getselectboxsupp(request $request){
 
+
+  $this->validate($request,[
+    'name'=>['string','max:255','required'],
+  ]);
   $supplier = supplier::query();
   
   
@@ -98,7 +102,7 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
   return redirect()->route('admin.suppliers');
           }
           public function suppliertable(){
-           $suppliers = supplier::get();
+           $suppliers = supplier::paginate(10);
            return view('admin.suppliers.index', compact('suppliers'));
           }
           
