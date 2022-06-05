@@ -4,7 +4,9 @@ use App\Models\cart;
 function getNumbers()
 {
 
-  $tax = 15 / 100;
+  $setting = setting::first();
+
+  $tax = $setting->tax / 100;
 if(Auth::check()){
 
 $userCart = auth()->user()->cart()->get();     
