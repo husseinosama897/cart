@@ -6260,13 +6260,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Suppliers',
   props: {
@@ -31909,7 +31902,22 @@ var render = function () {
                       ),
                     ]),
                     _vm._v(" "),
-                    _vm._m(1, true),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-6" }, [
+                        _c(
+                          "ul",
+                          { staticClass: "p-0" },
+                          _vm._l(supplier.category, function (category) {
+                            return _c(
+                              "li",
+                              { key: category.id, staticClass: "my-1" },
+                              [_vm._v("- زيوت")]
+                            )
+                          }),
+                          0
+                        ),
+                      ]),
+                    ]),
                   ]),
                   _vm._v(" "),
                   _c(
@@ -31961,32 +31969,6 @@ var staticRenderFns = [
           checked: "",
         },
       }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-6" }, [
-        _c("ul", { staticClass: "p-0" }, [
-          _c("li", { staticClass: "my-1" }, [_vm._v("- زيوت")]),
-          _vm._v(" "),
-          _c("li", { staticClass: "my-1" }, [_vm._v("- سمنة")]),
-          _vm._v(" "),
-          _c("li", { staticClass: "my-1" }, [_vm._v("- زيوت")]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-6" }, [
-        _c("ul", { staticClass: "p-0" }, [
-          _c("li", { staticClass: "my-1" }, [_vm._v("- زيوت")]),
-          _vm._v(" "),
-          _c("li", { staticClass: "my-1" }, [_vm._v("- سمنة")]),
-          _vm._v(" "),
-          _c("li", { staticClass: "my-1" }, [_vm._v("- زيوت")]),
-        ]),
-      ]),
     ])
   },
 ]

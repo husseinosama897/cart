@@ -85,6 +85,7 @@ if(!empty($category)){
       }
 
     
+      $data = $data->with('category');
 
       $data = $data->paginate(10);
 
@@ -109,7 +110,11 @@ if(!empty($category)){
          
        
        }
+
+      
  
+
+
       $data = $data->paginate(10);
 
       return response()->json(['data'=>$data]);

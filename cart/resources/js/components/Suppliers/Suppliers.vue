@@ -47,18 +47,11 @@
                             <div class="row">
                                 <div class="col-6">
                                     <ul class="p-0">
-                                        <li class="my-1">- زيوت</li>
-                                        <li class="my-1">- سمنة</li>
-                                        <li class="my-1">- زيوت</li>
+                                        <li class="my-1"  v-for="category in supplier.category" :key="category.id">- زيوت</li>
+                                    
                                     </ul>
                                 </div>
-                                <div class="col-6">
-                                    <ul class="p-0">
-                                        <li class="my-1">- زيوت</li>
-                                        <li class="my-1">- سمنة</li>
-                                        <li class="my-1">- زيوت</li>
-                                    </ul>
-                                </div>
+                             
                             </div>
                         </div>
                         <a :href="'/suppliers/' + supplier.slug + '/' + supplier.id" class="supplier-cart">
