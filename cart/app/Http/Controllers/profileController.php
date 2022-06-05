@@ -26,4 +26,10 @@ class profileController extends Controller
         return view('front.order')->with(['data'=>$orders]);
     }
 
+    public function invoice( $order){
+$data = auth()->user()->order()->with('itemorder')->where('id',$order)->fist();
+
+return view('invoice')->with('data',$data);
+    }
+
 }

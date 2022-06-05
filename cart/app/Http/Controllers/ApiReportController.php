@@ -147,4 +147,6 @@ public function bestsellerjson(request $request){
     
         }
 
+
+        
     }
