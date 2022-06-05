@@ -32,4 +32,6 @@ $data = auth()->user()->order()->with('itemorder')->where('id',$order)->fist();
 return view('invoice')->with('data',$data);
     }
 
+    
+
 }

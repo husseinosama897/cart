@@ -191,6 +191,9 @@ Route::get('/profile', [profileController::class, 'profile']);
 
 Route::get('/order', [profileController::class, 'order']);
 
+Route::get('/invoice/{order}', [profileController::class, 'invoice'])->name('invoice');
+
+
 
 //productnotfound
 Route::get('findproduct', [uiController::class, 'pna'])->name('pna');
