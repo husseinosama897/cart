@@ -10,7 +10,7 @@ class categoryController extends Controller
 {
     public function index()
     {
-        $categories = category::all();
+        $categories = category::get();
         return view('admin.categories.index', compact('categories'));
     }
     public function create()
@@ -33,7 +33,7 @@ class categoryController extends Controller
 
                 $extension = $image_tmp->getClientOriginalExtension();
                 $fileName = rand(111,99999).'.'.$extension;
-                $image_tmp->move('uploads/supplier', $fileName);
+                $image_tmp->move('uploads/category', $fileName);
         
         }else{
             $fileName = null;
