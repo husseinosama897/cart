@@ -15,8 +15,8 @@ class productController extends Controller
    }
    public function create()
    {
-     $categories = category::all();
-     $suppliers = supplier::all();
+     $categories = category::select(['name','id'])->get();
+     $suppliers = supplier::select(['comp','id'])->get();
      return view('admin.products.create', compact('categories', 'suppliers'));
    }
    public function products(request $request){
