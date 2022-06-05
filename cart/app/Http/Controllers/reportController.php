@@ -153,8 +153,8 @@ public function json_products_by_supplier(request $request){
 }
 
 return $q;
-        }])->withcount();
-    }])->query();
+        }])->withcount('product');
+    }]);
     
     if($request->from){
         $order = $order->where('confirmation_date','>=',$request->from);
