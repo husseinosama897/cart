@@ -143,8 +143,11 @@ public function json_products_by_supplier(request $request){
 
 
     $order = orderitem::select(['id','order_id','product_id','quantity'])->with(['product'=>function($qe)use($request){
-            $qe->select(['id','name','supplier_id']);
+        return   $qe->select(['id','name','supplier_id']);
 
+            $qe->with(['supplier'=>function($q){
+                 $q->select(['comp','id']);
+            }]);
             if($request->supplier_id)
 {
     $qe->where('supplier_id',$request->supplier_id);
