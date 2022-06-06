@@ -142,9 +142,7 @@ public function jsonnewcustomer(request $request){
 public function json_products_by_supplier(request $request){
 
 
-    $order = order::with(['itemorder'=>function($q)use($request) {
-
-        return $q->select(['id','product_id','quantity'])->with(['product'=>function($qe)use($request){
+    $order = orderitem::select(['id','order_id','product_id','quantity'])->with(['product'=>function($qe)use($request){
             $qe->select(['id','name','supplier_id']);
 
             if($request->supplier_id)
@@ -154,7 +152,7 @@ public function json_products_by_supplier(request $request){
 
 return $qe;
         }])->withcount('product');
-    }]);
+   
     
     if($request->from){
         $order = $order->where('confirmation_date','>=',$request->from);
