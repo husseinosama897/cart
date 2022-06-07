@@ -71,7 +71,8 @@ return response()->json(['data'=>$data]);
         if($request->to){
             $data = $data->where('receive_date','=<',$request->to);
         }
-        
+        $data = $data->orderBy('created_at','desc');
+
          $data =  $data->paginate(10);
         
         return response()->json(['data'=>$data]);
@@ -94,7 +95,10 @@ public function customer_purchases(){
 
 public function json_customer_purchases(){
 /// customer purchase counting billing total for user
- $data =   User::withSum('order','billing_total')->paginate(10);
+ $data =   User::withSum('order','billing_total')
+->orderBy('created_at','desc')
+ 
+ ->paginate(10);
 
 return response()->json(['data'=>$data]);
 
@@ -121,7 +125,7 @@ if($request->from){
 if($request->to){
     $data = $data->where('confirmation_date','=<',$request->to);
 }
-
+$data = $data->orderBy('created_at','desc');
  $data =  $data->paginate(10);
 
 return response()->json(['data'=>$data]);
@@ -147,7 +151,8 @@ public function newcustomer(){
 
 public function jsonnewcustomer(request $request){
 
-    $data = User::orderBy('created_at','desc')->get()->take(100);
+    $data = User::orderBy('created_at','desc')
+    ->get()->take(100);
     return response()->json(['data'=>$data]);
 
 }
@@ -177,6 +182,8 @@ return $qe;
     if($request->to){
         $order = $order->where('confirmation_date','=<',$request->to);
     }
+
+    $data = $data->orderBy('product_count','desc');
     
      $order =  $order->paginate(10);
     
@@ -194,13 +201,15 @@ return $qe;
 
 
         
-$order = order::with(['itemorder'=>function($q)use($request) {
-
-    return $q->select(['id','product_id','quantity'])->with(['product'=>function($qe)use($request){
+$order = orderitem::select(['id','product_id','quantity'])->with(['product'=>function($qe)use($request){
      return   $qe->select(['id','name']);
     }])->withcount('product');
-}]);
 
+
+    $data = $data->orderBy('product_count','desc');
+    
+
+    
 if($request->from){
     $order = $order->where('confirmation_date','>=',$request->from);
 }
