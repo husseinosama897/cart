@@ -1,5 +1,5 @@
 <?php
-use App\setting;
+use App\Models\setting;
 use App\Models\cart;
 function getNumbers()
 {

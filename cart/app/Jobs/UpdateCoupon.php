@@ -73,6 +73,7 @@ $total_amount = 0;
             'discount' => $this->coupon->discount($total_amount),
             'type' => $this->coupon->type,
             'value'=> $this->coupon->value,
+            'coupon_id'=>$this->coupon->id,
             'percent_off'=>$this->coupon->percent_off,
         ]);
 

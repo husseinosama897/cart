@@ -16,7 +16,11 @@ class order extends Model
          'billing_number',
           'type',
           'confirmed',
-
+'coupon_id',
+'details_address',
+'billing_area',
+'billing_restaurant',
+'notes',
           'track_order',
           'delivery_date',
           'receive_date',

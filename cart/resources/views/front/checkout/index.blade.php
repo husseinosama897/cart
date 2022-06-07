@@ -78,7 +78,7 @@
                                     المنطقة
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" name="details_address" class="form-control" name="streetAddress" placeholder="اكتب هنا" required="" data-msg="Please enter a valid address." data-error-class="u-has-error" data-success-class="u-has-success">
+                                <input type="text" name="billing_area" class="form-control" name="streetAddress" placeholder="اكتب هنا" required="" data-msg="Please enter a valid address." data-error-class="u-has-error" data-success-class="u-has-success">
                             </div>
                             <!-- End Input -->
                         </div>
@@ -89,7 +89,7 @@
                                     الشارع
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" name="details_address" class="form-control" name="streetAddress" placeholder="اكتب هنا" required="" data-msg="Please enter a valid address." data-error-class="u-has-error" data-success-class="u-has-success">
+                                <input type="text" name="billing_street" class="form-control" name="streetAddress" placeholder="اكتب هنا" required="" data-msg="Please enter a valid address." data-error-class="u-has-error" data-success-class="u-has-success">
                             </div>
                             <!-- End Input -->
                         </div>
@@ -100,7 +100,7 @@
                                     اسم المطعم
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" name="details_address" class="form-control" name="streetAddress" placeholder="اكتب هنا" required="" data-msg="Please enter a valid address." data-error-class="u-has-error" data-success-class="u-has-success">
+                                <input type="text" name="billing_restaurant" class="form-control" name="streetAddress" placeholder="اكتب هنا" required="" data-msg="Please enter a valid address." data-error-class="u-has-error" data-success-class="u-has-success">
                             </div>
                             <!-- End Input -->
                         </div>

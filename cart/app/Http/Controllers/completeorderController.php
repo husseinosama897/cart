@@ -36,12 +36,29 @@ class completeorderController extends Controller
 
 public function saveorder(request $request)
 {
+
+  $this->validate($request,[
+    'billing_name'=>['string','max:255','required'],
+    'billing_email'=>['string','max:255','required','email'],
+       'billing_number'=>['numeric','required'],
+        'type'=>0,
+        'details_address'=>['string','max:255','required'],
+        'billing_area'=>['string','max:255','required'],
+        'billing_restaurant'=>['string','max:255'],
+        'notes'=>['string'],
+  ]);
+  
   $order = order::create([
  'user_id'=>auth()->user()->id,
   'billing_name'=>$request->billing_name,
 'billing_email'=>$request->billing_email,
    'billing_number'=>$request->billing_number,
     'type'=>0,
+    'details_address'=>$request->details_address,
+    'billing_area'=>$request->billing_area,
+    'billing_restaurant'=>$request->billing_restaurant,
+    'notes'=>$request->notes,
+    'coupon_id'=>session()->get('coupon')['coupon_id'] ?? null,
     'billing_discount_code'=>getNumbers()->get('code'),
     'billing_subtotal'=>getNumbers()->get('newSubtotal'),
     'billing_total'=>getNumbers()->get('newtotal'),
