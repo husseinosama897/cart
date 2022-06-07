@@ -18,8 +18,10 @@
     .dropdown-menu{
         background-color: #0d6efd;
     }
-    #file-datatable_wrapper .row:first-child{
-        margin-bottom: 2rem;
+    #file-datatable_wrapper .row:first-child .dt-buttons.btn-group{
+        position: relative;
+        right: 0;
+        left: 0;
     }
 </style>
 @endsection

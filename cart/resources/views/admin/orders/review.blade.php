@@ -200,5 +200,4 @@
     <script src="{{ asset('/admin/assets/plugins/datatable/responsive.bootstrap5.min.js')}}"></script>
     <script src="{{ asset('/admin/assets/js/table-data.js')}}"></script>
     <script src="{{ asset('/admin/assets/js/review.js')}}"></script>
-
 @endsection

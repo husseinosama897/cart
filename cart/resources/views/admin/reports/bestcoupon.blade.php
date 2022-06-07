@@ -3,10 +3,10 @@
 @section('content')
 <!-- PAGE-HEADER -->
 <div class="page-header">
-    <h1 class="page-title">الأكثر مبيعًا</h1>
+    <h1 class="page-title">أكثر كوبون مستخدم</h1>
 </div>
 <!-- Row -->
-<best-seller></best-seller>
+<best-coupon></best-coupon>
  <!-- End Row -->
 @endsection
 
@@ -18,6 +18,7 @@
     .dropdown-menu{
         background-color: #0d6efd;
     }
+
     #file-datatable_wrapper .row:first-child .dt-buttons.btn-group{
         position: relative;
         right: 0;

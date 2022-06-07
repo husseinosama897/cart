@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\coupon;
+use App\Models\coupon as ModelsCoupon;
+
 class couponController extends Controller
 {
+    public function index()
+    {
+        $coupons = ModelsCoupon::all();
+        return view('admin.coupons.index', compact('coupons'));
+    }
     public function createpage(){
-        return view('admin.coupon.create');
+        return view('admin.coupons.create');
     }
 
-
-
-    public function post(request $request){
+    public function save(request $request){
         $this->validate($request,[
             'code'=>['required','max:255','string'],
             'type'=>['required','string'],
@@ -39,5 +44,8 @@ class couponController extends Controller
         
     }
 
-    public function postupdate(request $request)
+    public function postupdate(request $request){
+
+    }
+
 }

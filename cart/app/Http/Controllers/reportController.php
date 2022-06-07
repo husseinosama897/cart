@@ -14,9 +14,7 @@ class reportController extends Controller
 
 public function bestcoupon(){
     // the best coupon used 
-
-    return view('admin.report.bestcoupon');
-
+    return view('admin.reports.bestcoupon');
 }
 
 
@@ -161,7 +159,7 @@ public function json_products_by_supplier(request $request){
 
 
     $order = orderitem::select(['id','order_id','product_id','quantity'])->with(['product'=>function($qe)use($request){
-        return   $qe->select(['id','name','supplier_id']);
+        $qe->select(['id','name','supplier_id']);
 
             $qe->with(['supplier'=>function($q){
                  $q->select(['comp','id']);

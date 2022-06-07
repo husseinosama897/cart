@@ -37,4 +37,7 @@ class product extends Model
     public function category(){
         return $this->belongsto(category::class,'category_id');
     }
+    public function supplier(){
+        return $this->belongsto(supplier::class,'supplier_id');
+    }
 }

@@ -51,6 +51,51 @@
                         <i class="angle fe fe-chevron-right"></i>
                     </a>
                 </li>
+                <li class="slide"> 
+                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                        <i class="side-menu__icon fe fe-file-text"></i>
+                        <span class="side-menu__label">التقارير</span>
+                        <i class="angle fe fe-chevron-right"></i>
+                    </a> 
+                    <ul class="slide-menu mega-slide-menu" style="display: none;"> 
+                        <li class="side-menu-label1">
+                            <a href="javascript:void(0)">التقارير</a>
+                        </li> 
+                        <div class="mega-menu"> 
+                            <div class=""> 
+                                <ul> 
+                                    <li>
+                                        <a href="{{ route('ArrivedOrderReport') }}" class="slide-item">طلبات تم توصيلها</a>
+                                    </li> 
+                                    <li>
+                                        <a href="{{ route('canceledReport') }}" class="slide-item">طلبات تم إلغاؤها</a>
+                                    </li> 
+                                    <li>
+                                        <a href="{{ route('salesReportpage') }}" class="slide-item">المبيعات</a>
+                                    </li> 
+                                    <li>
+                                        <a href="{{ route('customer_purchases') }}" class="slide-item">مشتريات العملاء</a>
+                                    </li> 
+                                    <li>
+                                        <a href="{{ route('products_by_supplier') }}" class="slide-item">
+                                            تقرير عن  المبيعات من قبل المورد
+                                        </a>
+                                    </li> 
+                                    <li>
+                                        <a href="{{ route('bestsellerpage') }}" class="slide-item">
+                                            الأكثر مبيعًا
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('newcustomer') }}" class="slide-item">
+                                            عملاء جدد
+                                        </a>
+                                    </li>
+                                 </ul> 
+                                </div> 
+                            </div> 
+                        </ul> 
+                    </li>
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"/></svg></div>
         </div>

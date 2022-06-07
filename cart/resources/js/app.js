@@ -25,6 +25,8 @@ Vue.component('customer-purchases', require('./components/admin/reports/Customer
 Vue.component('products-by-supplier', require('./components/admin/reports/productsBySupplier.vue').default);
 Vue.component('best-seller', require('./components/admin/reports/bestSeller.vue').default);
 Vue.component('new-customer', require('./components/admin/reports/newCustomer.vue').default);
+Vue.component('best-coupon', require('./components/admin/reports/bestcoupon.vue').default);
+
 
 
 const app = new Vue({

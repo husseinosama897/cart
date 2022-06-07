@@ -11,7 +11,7 @@ use App\Http\Controllers\productnotfoundController;
 use App\Http\Controllers\productController;
 
 use App\Http\Controllers\categoryController;
-
+use App\Http\Controllers\couponController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\reportController;
 
@@ -247,6 +247,14 @@ Route::post('/updatequantityjson/{cart}', [cartController::class, 'updatequantit
 
 
 //Admin
+
+// coupon
+Route::prefix('coupon')->name('coupon.')->group(function () {
+    Route::get('/index',[couponController::class,'index'])->name('index');
+    Route::get('/create',[couponController::class,'createpage'])->name('create');
+    Route::post('/save',[couponController::class,'post'])->name('save');
+    Route::put('/update',[SettingController::class,'update'])->name('update');
+});
 
 // start with categories 
 

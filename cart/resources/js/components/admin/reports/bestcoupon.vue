@@ -8,17 +8,20 @@
                             <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
                                 <thead>
                                     <tr>
-                                        <th class="wd-15p border-bottom-0">اسم المورد</th>
-                                        <th class="wd-15p border-bottom-0">اسم المنتج</th>
-                                        <th class="wd-20p border-bottom-0">عدد المبيعات</th>
-
+                                        <th class="wd-15p border-bottom-0">الاسم</th>
+                                        <th class="wd-15p border-bottom-0">البريد الالكتروني</th>
+                                        <th class="wd-20p border-bottom-0">رقم الهاتف</th>
+                                        <th class="wd-15p border-bottom-0">اجمالي سعر الطلب</th>
+                                        <th class="wd-25p border-bottom-0">تاريخ الطلب</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="(report, index) in reports.data" :key="index">
-                                        <td>{{ report.product.supplier.comp }}</td>
-                                        <td>{{ report.product.name }}</td>
-                                        <td>{{ report.product_count }}</td>
+                                        <td>{{ report.billing_name }}</td>
+                                        <td>{{ report.billing_email }}</td>
+                                        <td>{{ report.billing_number }}</td>
+                                        <td>{{ report.billing_total }}</td>
+                                        <td>{{  moment(report.created_at).format("DD-MM-YYYY") }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -33,7 +36,7 @@
 import moment from "moment";
 
 export default {
-    name: 'productsBySupplier',
+    name: 'bestcoupon',
     props: {
         category: Array,
     },
@@ -49,7 +52,7 @@ export default {
     
     methods: {
         loadreport: function() {
-            axios.get('/json_products_by_supplier',{
+            axios.post('/jsonbestcoupon',{
                 // 'category': this.filterCategory,
             })
             .then((response) => {
