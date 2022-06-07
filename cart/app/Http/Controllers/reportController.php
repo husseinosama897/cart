@@ -11,6 +11,19 @@ class reportController extends Controller
 {
 
 
+
+public function bestcoupon(){
+    // the best coupon used 
+
+    return view('admin.report.bestcoupon');
+
+}
+
+
+public function jsonbestcoupon(){
+$data = Coupon::withcount('order')->orderBy('count_order','desc')->paginate(10);
+return response()->json(['data'=>$data]);
+}
     
     public function jsoncanceledOrderReport(request $request){
         // canceled orders report json 

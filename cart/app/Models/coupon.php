@@ -28,7 +28,7 @@ class coupon extends Model
 
     public function order(){
 
-        return $this->belongsTo(orderitem::class,'order_id');
+        return $this->HasMany(order::class,'order_id');
     }
 
 

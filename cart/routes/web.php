@@ -36,6 +36,14 @@ use Illuminate\Support\Facades\Auth;
 
 //report 
   
+/// the besties coupon page 
+
+Route::get('/bestcoupon', [reportController::class, 'bestcoupon'])
+->name('bestcoupon');
+
+// the besties coupon 
+Route::post('/jsonbestcoupon', [reportController::class, 'jsonbestcoupon'])
+->name('jsonbestcoupon');
 
 
 
