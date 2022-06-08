@@ -44,8 +44,30 @@ class couponController extends Controller
         
     }
 
-    public function postupdate(request $request){
+    public function postupdate(request $request,coupon $coupon){
+
+
+        $this->validate($request,[
+            'code'=>['required','max:255','string'],
+            'type'=>['required','string'],
+            'value'=>['numeric'],
+            'percent_off'=>['numeric'],
+            'expire'=>['string'],
+        ]);
+
+        $coupon->update([
+            'code'=>$request->code,
+            'type'=>$request->type, // voucher || percent_off 
+            'value'=>$request->value,
+            'percent_off'=>$request->percent_off,
+            'expire'=>$request->expire,
+        ]);
+
+
+
 
     }
+
+    
 
 }

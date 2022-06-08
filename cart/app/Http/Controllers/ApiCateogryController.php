@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\category;
+use Illuminate\Support\Facades\Validator;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ApiCateogryController extends Controller
 {

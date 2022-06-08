@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use Illuminate\Http\Request;
+use App\Models\product;
+use App\Models\supplier;
 
 class ApiUiController extends Controller
 {

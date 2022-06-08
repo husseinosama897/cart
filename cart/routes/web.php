@@ -17,6 +17,8 @@ use App\Http\Controllers\reportController;
 
 
 
+use Laravel\Sanctum\PersonalAccessToken;
+
 use Illuminate\Support\Facades\Route;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use \App\Models\supplier;
@@ -37,6 +39,10 @@ use Illuminate\Support\Facades\Auth;
 //report 
   
 /// the besties coupon page 
+
+
+
+
 
 Route::get('/bestcoupon', [reportController::class, 'bestcoupon'])
 ->name('bestcoupon');
@@ -190,7 +196,6 @@ Route::get('/order', [profileController::class, 'order']);
 Route::get('/invoice/{order}', [profileController::class, 'invoice'])->name('invoice');
 
 
-
 //productnotfound
 Route::get('findproduct', [uiController::class, 'pna'])->name('pna');
 //create product notfound
@@ -273,7 +278,7 @@ Route::get('/categories_update/{category}', [categoryController::class, 'categor
 Route::post('/categories_update/{category}', [categoryController::class, 'update'])->name('category_update');
 
 // delete category 
-Route::get('/categories_delete/{category}', [categoryController::class, 'delete'])->name('category_delete');
+Route::post('/categories_delete/{category}', [categoryController::class, 'delete'])->name('category_delete');
 
 Route::post('/categories_save', [categoryController::class, 'save'])->name('categories_save');
 

@@ -37,16 +37,19 @@ class completeorderController extends Controller
 public function saveorder(request $request)
 {
 
+
+
   $this->validate($request,[
     'billing_name'=>['string','max:255','required'],
     'billing_email'=>['string','max:255','required','email'],
-       'billing_number'=>['numeric','required'],
-        'type'=>0,
+   
+        
         'details_address'=>['string','max:255','required'],
         'billing_area'=>['string','max:255','required'],
         'billing_restaurant'=>['string','max:255'],
         'notes'=>['string'],
   ]);
+
   
   $order = order::create([
  'user_id'=>auth()->user()->id,
