@@ -36,9 +36,7 @@ use App\Http\Controllers\ApiOrderAdminController;
 
 
 
-Route::post('/login', [ApiLoginController::class, 'login'])
-->name('login');
-
+/*
 Route::get('/json/categories/', [ApiUiController::class, 'categoryjson']);
 Route::get('/json/categories/{category}', [ApiUiController::class, 'jsoncategory']);
 Route::get('/categories/{slug}/{category}', [ApiUiController::class, 'categorypage']);
@@ -174,6 +172,8 @@ Route::get('/delete_product/{product}', [productController::class, 'delete'])->n
 
 
 });
+*/
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+    
 });
