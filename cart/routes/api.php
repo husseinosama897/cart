@@ -12,6 +12,9 @@ use App\Http\Controllers\ApiUiController;
 
 use App\Http\Controllers\ApiReportController;
 
+use App\Http\Controllers\ApisupplierController;
+
+
 
 
 
@@ -44,10 +47,84 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
 
 
 
+    //create supplier
+Route::post('/createsupplier', [ApisupplierController::class, 'createsupp'])->name('createsupplier');
+
+// for autocomplete supplier
+Route::post('/getselectboxsupp', [ApisupplierController::class, 'getselectboxsupp']);
+
+
+//supplier create page
+Route::get('/supplier_create_page', [ApisupplierController::class, 'createpage'])->name('admin.suppliers.create');
+
+//supplier select box //chunk 
+Route::get('/supplierselex', [ApisupplierController::class, 'supplierselex']);
+
+// supplier update
+Route::post('/updatesupp/{supplier}', [ApisupplierController::class, 'updatesupp']);
+
+// supplier delete 
+Route::post('/deletesupp/{supplier}', [ApisupplierController::class, 'delete']);
+///end of supplier routes
 
 
 
+
+
+
+
+    // the besties coupon 
+    Route::get('/jsonbestcoupon', [ApiReportController::class, 'jsonbestcoupon'])
+    ->name('jsonbestcoupon');
     
+
+     // canceled orders Report   json 
+    
+    Route::post('/jsonArrivedOrderReport', [ApiReportController::class, 'jsonArrivedOrderReport'])
+    ->name('jsonArrivedOrderReport');
+    
+    
+    
+    
+    // canceled orders report json 
+    Route::post('/jsoncanceledOrderReport', [ApiReportController::class, 'jsoncanceledOrderReport'])
+    ->name('jsoncanceledOrderReport');
+ 
+    
+  
+    
+    /// json_Rportsales
+    
+    Route::post('/jsonRportsales', [ApiReportController::class, 'jsonRportsales'])
+    ->name('jsonRportsales');
+    
+    
+    //customer_purchases
+    
+    Route::get('/json_customer_purchases', [ApiReportController::class, 'json_customer_purchases'])
+    ->name('json_customer_purchases');
+    
+    
+    // json Report of the best selling products_by_supplier page
+    Route::get('/json_products_by_supplier', [ApiReportController::class, 'json_products_by_supplier'])
+    ->name('json_products_by_supplier');
+    
+    /// bestsellerpage
+    //json
+    Route::post('/bestsellerjson', [ApiReportController::class, 'bestsellerjson'])
+    ->name('bestsellerjson');
+    
+ 
+
+    ///json_newcustomer
+    Route::get('/jsonnewcustomer', [ApiReportController::class, 'jsonnewcustomer'])
+    ->name('jsonnewcustomer');
+    
+    
+    /////////
+
+/// cateogires
+
 // update category
 Route::post('/categories_update/{category}', [ApiCateogryController::class, 'update'])->name('category_update');
 // delete category 
@@ -55,6 +132,12 @@ Route::post('/categories_delete/{category}', [ApiCateogryController::class, 'del
 // save category
 Route::post('/categories_save', [ApiCateogryController::class, 'save'])->name('categories_save');
 
+
+
+
+
+
+// products
 // save product 
 Route::post('/save_products', [ApiProductController::class, 'products'])->name('save_products');
 // update product

@@ -236,8 +236,6 @@ Route::get('/', [uiController::class, 'homepage'])->name('welcome');
 
  Route::get('/basket', [cartController::class, 'cartpage'])->name('basket');
 
-
-
 Route::get('/counter', [cartController::class, 'counter']);
 
 Route::delete('/cart/delete/{cart}', [cartController::class, 'delete']);
@@ -269,7 +267,6 @@ Route::get('/categories_index', [categoryController::class, 'index'])->name('cat
 
 // create category
 Route::get('/categories_create', [categoryController::class, 'create'])->name('categories_create');
-
 
 
 // update cateogry
