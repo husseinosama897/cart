@@ -10,6 +10,8 @@ use App\Http\Controllers\ApiProductController;
 
 use App\Http\Controllers\ApiUiController;
 
+use App\Http\Controllers\ApiReportController;
+
 
 
 
@@ -38,6 +40,14 @@ Route::get('/categories/{slug}/{category}', [ApiUiController::class, 'categorypa
 
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
+
+
+
+
+
+
+
+    
 // update category
 Route::post('/categories_update/{category}', [ApiCateogryController::class, 'update'])->name('category_update');
 // delete category 
