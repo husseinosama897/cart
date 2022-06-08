@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\order;
 use App\Models\orderitem;
-
+use App\Models\coupon;
 use App\Models\User;
 class reportController extends Controller
 {
@@ -19,7 +19,7 @@ public function bestcoupon(){
 
 
 public function jsonbestcoupon(){
-$data = Coupon::withcount('order')->orderBy('count_order','desc')->paginate(10);
+$data = coupon::withcount('order')->orderBy('order_count','desc')->paginate(10);
 return response()->json(['data'=>$data]);
 }
     
