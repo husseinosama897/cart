@@ -14,6 +14,9 @@ use App\Http\Controllers\ApiReportController;
 
 use App\Http\Controllers\ApisupplierController;
 
+use App\Http\Controllers\ApiOrderAdminController;
+
+
 
 
 
@@ -43,6 +46,28 @@ Route::get('/categories/{slug}/{category}', [ApiUiController::class, 'categorypa
 
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
+
+
+// -----------------------------Orders----------------------------------------//
+Route::prefix('orders')->name('orders.')->group(function () {
+    Route::get('/',[ApiOrderAdminController::class,'index'])->name('index');
+    Route::put('/update',[SettingController::class,'update'])->name('update');
+    // read order
+Route::get('/revieworder/{order}', [ApiOrderAdminController::class, 'revieworder'])->name('admin.revieworder');
+
+//change status order
+
+Route::post('/changestatus/{order}', [ApiOrderAdminController::class, 'changestatus']);
+
+// json order table 
+Route::post('/orderjson', [ApiOrderAdminController::class, 'orderjson']);
+//table orders
+Route::post('/orders_index', [ApiOrderAdminController::class, 'index']);
+///end of orders routes
+
+});
+
+
 
 
 
