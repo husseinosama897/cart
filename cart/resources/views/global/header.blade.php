@@ -118,7 +118,9 @@
         <div class="row align-items-center mobile">
             <div class="logo col-auto">
                 <svg class="open-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="margin-right: 10px;"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path></svg>
-                <img src="/front/images/noon-black-ar.svg" alt="" color="">
+                <a href="/">
+                    <img src="{{ asset('/front/images/logo.png') }}" alt="" color="">
+                </a>
             </div>
             <div class="row align-items-center col-auto">
                 <div class="search-icon col-auto">

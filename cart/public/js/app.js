@@ -5484,9 +5484,8 @@ __webpack_require__.r(__webpack_exports__);
     this.carts = this.products;
     this.loadCounter();
     this.totalPrice = this.total;
-    this.CouponCode = this.code;
 
-    if (this.code !== 'null') {
+    if (this.code == 'null') {
       this.CouponCode == '';
     } else {
       this.CouponCode = this.code;
@@ -5517,7 +5516,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/couponsstore/', {
         'code': this.CouponCode
       }).then(function (response) {
-        console.log(response);
+        window.reload();
       })["catch"]();
     }
   },
@@ -52931,7 +52930,7 @@ var render = function () {
                     },
                   }),
                   _vm._v(" "),
-                  this.CouponCode == ""
+                  this.code == "null"
                     ? _c(
                         "button",
                         {
@@ -52942,7 +52941,7 @@ var render = function () {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  this.CouponCode !== ""
+                  this.code !== "null"
                     ? _c(
                         "button",
                         {
@@ -52994,15 +52993,17 @@ var render = function () {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _c("dl", { staticClass: "dlist-align" }, [
-                  _c("dt", { staticClass: "text-right" }, [
-                    _vm._v("السعر النهائي:"),
-                  ]),
-                  _vm._v(" "),
-                  _c("dd", { staticClass: "text-start" }, [
-                    _vm._v(_vm._s(_vm.totalfinalPrice) + " ر.س"),
-                  ]),
-                ]),
+                _vm.totalfinalPrice > 0
+                  ? _c("dl", { staticClass: "dlist-align" }, [
+                      _c("dt", { staticClass: "text-right" }, [
+                        _vm._v("السعر النهائي:"),
+                      ]),
+                      _vm._v(" "),
+                      _c("dd", { staticClass: "text-start" }, [
+                        _vm._v(_vm._s(_vm.totalfinalPrice) + " ر.س"),
+                      ]),
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("hr"),
                 _vm._v(" "),
@@ -53728,7 +53729,7 @@ var render = function () {
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "product-details" }, [
         _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "photos col-4 owl-carousel" }, [
+          _c("div", { staticClass: "photos col-lg-4 owl-carousel" }, [
             _c("img", {
               staticStyle: { height: "350px", "object-fit": "contain" },
               attrs: { src: "/uploads/product/" + _vm.product.img },
@@ -53743,7 +53744,7 @@ var render = function () {
             }),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "details col-8" }, [
+          _c("div", { staticClass: "details col-lg-8" }, [
             _c("h1", { staticClass: "mb-2" }, [
               _vm._v(_vm._s(_vm.product.name)),
             ]),
@@ -53777,11 +53778,11 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "product-price row mb-4" }, [
-              _c("span", { staticClass: "col-3" }, [
+              _c("span", { staticClass: "col-lg-3 mb-2" }, [
                 _vm._v("السعر : " + _vm._s(_vm.product.price) + " ر.س"),
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "qty col-3" }, [
+              _c("div", { staticClass: "qty col-lg-3" }, [
                 _c("input", {
                   staticClass: "product_id",
                   attrs: { hidden: "", type: "hidden", value: "85" },
@@ -53827,7 +53828,7 @@ var render = function () {
             _c("div", { staticClass: "baw mb-4" }, [
               _c(
                 "button",
-                { staticClass: "btn btn-sm btn-primary py-2 px-3 mx-2" },
+                { staticClass: "btn btn-sm btn-primary py-2 px-2 mx-1 mb-2" },
                 [
                   _c(
                     "svg",
@@ -53861,7 +53862,7 @@ var render = function () {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm btn-primary py-2 px-3 mx-2",
+                  staticClass: "btn btn-sm btn-primary py-2 px-2 mx-1 mb-2",
                   on: {
                     click: function ($event) {
                       return _vm.addProductInCart(_vm.product.id)
@@ -53899,7 +53900,7 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "button",
-                { staticClass: "btn btn-sm btn-primary py-2 px-3 mx-2" },
+                { staticClass: "btn btn-sm btn-primary py-2 px-2 mx-1" },
                 [
                   _c(
                     "svg",

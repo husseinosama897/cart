@@ -6,8 +6,7 @@
     border: 1px solid #e3e3e3;
     margin-bottom: 10px;
     border-radius: 8px;
-    width: calc(20% - 20px);
-    margin: 10px !important;
+    width: 100%;
 }   
 .related-products .product .photo img {
     height: 120px;
@@ -46,4 +45,28 @@
 }
 .supplier-cart svg {
     fill: #092c47;
+}
+
+@media screen and (min-width: 480px) {
+    .related-products .product {
+        width: calc(50% - 20px);
+        margin: 10px !important;
+    }
+}
+@media screen and (min-width: 768px) {
+    .related-products .product {
+        width: calc(33.33% - 20px);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .related-products .product {
+        width: calc(33.33% - 20px);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .related-products .product {
+        width: calc(20% - 20px);
+    }
 }

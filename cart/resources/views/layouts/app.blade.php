@@ -22,7 +22,12 @@
     <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
 
     @yield('style')
-
+    <style>
+        .category {
+            margin: 0 !important;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     @include('global.header')

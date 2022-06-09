@@ -49,8 +49,8 @@
                         <label class="form-label">هل لديك كوبون ؟</label>
                         <div class="input-group">
                            <input type="text" class="form-control" placeholder="رمز الكوبون" v-model="CouponCode">
-                              <button class="btn btn-primary" @click="setCoupon" v-if="this.CouponCode == ''">تطبيق</button>
-                              <button class="btn btn-primary" @click="setCoupon" v-if="this.CouponCode !== ''">إزالة</button>
+                           <button class="btn btn-primary" @click="setCoupon" v-if="this.code == 'null'">تطبيق</button>
+                           <button class="btn btn-primary" @click="setCoupon" v-if="this.code !== 'null'">إزالة</button>
                         </div> 
                      </div> <!-- card-body.// --> 
                   </div>
@@ -69,7 +69,7 @@
                            <dt class="text-right">كوبون :</dt>
                            <dd class="text-start">- {{ Vdiscount }} ر.س</dd>
                         </dl>
-                        <dl class="dlist-align">
+                        <dl class="dlist-align" v-if="totalfinalPrice > 0">
                            <dt class="text-right">السعر النهائي:</dt>
                            <dd class="text-start">{{ totalfinalPrice }} ر.س</dd>
                         </dl>
@@ -107,12 +107,13 @@ export default {
         this.carts = this.products;
         this.loadCounter();
         this.totalPrice = this.total;
-        this.CouponCode = this.code;
-        if(this.code !== 'null'){
+
+        if(this.code == 'null'){
            this.CouponCode == '';
         }else{
            this.CouponCode = this.code;
         };
+
         this.Vdiscount = this.discount;
     },
     methods: {
@@ -139,7 +140,7 @@ export default {
          axios.post('/couponsstore/', {
                'code': this.CouponCode,
          }).then((response) => {
-             console.log(response);
+             window.reload();
          })
          .catch();
       }
