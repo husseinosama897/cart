@@ -8,20 +8,20 @@
                             <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
                                 <thead>
                                     <tr>
-                                        <th class="wd-15p border-bottom-0">الاسم</th>
-                                        <th class="wd-15p border-bottom-0">البريد الالكتروني</th>
-                                        <th class="wd-20p border-bottom-0">رقم الهاتف</th>
-                                        <th class="wd-15p border-bottom-0">اجمالي سعر الطلب</th>
-                                        <th class="wd-25p border-bottom-0">تاريخ الطلب</th>
+                                        <th class="wd-15p border-bottom-0" style="text-transform: capitalize;text-align: left;">Name</th>
+                                        <th class="wd-15p border-bottom-0" style="text-transform: capitalize;text-align: left;">Email</th>
+                                        <th class="wd-20p border-bottom-0" style="text-transform: capitalize;text-align: left;">Phone</th>
+                                        <th class="wd-15p border-bottom-0" style="text-transform: capitalize;text-align: left;">Total Price</th>
+                                        <th class="wd-25p border-bottom-0" style="text-transform: capitalize;text-align: left;">Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="(ArrivedOrder, index) in ArrivedOrders.data" :key="index">
-                                        <td>{{ ArrivedOrder.billing_name }}</td>
-                                        <td>{{ ArrivedOrder.billing_email }}</td>
-                                        <td>{{ ArrivedOrder.billing_number }}</td>
-                                        <td>{{ ArrivedOrder.billing_total }}</td>
-                                        <td>{{  moment(ArrivedOrder.created_at).format("DD-MM-YYYY") }}</td>
+                                        <td style="text-align: left;">{{ ArrivedOrder.billing_name }}</td>
+                                        <td style="text-align: left;">{{ ArrivedOrder.billing_email }}</td>
+                                        <td style="text-align: left;">{{ ArrivedOrder.billing_number }}</td>
+                                        <td style="text-align: left;">{{ ArrivedOrder.billing_total }}</td>
+                                        <td style="text-align: left;">{{  moment(ArrivedOrder.created_at).format("DD-MM-YYYY") }}</td>
                                     </tr>
                                 </tbody>
                             </table>

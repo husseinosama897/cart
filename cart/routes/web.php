@@ -256,7 +256,8 @@ Route::prefix('coupon')->name('coupon.')->group(function () {
     Route::get('/index',[couponController::class,'index'])->name('index');
     Route::get('/create',[couponController::class,'createpage'])->name('create');
     Route::post('/save',[couponController::class,'post'])->name('save');
-    Route::put('/update',[SettingController::class,'update'])->name('update');
+    Route::get('/edit/{coupon}', [couponController::class, 'updatepage'])->name('coupon.edit');
+    Route::post('/update{coupon}',[couponController::class,'postupdate'])->name('update');
 });
 
 // start with categories 

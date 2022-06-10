@@ -54828,23 +54828,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { staticClass: "wd-15p border-bottom-0" }, [_vm._v("الاسم")]),
+        _c("th", { staticClass: "wd-15p border-bottom-0" }, [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "wd-15p border-bottom-0" }, [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "wd-20p border-bottom-0" }, [_vm._v("Phone")]),
         _vm._v(" "),
         _c("th", { staticClass: "wd-15p border-bottom-0" }, [
-          _vm._v("البريد الالكتروني"),
+          _vm._v("Total Price"),
         ]),
         _vm._v(" "),
-        _c("th", { staticClass: "wd-20p border-bottom-0" }, [
-          _vm._v("رقم الهاتف"),
-        ]),
-        _vm._v(" "),
-        _c("th", { staticClass: "wd-15p border-bottom-0" }, [
-          _vm._v("اجمالي سعر الطلب"),
-        ]),
-        _vm._v(" "),
-        _c("th", { staticClass: "wd-25p border-bottom-0" }, [
-          _vm._v("تاريخ الطلب"),
-        ]),
+        _c("th", { staticClass: "wd-25p border-bottom-0" }, [_vm._v("Date")]),
       ]),
     ])
   },
@@ -55269,21 +55263,23 @@ var render = function () {
                       _vm.ArrivedOrders.data,
                       function (ArrivedOrder, index) {
                         return _c("tr", { key: index }, [
-                          _c("td", [_vm._v(_vm._s(ArrivedOrder.billing_name))]),
+                          _c("td", { staticStyle: { "text-align": "left" } }, [
+                            _vm._v(_vm._s(ArrivedOrder.billing_name)),
+                          ]),
                           _vm._v(" "),
-                          _c("td", [
+                          _c("td", { staticStyle: { "text-align": "left" } }, [
                             _vm._v(_vm._s(ArrivedOrder.billing_email)),
                           ]),
                           _vm._v(" "),
-                          _c("td", [
+                          _c("td", { staticStyle: { "text-align": "left" } }, [
                             _vm._v(_vm._s(ArrivedOrder.billing_number)),
                           ]),
                           _vm._v(" "),
-                          _c("td", [
+                          _c("td", { staticStyle: { "text-align": "left" } }, [
                             _vm._v(_vm._s(ArrivedOrder.billing_total)),
                           ]),
                           _vm._v(" "),
-                          _c("td", [
+                          _c("td", { staticStyle: { "text-align": "left" } }, [
                             _vm._v(
                               _vm._s(
                                 _vm
@@ -55313,23 +55309,65 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { staticClass: "wd-15p border-bottom-0" }, [_vm._v("الاسم")]),
+        _c(
+          "th",
+          {
+            staticClass: "wd-15p border-bottom-0",
+            staticStyle: {
+              "text-transform": "capitalize",
+              "text-align": "left",
+            },
+          },
+          [_vm._v("Name")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "wd-15p border-bottom-0" }, [
-          _vm._v("البريد الالكتروني"),
-        ]),
+        _c(
+          "th",
+          {
+            staticClass: "wd-15p border-bottom-0",
+            staticStyle: {
+              "text-transform": "capitalize",
+              "text-align": "left",
+            },
+          },
+          [_vm._v("Email")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "wd-20p border-bottom-0" }, [
-          _vm._v("رقم الهاتف"),
-        ]),
+        _c(
+          "th",
+          {
+            staticClass: "wd-20p border-bottom-0",
+            staticStyle: {
+              "text-transform": "capitalize",
+              "text-align": "left",
+            },
+          },
+          [_vm._v("Phone")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "wd-15p border-bottom-0" }, [
-          _vm._v("اجمالي سعر الطلب"),
-        ]),
+        _c(
+          "th",
+          {
+            staticClass: "wd-15p border-bottom-0",
+            staticStyle: {
+              "text-transform": "capitalize",
+              "text-align": "left",
+            },
+          },
+          [_vm._v("Total Price")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "wd-25p border-bottom-0" }, [
-          _vm._v("تاريخ الطلب"),
-        ]),
+        _c(
+          "th",
+          {
+            staticClass: "wd-25p border-bottom-0",
+            staticStyle: {
+              "text-transform": "capitalize",
+              "text-align": "left",
+            },
+          },
+          [_vm._v("Date")]
+        ),
       ]),
     ])
   },

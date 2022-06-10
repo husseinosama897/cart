@@ -8,11 +8,11 @@
                             <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
                                 <thead>
                                     <tr>
-                                        <th class="wd-15p border-bottom-0">الاسم</th>
-                                        <th class="wd-15p border-bottom-0">البريد الالكتروني</th>
-                                        <th class="wd-20p border-bottom-0">رقم الهاتف</th>
-                                        <th class="wd-15p border-bottom-0">اجمالي سعر الطلب</th>
-                                        <th class="wd-25p border-bottom-0">تاريخ الطلب</th>
+                                        <th class="wd-15p border-bottom-0">Name</th>
+                                        <th class="wd-15p border-bottom-0">Email</th>
+                                        <th class="wd-20p border-bottom-0">Phone</th>
+                                        <th class="wd-15p border-bottom-0">Total Price</th>
+                                        <th class="wd-25p border-bottom-0">Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>

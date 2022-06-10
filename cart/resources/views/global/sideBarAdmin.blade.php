@@ -51,6 +51,13 @@
                         <i class="angle fe fe-chevron-right"></i>
                     </a>
                 </li>
+                <li class="slide">
+                    <a class="side-menu__item" href="{{ route('coupon.index') }}">
+                        <i class="side-menu__icon fe fe-percent"></i>
+                        <span class="side-menu__label">الكوبونات</span>
+                        <i class="angle fe fe-chevron-right"></i>
+                    </a>
+                </li>
                 <li class="slide"> 
                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
                         <i class="side-menu__icon fe fe-file-text"></i>

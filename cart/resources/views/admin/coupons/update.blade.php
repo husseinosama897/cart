@@ -3,7 +3,7 @@
 @section('content')
 <!-- PAGE-HEADER -->
 <div class="page-header">
-    <h1 class="page-title">إضافة كوبون جديد</h1>
+    <h1 class="page-title">تعديل الكوبون</h1>
 </div>
 @foreach ($errors->all() as $error)
 <div class="alert alert-danger " role="alert" style="border-radius: 4px">
@@ -16,35 +16,35 @@
     <div class="col-md-12 col-xl-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="{{ route('coupon.save') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('coupon.update', $coupon->id ) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="">
                         <div class="form-group">
                             <label for="name" class="form-label">الكود</label>
-                            <input type="text" class="form-control" id="name" name="code" placeholder="الكود">
+                            <input type="text" class="form-control" id="name" name="code" placeholder="الكود" value="{{ $coupon->code }}">
                         </div>
                         <div class="form-group">
                             <label for="name" class="form-label">النوع</label>
                             <select class="form-select d-inline-block type" name="type">
-                                <option value="voucher">voucher</option>
-                                <option value="percent">percent_off</option>
+                                <option value="voucher" {{ $coupon->type == 'voucher' ? 'selected' : ''}}>voucher</option>
+                                <option value="percent" {{ $coupon->type == 'percent' ? 'selected' : ''}}>percent_off</option>
                             </select>
                         </div>
                         <div class="form-group" id="value">
                             <label for="name" class="form-label">القيمة</label>
-                            <input type="text" class="form-control" id="name" name="value" placeholder="القيمة">
+                            <input type="text" class="form-control" id="name" name="value" placeholder="القيمة" value="{{ $coupon->value }}">
                         </div>
 
                         <div class="form-group percent" id="percent">
                             <label for="name" class="form-label">percent</label>
-                            <input type="text" class="form-control" id="name" name="percent_off" placeholder="percent">
+                            <input type="text" class="form-control" id="name" name="percent_off" placeholder="percent" value="{{ $coupon->percent_off }}">
                         </div>
                         <div class="form-group" >
                             <label for="name" class="form-label">expire</label>
-                            <input type="date" class="form-control" id="name" name="expire" placeholder="percent">
+                            <input type="date" class="form-control" id="name" name="expire" placeholder="percent" value="{{ $coupon->expire }}">
                         </div>
                     </div>
-                    <button class="btn btn-primary mt-4 mb-0">إضافة</button>
+                    <button class="btn btn-primary mt-4 mb-0">تعديل</button>
                 </form>
             </div>
         </div>

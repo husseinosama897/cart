@@ -13,10 +13,10 @@
             <i class="material-icons md-calendar_today"></i>
             <b>
                 @php
-                setlocale(LC_ALL, 'ar.utf8');
-                $date = Carbon\Carbon::parse($data->created_at)->translatedFormat('l j F Y H:i:s');
-            @endphp
-             {{ $date }}
+                    setlocale(LC_ALL, 'ar.utf8');
+                    $date = Carbon\Carbon::parse($data->created_at)->translatedFormat('l j F Y H:i:s');
+                @endphp
+                {{ $date }}
             </b>
         </span> <br>
         <small class="text-muted">معرف الطلب : 1654079933</small>
@@ -66,12 +66,16 @@
             </div>
         </div> <!-- end col -->
 
-        <div class="col-lg-4 mb-2">
+        <div class="col-lg-5 mb-2">
             <div class="card border shadow-none">
-                <div class="card-body" v-if="viewOrder != null" style="height: 170px">
+                <div class="card-body" style="height: 170px">
                     <h6 class="header-title mb-3">ملاحظات الطلب</h6>
-                                                <p>لا توجد ملاحظات</p>
-                                        </div>
+                    @if ($data->notes !== null)
+                        <p>{{ $data }}</p>
+                    @else
+                        <p>لا توجد ملاحظات</p>
+                    @endif
+                </div>
             </div>
         </div> <!-- end col -->
 
@@ -99,7 +103,7 @@
         <div class="col-lg-8 mb-2">
             <div class="card border shadow-none">
                 <div class="card-body">
-                    <h6 class="header-title mb-3">منتجات الطلب # 1649960877</h6>
+                    <h6 class="header-title mb-3">منتجات الطلب </h6>
                         <div class="table-responsive">
                         <table class="table mb-2 table-bordered" style="border: 1px solid #e9edf4">
                             <thead>
@@ -110,21 +114,22 @@
                             </tr>
                             </thead>
                             <tbody class="border-top-0">
-                                                                                                        <tr>
-                                    <td class="align-center">
-                                        ساعه سمارت,WATCH J6,متوافقه مع اندرويد وايفون,تدعم اللغه العربيه ( الكمية :  1 )
-                                        
-                                                                                            ( اللون :  اسود )
-                                                                                                                                            ( الحجم :  44 مللي )
-                                                                                                                                </td>
-                                    <td class="align-middle text-center">
-                                        395 جنية
+                            @php
+                                $total = 0;
+                            @endphp
+                            @foreach($data->itemorder as $item)
+                                <tr>
+                                    <td  class="align-center">
+                                        {{ $item->product->name }} ( الكمية :  {{ $item->quantity }} )
                                     </td>
-                                    <td class="align-middle text-center">
-                                        395 جنية
-                                    </td>
+                                    <td>{{$item->product->price}} ر.س</td>
+                                    <td>{{$item->product->price * $item->quantity}} ر.س</td>
                                 </tr>
-                                                                                                    </tbody>
+                                @php
+                                    $total += $item->product->price * $item->quantity;
+                                @endphp
+                            @endforeach
+                          </tbody>
                         </table>
                     </div>
                     <!-- end table-responsive -->
@@ -145,18 +150,19 @@
                                 <th>السعر</th>
                             </tr>
                             </thead>
-                            <tbody class="border-top-0" v-if="viewOrder != null">
+                            <tbody class="border-top-0">
+
                             <tr>
                                 <td>سعر المنتجات :</td>
-                                <td>395 جنية</td>
+                                <td>{{ $total }} ر.س</td>
                             </tr>
                             <tr>
                                 <td>تكلفة الشحن :</td>
-                                <td>45 جنية</td>
+                                <td>45 ر.س</td>
                             </tr>
                             <tr>
                                 <th>السعر الكلي :</th>
-                                <th> 440 جنية </th>
+                                <th> 440 ر.س </th>
                             </tr>
                             </tbody>
                         </table>

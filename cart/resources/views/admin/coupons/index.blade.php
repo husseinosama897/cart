@@ -45,18 +45,18 @@
                                     <td>{{ $coupon->code }}</td>
                                     <td>{{ $coupon->type }}</td>
                                     <td>
-                                        @if ($coupon->percent_off !== null)
+                                        @if ($coupon->percent_off > 0)
                                             {{ $coupon->percent_off }}
-                                            @else
+                                        @else
                                             {{ $coupon->value }}
                                         @endif
                                     </td>
                                     <td>{{ $coupon->expire }}</td>
                                     <td name="bstable-actions"><div class="btn-list">
-                                        <a  href="/categories_update/{{ $coupon->id }}" id="bEdit" type="button" class="btn btn-sm btn-primary" style="color:white">
+                                        <a  href="/coupon/edit/{{ $coupon->id }}" id="bEdit" type="button" class="btn btn-sm btn-primary" style="color:white">
                                             <span class="fe fe-edit"></span>
                                         </a>
-                                        <a href="/categories_delete/{{ $coupon->id }}" onclick="return confirm('هل انت متاكد من حذف قسم {{ $coupon->code }}')" id="bDel" type="button" class="btn  btn-sm btn-danger" style="color:white">
+                                        <a href="/coupon/delete/{{ $coupon->id }}" onclick="return confirm('هل انت متاكد من حذف كوبون {{ $coupon->code }}')" id="bDel" type="button" class="btn  btn-sm btn-danger" style="color:white">
                                             <span class="fe fe-trash-2"> </span>
                                         </a>
                                     </div></td>
