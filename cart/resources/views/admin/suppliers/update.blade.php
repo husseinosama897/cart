@@ -16,12 +16,12 @@
     <div class="col-md-12 col-xl-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="{{ route('categories_save') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ url('updatesupp', $supplier->id ) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="name" class="form-label">اسم المورد</label>
-                            <input type="text" class="form-control" id="name" name="comp" placeholder="الاسم" value="">
+                            <input type="text" class="form-control" id="name" name="comp" placeholder="الاسم" value="{{ $supplier->comp }}">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="name" class="form-label">البريد الالكتروني</label>

@@ -54,10 +54,13 @@
                                     @endphp
                                     <td>{{ $date }}</td> --}}
                                     <td name="bstable-actions"><div class="btn-list">
-                                        <a id="bEdit" type="button" class="btn btn-sm btn-primary" style="color:white">
+                                        <a href="/suppliers/{{ $supplier->comp }}/{{ $supplier->id }}" id="bEdit" type="button" class="btn btn-sm btn-primary" style="color:white">
                                             <span class="fe fe-eye"></span>
                                         </a>
-                                        <a id="bDel" type="button" class="btn  btn-sm btn-danger" style="color:white">
+                                        <a  href="/editsupp/{{ $supplier->id }}" id="bEdit" type="button" class="btn btn-sm btn-primary" style="color:white">
+                                            <span class="fe fe-edit"></span>
+                                        </a>
+                                        <a href="/deletesupp/{{ $supplier->id }}" onclick="return confirm('هل انت متاكد من حذف المورد {{ $supplier->comp }}')" id="bDel" type="button" class="btn  btn-sm btn-danger" style="color:white">
                                             <span class="fe fe-trash-2"> </span>
                                         </a>
                                     </div></td>

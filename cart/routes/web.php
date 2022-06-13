@@ -276,7 +276,8 @@ Route::get('/categories_update/{category}', [categoryController::class, 'categor
 Route::post('/categories_update/{category}', [categoryController::class, 'update'])->name('category_update');
 
 // delete category 
-Route::post('/categories_delete/{category}', [categoryController::class, 'delete'])->name('category_delete');
+Route::get
+('/categories_delete/{category}', [categoryController::class, 'delete'])->name('category_delete');
 
 Route::post('/categories_save', [categoryController::class, 'save'])->name('categories_save');
 
@@ -326,10 +327,12 @@ Route::get('/supplier_table', [supplierController::class, 'suppliertable'])->nam
 Route::get('/supplierselex', [supplierController::class, 'supplierselex']);
 
 // supplier update
+Route::get('/editsupp/{supplier}', [supplierController::class, 'editsupp']);
+
 Route::post('/updatesupp/{supplier}', [supplierController::class, 'updatesupp']);
 
 // supplier delete 
-Route::post('/deletesupp/{supplier}', [supplierController::class, 'delete']);
+Route::get('/deletesupp/{supplier}', [supplierController::class, 'delete']);
 ///end of supplier routes
 
 

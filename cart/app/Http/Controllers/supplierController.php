@@ -115,11 +115,14 @@ $supplier = $supplier->orwhere('comp', 'LIKE', '%' . $request->name . '%');
           
           
           public function delete(supplier $supplier){
-      
-            $supplier->delete();
+             $supplier->delete();
+             return redirect()->back()->with('success', 'تم حذف المورد بنجاح');
           }
-
-          public function updatesupp(request $request,supplier $supplier ){
+          public function editsupp(supplier $supplier)
+          {
+            return view('admin.suppliers.update', compact('supplier'));
+          }
+          public function updatesupp(request $request, supplier $supplier ){
         
             
       $this->validate($request,[

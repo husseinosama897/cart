@@ -58,9 +58,9 @@
             @foreach($categories as $category)
                 <div class="category col-xl-3 col-lg-3 col-md-4 col-sm-4 col-6">
                     <div class="photo">
-                    <a href="{{ route('categorypage', ['slug'=>$category->slug,'category'=>$category->id]) }}">    <img src="{{asset('/uploads/categories/'.$category->image)}}" alt="{{$category->name}}" style="height: 150px;object-fit: cover;width: auto;">
-
-</a>
+                    <a href="{{ route('categorypage', ['slug'=>$category->slug,'category'=>$category->id]) }}">
+                        <img src="{{asset('/uploads/categories/'.$category->image)}}" alt="{{$category->name}}" style="height: 150px;object-fit: cover;width: auto;">
+                    </a>
                     </div>
                     <span>{{$category->name}}</span>
                 </div>
